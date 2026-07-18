@@ -1,0 +1,1009 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Daisyline Crochet | Handmade with Love & Tradition</title>
+    <meta name="description" content="Inspired by Grandma's crochet legacy. Handmade crochet plush toys, handbags, bouquets, and custom gifts. Made in Pakistan.">
+    
+    <!-- Google Fonts: Cormorant Garamond (Headings) & Manrope (Body) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=Manrope:wght@300;400;500;600&display=swap" rel="stylesheet">
+    
+    <!-- Phosphor Icons for elegant line icons -->
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            sage: '#8fa886',      // Soft Sage Green (from logo stems)
+                            cream: '#fdfbf7',     // Warm Cream
+                            ivory: '#f8f5f0',     // Ivory background
+                            olive: '#72886a',     // Dusty Olive
+                            beige: '#e8e1d5',     // Soft Beige
+                            floral: '#dce5d8',    // Muted Floral Green
+                            gold: '#d4b773',      // Light Gold (from daisy center)
+                            text: '#2c3329',      // Dark olive/grey for text
+                            muted: '#5e6b57'      // Muted text
+                        }
+                    },
+                    fontFamily: {
+                        heading: ['"Cormorant Garamond"', 'serif'],
+                        sans: ['Manrope', 'sans-serif'],
+                    },
+                    boxShadow: {
+                        'soft': '0 10px 40px -10px rgba(114, 136, 106, 0.08)',
+                        'glow': '0 0 20px rgba(143, 168, 134, 0.15)',
+                    },
+                    animation: {
+                        'marquee': 'marquee 25s linear infinite',
+                        'fade-in-up': 'fadeInUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards',
+                        'float': 'float 6s ease-in-out infinite',
+                    },
+                    keyframes: {
+                        marquee: {
+                            '0%': { transform: 'translateX(0%)' },
+                            '100%': { transform: 'translateX(-50%)' },
+                        },
+                        fadeInUp: {
+                            '0%': { opacity: '0', transform: 'translateY(20px)' },
+                            '100%': { opacity: '1', transform: 'translateY(0)' },
+                        },
+                        float: {
+                            '0%, 100%': { transform: 'translateY(0)' },
+                            '50%': { transform: 'translateY(-10px)' },
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <style>
+        /* Custom Styles for specific interactions and aesthetic tweaks */
+        body {
+            background-color: theme('colors.brand.cream');
+            color: theme('colors.brand.text');
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        /* Glassmorphism utilities */
+        .glass {
+            background: rgba(253, 251, 247, 0.85);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border-bottom: 1px solid rgba(143, 168, 134, 0.1);
+        }
+
+        /* Smooth reveal class for JS observer */
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.9s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Delay utilities for staggered animations */
+        .delay-100 { transition-delay: 100ms; }
+        .delay-200 { transition-delay: 200ms; }
+        .delay-300 { transition-delay: 300ms; }
+
+        /* Hide scrollbar for clean marquee */
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .no-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+
+        /* Image hover zoom effect */
+        .img-hover-zoom {
+            overflow: hidden;
+        }
+        .img-hover-zoom img {
+            transition: transform 0.7s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+        .group:hover .img-hover-zoom img {
+            transform: scale(1.05);
+        }
+
+        /* Custom file input styling */
+        input[type="file"]::file-selector-button {
+            background-color: theme('colors.brand.ivory');
+            border: 1px solid theme('colors.brand.beige');
+            color: theme('colors.brand.text');
+            padding: 0.5rem 1rem;
+            border-radius: 9999px;
+            font-family: theme('fontFamily.sans');
+            font-size: 0.875rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin-right: 1rem;
+        }
+        input[type="file"]::file-selector-button:hover {
+            background-color: theme('colors.brand.beige');
+        }
+        
+        /* Mobile grid specific tweak to force 2 columns strictly */
+        @media (max-width: 639px) {
+            .mobile-grid-2 {
+                display: grid;
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+                gap: 0.75rem;
+            }
+        }
+    </style>
+</head>
+<body class="font-sans antialiased overflow-x-hidden selection:bg-brand-sage selection:text-white">
+
+    <!-- Announcement Bar -->
+    <div class="bg-brand-sage text-white text-xs md:text-sm font-medium tracking-wider uppercase py-2 overflow-hidden relative z-50">
+        <div class="whitespace-nowrap flex w-fit animate-marquee hover:[animation-play-state:paused] cursor-default">
+            <!-- Content repeated for continuous flow -->
+            <span class="mx-4 flex items-center gap-4">
+                ✨ Handmade Crochet with Love <span class="text-brand-gold opacity-60">•</span>
+                Custom Orders Available <span class="text-brand-gold opacity-60">•</span>
+                Premium Gift Packaging <span class="text-brand-gold opacity-60">•</span>
+                Inspired by Grandma's Legacy <span class="text-brand-gold opacity-60">•</span>
+                Made in Pakistan ✨
+            </span>
+            <span class="mx-4 flex items-center gap-4">
+                ✨ Handmade Crochet with Love <span class="text-brand-gold opacity-60">•</span>
+                Custom Orders Available <span class="text-brand-gold opacity-60">•</span>
+                Premium Gift Packaging <span class="text-brand-gold opacity-60">•</span>
+                Inspired by Grandma's Legacy <span class="text-brand-gold opacity-60">•</span>
+                Made in Pakistan ✨
+            </span>
+        </div>
+    </div>
+
+    <!-- Navigation -->
+    <header id="navbar" class="absolute w-full top-0 z-40 transition-all duration-300 transform translate-y-[32px] md:translate-y-[36px] bg-transparent">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-20 md:h-24">
+                <!-- Mobile Menu Button -->
+                <div class="flex items-center lg:hidden">
+                    <button id="mobile-menu-btn" class="text-brand-text hover:text-brand-sage transition-colors p-2 -ml-2" aria-label="Open menu">
+                        <i class="ph ph-list text-2xl"></i>
+                    </button>
+                </div>
+
+                <!-- Logo -->
+                <div class="flex-shrink-0 flex items-center justify-center lg:justify-start w-full lg:w-auto absolute lg:relative left-0 pointer-events-none lg:pointer-events-auto">
+                    <a href="#" class="pointer-events-auto flex items-center gap-3 group">
+                        <img src="./images/logo.jpg" alt="Daisyline Crochet Logo" class="h-12 w-auto md:h-16 object-contain group-hover:scale-105 transition-transform duration-500 rounded-full bg-white shadow-sm p-1">
+                        <span class="font-heading text-2xl md:text-3xl font-semibold tracking-wide text-brand-text hidden md:block">Daisyline</span>
+                    </a>
+                </div>
+
+                <!-- Desktop Menu -->
+                <nav class="hidden lg:flex space-x-8 items-center">
+                    <a href="#home" class="text-brand-text hover:text-brand-sage font-medium text-sm tracking-wide transition-colors relative after:content-[''] after:absolute after:-bottom-1 after:left-0 after:w-0 after:h-px after:bg-brand-sage after:transition-all after:duration-300 hover:after:w-full">Home</a>
+                    <a href="#shop" class="text-brand-text hover:text-brand-sage font-medium text-sm tracking-wide transition-colors relative after:content-[''] after:absolute after:-bottom-1 after:left-0 after:w-0 after:h-px after:bg-brand-sage after:transition-all after:duration-300 hover:after:w-full">Shop</a>
+                    <a href="#collections" class="text-brand-text hover:text-brand-sage font-medium text-sm tracking-wide transition-colors relative after:content-[''] after:absolute after:-bottom-1 after:left-0 after:w-0 after:h-px after:bg-brand-sage after:transition-all after:duration-300 hover:after:w-full">Collections</a>
+                    <a href="#custom-orders" class="text-brand-text hover:text-brand-sage font-medium text-sm tracking-wide transition-colors relative after:content-[''] after:absolute after:-bottom-1 after:left-0 after:w-0 after:h-px after:bg-brand-sage after:transition-all after:duration-300 hover:after:w-full">Custom Orders</a>
+                    <a href="#story" class="text-brand-text hover:text-brand-sage font-medium text-sm tracking-wide transition-colors relative after:content-[''] after:absolute after:-bottom-1 after:left-0 after:w-0 after:h-px after:bg-brand-sage after:transition-all after:duration-300 hover:after:w-full">Our Story</a>
+                </nav>
+
+                <!-- Icons -->
+                <div class="flex items-center space-x-4 lg:space-x-6">
+                    <a href="#" class="text-brand-text hover:text-brand-sage transition-colors p-2" aria-label="Search">
+                        <i class="ph ph-magnifying-glass text-xl"></i>
+                    </a>
+                    <a href="#" class="text-brand-text hover:text-brand-sage transition-colors p-2 relative" aria-label="Cart">
+                        <i class="ph ph-tote text-xl"></i>
+                        <span class="absolute top-1 right-1 bg-brand-sage text-white text-[10px] font-bold h-4 w-4 rounded-full flex items-center justify-center">0</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Mobile Menu Overlay -->
+    <div id="mobile-menu" class="fixed inset-0 bg-brand-cream z-50 transform -translate-x-full transition-transform duration-500 ease-in-out lg:hidden flex flex-col">
+        <div class="flex justify-between items-center p-6 border-b border-brand-beige">
+            <img src="./images/hero_circle.png" alt="Daisyline Crochet" class="h-10 w-auto rounded-full">
+            <button id="close-menu-btn" class="text-brand-text hover:text-brand-sage p-2" aria-label="Close menu">
+                <i class="ph ph-x text-2xl"></i>
+            </button>
+        </div>
+        <div class="flex-1 overflow-y-auto py-8 px-6 flex flex-col gap-6">
+            <a href="#home" class="mobile-link font-heading text-3xl text-brand-text">Home</a>
+            <a href="#shop" class="mobile-link font-heading text-3xl text-brand-text">Shop</a>
+            <a href="#collections" class="mobile-link font-heading text-3xl text-brand-text">Collections</a>
+            <a href="#custom-orders" class="mobile-link font-heading text-3xl text-brand-text">Custom Orders</a>
+            <a href="#story" class="mobile-link font-heading text-3xl text-brand-text">Our Story</a>
+            <div class="mt-8 pt-8 border-t border-brand-beige flex gap-4">
+                <a href="https://www.instagram.com/daisylinecrochet/" target="_blank" class="text-brand-text hover:text-brand-sage"><i class="ph ph-instagram-logo text-2xl"></i></a>
+                <a href="#" class="text-brand-text hover:text-brand-sage"><i class="ph ph-whatsapp-logo text-2xl"></i></a>
+            </div>
+        </div>
+    </div>
+
+    <main>
+        <!-- Hero Section -->
+        <section id="home" class="relative min-h-[90vh] flex items-center justify-center overflow-hidden pt-24 bg-brand-ivory">
+            <!-- Decorative Background Elements -->
+            <div class="absolute inset-0 z-0 overflow-hidden opacity-30">
+                <!-- Abstract organic shapes hinting at yarn/crochet -->
+                <svg class="absolute top-[-10%] right-[-5%] w-1/2 h-auto text-brand-beige animate-float" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+                    <path fill="currentColor" d="M44.7,-76.4C58.8,-69.2,71.8,-59.1,79.6,-45.8C87.4,-32.5,90,-16.2,88.5,-0.8C87,14.5,81.4,29.1,72.7,41.4C64.1,53.8,52.3,64,39,70.5C25.7,77,10.9,79.8,-3.4,84.6C-17.6,89.4,-31.3,96.2,-42.9,91.8C-54.6,87.4,-64.1,71.9,-71.4,56.7C-78.7,41.4,-83.8,26.4,-85.4,11C-87,-4.3,-85.1,-20,-79.1,-33.5C-73.1,-46.9,-62.9,-58,-50.3,-64.9C-37.7,-71.7,-22.6,-74.3,-7.4,-73.4C7.9,-72.6,25.8,-73.4,44.7,-76.4Z" transform="translate(100 100)" />
+                </svg>
+                <svg class="absolute bottom-[-20%] left-[-10%] w-2/3 h-auto text-brand-floral animate-float" style="animation-delay: -3s;" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+                    <path fill="currentColor" d="M37.8,-60.9C50.2,-54.2,62.3,-46.7,71.5,-35.8C80.7,-24.9,87,-10.5,85.6,3C84.2,16.5,75,29,64.7,39.3C54.4,49.6,43,57.7,30.3,62.4C17.6,67,-6.3,68.2,-19.9,62.1C-33.5,56,-45.5,42.7,-53.4,28.6C-61.3,14.5,-65.1,-0.5,-61.8,-13.6C-58.4,-26.8,-48,-38,-35.9,-44.6C-23.8,-51.2,-10,-53.1,2.8,-57.1C15.5,-61.1,25.4,-67.6,37.8,-60.9Z" transform="translate(100 100)" />
+                </svg>
+            </div>
+
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 w-full">
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-8 items-center">
+                    
+                    <!-- Text Content -->
+                    <div class="text-center lg:text-left flex flex-col items-center lg:items-start max-w-2xl mx-auto lg:mx-0">
+                        <span class="inline-block py-1 px-3 rounded-full bg-brand-floral text-brand-olive text-xs font-semibold tracking-widest uppercase mb-6 animate-fade-in-up">
+                            Inspired by Legacy
+                        </span>
+                        <h1 class="font-heading text-5xl sm:text-6xl lg:text-7xl font-medium text-brand-text leading-[1.1] mb-6 animate-fade-in-up" style="animation-delay: 100ms;">
+                            Handmade with <br class="hidden sm:block"/>
+                            <span class="italic text-brand-olive">Love & Tradition</span>
+                        </h1>
+                        <p class="text-brand-muted text-lg sm:text-xl mb-10 max-w-lg font-light leading-relaxed animate-fade-in-up" style="animation-delay: 200ms;">
+                            Discover our slow-made artistry. Every crochet piece is thoughtfully crafted in Pakistan to bring warmth and elegance to your life.
+                        </p>
+                        
+                        <div class="flex flex-col sm:flex-row gap-4 w-full sm:w-auto animate-fade-in-up" style="animation-delay: 300ms;">
+                            <a href="#shop" class="inline-flex justify-center items-center px-8 py-4 bg-brand-sage text-white rounded-full font-medium tracking-wide hover:bg-brand-olive transition-all duration-300 shadow-soft hover:shadow-glow transform hover:-translate-y-1">
+                                Shop Collection
+                            </a>
+                            <a href="#custom-orders" class="inline-flex justify-center items-center px-8 py-4 bg-transparent border border-brand-olive text-brand-olive rounded-full font-medium tracking-wide hover:bg-brand-olive hover:text-white transition-all duration-300">
+                                Order Custom Crochet
+                            </a>
+                        </div>
+                        
+                        <!-- Trust Indicators -->
+                        <div class="mt-12 flex items-center gap-6 text-brand-muted text-sm animate-fade-in-up" style="animation-delay: 400ms;">
+                            <div class="flex items-center gap-2">
+                                <i class="ph-fill ph-check-circle text-brand-sage"></i>
+                                <span>100% Handmade</span>
+                            </div>
+                            <div class="flex items-center gap-2">
+                                <i class="ph-fill ph-heart text-brand-sage"></i>
+                                <span>Made in Pakistan</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Image Composition -->
+                    <div class="relative h-[500px] sm:h-[600px] w-full animate-fade-in-up" style="animation-delay: 200ms;">
+                        <!-- Main Image Container -->
+                        <div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-4/5 h-4/5 rounded-[2rem] overflow-hidden shadow-2xl z-10 border-4 border-white">
+                            <img src="./images/hero_image.webp" alt="Beautiful Handmade Crochet Bouquet" class="w-full h-full object-cover">
+                            <!-- Overlay gradient for luxury feel -->
+                            <div class="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent"></div>
+                        </div>
+                        
+                        <!-- Accent Image 1 -->
+                        <div class="absolute top-[10%] right-[5%] w-1/3 aspect-square rounded-full overflow-hidden shadow-lg border-4 border-white z-20 animate-float" style="animation-delay: -1s;">
+                            <img src="./images/hero_circle.png" alt="Crochet Detail" class="w-full h-full object-cover">
+                        </div>
+
+                        <!-- Accent Element: Badge -->
+                        <div class="absolute bottom-[15%] left-[5%] bg-white rounded-full p-4 shadow-xl z-20 flex items-center gap-3 animate-float" style="animation-delay: -2s;">
+                            <div class="bg-brand-floral p-2 rounded-full text-brand-olive">
+                                <i class="ph ph-gift text-2xl"></i>
+                            </div>
+                            <div>
+                                <p class="text-xs font-semibold text-brand-text uppercase tracking-wider">Perfect Gift</p>
+                                <p class="text-[10px] text-brand-muted">Premium Packaging</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Featured Collections -->
+        <section id="collections" class="py-24 bg-brand-cream relative">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center mb-16 reveal">
+                    <h2 class="font-heading text-4xl md:text-5xl text-brand-text mb-4">Curated Collections</h2>
+                    <p class="text-brand-muted max-w-2xl mx-auto">Explore our range of meticulously handcrafted items, designed to bring joy and beauty into everyday moments.</p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                    <!-- Collection 1 -->
+                    <a href="#" class="group block relative h-96 rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-500 reveal">
+                        <div class="absolute inset-0 img-hover-zoom">
+                            <img src="./images/new1.jpg" alt="Crochet Plush Toys" class="w-full h-full object-cover">
+                        </div>
+                        <div class="absolute inset-0 bg-gradient-to-t from-brand-text/70 via-brand-text/20 to-transparent opacity-80 group-hover:opacity-90 transition-opacity"></div>
+                        <div class="absolute bottom-0 left-0 w-full p-6 text-white transform translate-y-2 group-hover:translate-y-0 transition-transform duration-500">
+                            <h3 class="font-heading text-2xl font-medium mb-1">Cuddle partner</h3>
+                            <p class="text-sm font-light opacity-0 group-hover:opacity-100 transition-opacity duration-500 delay-100 flex items-center gap-2">
+                                View Collection <i class="ph ph-arrow-right"></i>
+                            </p>
+                        </div>
+                    </a>
+
+                    <!-- Collection 2 -->
+                    <a href="#" class="group block relative h-96 rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-500 reveal delay-100">
+                        <div class="absolute inset-0 img-hover-zoom">
+                            <img src="./images/new2.png" alt="Handmade Handbags" class="w-full h-full object-cover">
+                        </div>
+                        <div class="absolute inset-0 bg-gradient-to-t from-brand-text/70 via-brand-text/20 to-transparent opacity-80 group-hover:opacity-90 transition-opacity"></div>
+                        <div class="absolute bottom-0 left-0 w-full p-6 text-white transform translate-y-2 group-hover:translate-y-0 transition-transform duration-500">
+                            <h3 class="font-heading text-2xl font-medium mb-1">Handbags</h3>
+                            <p class="text-sm font-light opacity-0 group-hover:opacity-100 transition-opacity duration-500 delay-100 flex items-center gap-2">
+                                View Collection <i class="ph ph-arrow-right"></i>
+                            </p>
+                        </div>
+                    </a>
+
+                    <!-- Collection 3 -->
+                    <a href="#" class="group block relative h-96 rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-500 reveal delay-200">
+                        <div class="absolute inset-0 img-hover-zoom">
+                            <img src="./images/new6.jpg" alt="Crochet Bouquets" class="w-full h-full object-cover">
+                        </div>
+                        <div class="absolute inset-0 bg-gradient-to-t from-brand-text/70 via-brand-text/20 to-transparent opacity-80 group-hover:opacity-90 transition-opacity"></div>
+                        <div class="absolute bottom-0 left-0 w-full p-6 text-white transform translate-y-2 group-hover:translate-y-0 transition-transform duration-500">
+                            <h3 class="font-heading text-2xl font-medium mb-1">Bouquets</h3>
+                            <p class="text-sm font-light opacity-0 group-hover:opacity-100 transition-opacity duration-500 delay-100 flex items-center gap-2">
+                                View Collection <i class="ph ph-arrow-right"></i>
+                            </p>
+                        </div>
+                    </a>
+
+                    <!-- Collection 4 -->
+                    <a href="#custom-orders" class="group block relative h-96 rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-500 reveal delay-300">
+                        <div class="absolute inset-0 img-hover-zoom">
+                            <img src="./images/new5.png" alt="Custom Crochet Gifts" class="w-full h-full object-cover">
+                        </div>
+                        <div class="absolute inset-0 bg-gradient-to-t from-brand-text/80 via-brand-text/30 to-transparent opacity-80 group-hover:opacity-90 transition-opacity"></div>
+                        <div class="absolute bottom-0 left-0 w-full p-6 text-white transform translate-y-2 group-hover:translate-y-0 transition-transform duration-500">
+                            <h3 class="font-heading text-2xl font-medium mb-1">Custom Gifts</h3>
+                            <p class="text-sm font-light opacity-0 group-hover:opacity-100 transition-opacity duration-500 delay-100 flex items-center gap-2">
+                                Request Design <i class="ph ph-arrow-right"></i>
+                            </p>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Featured Products -->
+        <section id="shop" class="py-24 bg-brand-ivory relative">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="flex flex-col md:flex-row justify-between items-end mb-12 reveal">
+                    <div>
+                        <h2 class="font-heading text-4xl md:text-5xl text-brand-text mb-4">Latest Arrivals</h2>
+                        <p class="text-brand-muted">Crafted with patience, ready to be loved.</p>
+                    </div>
+                    <a href="#" class="hidden md:inline-flex items-center gap-2 text-brand-olive hover:text-brand-sage font-medium transition-colors border-b border-transparent hover:border-brand-sage pb-1">
+                        View All Products <i class="ph ph-arrow-right"></i>
+                    </a>
+                </div>
+
+                <!-- Products Grid: Mobile forces 2 columns strictly -->
+                <div class="mobile-grid-2 md:grid md:grid-cols-3 lg:grid-cols-3 md:gap-8">
+                    
+                    <!-- Product 1: Plush Toy -->
+                    <div class="group flex flex-col reveal">
+                        <div class="relative aspect-[4/5] rounded-xl overflow-hidden bg-white mb-4 shadow-sm group-hover:shadow-md transition-shadow">
+                            <a href="#" class="block w-full h-full img-hover-zoom">
+                                <img src="./images/new1.jpg" alt="Handmade Bunny Plush" class="w-full h-full object-cover">
+                            </a>
+                            <!-- Badges -->
+                            <div class="absolute top-3 left-3 z-10">
+                                <span class="bg-white/90 backdrop-blur-sm text-brand-text text-[10px] font-semibold uppercase tracking-wider px-2 py-1 rounded">New</span>
+                            </div>
+                            <!-- Wishlist Action -->
+                            <button class="absolute top-3 right-3 z-10 w-8 h-8 bg-white/90 backdrop-blur-sm rounded-full flex items-center justify-center text-brand-muted hover:text-red-500 transition-colors shadow-sm opacity-100 md:opacity-0 group-hover:opacity-100">
+                                <i class="ph ph-heart text-lg"></i>
+                            </button>
+                            <!-- Quick Add (Desktop) -->
+                            <div class="absolute bottom-0 left-0 w-full p-4 translate-y-full group-hover:translate-y-0 transition-transform duration-300 hidden md:block z-10">
+                                <button class="w-full bg-white/95 backdrop-blur text-brand-text py-3 rounded-lg font-medium text-sm hover:bg-brand-sage hover:text-white transition-colors shadow-lg">
+                                    Quick Add
+                                </button>
+                            </div>
+                        </div>
+                        <div class="flex flex-col flex-1 px-1">
+                            <h3 class="font-heading text-lg md:text-xl text-brand-text mb-1"><a href="#">Snuggle Bunny Plush</a></h3>
+                            <p class="text-brand-muted text-xs md:text-sm mb-2 line-clamp-1">Soft cotton yarn, perfect for newborns.</p>
+                            <p class="font-medium text-brand-olive mt-auto">Rs. 3,500</p>
+                        </div>
+                    </div>
+
+                    <!-- Product 2: Handbag -->
+                    <div class="group flex flex-col reveal delay-100">
+                        <div class="relative aspect-[4/5] rounded-xl overflow-hidden bg-white mb-4 shadow-sm group-hover:shadow-md transition-shadow">
+                            <a href="#" class="block w-full h-full img-hover-zoom">
+                                <img src="./images/new3.jpg" alt="Chunky Crochet Tote Bag" class="w-full h-full object-cover">
+                            </a>
+                            <button class="absolute top-3 right-3 z-10 w-8 h-8 bg-white/90 backdrop-blur-sm rounded-full flex items-center justify-center text-brand-muted hover:text-red-500 transition-colors shadow-sm opacity-100 md:opacity-0 group-hover:opacity-100">
+                                <i class="ph ph-heart text-lg"></i>
+                            </button>
+                            <div class="absolute bottom-0 left-0 w-full p-4 translate-y-full group-hover:translate-y-0 transition-transform duration-300 hidden md:block z-10">
+                                <button class="w-full bg-white/95 backdrop-blur text-brand-text py-3 rounded-lg font-medium text-sm hover:bg-brand-sage hover:text-white transition-colors shadow-lg">
+                                    Quick Add
+                                </button>
+                            </div>
+                        </div>
+                        <div class="flex flex-col flex-1 px-1">
+                            <h3 class="font-heading text-lg md:text-xl text-brand-text mb-1"><a href="#">Chunky Knit Tote</a></h3>
+                            <p class="text-brand-muted text-xs md:text-sm mb-2 line-clamp-1">Spacious and stylish for everyday use.</p>
+                            <p class="font-medium text-brand-olive mt-auto">Rs. 5,200</p>
+                        </div>
+                    </div>
+
+                    <!-- Product 3: Bouquet -->
+                    <div class="group flex flex-col reveal delay-200">
+                        <div class="relative aspect-[4/5] rounded-xl overflow-hidden bg-white mb-4 shadow-sm group-hover:shadow-md transition-shadow">
+                            <a href="#" class="block w-full h-full img-hover-zoom">
+                                <img src="./images/new7.png" alt="Everlasting Daisy Bouquet" class="w-full h-full object-cover">
+                            </a>
+                            <div class="absolute top-3 left-3 z-10">
+                                <span class="bg-brand-gold/90 backdrop-blur-sm text-white text-[10px] font-semibold uppercase tracking-wider px-2 py-1 rounded">Bestseller</span>
+                            </div>
+                            <button class="absolute top-3 right-3 z-10 w-8 h-8 bg-white/90 backdrop-blur-sm rounded-full flex items-center justify-center text-brand-muted hover:text-red-500 transition-colors shadow-sm opacity-100 md:opacity-0 group-hover:opacity-100">
+                                <i class="ph ph-heart text-lg"></i>
+                            </button>
+                            <div class="absolute bottom-0 left-0 w-full p-4 translate-y-full group-hover:translate-y-0 transition-transform duration-300 hidden md:block z-10">
+                                <button class="w-full bg-white/95 backdrop-blur text-brand-text py-3 rounded-lg font-medium text-sm hover:bg-brand-sage hover:text-white transition-colors shadow-lg">
+                                    Quick Add
+                                </button>
+                            </div>
+                        </div>
+                        <div class="flex flex-col flex-1 px-1">
+                            <h3 class="font-heading text-lg md:text-xl text-brand-text mb-1"><a href="#">Everlasting Daisy Bouquet</a></h3>
+                            <p class="text-brand-muted text-xs md:text-sm mb-2 line-clamp-1">Flowers that never wilt. A perfect gift.</p>
+                            <p class="font-medium text-brand-olive mt-auto">Rs. 6,500</p>
+                        </div>
+                    </div>
+
+                    <!-- Product 4: Handbag -->
+                    <div class="group flex flex-col reveal">
+                        <div class="relative aspect-[4/5] rounded-xl overflow-hidden bg-white mb-4 shadow-sm group-hover:shadow-md transition-shadow">
+                            <a href="#" class="block w-full h-full img-hover-zoom">
+                                <img src="./images/new4.jpg" alt="Mini Pearl Purse" class="w-full h-full object-cover">
+                            </a>
+                            <button class="absolute top-3 right-3 z-10 w-8 h-8 bg-white/90 backdrop-blur-sm rounded-full flex items-center justify-center text-brand-muted hover:text-red-500 transition-colors shadow-sm opacity-100 md:opacity-0 group-hover:opacity-100">
+                                <i class="ph ph-heart text-lg"></i>
+                            </button>
+                        </div>
+                        <div class="flex flex-col flex-1 px-1">
+                            <h3 class="font-heading text-lg md:text-xl text-brand-text mb-1"><a href="#">Mini Pearl Purse</a></h3>
+                            <p class="text-brand-muted text-xs md:text-sm mb-2 line-clamp-1">Elegant evening wear accessory.</p>
+                            <p class="font-medium text-brand-olive mt-auto">Rs. 4,800</p>
+                        </div>
+                    </div>
+
+                    <!-- Product 5: Handbag -->
+                    <div class="group flex flex-col reveal delay-100">
+                        <div class="relative aspect-[4/5] rounded-xl overflow-hidden bg-white mb-4 shadow-sm group-hover:shadow-md transition-shadow">
+                            <a href="#" class="block w-full h-full img-hover-zoom">
+                                <img src="./images/new8.png" alt="Granny Square Shoulder Bag" class="w-full h-full object-cover">
+                            </a>
+                             <div class="absolute top-3 left-3 z-10">
+                                <span class="bg-brand-sage/90 backdrop-blur-sm text-white text-[10px] font-semibold uppercase tracking-wider px-2 py-1 rounded">Trending</span>
+                            </div>
+                            <button class="absolute top-3 right-3 z-10 w-8 h-8 bg-white/90 backdrop-blur-sm rounded-full flex items-center justify-center text-brand-muted hover:text-red-500 transition-colors shadow-sm opacity-100 md:opacity-0 group-hover:opacity-100">
+                                <i class="ph ph-heart text-lg"></i>
+                            </button>
+                        </div>
+                        <div class="flex flex-col flex-1 px-1">
+                            <h3 class="font-heading text-lg md:text-xl text-brand-text mb-1"><a href="#">Granny Square Shoulder Bag</a></h3>
+                            <p class="text-brand-muted text-xs md:text-sm mb-2 line-clamp-1">Vintage inspired colorful squares.</p>
+                            <p class="font-medium text-brand-olive mt-auto">Rs. 5,800</p>
+                        </div>
+                    </div>
+
+                    <!-- Product 6: Plush Toy -->
+                    <div class="group flex flex-col reveal delay-200">
+                        <div class="relative aspect-[4/5] rounded-xl overflow-hidden bg-white mb-4 shadow-sm group-hover:shadow-md transition-shadow">
+                            <a href="#" class="block w-full h-full img-hover-zoom">
+                                <img src="./images/new5.png" alt="Little Bear Plush" class="w-full h-full object-cover">
+                            </a>
+                            <button class="absolute top-3 right-3 z-10 w-8 h-8 bg-white/90 backdrop-blur-sm rounded-full flex items-center justify-center text-brand-muted hover:text-red-500 transition-colors shadow-sm opacity-100 md:opacity-0 group-hover:opacity-100">
+                                <i class="ph ph-heart text-lg"></i>
+                            </button>
+                        </div>
+                        <div class="flex flex-col flex-1 px-1">
+                            <h3 class="font-heading text-lg md:text-xl text-brand-text mb-1"><a href="#">Sleepy Bear Amigurumi</a></h3>
+                            <p class="text-brand-muted text-xs md:text-sm mb-2 line-clamp-1">The perfect bedtime companion.</p>
+                            <p class="font-medium text-brand-olive mt-auto">Rs. 3,200</p>
+                        </div>
+                    </div>
+
+                </div>
+                
+                <div class="mt-10 text-center md:hidden reveal">
+                    <a href="#" class="inline-flex items-center justify-center px-6 py-3 border border-brand-olive text-brand-olive rounded-full font-medium text-sm hover:bg-brand-olive hover:text-white transition-colors">
+                        View All Products
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Our Story (Editorial Layout) -->
+        <section id="story" class="py-24 bg-brand-cream overflow-hidden">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="flex flex-col lg:flex-row items-center gap-16 lg:gap-24">
+                    <!-- Images Composition -->
+                    <div class="w-full lg:w-1/2 relative reveal">
+                        <!-- Main Story Image -->
+                        <div class="relative w-4/5 ml-auto rounded-t-full rounded-b-3xl overflow-hidden shadow-xl aspect-[3/4]">
+                            <img src="./images/new9.png" alt="Hands crocheting" class="w-full h-full object-cover">
+                        </div>
+                        <!-- Secondary Image overlapping -->
+                        <div class="absolute bottom-10 left-0 w-2/5 aspect-square rounded-full overflow-hidden shadow-lg border-8 border-brand-cream">
+                            <img src="./images/new10.png" alt="Soft yarn" class="w-full h-full object-cover">
+                        </div>
+                        <!-- Decorative element -->
+                        <div class="absolute top-10 left-10 text-brand-gold opacity-50 animate-float">
+                            <i class="ph-fill ph-flower-lotus text-6xl"></i>
+                        </div>
+                    </div>
+
+                    <!-- Text Content -->
+                    <div class="w-full lg:w-1/2 reveal delay-200">
+                        <span class="text-brand-sage font-medium tracking-widest uppercase text-sm mb-4 block">Our Heritage</span>
+                        <h2 class="font-heading text-4xl lg:text-5xl text-brand-text mb-8 leading-tight">
+                            Inspired by my Grandma's <span class="italic text-brand-olive">crochet legacy.</span>
+                        </h2>
+                        
+                        <div class="space-y-6 text-brand-muted font-light text-lg">
+                            <p>
+                                Daisyline Crochet began as a tribute to the timeless artistry passed down through generations. Watching my grandmother turn simple threads into intricate masterpieces taught me that true luxury lies in patience and love.
+                            </p>
+                            <p>
+                                As a proudly women-owned business based in Pakistan, we champion the slow-made movement. We believe in quality over quantity, crafting each plush toy, bag, and bouquet with meticulous attention to detail.
+                            </p>
+                            <p class="font-medium text-brand-text border-l-2 border-brand-sage pl-6 italic">
+                                "Every stitch is a woven memory, created to bring warmth into your home and thoughtful meaning to your gifts."
+                            </p>
+                        </div>
+
+                        <div class="mt-10">
+                            <img src="./images/logo.jpg" alt="Signature" class="h-16 w-auto opacity-80 filter grayscale">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Why Choose Us / Value Props -->
+        <section class="py-16 bg-brand-ivory border-y border-brand-beige/50">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-8 text-center">
+                    <div class="flex flex-col items-center reveal">
+                        <div class="w-16 h-16 rounded-full bg-brand-floral flex items-center justify-center text-brand-olive mb-4">
+                            <i class="ph ph-heart text-2xl"></i>
+                        </div>
+                        <h4 class="font-medium text-brand-text text-sm mb-1">Handmade with Love</h4>
+                    </div>
+                    <div class="flex flex-col items-center reveal delay-100">
+                        <div class="w-16 h-16 rounded-full bg-brand-floral flex items-center justify-center text-brand-olive mb-4">
+                            <i class="ph ph-yarn text-2xl"></i>
+                        </div>
+                        <h4 class="font-medium text-brand-text text-sm mb-1">Premium Yarn</h4>
+                    </div>
+                    <div class="flex flex-col items-center reveal delay-200">
+                        <div class="w-16 h-16 rounded-full bg-brand-floral flex items-center justify-center text-brand-olive mb-4">
+                            <i class="ph ph-gift text-2xl"></i>
+                        </div>
+                        <h4 class="font-medium text-brand-text text-sm mb-1">Perfect Gifting</h4>
+                    </div>
+                    <div class="flex flex-col items-center reveal delay-300">
+                        <div class="w-16 h-16 rounded-full bg-brand-floral flex items-center justify-center text-brand-olive mb-4">
+                            <i class="ph ph-magic-wand text-2xl"></i>
+                        </div>
+                        <h4 class="font-medium text-brand-text text-sm mb-1">Custom Designs</h4>
+                    </div>
+                    <div class="flex flex-col items-center reveal delay-400">
+                        <div class="w-16 h-16 rounded-full bg-brand-floral flex items-center justify-center text-brand-olive mb-4">
+                            <i class="ph ph-map-pin text-2xl"></i>
+                        </div>
+                        <h4 class="font-medium text-brand-text text-sm mb-1">Made in Pakistan</h4>
+                    </div>
+                    <div class="flex flex-col items-center reveal delay-500">
+                        <div class="w-16 h-16 rounded-full bg-brand-floral flex items-center justify-center text-brand-olive mb-4">
+                            <i class="ph ph-plant text-2xl"></i>
+                        </div>
+                        <h4 class="font-medium text-brand-text text-sm mb-1">Slow Artistry</h4>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Custom Orders -->
+        <section id="custom-orders" class="py-24 bg-brand-cream relative">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="bg-white rounded-3xl shadow-xl overflow-hidden reveal">
+                    <div class="flex flex-col lg:flex-row">
+                        <!-- Form Context / Info -->
+                        <div class="w-full lg:w-5/12 bg-brand-sage p-10 lg:p-16 text-white flex flex-col justify-between relative overflow-hidden">
+                            <!-- Decor -->
+                            <div class="absolute top-0 right-0 w-64 h-64 bg-white opacity-5 rounded-full blur-3xl -translate-y-1/2 translate-x-1/3"></div>
+                            <div class="absolute bottom-0 left-0 w-48 h-48 bg-brand-gold opacity-10 rounded-full blur-2xl translate-y-1/3 -translate-x-1/4"></div>
+
+                            <div class="relative z-10">
+                                <h2 class="font-heading text-4xl mb-6">Request a Custom Creation</h2>
+                                <p class="text-brand-ivory font-light mb-8">
+                                    Have a specific design in mind? We'd love to bring your vision to life. Fill out the form, and we'll craft something unique just for you.
+                                </p>
+                                
+                                <div class="space-y-6">
+                                    <div class="bg-white/10 backdrop-blur rounded-xl p-6 border border-white/20">
+                                        <h3 class="font-heading text-xl mb-4 flex items-center gap-2">
+                                            <i class="ph ph-wallet text-brand-gold"></i> Advance Payment Details
+                                        </h3>
+                                        <p class="text-sm text-brand-ivory mb-4">To confirm your custom order, please upload a screenshot of your advance payment.</p>
+                                        
+                                        <div class="space-y-4">
+                                            <div class="border-l-2 border-brand-gold pl-4">
+                                                <p class="font-semibold text-sm">Easypaisa</p>
+                                                <p class="text-xs opacity-80">Title: Daisyline Crochet</p>
+                                                <p class="text-sm tracking-widest mt-1">03XX-XXXXXXX</p>
+                                            </div>
+                                            <div class="border-l-2 border-brand-gold pl-4">
+                                                <p class="font-semibold text-sm">JazzCash</p>
+                                                <p class="text-xs opacity-80">Title: Daisyline Crochet</p>
+                                                <p class="text-sm tracking-widest mt-1">03XX-XXXXXXX</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Form -->
+                        <div class="w-full lg:w-7/12 p-10 lg:p-16 bg-white">
+                            <form action="#" method="POST" class="space-y-6">
+                                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                                    <!-- Name -->
+                                    <div>
+                                        <label for="name" class="block text-sm font-medium text-brand-text mb-2">Full Name *</label>
+                                        <input type="text" id="name" name="name" required class="w-full bg-brand-ivory border-transparent focus:border-brand-sage focus:bg-white focus:ring-0 rounded-lg px-4 py-3 transition-colors text-brand-text outline-none">
+                                    </div>
+                                    <!-- Phone -->
+                                    <div>
+                                        <label for="phone" class="block text-sm font-medium text-brand-text mb-2">Phone Number *</label>
+                                        <input type="tel" id="phone" name="phone" required class="w-full bg-brand-ivory border-transparent focus:border-brand-sage focus:bg-white focus:ring-0 rounded-lg px-4 py-3 transition-colors text-brand-text outline-none">
+                                    </div>
+                                </div>
+
+                                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                                    <!-- Email -->
+                                    <div>
+                                        <label for="email" class="block text-sm font-medium text-brand-text mb-2">Email Address *</label>
+                                        <input type="email" id="email" name="email" required class="w-full bg-brand-ivory border-transparent focus:border-brand-sage focus:bg-white focus:ring-0 rounded-lg px-4 py-3 transition-colors text-brand-text outline-none">
+                                    </div>
+                                    <!-- Instagram -->
+                                    <div>
+                                        <label for="instagram" class="block text-sm font-medium text-brand-text mb-2">Instagram ID (Optional)</label>
+                                        <div class="relative">
+                                            <span class="absolute inset-y-0 left-0 pl-4 flex items-center text-brand-muted">@</span>
+                                            <input type="text" id="instagram" name="instagram" class="w-full bg-brand-ivory border-transparent focus:border-brand-sage focus:bg-white focus:ring-0 rounded-lg pl-8 pr-4 py-3 transition-colors text-brand-text outline-none">
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Address -->
+                                <div>
+                                    <label for="address" class="block text-sm font-medium text-brand-text mb-2">Delivery Address *</label>
+                                    <textarea id="address" name="address" rows="2" required class="w-full bg-brand-ivory border-transparent focus:border-brand-sage focus:bg-white focus:ring-0 rounded-lg px-4 py-3 transition-colors text-brand-text outline-none resize-none"></textarea>
+                                </div>
+
+                                <!-- Description -->
+                                <div>
+                                    <label for="description" class="block text-sm font-medium text-brand-text mb-2">Product Description *</label>
+                                    <p class="text-xs text-brand-muted mb-2">Please describe colors, size, and details of what you'd like us to create.</p>
+                                    <textarea id="description" name="description" rows="4" required class="w-full bg-brand-ivory border-transparent focus:border-brand-sage focus:bg-white focus:ring-0 rounded-lg px-4 py-3 transition-colors text-brand-text outline-none resize-none"></textarea>
+                                </div>
+
+                                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                                    <!-- Reference Image -->
+                                    <div>
+                                        <label for="reference_image" class="block text-sm font-medium text-brand-text mb-2">Reference Image</label>
+                                        <input type="file" id="reference_image" name="reference_image" accept="image/*" class="w-full text-sm text-brand-muted">
+                                    </div>
+                                    <!-- Payment Screenshot -->
+                                    <div>
+                                        <label for="payment_screenshot" class="block text-sm font-medium text-brand-text mb-2">Payment Screenshot *</label>
+                                        <input type="file" id="payment_screenshot" name="payment_screenshot" accept="image/*" required class="w-full text-sm text-brand-muted">
+                                    </div>
+                                </div>
+
+                                <button type="submit" class="w-full bg-brand-text text-white rounded-lg py-4 font-medium tracking-wide hover:bg-brand-sage transition-colors shadow-lg hover:shadow-xl mt-4">
+                                    Submit Request
+                                </button>
+                                <p class="text-xs text-center text-brand-muted mt-4">
+                                    We will contact you via WhatsApp/Email within 24 hours to confirm your order details.
+                                </p>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Testimonials -->
+        <section class="py-24 bg-brand-ivory overflow-hidden">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center reveal">
+                <i class="ph-fill ph-quotes text-4xl text-brand-sage mb-6 inline-block"></i>
+                <h2 class="font-heading text-4xl text-brand-text mb-12">Loved by our Customers</h2>
+                
+                <div class="flex flex-col md:flex-row gap-8 justify-center">
+                    <!-- Review 1 -->
+                    <div class="bg-white p-8 rounded-2xl shadow-sm relative text-left w-full md:w-1/3">
+                        <div class="flex text-brand-gold mb-4 text-sm">
+                            <i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i>
+                        </div>
+                        <p class="text-brand-text mb-6 font-light leading-relaxed">"Exactly as shown on the page. The quality of the yarn is amazing. The packaging made it feel like a real luxury gift. 💚"</p>
+                        <div class="flex items-center gap-3">
+                            <div class="w-10 h-10 bg-brand-floral rounded-full flex items-center justify-center text-brand-olive font-heading font-bold">F</div>
+                            <div>
+                                <p class="text-sm font-medium text-brand-text">Fatima A.</p>
+                                <p class="text-xs text-brand-muted">Karachi</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Review 2 -->
+                    <div class="bg-white p-8 rounded-2xl shadow-sm relative text-left w-full md:w-1/3 mt-0 md:-mt-6 mb-0 md:mb-6">
+                        <div class="flex text-brand-gold mb-4 text-sm">
+                            <i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i>
+                        </div>
+                        <p class="text-brand-text mb-6 font-light leading-relaxed">"Ordered a custom bouquet for my sister's graduation. It was so unique and beautiful. Everyone at the event kept asking about it!"</p>
+                        <div class="flex items-center gap-3">
+                            <div class="w-10 h-10 bg-brand-floral rounded-full flex items-center justify-center text-brand-olive font-heading font-bold">Z</div>
+                            <div>
+                                <p class="text-sm font-medium text-brand-text">Zainab S.</p>
+                                <p class="text-xs text-brand-muted">Lahore</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Review 3 -->
+                    <div class="bg-white p-8 rounded-2xl shadow-sm relative text-left w-full md:w-1/3">
+                        <div class="flex text-brand-gold mb-4 text-sm">
+                            <i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i>
+                        </div>
+                        <p class="text-brand-text mb-6 font-light leading-relaxed">"The mini pearl purse is my new favorite accessory. Packaging was beautiful and the delivery process was very smooth."</p>
+                        <div class="flex items-center gap-3">
+                            <div class="w-10 h-10 bg-brand-floral rounded-full flex items-center justify-center text-brand-olive font-heading font-bold">M</div>
+                            <div>
+                                <p class="text-sm font-medium text-brand-text">Mahnoor R.</p>
+                                <p class="text-xs text-brand-muted">Islamabad</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Instagram Feed -->
+        <section class="py-24 bg-brand-cream border-t border-brand-beige">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center mb-12 reveal">
+                    <h2 class="font-heading text-4xl text-brand-text mb-4">Follow the Thread</h2>
+                    <a href="https://www.instagram.com/daisylinecrochet/" target="_blank" class="inline-flex items-center gap-2 text-brand-muted hover:text-brand-sage transition-colors">
+                        @daisylinecrochet <i class="ph ph-instagram-logo"></i>
+                    </a>
+                </div>
+
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-4 reveal">
+                    <a href="https://www.instagram.com/daisylinecrochet/" target="_blank" class="group block relative aspect-square overflow-hidden bg-white rounded-lg">
+                        <img src="./images/ig1.png" alt="Instagram Post" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
+                        <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+                            <i class="ph-fill ph-instagram-logo text-white text-3xl"></i>
+                        </div>
+                    </a>
+                    <a href="https://www.instagram.com/daisylinecrochet/" target="_blank" class="group block relative aspect-square overflow-hidden bg-white rounded-lg">
+                        <img src="./images/ig2.png" alt="Instagram Post" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
+                        <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+                            <i class="ph-fill ph-instagram-logo text-white text-3xl"></i>
+                        </div>
+                    </a>
+                    <a href="https://www.instagram.com/daisylinecrochet/" target="_blank" class="group block relative aspect-square overflow-hidden bg-white rounded-lg">
+                        <img src="./images/ig3.png" alt="Instagram Post" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
+                        <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+                            <i class="ph-fill ph-instagram-logo text-white text-3xl"></i>
+                        </div>
+                    </a>
+                    <a href="https://www.instagram.com/daisylinecrochet/" target="_blank" class="group block relative aspect-square overflow-hidden bg-white rounded-lg">
+                        <img src="./images/ig4.png" alt="Instagram Post" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
+                        <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+                            <i class="ph-fill ph-instagram-logo text-white text-3xl"></i>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-brand-text text-brand-ivory pt-20 pb-10">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 lg:gap-8 mb-16">
+                
+                <!-- Brand Info -->
+                <div class="space-y-6">
+                    <img src="./images/logo.jpg" alt="Daisyline Crochet" class="h-16 w-auto rounded-full bg-white p-1">
+                    <p class="text-brand-beige text-sm font-light leading-relaxed max-w-xs">
+                        Handmade with love & tradition in Pakistan. Inspired by a legacy of crafting beautiful, slow-made art.
+                    </p>
+                    <div class="flex gap-4">
+                        <a href="https://www.instagram.com/daisylinecrochet/" target="_blank" class="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-brand-sage transition-colors">
+                            <i class="ph ph-instagram-logo text-xl"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-brand-sage transition-colors">
+                            <i class="ph ph-whatsapp-logo text-xl"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-brand-sage transition-colors">
+                            <i class="ph ph-envelope-simple text-xl"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Quick Links -->
+                <div>
+                    <h4 class="font-heading text-xl mb-6">Quick Links</h4>
+                    <ul class="space-y-3 text-sm font-light text-brand-beige">
+                        <li><a href="#home" class="hover:text-white transition-colors">Home</a></li>
+                        <li><a href="#shop" class="hover:text-white transition-colors">Shop All</a></li>
+                        <li><a href="#custom-orders" class="hover:text-white transition-colors">Custom Orders</a></li>
+                        <li><a href="#story" class="hover:text-white transition-colors">Our Story</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors">Contact Us</a></li>
+                    </ul>
+                </div>
+
+                <!-- Collections -->
+                <div>
+                    <h4 class="font-heading text-xl mb-6">Collections</h4>
+                    <ul class="space-y-3 text-sm font-light text-brand-beige">
+                        <li><a href="#" class="hover:text-white transition-colors">Plush Toys</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors">Handbags & Totes</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors">Everlasting Bouquets</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors">Accessories</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors">Gift Cards</a></li>
+                    </ul>
+                </div>
+
+                <!-- Payment & Shipping -->
+                <div>
+                    <h4 class="font-heading text-xl mb-6">Information</h4>
+                    <ul class="space-y-3 text-sm font-light text-brand-beige mb-6">
+                        <li><a href="#" class="hover:text-white transition-colors">Shipping Policy</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors">Return Policy</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors">FAQs</a></li>
+                    </ul>
+                    <div class="mt-6">
+                        <p class="text-xs text-brand-beige/70 mb-2 uppercase tracking-wider">Accepted Payments</p>
+                        <div class="flex gap-3 text-2xl">
+                            <span class="px-2 py-1 bg-white/10 rounded text-xs font-semibold">Easypaisa</span>
+                            <span class="px-2 py-1 bg-white/10 rounded text-xs font-semibold">JazzCash</span>
+                            <span class="px-2 py-1 bg-white/10 rounded text-xs font-semibold">Bank Transfer</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="border-t border-white/10 pt-8 flex flex-col md:flex-row justify-between items-center gap-4 text-xs font-light text-brand-beige/60">
+                <p>&copy; <span id="year"></span> Daisyline Crochet. All rights reserved.</p>
+                <p>Designed with ❤️ for handcrafted artistry.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // Set current year in footer
+            document.getElementById('year').textContent = new Date().getFullYear();
+
+            // --- Navbar Glassmorphism on Scroll (Removed for non-sticky navbar) ---
+            /*
+            const navbar = document.getElementById('navbar');
+            
+            const handleScroll = () => {
+                if (window.scrollY > 50) {
+                    navbar.classList.add('glass', 'shadow-sm', 'py-0');
+                    navbar.classList.remove('bg-transparent', 'py-2');
+                } else {
+                    navbar.classList.remove('glass', 'shadow-sm', 'py-0');
+                    navbar.classList.add('bg-transparent', 'py-2');
+                }
+            };
+
+            window.addEventListener('scroll', handleScroll);
+            handleScroll(); // Init on load
+            */
+
+            // --- Mobile Menu Toggle ---
+            const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+            const closeMenuBtn = document.getElementById('close-menu-btn');
+            const mobileMenu = document.getElementById('mobile-menu');
+            const mobileLinks = document.querySelectorAll('.mobile-link');
+
+            const toggleMenu = () => {
+                const isClosed = mobileMenu.classList.contains('-translate-x-full');
+                if (isClosed) {
+                    mobileMenu.classList.remove('-translate-x-full');
+                    document.body.style.overflow = 'hidden'; // Prevent scrolling
+                } else {
+                    mobileMenu.classList.add('-translate-x-full');
+                    document.body.style.overflow = '';
+                }
+            };
+
+            mobileMenuBtn.addEventListener('click', toggleMenu);
+            closeMenuBtn.addEventListener('click', toggleMenu);
+
+            mobileLinks.forEach(link => {
+                link.addEventListener('click', () => {
+                    mobileMenu.classList.add('-translate-x-full');
+                    document.body.style.overflow = '';
+                });
+            });
+
+            // --- Intersection Observer for Scroll Animations ---
+            const revealElements = document.querySelectorAll('.reveal');
+            
+            const revealOptions = {
+                threshold: 0.15,
+                rootMargin: "0px 0px -50px 0px"
+            };
+
+            const revealOnScroll = new IntersectionObserver(function(entries, observer) {
+                entries.forEach(entry => {
+                    if (!entry.isIntersecting) {
+                        return;
+                    } else {
+                        entry.target.classList.add('active');
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, revealOptions);
+
+            revealElements.forEach(el => {
+                revealOnScroll.observe(el);
+            });
+
+            // --- Smooth Scrolling for Anchor Links ---
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    const targetId = this.getAttribute('href');
+                    if(targetId === '#') return;
+                    
+                    const targetElement = document.querySelector(targetId);
+                    if (targetElement) {
+                        e.preventDefault();
+                        const headerOffset = 100;
+                        const elementPosition = targetElement.getBoundingClientRect().top;
+                        const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+        
+                        window.scrollTo({
+                            top: offsetPosition,
+                            behavior: "smooth"
+                        });
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>
