@@ -75,14 +75,6 @@
             -moz-osx-font-smoothing: grayscale;
         }
 
-        /* Glassmorphism utilities */
-        .glass {
-            background: rgba(253, 251, 247, 0.85);
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
-            border-bottom: 1px solid rgba(143, 168, 134, 0.1);
-        }
-
         /* Smooth reveal class for JS observer */
         .reveal {
             opacity: 0;
@@ -119,23 +111,6 @@
         .group:hover .img-hover-zoom img {
             transform: scale(1.05);
         }
-
-        /* Custom file input styling */
-        input[type="file"]::file-selector-button {
-            background-color: theme('colors.brand.ivory');
-            border: 1px solid theme('colors.brand.beige');
-            color: theme('colors.brand.text');
-            padding: 0.5rem 1rem;
-            border-radius: 9999px;
-            font-family: theme('fontFamily.sans');
-            font-size: 0.875rem;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            margin-right: 1rem;
-        }
-        input[type="file"]::file-selector-button:hover {
-            background-color: theme('colors.brand.beige');
-        }
         
         /* Mobile grid specific tweak to force 2 columns strictly */
         @media (max-width: 639px) {
@@ -170,8 +145,8 @@
         </div>
     </div>
 
-    <!-- Navigation -->
-    <header id="navbar" class="absolute w-full top-0 z-40 transition-all duration-300 transform translate-y-[32px] md:translate-y-[36px] bg-transparent">
+    <!-- Navigation (Absolute at top) -->
+    <header id="navbar" class="absolute w-full top-0 z-40 bg-transparent transform translate-y-[32px] md:translate-y-[36px]">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between items-center h-20 md:h-24">
                 <!-- Mobile Menu Button -->
@@ -183,19 +158,109 @@
 
                 <!-- Logo -->
                 <div class="flex-shrink-0 flex items-center justify-center lg:justify-start w-full lg:w-auto absolute lg:relative left-0 pointer-events-none lg:pointer-events-auto">
-                    <a href="#" class="pointer-events-auto flex items-center gap-3 group">
+                    <a href="./index.html" class="pointer-events-auto flex items-center gap-3 group">
                         <img src="./images/logo.jpg" alt="Daisyline Crochet Logo" class="h-12 w-auto md:h-16 object-contain group-hover:scale-105 transition-transform duration-500 rounded-full bg-white shadow-sm p-1">
                         <span class="font-heading text-2xl md:text-3xl font-semibold tracking-wide text-brand-text hidden md:block">Daisyline</span>
                     </a>
                 </div>
 
                 <!-- Desktop Menu -->
-                <nav class="hidden lg:flex space-x-8 items-center">
-                    <a href="#home" class="text-brand-text hover:text-brand-sage font-medium text-sm tracking-wide transition-colors relative after:content-[''] after:absolute after:-bottom-1 after:left-0 after:w-0 after:h-px after:bg-brand-sage after:transition-all after:duration-300 hover:after:w-full">Home</a>
-                    <a href="#shop" class="text-brand-text hover:text-brand-sage font-medium text-sm tracking-wide transition-colors relative after:content-[''] after:absolute after:-bottom-1 after:left-0 after:w-0 after:h-px after:bg-brand-sage after:transition-all after:duration-300 hover:after:w-full">Shop</a>
-                    <a href="#collections" class="text-brand-text hover:text-brand-sage font-medium text-sm tracking-wide transition-colors relative after:content-[''] after:absolute after:-bottom-1 after:left-0 after:w-0 after:h-px after:bg-brand-sage after:transition-all after:duration-300 hover:after:w-full">Collections</a>
-                    <a href="#custom-orders" class="text-brand-text hover:text-brand-sage font-medium text-sm tracking-wide transition-colors relative after:content-[''] after:absolute after:-bottom-1 after:left-0 after:w-0 after:h-px after:bg-brand-sage after:transition-all after:duration-300 hover:after:w-full">Custom Orders</a>
-                    <a href="#story" class="text-brand-text hover:text-brand-sage font-medium text-sm tracking-wide transition-colors relative after:content-[''] after:absolute after:-bottom-1 after:left-0 after:w-0 after:h-px after:bg-brand-sage after:transition-all after:duration-300 hover:after:w-full">Our Story</a>
+                <nav class="hidden lg:flex space-x-8 items-center h-full">
+                    <a href="./index.html" class="text-brand-text hover:text-brand-sage font-medium text-sm tracking-wide transition-colors relative py-8 after:content-[''] after:absolute after:bottom-6 after:left-0 after:w-0 after:h-px after:bg-brand-sage after:transition-all after:duration-300 hover:after:w-full">Home</a>
+                    
+                    <!-- Categories Dropdown (Mega Menu) -->
+                    <div class="relative group h-full flex items-center">
+                        <a href="#" class="text-brand-text hover:text-brand-sage font-medium text-sm tracking-wide transition-colors py-8 flex items-center gap-1 cursor-pointer">
+                            Categories <i class="ph ph-caret-down text-xs transition-transform duration-300 group-hover:rotate-180"></i>
+                        </a>
+                        
+                        <!-- Invisible bridge to keep hover active -->
+                        <div class="dropdown-bridge"></div>
+
+                        <!-- Mega Menu Panel -->
+                        <div class="absolute top-[80px] left-1/2 transform -translate-x-1/2 w-[700px] bg-white/95 backdrop-blur-xl border border-brand-beige/50 rounded-2xl shadow-dropdown opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 ease-out z-50 overflow-hidden">
+                            <div class="grid grid-cols-3 gap-x-8 gap-y-6 p-8">
+                                <a href="./categories/bags.html" class="flex items-center gap-3 group/link">
+                                    <div class="w-10 h-10 rounded-full bg-brand-ivory flex items-center justify-center text-brand-olive group-hover/link:bg-brand-sage group-hover/link:text-white transition-colors">
+                                        <i class="ph ph-tote text-lg"></i>
+                                    </div>
+                                    <span class="text-sm font-medium text-brand-text group-hover/link:text-brand-sage transition-colors">Bags & Wallets</span>
+                                </a>
+                                <a href="./categories/keychain.html" class="flex items-center gap-3 group/link">
+                                    <div class="w-10 h-10 rounded-full bg-brand-ivory flex items-center justify-center text-brand-olive group-hover/link:bg-brand-sage group-hover/link:text-white transition-colors">
+                                        <i class="ph ph-key text-lg"></i>
+                                    </div>
+                                    <span class="text-sm font-medium text-brand-text group-hover/link:text-brand-sage transition-colors">Keychains</span>
+                                </a>
+                                <a href="./categories/bouquets.html" class="flex items-center gap-3 group/link">
+                                    <div class="w-10 h-10 rounded-full bg-brand-ivory flex items-center justify-center text-brand-olive group-hover/link:bg-brand-sage group-hover/link:text-white transition-colors">
+                                        <i class="ph ph-flower-tulip text-lg"></i>
+                                    </div>
+                                    <span class="text-sm font-medium text-brand-text group-hover/link:text-brand-sage transition-colors">Bouquets</span>
+                                </a>
+                                <a href="./categories/book-items.html" class="flex items-center gap-3 group/link">
+                                    <div class="w-10 h-10 rounded-full bg-brand-ivory flex items-center justify-center text-brand-olive group-hover/link:bg-brand-sage group-hover/link:text-white transition-colors">
+                                        <i class="ph ph-book-open text-lg"></i>
+                                    </div>
+                                    <span class="text-sm font-medium text-brand-text group-hover/link:text-brand-sage transition-colors">Book Items</span>
+                                </a>
+                                <a href="./categories/home-decor.html" class="flex items-center gap-3 group/link">
+                                    <div class="w-10 h-10 rounded-full bg-brand-ivory flex items-center justify-center text-brand-olive group-hover/link:bg-brand-sage group-hover/link:text-white transition-colors">
+                                        <i class="ph ph-house-line text-lg"></i>
+                                    </div>
+                                    <span class="text-sm font-medium text-brand-text group-hover/link:text-brand-sage transition-colors">Home Decor</span>
+                                </a>
+                                <a href="./categories/hair-accessories.html" class="flex items-center gap-3 group/link">
+                                    <div class="w-10 h-10 rounded-full bg-brand-ivory flex items-center justify-center text-brand-olive group-hover/link:bg-brand-sage group-hover/link:text-white transition-colors">
+                                        <i class="ph ph-scissors text-lg"></i>
+                                    </div>
+                                    <span class="text-sm font-medium text-brand-text group-hover/link:text-brand-sage transition-colors">Hair Accessories</span>
+                                </a>
+                                <a href="./categories/hand-accessories.html" class="flex items-center gap-3 group/link">
+                                    <div class="w-10 h-10 rounded-full bg-brand-ivory flex items-center justify-center text-brand-olive group-hover/link:bg-brand-sage group-hover/link:text-white transition-colors">
+                                        <i class="ph ph-hand-swipe-left text-lg"></i>
+                                    </div>
+                                    <span class="text-sm font-medium text-brand-text group-hover/link:text-brand-sage transition-colors">Hand Accessories</span>
+                                </a>
+                                <a href="./categories/earrings.html" class="flex items-center gap-3 group/link">
+                                    <div class="w-10 h-10 rounded-full bg-brand-ivory flex items-center justify-center text-brand-olive group-hover/link:bg-brand-sage group-hover/link:text-white transition-colors">
+                                        <i class="ph ph-sparkle text-lg"></i>
+                                    </div>
+                                    <span class="text-sm font-medium text-brand-text group-hover/link:text-brand-sage transition-colors">Earrings</span>
+                                </a>
+                                <a href="./categories/plushies.html" class="flex items-center gap-3 group/link">
+                                    <div class="w-10 h-10 rounded-full bg-brand-ivory flex items-center justify-center text-brand-olive group-hover/link:bg-brand-sage group-hover/link:text-white transition-colors">
+                                        <i class="ph ph-teddy-bear text-lg"></i>
+                                    </div>
+                                    <span class="text-sm font-medium text-brand-text group-hover/link:text-brand-sage transition-colors">Plushies</span>
+                                </a>
+                                <a href="./categories/gifting.html" class="flex items-center gap-3 group/link">
+                                    <div class="w-10 h-10 rounded-full bg-brand-ivory flex items-center justify-center text-brand-olive group-hover/link:bg-brand-sage group-hover/link:text-white transition-colors">
+                                        <i class="ph ph-gift text-lg"></i>
+                                    </div>
+                                    <span class="text-sm font-medium text-brand-text group-hover/link:text-brand-sage transition-colors">Gifting</span>
+                                </a>
+                                <a href="./categories/baby-sets.html" class="flex items-center gap-3 group/link">
+                                    <div class="w-10 h-10 rounded-full bg-brand-ivory flex items-center justify-center text-brand-olive group-hover/link:bg-brand-sage group-hover/link:text-white transition-colors">
+                                        <i class="ph ph-baby text-lg"></i>
+                                    </div>
+                                    <span class="text-sm font-medium text-brand-text group-hover/link:text-brand-sage transition-colors">Baby Sets</span>
+                                </a>
+                                <a href="./categories/cardigans.html" class="flex items-center gap-3 group/link">
+                                    <div class="w-10 h-10 rounded-full bg-brand-ivory flex items-center justify-center text-brand-olive group-hover/link:bg-brand-sage group-hover/link:text-white transition-colors">
+                                        <i class="ph ph-coat-hanger text-lg"></i>
+                                    </div>
+                                    <span class="text-sm font-medium text-brand-text group-hover/link:text-brand-sage transition-colors">Cardigans</span>
+                                </a>
+                            </div>
+                            <div class="bg-brand-ivory p-4 text-center border-t border-brand-beige/50">
+                                <p class="text-xs text-brand-muted">Looking for something specific? <a href="./custom-orders.html" class="text-brand-sage font-medium hover:underline">Request a custom order.</a></p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <a href="./story.html" class="text-brand-text hover:text-brand-sage font-medium text-sm tracking-wide transition-colors relative py-8 after:content-[''] after:absolute after:bottom-6 after:left-0 after:w-0 after:h-px after:bg-brand-sage after:transition-all after:duration-300 hover:after:w-full">Our Story</a>
+                    <a href="./custom-orders.html" class="text-brand-text hover:text-brand-sage font-medium text-sm tracking-wide transition-colors relative py-8 after:content-[''] after:absolute after:bottom-6 after:left-0 after:w-0 after:h-px after:bg-brand-sage after:transition-all after:duration-300 hover:after:w-full">Custom Orders</a>
                 </nav>
 
                 <!-- Icons -->
@@ -222,10 +287,9 @@
         </div>
         <div class="flex-1 overflow-y-auto py-8 px-6 flex flex-col gap-6">
             <a href="#home" class="mobile-link font-heading text-3xl text-brand-text">Home</a>
-            <a href="#shop" class="mobile-link font-heading text-3xl text-brand-text">Shop</a>
-            <a href="#collections" class="mobile-link font-heading text-3xl text-brand-text">Collections</a>
-            <a href="#custom-orders" class="mobile-link font-heading text-3xl text-brand-text">Custom Orders</a>
-            <a href="#story" class="mobile-link font-heading text-3xl text-brand-text">Our Story</a>
+            <a href="#categories" class="mobile-link font-heading text-3xl text-brand-text">Categories</a>
+            <a href="./story.html" class="mobile-link font-heading text-3xl text-brand-text">Our Story</a>
+            <a href="./custom-orders.html" class="mobile-link font-heading text-3xl text-brand-text">Custom Orders</a>
             <div class="mt-8 pt-8 border-t border-brand-beige flex gap-4">
                 <a href="https://www.instagram.com/daisylinecrochet/" target="_blank" class="text-brand-text hover:text-brand-sage"><i class="ph ph-instagram-logo text-2xl"></i></a>
                 <a href="#" class="text-brand-text hover:text-brand-sage"><i class="ph ph-whatsapp-logo text-2xl"></i></a>
@@ -238,7 +302,6 @@
         <section id="home" class="relative min-h-[90vh] flex items-center justify-center overflow-hidden pt-24 bg-brand-ivory">
             <!-- Decorative Background Elements -->
             <div class="absolute inset-0 z-0 overflow-hidden opacity-30">
-                <!-- Abstract organic shapes hinting at yarn/crochet -->
                 <svg class="absolute top-[-10%] right-[-5%] w-1/2 h-auto text-brand-beige animate-float" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
                     <path fill="currentColor" d="M44.7,-76.4C58.8,-69.2,71.8,-59.1,79.6,-45.8C87.4,-32.5,90,-16.2,88.5,-0.8C87,14.5,81.4,29.1,72.7,41.4C64.1,53.8,52.3,64,39,70.5C25.7,77,10.9,79.8,-3.4,84.6C-17.6,89.4,-31.3,96.2,-42.9,91.8C-54.6,87.4,-64.1,71.9,-71.4,56.7C-78.7,41.4,-83.8,26.4,-85.4,11C-87,-4.3,-85.1,-20,-79.1,-33.5C-73.1,-46.9,-62.9,-58,-50.3,-64.9C-37.7,-71.7,-22.6,-74.3,-7.4,-73.4C7.9,-72.6,25.8,-73.4,44.7,-76.4Z" transform="translate(100 100)" />
                 </svg>
@@ -264,10 +327,10 @@
                         </p>
                         
                         <div class="flex flex-col sm:flex-row gap-4 w-full sm:w-auto animate-fade-in-up" style="animation-delay: 300ms;">
-                            <a href="#shop" class="inline-flex justify-center items-center px-8 py-4 bg-brand-sage text-white rounded-full font-medium tracking-wide hover:bg-brand-olive transition-all duration-300 shadow-soft hover:shadow-glow transform hover:-translate-y-1">
-                                Shop Collection
+                            <a href="#categories" class="inline-flex justify-center items-center px-8 py-4 bg-brand-sage text-white rounded-full font-medium tracking-wide hover:bg-brand-olive transition-all duration-300 shadow-soft hover:shadow-glow transform hover:-translate-y-1">
+                                Shop Categories
                             </a>
-                            <a href="#custom-orders" class="inline-flex justify-center items-center px-8 py-4 bg-transparent border border-brand-olive text-brand-olive rounded-full font-medium tracking-wide hover:bg-brand-olive hover:text-white transition-all duration-300">
+                            <a href="./custom-orders.html" class="inline-flex justify-center items-center px-8 py-4 bg-transparent border border-brand-olive text-brand-olive rounded-full font-medium tracking-wide hover:bg-brand-olive hover:text-white transition-all duration-300">
                                 Order Custom Crochet
                             </a>
                         </div>
@@ -314,68 +377,146 @@
             </div>
         </section>
 
-        <!-- Featured Collections -->
-        <section id="collections" class="py-24 bg-brand-cream relative">
+        <!-- Categories Section -->
+        <section id="categories" class="py-16 md:py-24 bg-brand-cream relative">
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                <div class="text-center mb-16 reveal">
-                    <h2 class="font-heading text-4xl md:text-5xl text-brand-text mb-4">Curated Collections</h2>
-                    <p class="text-brand-muted max-w-2xl mx-auto">Explore our range of meticulously handcrafted items, designed to bring joy and beauty into everyday moments.</p>
+                <div class="text-center mb-12 reveal">
+                    <h2 class="font-heading text-4xl md:text-5xl text-brand-text mb-4">Shop by Category</h2>
+                    <p class="text-brand-muted max-w-2xl mx-auto">Explore our range of meticulously handcrafted items, perfect for everyday joy or thoughtful gifting.</p>
                 </div>
 
-                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-                    <!-- Collection 1 -->
-                    <a href="#" class="group block relative h-96 rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-500 reveal">
+                <!-- 12 Categories Grid -->
+                <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 md:gap-6">
+                    
+                    <!-- 1. Bags/Wallets -->
+                    <a href="./categories/bags.html" class="group block relative aspect-square rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 reveal">
                         <div class="absolute inset-0 img-hover-zoom">
-                            <img src="./images/new1.jpg" alt="Crochet Plush Toys" class="w-full h-full object-cover">
+                            <img src="https://placehold.co/500x500/e8e1d5/72886a?text=Bags+%26+Wallets" alt="Bags & Wallets" class="w-full h-full object-cover">
                         </div>
-                        <div class="absolute inset-0 bg-gradient-to-t from-brand-text/70 via-brand-text/20 to-transparent opacity-80 group-hover:opacity-90 transition-opacity"></div>
-                        <div class="absolute bottom-0 left-0 w-full p-6 text-white transform translate-y-2 group-hover:translate-y-0 transition-transform duration-500">
-                            <h3 class="font-heading text-2xl font-medium mb-1">Cuddle partner</h3>
-                            <p class="text-sm font-light opacity-0 group-hover:opacity-100 transition-opacity duration-500 delay-100 flex items-center gap-2">
-                                View Collection <i class="ph ph-arrow-right"></i>
-                            </p>
+                        <div class="absolute inset-0 bg-brand-text/30 group-hover:bg-brand-text/20 transition-colors duration-500"></div>
+                        <div class="absolute inset-0 flex items-center justify-center p-4">
+                            <h3 class="font-heading text-xl md:text-2xl text-white font-medium text-center tracking-wide">Bags / Wallets</h3>
                         </div>
                     </a>
 
-                    <!-- Collection 2 -->
-                    <a href="#" class="group block relative h-96 rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-500 reveal delay-100">
+                    <!-- 2. Keychains -->
+                    <a href="./categories/keychain.html" class="group block relative aspect-square rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 reveal delay-100">
                         <div class="absolute inset-0 img-hover-zoom">
-                            <img src="./images/new2.png" alt="Handmade Handbags" class="w-full h-full object-cover">
+                            <img src="https://placehold.co/500x500/dce5d8/5e6b57?text=Keychains" alt="Keychains" class="w-full h-full object-cover">
                         </div>
-                        <div class="absolute inset-0 bg-gradient-to-t from-brand-text/70 via-brand-text/20 to-transparent opacity-80 group-hover:opacity-90 transition-opacity"></div>
-                        <div class="absolute bottom-0 left-0 w-full p-6 text-white transform translate-y-2 group-hover:translate-y-0 transition-transform duration-500">
-                            <h3 class="font-heading text-2xl font-medium mb-1">Handbags</h3>
-                            <p class="text-sm font-light opacity-0 group-hover:opacity-100 transition-opacity duration-500 delay-100 flex items-center gap-2">
-                                View Collection <i class="ph ph-arrow-right"></i>
-                            </p>
+                        <div class="absolute inset-0 bg-brand-text/30 group-hover:bg-brand-text/20 transition-colors duration-500"></div>
+                        <div class="absolute inset-0 flex items-center justify-center p-4">
+                            <h3 class="font-heading text-xl md:text-2xl text-white font-medium text-center tracking-wide">Keychains</h3>
                         </div>
                     </a>
 
-                    <!-- Collection 3 -->
-                    <a href="#" class="group block relative h-96 rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-500 reveal delay-200">
+                    <!-- 3. Bouquets -->
+                    <a href="./categories/bouquets.html" class="group block relative aspect-square rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 reveal delay-200">
                         <div class="absolute inset-0 img-hover-zoom">
-                            <img src="./images/new6.jpg" alt="Crochet Bouquets" class="w-full h-full object-cover">
+                            <img src="./images/new6.jpg" onerror="this.src='https://placehold.co/500x500/f8f5f0/72886a?text=Bouquets'" alt="Bouquets" class="w-full h-full object-cover">
                         </div>
-                        <div class="absolute inset-0 bg-gradient-to-t from-brand-text/70 via-brand-text/20 to-transparent opacity-80 group-hover:opacity-90 transition-opacity"></div>
-                        <div class="absolute bottom-0 left-0 w-full p-6 text-white transform translate-y-2 group-hover:translate-y-0 transition-transform duration-500">
-                            <h3 class="font-heading text-2xl font-medium mb-1">Bouquets</h3>
-                            <p class="text-sm font-light opacity-0 group-hover:opacity-100 transition-opacity duration-500 delay-100 flex items-center gap-2">
-                                View Collection <i class="ph ph-arrow-right"></i>
-                            </p>
+                        <div class="absolute inset-0 bg-brand-text/30 group-hover:bg-brand-text/20 transition-colors duration-500"></div>
+                        <div class="absolute inset-0 flex items-center justify-center p-4">
+                            <h3 class="font-heading text-xl md:text-2xl text-white font-medium text-center tracking-wide">Bouquets</h3>
                         </div>
                     </a>
 
-                    <!-- Collection 4 -->
-                    <a href="#custom-orders" class="group block relative h-96 rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-500 reveal delay-300">
+                    <!-- 4. Book items -->
+                    <a href="./categories/book-items.html" class="group block relative aspect-square rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 reveal delay-300">
                         <div class="absolute inset-0 img-hover-zoom">
-                            <img src="./images/new5.png" alt="Custom Crochet Gifts" class="w-full h-full object-cover">
+                            <img src="https://placehold.co/500x500/8fa886/ffffff?text=Book+Items" alt="Book items" class="w-full h-full object-cover">
                         </div>
-                        <div class="absolute inset-0 bg-gradient-to-t from-brand-text/80 via-brand-text/30 to-transparent opacity-80 group-hover:opacity-90 transition-opacity"></div>
-                        <div class="absolute bottom-0 left-0 w-full p-6 text-white transform translate-y-2 group-hover:translate-y-0 transition-transform duration-500">
-                            <h3 class="font-heading text-2xl font-medium mb-1">Custom Gifts</h3>
-                            <p class="text-sm font-light opacity-0 group-hover:opacity-100 transition-opacity duration-500 delay-100 flex items-center gap-2">
-                                Request Design <i class="ph ph-arrow-right"></i>
-                            </p>
+                        <div class="absolute inset-0 bg-brand-text/30 group-hover:bg-brand-text/20 transition-colors duration-500"></div>
+                        <div class="absolute inset-0 flex items-center justify-center p-4">
+                            <h3 class="font-heading text-xl md:text-2xl text-white font-medium text-center tracking-wide">Book Items</h3>
+                        </div>
+                    </a>
+
+                    <!-- 5. Home decor -->
+                    <a href="./categories/home-decor.html" class="group block relative aspect-square rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 reveal">
+                        <div class="absolute inset-0 img-hover-zoom">
+                            <img src="https://placehold.co/500x500/fdfbf7/5e6b57?text=Home+Decor" alt="Home decor" class="w-full h-full object-cover">
+                        </div>
+                        <div class="absolute inset-0 bg-brand-text/30 group-hover:bg-brand-text/20 transition-colors duration-500"></div>
+                        <div class="absolute inset-0 flex items-center justify-center p-4">
+                            <h3 class="font-heading text-xl md:text-2xl text-white font-medium text-center tracking-wide">Home Decor</h3>
+                        </div>
+                    </a>
+
+                    <!-- 6. Hair accessories -->
+                    <a href="./categories/hair-accessories.html" class="group block relative aspect-square rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 reveal delay-100">
+                        <div class="absolute inset-0 img-hover-zoom">
+                            <img src="https://placehold.co/500x500/e8e1d5/72886a?text=Hair+Accessories" alt="Hair accessories" class="w-full h-full object-cover">
+                        </div>
+                        <div class="absolute inset-0 bg-brand-text/30 group-hover:bg-brand-text/20 transition-colors duration-500"></div>
+                        <div class="absolute inset-0 flex items-center justify-center p-4">
+                            <h3 class="font-heading text-xl md:text-2xl text-white font-medium text-center tracking-wide">Hair Accessories</h3>
+                        </div>
+                    </a>
+
+                    <!-- 7. Hand accessories -->
+                    <a href="./categories/hand-accessories.html" class="group block relative aspect-square rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 reveal delay-200">
+                        <div class="absolute inset-0 img-hover-zoom">
+                            <img src="https://placehold.co/500x500/dce5d8/5e6b57?text=Hand+Accessories" alt="Hand accessories" class="w-full h-full object-cover">
+                        </div>
+                        <div class="absolute inset-0 bg-brand-text/30 group-hover:bg-brand-text/20 transition-colors duration-500"></div>
+                        <div class="absolute inset-0 flex items-center justify-center p-4">
+                            <h3 class="font-heading text-xl md:text-2xl text-white font-medium text-center tracking-wide">Hand Accessories</h3>
+                        </div>
+                    </a>
+
+                    <!-- 8. Ear rings -->
+                    <a href="./categories/earrings.html" class="group block relative aspect-square rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 reveal delay-300">
+                        <div class="absolute inset-0 img-hover-zoom">
+                            <img src="https://placehold.co/500x500/f8f5f0/72886a?text=Ear+Rings" alt="Ear rings" class="w-full h-full object-cover">
+                        </div>
+                        <div class="absolute inset-0 bg-brand-text/30 group-hover:bg-brand-text/20 transition-colors duration-500"></div>
+                        <div class="absolute inset-0 flex items-center justify-center p-4">
+                            <h3 class="font-heading text-xl md:text-2xl text-white font-medium text-center tracking-wide">Earrings</h3>
+                        </div>
+                    </a>
+
+                    <!-- 9. Plushies -->
+                    <a href="./categories/plushies.html" class="group block relative aspect-square rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 reveal">
+                        <div class="absolute inset-0 img-hover-zoom">
+                            <img src="./images/new1.jpg" onerror="this.src='https://placehold.co/500x500/e8e1d5/72886a?text=Plushies'" alt="Plushies" class="w-full h-full object-cover">
+                        </div>
+                        <div class="absolute inset-0 bg-brand-text/30 group-hover:bg-brand-text/20 transition-colors duration-500"></div>
+                        <div class="absolute inset-0 flex items-center justify-center p-4">
+                            <h3 class="font-heading text-xl md:text-2xl text-white font-medium text-center tracking-wide">Plushies</h3>
+                        </div>
+                    </a>
+
+                    <!-- 10. Gifting -->
+                    <a href="./categories/gifting.html" class="group block relative aspect-square rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 reveal delay-100">
+                        <div class="absolute inset-0 img-hover-zoom">
+                            <img src="https://placehold.co/500x500/8fa886/ffffff?text=Gifting" alt="Gifting" class="w-full h-full object-cover">
+                        </div>
+                        <div class="absolute inset-0 bg-brand-text/30 group-hover:bg-brand-text/20 transition-colors duration-500"></div>
+                        <div class="absolute inset-0 flex items-center justify-center p-4">
+                            <h3 class="font-heading text-xl md:text-2xl text-white font-medium text-center tracking-wide">Gifting</h3>
+                        </div>
+                    </a>
+
+                    <!-- 11. Baby sets -->
+                    <a href="./categories/baby-sets.html" class="group block relative aspect-square rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 reveal delay-200">
+                        <div class="absolute inset-0 img-hover-zoom">
+                            <img src="https://placehold.co/500x500/dce5d8/5e6b57?text=Baby+Sets" alt="Baby sets" class="w-full h-full object-cover">
+                        </div>
+                        <div class="absolute inset-0 bg-brand-text/30 group-hover:bg-brand-text/20 transition-colors duration-500"></div>
+                        <div class="absolute inset-0 flex items-center justify-center p-4">
+                            <h3 class="font-heading text-xl md:text-2xl text-white font-medium text-center tracking-wide">Baby Sets</h3>
+                        </div>
+                    </a>
+
+                    <!-- 12. Cardigans -->
+                    <a href="./categories/cardigans.html" class="group block relative aspect-square rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 reveal delay-300">
+                        <div class="absolute inset-0 img-hover-zoom">
+                            <img src="https://placehold.co/500x500/fdfbf7/5e6b57?text=Cardigans" alt="Cardigans" class="w-full h-full object-cover">
+                        </div>
+                        <div class="absolute inset-0 bg-brand-text/30 group-hover:bg-brand-text/20 transition-colors duration-500"></div>
+                        <div class="absolute inset-0 flex items-center justify-center p-4">
+                            <h3 class="font-heading text-xl md:text-2xl text-white font-medium text-center tracking-wide">Cardigans</h3>
                         </div>
                     </a>
                 </div>
@@ -383,7 +524,7 @@
         </section>
 
         <!-- Featured Products -->
-        <section id="shop" class="py-24 bg-brand-ivory relative">
+        <section id="shop" class="py-16 md:py-24 bg-brand-ivory relative border-t border-brand-beige/50">
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div class="flex flex-col md:flex-row justify-between items-end mb-12 reveal">
                     <div>
@@ -537,211 +678,52 @@
             </div>
         </section>
 
-        <!-- Our Story (Editorial Layout) -->
-        <section id="story" class="py-24 bg-brand-cream overflow-hidden">
-            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                <div class="flex flex-col lg:flex-row items-center gap-16 lg:gap-24">
-                    <!-- Images Composition -->
-                    <div class="w-full lg:w-1/2 relative reveal">
-                        <!-- Main Story Image -->
-                        <div class="relative w-4/5 ml-auto rounded-t-full rounded-b-3xl overflow-hidden shadow-xl aspect-[3/4]">
-                            <img src="./images/new9.png" alt="Hands crocheting" class="w-full h-full object-cover">
-                        </div>
-                        <!-- Secondary Image overlapping -->
-                        <div class="absolute bottom-10 left-0 w-2/5 aspect-square rounded-full overflow-hidden shadow-lg border-8 border-brand-cream">
-                            <img src="./images/new10.png" alt="Soft yarn" class="w-full h-full object-cover">
-                        </div>
-                        <!-- Decorative element -->
-                        <div class="absolute top-10 left-10 text-brand-gold opacity-50 animate-float">
-                            <i class="ph-fill ph-flower-lotus text-6xl"></i>
-                        </div>
-                    </div>
-
-                    <!-- Text Content -->
-                    <div class="w-full lg:w-1/2 reveal delay-200">
-                        <span class="text-brand-sage font-medium tracking-widest uppercase text-sm mb-4 block">Our Heritage</span>
-                        <h2 class="font-heading text-4xl lg:text-5xl text-brand-text mb-8 leading-tight">
-                            Inspired by my Grandma's <span class="italic text-brand-olive">crochet legacy.</span>
-                        </h2>
-                        
-                        <div class="space-y-6 text-brand-muted font-light text-lg">
-                            <p>
-                                Daisyline Crochet began as a tribute to the timeless artistry passed down through generations. Watching my grandmother turn simple threads into intricate masterpieces taught me that true luxury lies in patience and love.
-                            </p>
-                            <p>
-                                As a proudly women-owned business based in Pakistan, we champion the slow-made movement. We believe in quality over quantity, crafting each plush toy, bag, and bouquet with meticulous attention to detail.
-                            </p>
-                            <p class="font-medium text-brand-text border-l-2 border-brand-sage pl-6 italic">
-                                "Every stitch is a woven memory, created to bring warmth into your home and thoughtful meaning to your gifts."
-                            </p>
-                        </div>
-
-                        <div class="mt-10">
-                            <img src="./images/logo.jpg" alt="Signature" class="h-16 w-auto opacity-80 filter grayscale">
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
         <!-- Why Choose Us / Value Props -->
-        <section class="py-16 bg-brand-ivory border-y border-brand-beige/50">
+        <section class="py-12 bg-brand-cream border-y border-brand-beige/50">
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-8 text-center">
+                <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-6 md:gap-8 text-center">
                     <div class="flex flex-col items-center reveal">
-                        <div class="w-16 h-16 rounded-full bg-brand-floral flex items-center justify-center text-brand-olive mb-4">
-                            <i class="ph ph-heart text-2xl"></i>
+                        <div class="w-14 h-14 rounded-full bg-brand-floral flex items-center justify-center text-brand-olive mb-3">
+                            <i class="ph ph-heart text-xl"></i>
                         </div>
-                        <h4 class="font-medium text-brand-text text-sm mb-1">Handmade with Love</h4>
+                        <h4 class="font-medium text-brand-text text-xs md:text-sm mb-1">Handmade with Love</h4>
                     </div>
                     <div class="flex flex-col items-center reveal delay-100">
-                        <div class="w-16 h-16 rounded-full bg-brand-floral flex items-center justify-center text-brand-olive mb-4">
-                            <i class="ph ph-yarn text-2xl"></i>
+                        <div class="w-14 h-14 rounded-full bg-brand-floral flex items-center justify-center text-brand-olive mb-3">
+                            <i class="ph ph-yarn text-xl"></i>
                         </div>
-                        <h4 class="font-medium text-brand-text text-sm mb-1">Premium Yarn</h4>
+                        <h4 class="font-medium text-brand-text text-xs md:text-sm mb-1">Premium Yarn</h4>
                     </div>
                     <div class="flex flex-col items-center reveal delay-200">
-                        <div class="w-16 h-16 rounded-full bg-brand-floral flex items-center justify-center text-brand-olive mb-4">
-                            <i class="ph ph-gift text-2xl"></i>
+                        <div class="w-14 h-14 rounded-full bg-brand-floral flex items-center justify-center text-brand-olive mb-3">
+                            <i class="ph ph-gift text-xl"></i>
                         </div>
-                        <h4 class="font-medium text-brand-text text-sm mb-1">Perfect Gifting</h4>
+                        <h4 class="font-medium text-brand-text text-xs md:text-sm mb-1">Perfect Gifting</h4>
                     </div>
                     <div class="flex flex-col items-center reveal delay-300">
-                        <div class="w-16 h-16 rounded-full bg-brand-floral flex items-center justify-center text-brand-olive mb-4">
-                            <i class="ph ph-magic-wand text-2xl"></i>
+                        <div class="w-14 h-14 rounded-full bg-brand-floral flex items-center justify-center text-brand-olive mb-3">
+                            <i class="ph ph-magic-wand text-xl"></i>
                         </div>
-                        <h4 class="font-medium text-brand-text text-sm mb-1">Custom Designs</h4>
+                        <h4 class="font-medium text-brand-text text-xs md:text-sm mb-1">Custom Designs</h4>
                     </div>
                     <div class="flex flex-col items-center reveal delay-400">
-                        <div class="w-16 h-16 rounded-full bg-brand-floral flex items-center justify-center text-brand-olive mb-4">
-                            <i class="ph ph-map-pin text-2xl"></i>
+                        <div class="w-14 h-14 rounded-full bg-brand-floral flex items-center justify-center text-brand-olive mb-3">
+                            <i class="ph ph-map-pin text-xl"></i>
                         </div>
-                        <h4 class="font-medium text-brand-text text-sm mb-1">Made in Pakistan</h4>
+                        <h4 class="font-medium text-brand-text text-xs md:text-sm mb-1">Made in Pakistan</h4>
                     </div>
                     <div class="flex flex-col items-center reveal delay-500">
-                        <div class="w-16 h-16 rounded-full bg-brand-floral flex items-center justify-center text-brand-olive mb-4">
-                            <i class="ph ph-plant text-2xl"></i>
+                        <div class="w-14 h-14 rounded-full bg-brand-floral flex items-center justify-center text-brand-olive mb-3">
+                            <i class="ph ph-plant text-xl"></i>
                         </div>
-                        <h4 class="font-medium text-brand-text text-sm mb-1">Slow Artistry</h4>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Custom Orders -->
-        <section id="custom-orders" class="py-24 bg-brand-cream relative">
-            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                <div class="bg-white rounded-3xl shadow-xl overflow-hidden reveal">
-                    <div class="flex flex-col lg:flex-row">
-                        <!-- Form Context / Info -->
-                        <div class="w-full lg:w-5/12 bg-brand-sage p-10 lg:p-16 text-white flex flex-col justify-between relative overflow-hidden">
-                            <!-- Decor -->
-                            <div class="absolute top-0 right-0 w-64 h-64 bg-white opacity-5 rounded-full blur-3xl -translate-y-1/2 translate-x-1/3"></div>
-                            <div class="absolute bottom-0 left-0 w-48 h-48 bg-brand-gold opacity-10 rounded-full blur-2xl translate-y-1/3 -translate-x-1/4"></div>
-
-                            <div class="relative z-10">
-                                <h2 class="font-heading text-4xl mb-6">Request a Custom Creation</h2>
-                                <p class="text-brand-ivory font-light mb-8">
-                                    Have a specific design in mind? We'd love to bring your vision to life. Fill out the form, and we'll craft something unique just for you.
-                                </p>
-                                
-                                <div class="space-y-6">
-                                    <div class="bg-white/10 backdrop-blur rounded-xl p-6 border border-white/20">
-                                        <h3 class="font-heading text-xl mb-4 flex items-center gap-2">
-                                            <i class="ph ph-wallet text-brand-gold"></i> Advance Payment Details
-                                        </h3>
-                                        <p class="text-sm text-brand-ivory mb-4">To confirm your custom order, please upload a screenshot of your advance payment.</p>
-                                        
-                                        <div class="space-y-4">
-                                            <div class="border-l-2 border-brand-gold pl-4">
-                                                <p class="font-semibold text-sm">Easypaisa</p>
-                                                <p class="text-xs opacity-80">Title: Daisyline Crochet</p>
-                                                <p class="text-sm tracking-widest mt-1">03XX-XXXXXXX</p>
-                                            </div>
-                                            <div class="border-l-2 border-brand-gold pl-4">
-                                                <p class="font-semibold text-sm">JazzCash</p>
-                                                <p class="text-xs opacity-80">Title: Daisyline Crochet</p>
-                                                <p class="text-sm tracking-widest mt-1">03XX-XXXXXXX</p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Form -->
-                        <div class="w-full lg:w-7/12 p-10 lg:p-16 bg-white">
-                            <form action="#" method="POST" class="space-y-6">
-                                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                                    <!-- Name -->
-                                    <div>
-                                        <label for="name" class="block text-sm font-medium text-brand-text mb-2">Full Name *</label>
-                                        <input type="text" id="name" name="name" required class="w-full bg-brand-ivory border-transparent focus:border-brand-sage focus:bg-white focus:ring-0 rounded-lg px-4 py-3 transition-colors text-brand-text outline-none">
-                                    </div>
-                                    <!-- Phone -->
-                                    <div>
-                                        <label for="phone" class="block text-sm font-medium text-brand-text mb-2">Phone Number *</label>
-                                        <input type="tel" id="phone" name="phone" required class="w-full bg-brand-ivory border-transparent focus:border-brand-sage focus:bg-white focus:ring-0 rounded-lg px-4 py-3 transition-colors text-brand-text outline-none">
-                                    </div>
-                                </div>
-
-                                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                                    <!-- Email -->
-                                    <div>
-                                        <label for="email" class="block text-sm font-medium text-brand-text mb-2">Email Address *</label>
-                                        <input type="email" id="email" name="email" required class="w-full bg-brand-ivory border-transparent focus:border-brand-sage focus:bg-white focus:ring-0 rounded-lg px-4 py-3 transition-colors text-brand-text outline-none">
-                                    </div>
-                                    <!-- Instagram -->
-                                    <div>
-                                        <label for="instagram" class="block text-sm font-medium text-brand-text mb-2">Instagram ID (Optional)</label>
-                                        <div class="relative">
-                                            <span class="absolute inset-y-0 left-0 pl-4 flex items-center text-brand-muted">@</span>
-                                            <input type="text" id="instagram" name="instagram" class="w-full bg-brand-ivory border-transparent focus:border-brand-sage focus:bg-white focus:ring-0 rounded-lg pl-8 pr-4 py-3 transition-colors text-brand-text outline-none">
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <!-- Address -->
-                                <div>
-                                    <label for="address" class="block text-sm font-medium text-brand-text mb-2">Delivery Address *</label>
-                                    <textarea id="address" name="address" rows="2" required class="w-full bg-brand-ivory border-transparent focus:border-brand-sage focus:bg-white focus:ring-0 rounded-lg px-4 py-3 transition-colors text-brand-text outline-none resize-none"></textarea>
-                                </div>
-
-                                <!-- Description -->
-                                <div>
-                                    <label for="description" class="block text-sm font-medium text-brand-text mb-2">Product Description *</label>
-                                    <p class="text-xs text-brand-muted mb-2">Please describe colors, size, and details of what you'd like us to create.</p>
-                                    <textarea id="description" name="description" rows="4" required class="w-full bg-brand-ivory border-transparent focus:border-brand-sage focus:bg-white focus:ring-0 rounded-lg px-4 py-3 transition-colors text-brand-text outline-none resize-none"></textarea>
-                                </div>
-
-                                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                                    <!-- Reference Image -->
-                                    <div>
-                                        <label for="reference_image" class="block text-sm font-medium text-brand-text mb-2">Reference Image</label>
-                                        <input type="file" id="reference_image" name="reference_image" accept="image/*" class="w-full text-sm text-brand-muted">
-                                    </div>
-                                    <!-- Payment Screenshot -->
-                                    <div>
-                                        <label for="payment_screenshot" class="block text-sm font-medium text-brand-text mb-2">Payment Screenshot *</label>
-                                        <input type="file" id="payment_screenshot" name="payment_screenshot" accept="image/*" required class="w-full text-sm text-brand-muted">
-                                    </div>
-                                </div>
-
-                                <button type="submit" class="w-full bg-brand-text text-white rounded-lg py-4 font-medium tracking-wide hover:bg-brand-sage transition-colors shadow-lg hover:shadow-xl mt-4">
-                                    Submit Request
-                                </button>
-                                <p class="text-xs text-center text-brand-muted mt-4">
-                                    We will contact you via WhatsApp/Email within 24 hours to confirm your order details.
-                                </p>
-                            </form>
-                        </div>
+                        <h4 class="font-medium text-brand-text text-xs md:text-sm mb-1">Slow Artistry</h4>
                     </div>
                 </div>
             </div>
         </section>
 
         <!-- Testimonials -->
-        <section class="py-24 bg-brand-ivory overflow-hidden">
+        <section class="py-16 md:py-24 bg-brand-ivory overflow-hidden border-b border-brand-beige/50">
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center reveal">
                 <i class="ph-fill ph-quotes text-4xl text-brand-sage mb-6 inline-block"></i>
                 <h2 class="font-heading text-4xl text-brand-text mb-12">Loved by our Customers</h2>
@@ -796,7 +778,7 @@
         </section>
 
         <!-- Instagram Feed -->
-        <section class="py-24 bg-brand-cream border-t border-brand-beige">
+        <section class="py-16 md:py-24 bg-brand-cream">
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div class="text-center mb-12 reveal">
                     <h2 class="font-heading text-4xl text-brand-text mb-4">Follow the Thread</h2>
@@ -863,23 +845,23 @@
                 <div>
                     <h4 class="font-heading text-xl mb-6">Quick Links</h4>
                     <ul class="space-y-3 text-sm font-light text-brand-beige">
-                        <li><a href="#home" class="hover:text-white transition-colors">Home</a></li>
-                        <li><a href="#shop" class="hover:text-white transition-colors">Shop All</a></li>
-                        <li><a href="#custom-orders" class="hover:text-white transition-colors">Custom Orders</a></li>
-                        <li><a href="#story" class="hover:text-white transition-colors">Our Story</a></li>
+                        <li><a href="./index.html" class="hover:text-white transition-colors">Home</a></li>
+                        <li><a href="#categories" class="hover:text-white transition-colors">Shop by Category</a></li>
+                        <li><a href="./custom-orders.html" class="hover:text-white transition-colors">Custom Orders</a></li>
+                        <li><a href="./story.html" class="hover:text-white transition-colors">Our Story</a></li>
                         <li><a href="#" class="hover:text-white transition-colors">Contact Us</a></li>
                     </ul>
                 </div>
 
-                <!-- Collections -->
+                <!-- Categories -->
                 <div>
-                    <h4 class="font-heading text-xl mb-6">Collections</h4>
+                    <h4 class="font-heading text-xl mb-6">Categories</h4>
                     <ul class="space-y-3 text-sm font-light text-brand-beige">
-                        <li><a href="#" class="hover:text-white transition-colors">Plush Toys</a></li>
-                        <li><a href="#" class="hover:text-white transition-colors">Handbags & Totes</a></li>
-                        <li><a href="#" class="hover:text-white transition-colors">Everlasting Bouquets</a></li>
-                        <li><a href="#" class="hover:text-white transition-colors">Accessories</a></li>
-                        <li><a href="#" class="hover:text-white transition-colors">Gift Cards</a></li>
+                        <li><a href="./categories/bags.html" class="hover:text-white transition-colors">Bags & Wallets</a></li>
+                        <li><a href="./categories/bouquets.html" class="hover:text-white transition-colors">Bouquets</a></li>
+                        <li><a href="./categories/plushies.html" class="hover:text-white transition-colors">Plushies</a></li>
+                        <li><a href="./categories/hair-accessories.html" class="hover:text-white transition-colors">Accessories</a></li>
+                        <li><a href="./categories/home-decor.html" class="hover:text-white transition-colors">Home Decor</a></li>
                     </ul>
                 </div>
 
@@ -914,24 +896,6 @@
         document.addEventListener('DOMContentLoaded', () => {
             // Set current year in footer
             document.getElementById('year').textContent = new Date().getFullYear();
-
-            // --- Navbar Glassmorphism on Scroll (Removed for non-sticky navbar) ---
-            /*
-            const navbar = document.getElementById('navbar');
-            
-            const handleScroll = () => {
-                if (window.scrollY > 50) {
-                    navbar.classList.add('glass', 'shadow-sm', 'py-0');
-                    navbar.classList.remove('bg-transparent', 'py-2');
-                } else {
-                    navbar.classList.remove('glass', 'shadow-sm', 'py-0');
-                    navbar.classList.add('bg-transparent', 'py-2');
-                }
-            };
-
-            window.addEventListener('scroll', handleScroll);
-            handleScroll(); // Init on load
-            */
 
             // --- Mobile Menu Toggle ---
             const mobileMenuBtn = document.getElementById('mobile-menu-btn');
