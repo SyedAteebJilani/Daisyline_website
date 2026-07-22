@@ -9,9 +9,9 @@
     <!-- Google Fonts: Cormorant Garamond (Headings) & Manrope (Body) -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=Manrope:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400;1,500&family=Manrope:wght@200;300;400;500;600&display=swap" rel="stylesheet">
     
-    <!-- Phosphor Icons for elegant line icons -->
+    <!-- Phosphor Icons -->
     <script src="https://unpkg.com/@phosphor-icons/web"></script>
     
     <!-- Tailwind CSS -->
@@ -23,42 +23,31 @@
                 extend: {
                     colors: {
                         brand: {
-                            sage: '#8fa886',      // Soft Sage Green (from logo stems)
-                            cream: '#fdfbf7',     // Warm Cream
-                            ivory: '#f8f5f0',     // Ivory background
-                            olive: '#72886a',     // Dusty Olive
-                            beige: '#e8e1d5',     // Soft Beige
-                            floral: '#dce5d8',    // Muted Floral Green
-                            gold: '#d4b773',      // Light Gold (from daisy center)
-                            text: '#2c3329',      // Dark olive/grey for text
-                            muted: '#5e6b57'      // Muted text
+                            sage: '#8fa886',
+                            cream: '#F9F8F6',
+                            ivory: '#F3EFEA',
+                            olive: '#5A6B53',
+                            beige: '#E6DED3',
+                            floral: '#D4DDD1',
+                            gold: '#D4B773',
+                            text: '#1C211A',
+                            muted: '#7A8576'
                         }
                     },
                     fontFamily: {
                         heading: ['"Cormorant Garamond"', 'serif'],
                         sans: ['Manrope', 'sans-serif'],
                     },
-                    boxShadow: {
-                        'soft': '0 10px 40px -10px rgba(114, 136, 106, 0.08)',
-                        'glow': '0 0 20px rgba(143, 168, 134, 0.15)',
+                    transitionTimingFunction: {
+                        'premium': 'cubic-bezier(0.16, 1, 0.3, 1)',
                     },
                     animation: {
-                        'marquee': 'marquee 25s linear infinite',
-                        'fade-in-up': 'fadeInUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards',
-                        'float': 'float 6s ease-in-out infinite',
+                        'marquee': 'marquee 30s linear infinite',
                     },
                     keyframes: {
                         marquee: {
                             '0%': { transform: 'translateX(0%)' },
                             '100%': { transform: 'translateX(-50%)' },
-                        },
-                        fadeInUp: {
-                            '0%': { opacity: '0', transform: 'translateY(20px)' },
-                            '100%': { opacity: '1', transform: 'translateY(0)' },
-                        },
-                        float: {
-                            '0%, 100%': { transform: 'translateY(0)' },
-                            '50%': { transform: 'translateY(-10px)' },
                         }
                     }
                 }
@@ -67,7 +56,10 @@
     </script>
     
     <style>
-        /* Custom Styles for specific interactions and aesthetic tweaks */
+        :root {
+            --ease-premium: cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
         body {
             background-color: theme('colors.brand.cream');
             color: theme('colors.brand.text');
@@ -75,24 +67,34 @@
             -moz-osx-font-smoothing: grayscale;
         }
 
-        /* Smooth reveal class for JS observer */
-        .reveal {
-            opacity: 0;
-            transform: translateY(30px);
-            transition: all 0.9s cubic-bezier(0.16, 1, 0.3, 1);
+        /* Subtle Handcrafted Noise Texture */
+        .noise-overlay {
+            position: fixed;
+            top: 0; left: 0; width: 100vw; height: 100vh;
+            pointer-events: none;
+            z-index: 9999;
+            background: url('data:image/svg+xml;utf8,%3Csvg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg"%3E%3Cfilter id="noiseFilter"%3E%3CfeTurbulence type="fractalNoise" baseFrequency="0.75" numOctaves="3" stitchTiles="stitch"/%3E%3C/filter%3E%3Crect width="100%25" height="100%25" filter="url(%23noiseFilter)"/%3E%3C/svg%3E');
+            opacity: 0.025;
+            mix-blend-mode: multiply;
         }
-        
-        .reveal.active {
+
+        /* Premium Scroll Animations */
+        .reveal-fade {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 1.2s var(--ease-premium), transform 1.2s var(--ease-premium);
+        }
+        .reveal-fade.active {
             opacity: 1;
             transform: translateY(0);
         }
-
-        /* Delay utilities for staggered animations */
+        
+        /* Delays */
         .delay-100 { transition-delay: 100ms; }
         .delay-200 { transition-delay: 200ms; }
         .delay-300 { transition-delay: 300ms; }
 
-        /* Hide scrollbar for clean marquee */
+        /* Hide scrollbar completely for horizontal scroll */
         .no-scrollbar::-webkit-scrollbar {
             display: none;
         }
@@ -101,176 +103,119 @@
             scrollbar-width: none;
         }
 
-        /* Image hover zoom effect */
-        .img-hover-zoom {
-            overflow: hidden;
+        /* Hover Engine */
+        .img-hover-container { overflow: hidden; }
+        .img-hover-container img {
+            transition: transform 1.2s var(--ease-premium);
+            will-change: transform;
         }
-        .img-hover-zoom img {
-            transition: transform 0.7s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        .group:hover .img-hover-container img {
+            transform: scale(1.08);
         }
-        .group:hover .img-hover-zoom img {
-            transform: scale(1.05);
+
+        /* Navigation Scrolled State */
+        .nav-scrolled {
+            background: rgba(249, 248, 246, 0.9);
+            backdrop-filter: blur(16px);
+            border-bottom: 1px solid rgba(230, 222, 211, 0.5);
+            padding-top: 0.5rem !important;
+            padding-bottom: 0.5rem !important;
+            transform: translateY(0) !important;
         }
-        
-        /* Mobile grid specific tweak to force 2 columns strictly */
-        @media (max-width: 639px) {
-            .mobile-grid-2 {
-                display: grid;
-                grid-template-columns: repeat(2, minmax(0, 1fr));
-                gap: 0.75rem;
-            }
+
+        /* Hero Carousel Slide Animation */
+        .hero-slide {
+            transition: opacity 1.5s var(--ease-premium), transform 1.5s var(--ease-premium);
+        }
+        .hero-slide.active-slide img {
+            animation: kenburns 15s ease-out forwards;
+        }
+        @keyframes kenburns {
+            0% { transform: scale(1.05); }
+            100% { transform: scale(1.15); }
         }
     </style>
 </head>
 <body class="font-sans antialiased overflow-x-hidden selection:bg-brand-sage selection:text-white">
 
-    <!-- Announcement Bar -->
-    <div class="bg-brand-sage text-white text-xs md:text-sm font-medium tracking-wider uppercase py-2 overflow-hidden relative z-50">
+    <div class="noise-overlay"></div>
+
+    <!-- Minimalist Marquee -->
+    <div class="bg-brand-text text-brand-cream text-[10px] md:text-xs font-semibold tracking-[0.2em] uppercase py-2.5 overflow-hidden relative z-50">
         <div class="whitespace-nowrap flex w-fit animate-marquee hover:[animation-play-state:paused] cursor-default">
-            <!-- Content repeated for continuous flow -->
-            <span class="mx-4 flex items-center gap-4">
-                ✨ Handmade Crochet with Love <span class="text-brand-gold opacity-60">•</span>
-                Custom Orders Available <span class="text-brand-gold opacity-60">•</span>
-                Premium Gift Packaging <span class="text-brand-gold opacity-60">•</span>
-                Inspired by Grandma's Legacy <span class="text-brand-gold opacity-60">•</span>
-                Made in Pakistan ✨
+            <span class="mx-4 flex items-center gap-8">
+                <span>Handmade Crochet with Love</span> <span class="w-1 h-1 rounded-full bg-brand-gold"></span>
+                <span>Custom Orders Available</span> <span class="w-1 h-1 rounded-full bg-brand-gold"></span>
+                <span>Premium Gift Packaging</span> <span class="w-1 h-1 rounded-full bg-brand-gold"></span>
+                <span>Inspired by Legacy</span> <span class="w-1 h-1 rounded-full bg-brand-gold"></span>
+                <span>Made in Pakistan</span> <span class="w-1 h-1 rounded-full bg-brand-gold"></span>
             </span>
-            <span class="mx-4 flex items-center gap-4">
-                ✨ Handmade Crochet with Love <span class="text-brand-gold opacity-60">•</span>
-                Custom Orders Available <span class="text-brand-gold opacity-60">•</span>
-                Premium Gift Packaging <span class="text-brand-gold opacity-60">•</span>
-                Inspired by Grandma's Legacy <span class="text-brand-gold opacity-60">•</span>
-                Made in Pakistan ✨
+            <span class="mx-4 flex items-center gap-8">
+                <span>Handmade Crochet with Love</span> <span class="w-1 h-1 rounded-full bg-brand-gold"></span>
+                <span>Custom Orders Available</span> <span class="w-1 h-1 rounded-full bg-brand-gold"></span>
+                <span>Premium Gift Packaging</span> <span class="w-1 h-1 rounded-full bg-brand-gold"></span>
+                <span>Inspired by Legacy</span> <span class="w-1 h-1 rounded-full bg-brand-gold"></span>
+                <span>Made in Pakistan</span> <span class="w-1 h-1 rounded-full bg-brand-gold"></span>
             </span>
         </div>
     </div>
 
-    <!-- Navigation (Absolute at top) -->
-    <header id="navbar" class="absolute w-full top-0 z-40 bg-transparent transform translate-y-[32px] md:translate-y-[36px]">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex justify-between items-center h-20 md:h-24">
+    <!-- Editorial Header -->
+    <header id="navbar" class="fixed w-full top-0 z-40 bg-transparent transition-all duration-500 ease-premium transform translate-y-[38px] py-4">
+        <div class="max-w-[90rem] mx-auto px-4 sm:px-8 lg:px-12">
+            <div class="flex justify-between items-center h-16 md:h-20">
                 <!-- Mobile Menu Button -->
-                <div class="flex items-center lg:hidden">
-                    <button id="mobile-menu-btn" class="text-brand-text hover:text-brand-sage transition-colors p-2 -ml-2" aria-label="Open menu">
-                        <i class="ph ph-list text-2xl"></i>
+                <div class="flex items-center lg:hidden w-1/3">
+                    <button id="mobile-menu-btn" class="text-brand-text hover:text-brand-sage transition-colors -ml-2 p-2 group" aria-label="Open menu">
+                        <div class="w-6 flex flex-col gap-1.5 items-start">
+                            <span class="w-full h-[1px] bg-current transition-all group-hover:w-4"></span>
+                            <span class="w-4 h-[1px] bg-current transition-all group-hover:w-full"></span>
+                        </div>
                     </button>
                 </div>
 
                 <!-- Logo -->
-                <div class="flex-shrink-0 flex items-center justify-center lg:justify-start w-full lg:w-auto absolute lg:relative left-0 pointer-events-none lg:pointer-events-auto">
-                    <a href="./index.html" class="pointer-events-auto flex items-center gap-3 group">
-                        <img src="./images/logo.jpg" alt="Daisyline Crochet Logo" class="h-12 w-auto md:h-16 object-contain group-hover:scale-105 transition-transform duration-500 rounded-full bg-white shadow-sm p-1">
-                        <span class="font-heading text-2xl md:text-3xl font-semibold tracking-wide text-brand-text hidden md:block">Daisyline</span>
+                <div class="flex-shrink-0 flex items-center justify-center w-1/3 lg:w-auto absolute lg:relative left-1/2 lg:left-0 transform -translate-x-1/2 lg:translate-x-0 pointer-events-none lg:pointer-events-auto">
+                    <a href="./index.html" class="pointer-events-auto flex items-center gap-4 group">
+                        <img src="./images/logo.jpg" alt="Daisyline Crochet Logo" class="h-10 md:h-12 w-auto object-contain rounded-full shadow-sm transition-transform duration-700 ease-premium group-hover:rotate-12">
+                        <span class="font-heading text-2xl md:text-3xl font-medium tracking-wide text-brand-text hidden lg:block">Daisyline.</span>
                     </a>
                 </div>
 
                 <!-- Desktop Menu -->
-                <nav class="hidden lg:flex space-x-8 items-center h-full">
-                    <a href="./index.html" class="text-brand-text hover:text-brand-sage font-medium text-sm tracking-wide transition-colors relative py-8 after:content-[''] after:absolute after:bottom-6 after:left-0 after:w-0 after:h-px after:bg-brand-sage after:transition-all after:duration-300 hover:after:w-full">Home</a>
+                <nav class="hidden lg:flex space-x-10 items-center h-full ml-12">
+                    <a href="./index.html" class="text-brand-text hover:text-brand-sage font-medium text-xs tracking-[0.1em] uppercase transition-colors relative py-8 group">
+                        Home
+                        <span class="absolute bottom-6 left-0 w-full h-[1px] bg-brand-sage origin-left scale-x-0 transition-transform duration-500 ease-premium group-hover:scale-x-100"></span>
+                    </a>
                     
-                    <!-- Categories Dropdown (Mega Menu) -->
-                    <div class="relative group h-full flex items-center">
-                        <a href="#" class="text-brand-text hover:text-brand-sage font-medium text-sm tracking-wide transition-colors py-8 flex items-center gap-1 cursor-pointer">
-                            Categories <i class="ph ph-caret-down text-xs transition-transform duration-300 group-hover:rotate-180"></i>
-                        </a>
-                        
-                        <!-- Invisible bridge to keep hover active -->
-                        <div class="dropdown-bridge"></div>
+                    <a href="#categories" class="text-brand-text hover:text-brand-sage font-medium text-xs tracking-[0.1em] uppercase transition-colors relative py-8 group">
+                        Shop Collection
+                        <span class="absolute bottom-6 left-0 w-full h-[1px] bg-brand-sage origin-left scale-x-0 transition-transform duration-500 ease-premium group-hover:scale-x-100"></span>
+                    </a>
 
-                        <!-- Mega Menu Panel -->
-                        <div class="absolute top-[80px] left-1/2 transform -translate-x-1/2 w-[700px] bg-white/95 backdrop-blur-xl border border-brand-beige/50 rounded-2xl shadow-dropdown opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 ease-out z-50 overflow-hidden">
-                            <div class="grid grid-cols-3 gap-x-8 gap-y-6 p-8">
-                                <a href="./categories/bags.html" class="flex items-center gap-3 group/link">
-                                    <div class="w-10 h-10 rounded-full bg-brand-ivory flex items-center justify-center text-brand-olive group-hover/link:bg-brand-sage group-hover/link:text-white transition-colors">
-                                        <i class="ph ph-tote text-lg"></i>
-                                    </div>
-                                    <span class="text-sm font-medium text-brand-text group-hover/link:text-brand-sage transition-colors">Bags & Wallets</span>
-                                </a>
-                                <a href="./categories/keychain.html" class="flex items-center gap-3 group/link">
-                                    <div class="w-10 h-10 rounded-full bg-brand-ivory flex items-center justify-center text-brand-olive group-hover/link:bg-brand-sage group-hover/link:text-white transition-colors">
-                                        <i class="ph ph-key text-lg"></i>
-                                    </div>
-                                    <span class="text-sm font-medium text-brand-text group-hover/link:text-brand-sage transition-colors">Keychains</span>
-                                </a>
-                                <a href="./categories/bouquets.html" class="flex items-center gap-3 group/link">
-                                    <div class="w-10 h-10 rounded-full bg-brand-ivory flex items-center justify-center text-brand-olive group-hover/link:bg-brand-sage group-hover/link:text-white transition-colors">
-                                        <i class="ph ph-flower-tulip text-lg"></i>
-                                    </div>
-                                    <span class="text-sm font-medium text-brand-text group-hover/link:text-brand-sage transition-colors">Bouquets</span>
-                                </a>
-                                <a href="./categories/book-items.html" class="flex items-center gap-3 group/link">
-                                    <div class="w-10 h-10 rounded-full bg-brand-ivory flex items-center justify-center text-brand-olive group-hover/link:bg-brand-sage group-hover/link:text-white transition-colors">
-                                        <i class="ph ph-book-open text-lg"></i>
-                                    </div>
-                                    <span class="text-sm font-medium text-brand-text group-hover/link:text-brand-sage transition-colors">Book Items</span>
-                                </a>
-                                <a href="./categories/home-decor.html" class="flex items-center gap-3 group/link">
-                                    <div class="w-10 h-10 rounded-full bg-brand-ivory flex items-center justify-center text-brand-olive group-hover/link:bg-brand-sage group-hover/link:text-white transition-colors">
-                                        <i class="ph ph-house-line text-lg"></i>
-                                    </div>
-                                    <span class="text-sm font-medium text-brand-text group-hover/link:text-brand-sage transition-colors">Home Decor</span>
-                                </a>
-                                <a href="./categories/hair-accessories.html" class="flex items-center gap-3 group/link">
-                                    <div class="w-10 h-10 rounded-full bg-brand-ivory flex items-center justify-center text-brand-olive group-hover/link:bg-brand-sage group-hover/link:text-white transition-colors">
-                                        <i class="ph ph-scissors text-lg"></i>
-                                    </div>
-                                    <span class="text-sm font-medium text-brand-text group-hover/link:text-brand-sage transition-colors">Hair Accessories</span>
-                                </a>
-                                <a href="./categories/hand-accessories.html" class="flex items-center gap-3 group/link">
-                                    <div class="w-10 h-10 rounded-full bg-brand-ivory flex items-center justify-center text-brand-olive group-hover/link:bg-brand-sage group-hover/link:text-white transition-colors">
-                                        <i class="ph ph-hand-swipe-left text-lg"></i>
-                                    </div>
-                                    <span class="text-sm font-medium text-brand-text group-hover/link:text-brand-sage transition-colors">Hand Accessories</span>
-                                </a>
-                                <a href="./categories/earrings.html" class="flex items-center gap-3 group/link">
-                                    <div class="w-10 h-10 rounded-full bg-brand-ivory flex items-center justify-center text-brand-olive group-hover/link:bg-brand-sage group-hover/link:text-white transition-colors">
-                                        <i class="ph ph-sparkle text-lg"></i>
-                                    </div>
-                                    <span class="text-sm font-medium text-brand-text group-hover/link:text-brand-sage transition-colors">Earrings</span>
-                                </a>
-                                <a href="./categories/plushies.html" class="flex items-center gap-3 group/link">
-                                    <div class="w-10 h-10 rounded-full bg-brand-ivory flex items-center justify-center text-brand-olive group-hover/link:bg-brand-sage group-hover/link:text-white transition-colors">
-                                        <i class="ph ph-teddy-bear text-lg"></i>
-                                    </div>
-                                    <span class="text-sm font-medium text-brand-text group-hover/link:text-brand-sage transition-colors">Plushies</span>
-                                </a>
-                                <a href="./categories/gifting.html" class="flex items-center gap-3 group/link">
-                                    <div class="w-10 h-10 rounded-full bg-brand-ivory flex items-center justify-center text-brand-olive group-hover/link:bg-brand-sage group-hover/link:text-white transition-colors">
-                                        <i class="ph ph-gift text-lg"></i>
-                                    </div>
-                                    <span class="text-sm font-medium text-brand-text group-hover/link:text-brand-sage transition-colors">Gifting</span>
-                                </a>
-                                <a href="./categories/baby-sets.html" class="flex items-center gap-3 group/link">
-                                    <div class="w-10 h-10 rounded-full bg-brand-ivory flex items-center justify-center text-brand-olive group-hover/link:bg-brand-sage group-hover/link:text-white transition-colors">
-                                        <i class="ph ph-baby text-lg"></i>
-                                    </div>
-                                    <span class="text-sm font-medium text-brand-text group-hover/link:text-brand-sage transition-colors">Baby Sets</span>
-                                </a>
-                                <a href="./categories/cardigans.html" class="flex items-center gap-3 group/link">
-                                    <div class="w-10 h-10 rounded-full bg-brand-ivory flex items-center justify-center text-brand-olive group-hover/link:bg-brand-sage group-hover/link:text-white transition-colors">
-                                        <i class="ph ph-coat-hanger text-lg"></i>
-                                    </div>
-                                    <span class="text-sm font-medium text-brand-text group-hover/link:text-brand-sage transition-colors">Cardigans</span>
-                                </a>
-                            </div>
-                            <div class="bg-brand-ivory p-4 text-center border-t border-brand-beige/50">
-                                <p class="text-xs text-brand-muted">Looking for something specific? <a href="./custom-orders.html" class="text-brand-sage font-medium hover:underline">Request a custom order.</a></p>
-                            </div>
-                        </div>
-                    </div>
-
-                    <a href="./story.html" class="text-brand-text hover:text-brand-sage font-medium text-sm tracking-wide transition-colors relative py-8 after:content-[''] after:absolute after:bottom-6 after:left-0 after:w-0 after:h-px after:bg-brand-sage after:transition-all after:duration-300 hover:after:w-full">Our Story</a>
-                    <a href="./custom-orders.html" class="text-brand-text hover:text-brand-sage font-medium text-sm tracking-wide transition-colors relative py-8 after:content-[''] after:absolute after:bottom-6 after:left-0 after:w-0 after:h-px after:bg-brand-sage after:transition-all after:duration-300 hover:after:w-full">Custom Orders</a>
+                    <a href="./story.html" class="text-brand-text hover:text-brand-sage font-medium text-xs tracking-[0.1em] uppercase transition-colors relative py-8 group">
+                        Our Story
+                        <span class="absolute bottom-6 left-0 w-full h-[1px] bg-brand-sage origin-left scale-x-0 transition-transform duration-500 ease-premium group-hover:scale-x-100"></span>
+                    </a>
+                    
+                    <a href="./custom-orders.html" class="text-brand-text hover:text-brand-sage font-medium text-xs tracking-[0.1em] uppercase transition-colors relative py-8 group">
+                        Custom Orders
+                        <span class="absolute bottom-6 left-0 w-full h-[1px] bg-brand-sage origin-left scale-x-0 transition-transform duration-500 ease-premium group-hover:scale-x-100"></span>
+                    </a>
                 </nav>
 
-                <!-- Icons -->
-                <div class="flex items-center space-x-4 lg:space-x-6">
-                    <a href="#" class="text-brand-text hover:text-brand-sage transition-colors p-2" aria-label="Search">
+                <!-- Action Icons -->
+                <div class="flex items-center space-x-6 w-1/3 justify-end">
+                    <a href="#" class="text-brand-text hover:text-brand-sage transition-colors relative group" aria-label="Search">
                         <i class="ph ph-magnifying-glass text-xl"></i>
                     </a>
-                    <a href="#" class="text-brand-text hover:text-brand-sage transition-colors p-2 relative" aria-label="Cart">
-                        <i class="ph ph-tote text-xl"></i>
-                        <span class="absolute top-1 right-1 bg-brand-sage text-white text-[10px] font-bold h-4 w-4 rounded-full flex items-center justify-center">0</span>
+                    <a href="#" class="text-brand-text hover:text-brand-sage transition-colors relative group flex items-center gap-2" aria-label="Cart">
+                        <div class="relative">
+                            <i class="ph ph-tote text-xl"></i>
+                            <span class="absolute -top-1 -right-2 bg-brand-text text-white text-[9px] font-bold h-4 w-4 rounded-full flex items-center justify-center group-hover:bg-brand-sage transition-colors">0</span>
+                        </div>
+                        <span class="hidden md:block text-xs font-semibold uppercase tracking-wider ml-1">Cart</span>
                     </a>
                 </div>
             </div>
@@ -278,615 +223,543 @@
     </header>
 
     <!-- Mobile Menu Overlay -->
-    <div id="mobile-menu" class="fixed inset-0 bg-brand-cream z-50 transform -translate-x-full transition-transform duration-500 ease-in-out lg:hidden flex flex-col">
-        <div class="flex justify-between items-center p-6 border-b border-brand-beige">
-            <img src="./images/logo.jpg" alt="Daisyline Crochet" class="h-10 w-auto rounded-full">
-            <button id="close-menu-btn" class="text-brand-text hover:text-brand-sage p-2" aria-label="Close menu">
+    <div id="mobile-menu" class="fixed inset-0 bg-brand-text text-brand-cream z-50 transform -translate-x-full transition-transform duration-700 ease-premium lg:hidden flex flex-col">
+        <div class="flex justify-between items-center p-6 border-b border-white/10">
+            <span class="font-heading text-2xl tracking-wide">Daisyline.</span>
+            <button id="close-menu-btn" class="text-brand-cream hover:text-brand-sage p-2 transition-colors" aria-label="Close menu">
                 <i class="ph ph-x text-2xl"></i>
             </button>
         </div>
-        <div class="flex-1 overflow-y-auto py-8 px-6 flex flex-col gap-6">
-            <a href="#home" class="mobile-link font-heading text-3xl text-brand-text">Home</a>
-            <a href="#categories" class="mobile-link font-heading text-3xl text-brand-text">Categories</a>
-            <a href="./story.html" class="mobile-link font-heading text-3xl text-brand-text">Our Story</a>
-            <a href="./custom-orders.html" class="mobile-link font-heading text-3xl text-brand-text">Custom Orders</a>
-            <div class="mt-8 pt-8 border-t border-brand-beige flex gap-4">
-                <a href="https://www.instagram.com/daisylinecrochet/" target="_blank" class="text-brand-text hover:text-brand-sage"><i class="ph ph-instagram-logo text-2xl"></i></a>
-                <a href="#" class="text-brand-text hover:text-brand-sage"><i class="ph ph-whatsapp-logo text-2xl"></i></a>
-            </div>
+        <div class="flex-1 overflow-y-auto py-12 px-8 flex flex-col gap-8 justify-center">
+            <a href="#home" class="mobile-link font-heading text-5xl font-light italic text-brand-cream hover:text-brand-sage transition-colors">Home</a>
+            <a href="#categories" class="mobile-link font-heading text-5xl font-light italic text-brand-cream hover:text-brand-sage transition-colors">Shop</a>
+            <a href="./story.html" class="mobile-link font-heading text-5xl font-light italic text-brand-cream hover:text-brand-sage transition-colors">Story</a>
+            <a href="./custom-orders.html" class="mobile-link font-heading text-5xl font-light italic text-brand-cream hover:text-brand-sage transition-colors">Custom</a>
         </div>
     </div>
 
     <main>
-        <!-- Hero Section -->
-        <section id="home" class="relative min-h-[90vh] flex items-center justify-center overflow-hidden pt-24 bg-brand-ivory">
-            <!-- Decorative Background Elements -->
-            <div class="absolute inset-0 z-0 overflow-hidden opacity-30">
-                <svg class="absolute top-[-10%] right-[-5%] w-1/2 h-auto text-brand-beige animate-float" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
-                    <path fill="currentColor" d="M44.7,-76.4C58.8,-69.2,71.8,-59.1,79.6,-45.8C87.4,-32.5,90,-16.2,88.5,-0.8C87,14.5,81.4,29.1,72.7,41.4C64.1,53.8,52.3,64,39,70.5C25.7,77,10.9,79.8,-3.4,84.6C-17.6,89.4,-31.3,96.2,-42.9,91.8C-54.6,87.4,-64.1,71.9,-71.4,56.7C-78.7,41.4,-83.8,26.4,-85.4,11C-87,-4.3,-85.1,-20,-79.1,-33.5C-73.1,-46.9,-62.9,-58,-50.3,-64.9C-37.7,-71.7,-22.6,-74.3,-7.4,-73.4C7.9,-72.6,25.8,-73.4,44.7,-76.4Z" transform="translate(100 100)" />
-                </svg>
-                <svg class="absolute bottom-[-20%] left-[-10%] w-2/3 h-auto text-brand-floral animate-float" style="animation-delay: -3s;" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
-                    <path fill="currentColor" d="M37.8,-60.9C50.2,-54.2,62.3,-46.7,71.5,-35.8C80.7,-24.9,87,-10.5,85.6,3C84.2,16.5,75,29,64.7,39.3C54.4,49.6,43,57.7,30.3,62.4C17.6,67,-6.3,68.2,-19.9,62.1C-33.5,56,-45.5,42.7,-53.4,28.6C-61.3,14.5,-65.1,-0.5,-61.8,-13.6C-58.4,-26.8,-48,-38,-35.9,-44.6C-23.8,-51.2,-10,-53.1,2.8,-57.1C15.5,-61.1,25.4,-67.6,37.8,-60.9Z" transform="translate(100 100)" />
-                </svg>
-            </div>
-
-            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 w-full">
-                <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-8 items-center">
-                    
-                    <!-- Text Content -->
-                    <div class="text-center lg:text-left flex flex-col items-center lg:items-start max-w-2xl mx-auto lg:mx-0">
-                        <span class="inline-block py-1 px-3 rounded-full bg-brand-floral text-brand-olive text-xs font-semibold tracking-widest uppercase mb-6 animate-fade-in-up">
-                            Inspired by Legacy
-                        </span>
-                        <h1 class="font-heading text-5xl sm:text-6xl lg:text-7xl font-medium text-brand-text leading-[1.1] mb-6 animate-fade-in-up" style="animation-delay: 100ms;">
-                            Handmade with <br class="hidden sm:block"/>
-                            <span class="italic text-brand-olive">Love & Tradition</span>
-                        </h1>
-                        <p class="text-brand-muted text-lg sm:text-xl mb-10 max-w-lg font-light leading-relaxed animate-fade-in-up" style="animation-delay: 200ms;">
-                            Discover our slow-made artistry. Every crochet piece is thoughtfully crafted in Pakistan to bring warmth and elegance to your life.
-                        </p>
-                        
-                        <div class="flex flex-col sm:flex-row gap-4 w-full sm:w-auto animate-fade-in-up" style="animation-delay: 300ms;">
-                            <a href="#categories" class="inline-flex justify-center items-center px-8 py-4 bg-brand-sage text-white rounded-full font-medium tracking-wide hover:bg-brand-olive transition-all duration-300 shadow-soft hover:shadow-glow transform hover:-translate-y-1">
-                                Shop Categories
-                            </a>
-                            <a href="./custom-orders.html" class="inline-flex justify-center items-center px-8 py-4 bg-transparent border border-brand-olive text-brand-olive rounded-full font-medium tracking-wide hover:bg-brand-olive hover:text-white transition-all duration-300">
-                                Order Custom Crochet
-                            </a>
-                        </div>
-                        
-                        <!-- Trust Indicators -->
-                        <div class="mt-12 flex items-center gap-6 text-brand-muted text-sm animate-fade-in-up" style="animation-delay: 400ms;">
-                            <div class="flex items-center gap-2">
-                                <i class="ph-fill ph-check-circle text-brand-sage"></i>
-                                <span>100% Handmade</span>
-                            </div>
-                            <div class="flex items-center gap-2">
-                                <i class="ph-fill ph-heart text-brand-sage"></i>
-                                <span>Made in Pakistan</span>
-                            </div>
-                        </div>
+        <!-- Cinematic Hero Carousel -->
+        <section id="home" class="relative w-full h-[100svh] overflow-hidden bg-brand-ivory">
+            
+            <!-- Slides Container -->
+            <div id="carousel-container" class="relative w-full h-full">
+                
+                <!-- Slide 1 -->
+                <div class="hero-slide active-slide absolute inset-0 z-10 opacity-100 flex items-center justify-center">
+                    <div class="absolute inset-0 img-hover-container">
+                        <img src="./images/hero_image.webp" alt="Handmade Crochet Bouquet" class="w-full h-full object-cover">
+                        <!-- Dark gradient overlay for text readability -->
+                        <div class="absolute inset-0 bg-gradient-to-b from-black/40 via-black/20 to-black/60 mix-blend-multiply"></div>
                     </div>
-
-                    <!-- Image Composition -->
-                    <div class="relative h-[500px] sm:h-[600px] w-full animate-fade-in-up" style="animation-delay: 200ms;">
-                        <!-- Main Image Container -->
-                        <div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-4/5 h-4/5 rounded-[2rem] overflow-hidden shadow-2xl z-10 border-4 border-white">
-                            <img src="./images/hero_image.webp" alt="Beautiful Handmade Crochet Bouquet" class="w-full h-full object-cover">
-                            <!-- Overlay gradient for luxury feel -->
-                            <div class="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent"></div>
-                        </div>
-                        
-                        <!-- Accent Image 1 -->
-                        <div class="absolute top-[10%] right-[5%] w-1/3 aspect-square rounded-full overflow-hidden shadow-lg border-4 border-white z-20 animate-float" style="animation-delay: -1s;">
-                            <img src="./images/hero_circle.png" alt="Crochet Detail" class="w-full h-full object-cover">
-                        </div>
-
-                        <!-- Accent Element: Badge -->
-                        <div class="absolute bottom-[15%] left-[5%] bg-white rounded-full p-4 shadow-xl z-20 flex items-center gap-3 animate-float" style="animation-delay: -2s;">
-                            <div class="bg-brand-floral p-2 rounded-full text-brand-olive">
-                                <i class="ph ph-gift text-2xl"></i>
-                            </div>
-                            <div>
-                                <p class="text-xs font-semibold text-brand-text uppercase tracking-wider">Perfect Gift</p>
-                                <p class="text-[10px] text-brand-muted">Premium Packaging</p>
-                            </div>
-                        </div>
+                    <div class="relative z-20 text-center px-4 mt-16 max-w-4xl mx-auto">
+                        <span class="text-white/80 uppercase tracking-[0.3em] text-[10px] md:text-xs font-bold mb-4 md:mb-6 block reveal-fade active">Handcrafted in Pakistan</span>
+                        <h1 class="font-heading text-[4rem] sm:text-6xl md:text-[7rem] lg:text-[8.5rem] leading-[0.9] text-white tracking-tighter mb-6">
+                            <span class="block reveal-fade active delay-100">The Art of</span>
+                            <span class="block reveal-fade active delay-200 italic font-light text-brand-gold">Slow Living.</span>
+                        </h1>
+                        <a href="#categories" class="inline-flex items-center justify-center px-8 py-4 bg-white text-brand-text rounded-full font-medium text-xs tracking-[0.15em] uppercase hover:bg-brand-sage hover:text-white transition-all duration-500 reveal-fade active delay-300">
+                            Explore Collection
+                        </a>
                     </div>
                 </div>
+
+                <!-- Slide 2 -->
+                <div class="hero-slide absolute inset-0 z-0 opacity-0 flex items-center justify-center">
+                    <div class="absolute inset-0 img-hover-container">
+                        <img src="./images/new6.jpg" alt="Everlasting Crochet Bouquets" class="w-full h-full object-cover">
+                        <div class="absolute inset-0 bg-gradient-to-t from-brand-text/80 to-transparent"></div>
+                    </div>
+                    <div class="relative z-20 text-center px-4 mt-32 max-w-4xl mx-auto">
+                        <span class="text-brand-floral uppercase tracking-[0.3em] text-[10px] md:text-xs font-bold mb-4 md:mb-6 block">Gifts that Last Forever</span>
+                        <h1 class="font-heading text-[3.5rem] sm:text-6xl md:text-[6.5rem] lg:text-[7.5rem] leading-[0.9] text-white tracking-tighter mb-6">
+                            <span class="block">Everlasting</span>
+                            <span class="block italic font-light">Elegance.</span>
+                        </h1>
+                        <a href="./categories/bouquets.html" class="inline-flex items-center justify-center px-8 py-4 bg-brand-sage text-white rounded-full font-medium text-xs tracking-[0.15em] uppercase hover:bg-white hover:text-brand-text transition-all duration-500">
+                            Shop Bouquets
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Slide 3 -->
+                <div class="hero-slide absolute inset-0 z-0 opacity-0 flex items-center justify-center">
+                    <div class="absolute inset-0 img-hover-container">
+                        <img src="./images/new3.jpg" alt="Chunky Crochet Tote Bag" class="w-full h-full object-cover">
+                        <div class="absolute inset-0 bg-black/40"></div>
+                    </div>
+                    <div class="relative z-20 text-center px-4 mt-32 max-w-4xl mx-auto">
+                        <span class="text-white/80 uppercase tracking-[0.3em] text-[10px] md:text-xs font-bold mb-4 md:mb-6 block">Everyday Essentials</span>
+                        <h1 class="font-heading text-[3.5rem] sm:text-6xl md:text-[6.5rem] lg:text-[7.5rem] leading-[0.9] text-white tracking-tighter mb-6">
+                            <span class="block">Thoughtful</span>
+                            <span class="block italic font-light text-brand-floral">Details.</span>
+                        </h1>
+                        <a href="./categories/bags.html" class="inline-flex items-center justify-center px-8 py-4 border border-white text-white rounded-full font-medium text-xs tracking-[0.15em] uppercase hover:bg-white hover:text-brand-text transition-all duration-500">
+                            View Handbags
+                        </a>
+                    </div>
+                </div>
+
             </div>
+
+            <!-- Carousel Controls -->
+            <div class="absolute bottom-12 left-1/2 -translate-x-1/2 z-30 flex items-center gap-4">
+                <button aria-label="Slide 1" class="carousel-dot w-10 h-1 bg-white transition-all duration-300 rounded-full"></button>
+                <button aria-label="Slide 2" class="carousel-dot w-3 h-1 bg-white/40 hover:bg-white/70 transition-all duration-300 rounded-full"></button>
+                <button aria-label="Slide 3" class="carousel-dot w-3 h-1 bg-white/40 hover:bg-white/70 transition-all duration-300 rounded-full"></button>
+            </div>
+            
+            <!-- Side Arrows (Desktop only) -->
+            <button id="prev-slide" class="absolute top-1/2 left-8 -translate-y-1/2 z-30 w-12 h-12 rounded-full border border-white/30 text-white flex items-center justify-center hover:bg-white hover:text-brand-text transition-all duration-300 hidden md:flex backdrop-blur-sm">
+                <i class="ph ph-arrow-left text-xl"></i>
+            </button>
+            <button id="next-slide" class="absolute top-1/2 right-8 -translate-y-1/2 z-30 w-12 h-12 rounded-full border border-white/30 text-white flex items-center justify-center hover:bg-white hover:text-brand-text transition-all duration-300 hidden md:flex backdrop-blur-sm">
+                <i class="ph ph-arrow-right text-xl"></i>
+            </button>
         </section>
 
-        <!-- Categories Section -->
-        <section id="categories" class="py-16 md:py-24 bg-brand-cream relative">
-            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                <div class="text-center mb-12 reveal">
-                    <h2 class="font-heading text-4xl md:text-5xl text-brand-text mb-4">Shop by Category</h2>
-                    <p class="text-brand-muted max-w-2xl mx-auto">Explore our range of meticulously handcrafted items, perfect for everyday joy or thoughtful gifting.</p>
+        <!-- Collections (Strict Equal Sizing Grid - ALL 12 Categories Preserved) -->
+        <section id="categories" class="py-24 lg:py-32 bg-brand-cream relative">
+            <div class="max-w-[90rem] mx-auto px-4 sm:px-6 lg:px-12">
+                <div class="flex flex-col md:flex-row justify-between items-end mb-16 lg:mb-24 reveal-fade">
+                    <div class="max-w-2xl">
+                        <h2 class="font-heading text-[2.5rem] md:text-5xl lg:text-6xl text-brand-text mb-4 leading-none">Curated <span class="italic text-brand-olive font-light">Collections</span></h2>
+                        <p class="text-brand-muted text-sm md:text-base font-light">Explore our range of meticulously handcrafted items. Every piece tells a story of dedication.</p>
+                    </div>
+                    <a href="./custom-orders.html" class="hidden md:inline-flex items-center gap-3 text-xs font-semibold tracking-widest uppercase text-brand-text hover:text-brand-sage transition-colors pb-2 border-b border-brand-text hover:border-brand-sage">
+                        Request Custom <i class="ph ph-arrow-right"></i>
+                    </a>
                 </div>
 
-                <!-- 12 Categories Grid -->
-                <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 md:gap-6">
+                <!-- STRICT REQUIREMENT: Grid forcing equal height and width on all cards -->
+                <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 md:gap-6 lg:gap-8">
                     
                     <!-- 1. Bags/Wallets -->
-                    <a href="./categories/bags.html" class="group block relative aspect-square rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 reveal">
-                        <div class="absolute inset-0 img-hover-zoom">
-                            <img src="https://placehold.co/500x500/e8e1d5/72886a?text=Bags+%26+Wallets" alt="Bags & Wallets" class="w-full h-full object-cover">
+                    <a href="./categories/bags.html" class="group relative overflow-hidden bg-brand-ivory aspect-square rounded-xl md:rounded-2xl reveal-fade shadow-sm hover:shadow-xl transition-shadow duration-500 block">
+                        <div class="absolute inset-0 img-hover-container">
+                            <img src="https://placehold.co/600x600/e8e1d5/72886a?text=Bags" alt="Bags & Wallets" class="w-full h-full object-cover">
                         </div>
-                        <div class="absolute inset-0 bg-brand-text/30 group-hover:bg-brand-text/20 transition-colors duration-500"></div>
+                        <div class="absolute inset-0 bg-brand-text/30 group-hover:bg-brand-text/40 transition-colors duration-500"></div>
                         <div class="absolute inset-0 flex items-center justify-center p-4">
-                            <h3 class="font-heading text-xl md:text-2xl text-white font-medium text-center tracking-wide">Bags / Wallets</h3>
+                            <h3 class="font-heading text-xl md:text-3xl text-white font-medium text-center">Bags & Wallets</h3>
                         </div>
                     </a>
 
                     <!-- 2. Keychains -->
-                    <a href="./categories/keychain.html" class="group block relative aspect-square rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 reveal delay-100">
-                        <div class="absolute inset-0 img-hover-zoom">
-                            <img src="https://placehold.co/500x500/dce5d8/5e6b57?text=Keychains" alt="Keychains" class="w-full h-full object-cover">
+                    <a href="./categories/keychain.html" class="group relative overflow-hidden bg-brand-ivory aspect-square rounded-xl md:rounded-2xl reveal-fade delay-100 shadow-sm hover:shadow-xl transition-shadow duration-500 block">
+                        <div class="absolute inset-0 img-hover-container">
+                            <img src="https://placehold.co/600x600/dce5d8/5e6b57?text=Keychains" alt="Keychains" class="w-full h-full object-cover">
                         </div>
-                        <div class="absolute inset-0 bg-brand-text/30 group-hover:bg-brand-text/20 transition-colors duration-500"></div>
+                        <div class="absolute inset-0 bg-brand-text/30 group-hover:bg-brand-text/40 transition-colors duration-500"></div>
                         <div class="absolute inset-0 flex items-center justify-center p-4">
-                            <h3 class="font-heading text-xl md:text-2xl text-white font-medium text-center tracking-wide">Keychains</h3>
+                            <h3 class="font-heading text-xl md:text-3xl text-white font-medium text-center">Keychains</h3>
                         </div>
                     </a>
 
                     <!-- 3. Bouquets -->
-                    <a href="./categories/bouquets.html" class="group block relative aspect-square rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 reveal delay-200">
-                        <div class="absolute inset-0 img-hover-zoom">
-                            <img src="./images/new6.jpg" onerror="this.src='https://placehold.co/500x500/f8f5f0/72886a?text=Bouquets'" alt="Bouquets" class="w-full h-full object-cover">
+                    <a href="./categories/bouquets.html" class="group relative overflow-hidden bg-brand-ivory aspect-square rounded-xl md:rounded-2xl reveal-fade delay-200 shadow-sm hover:shadow-xl transition-shadow duration-500 block">
+                        <div class="absolute inset-0 img-hover-container">
+                            <img src="./images/new6.jpg" onerror="this.src='https://placehold.co/600x600/f8f5f0/72886a?text=Bouquets'" alt="Bouquets" class="w-full h-full object-cover">
                         </div>
-                        <div class="absolute inset-0 bg-brand-text/30 group-hover:bg-brand-text/20 transition-colors duration-500"></div>
+                        <div class="absolute inset-0 bg-brand-text/30 group-hover:bg-brand-text/40 transition-colors duration-500"></div>
                         <div class="absolute inset-0 flex items-center justify-center p-4">
-                            <h3 class="font-heading text-xl md:text-2xl text-white font-medium text-center tracking-wide">Bouquets</h3>
+                            <h3 class="font-heading text-xl md:text-3xl text-white font-medium text-center">Bouquets</h3>
                         </div>
                     </a>
 
                     <!-- 4. Book items -->
-                    <a href="./categories/book-items.html" class="group block relative aspect-square rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 reveal delay-300">
-                        <div class="absolute inset-0 img-hover-zoom">
-                            <img src="https://placehold.co/500x500/8fa886/ffffff?text=Book+Items" alt="Book items" class="w-full h-full object-cover">
+                    <a href="./categories/book-items.html" class="group relative overflow-hidden bg-brand-ivory aspect-square rounded-xl md:rounded-2xl reveal-fade delay-300 shadow-sm hover:shadow-xl transition-shadow duration-500 block">
+                        <div class="absolute inset-0 img-hover-container">
+                            <img src="https://placehold.co/600x600/8fa886/ffffff?text=Book+Items" alt="Book items" class="w-full h-full object-cover">
                         </div>
-                        <div class="absolute inset-0 bg-brand-text/30 group-hover:bg-brand-text/20 transition-colors duration-500"></div>
+                        <div class="absolute inset-0 bg-brand-text/30 group-hover:bg-brand-text/40 transition-colors duration-500"></div>
                         <div class="absolute inset-0 flex items-center justify-center p-4">
-                            <h3 class="font-heading text-xl md:text-2xl text-white font-medium text-center tracking-wide">Book Items</h3>
+                            <h3 class="font-heading text-xl md:text-3xl text-white font-medium text-center">Book Items</h3>
                         </div>
                     </a>
 
                     <!-- 5. Home decor -->
-                    <a href="./categories/home-decor.html" class="group block relative aspect-square rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 reveal">
-                        <div class="absolute inset-0 img-hover-zoom">
-                            <img src="https://placehold.co/500x500/fdfbf7/5e6b57?text=Home+Decor" alt="Home decor" class="w-full h-full object-cover">
+                    <a href="./categories/home-decor.html" class="group relative overflow-hidden bg-brand-ivory aspect-square rounded-xl md:rounded-2xl reveal-fade shadow-sm hover:shadow-xl transition-shadow duration-500 block">
+                        <div class="absolute inset-0 img-hover-container">
+                            <img src="https://placehold.co/600x600/fdfbf7/5e6b57?text=Home+Decor" alt="Home decor" class="w-full h-full object-cover">
                         </div>
-                        <div class="absolute inset-0 bg-brand-text/30 group-hover:bg-brand-text/20 transition-colors duration-500"></div>
+                        <div class="absolute inset-0 bg-brand-text/30 group-hover:bg-brand-text/40 transition-colors duration-500"></div>
                         <div class="absolute inset-0 flex items-center justify-center p-4">
-                            <h3 class="font-heading text-xl md:text-2xl text-white font-medium text-center tracking-wide">Home Decor</h3>
+                            <h3 class="font-heading text-xl md:text-3xl text-white font-medium text-center">Home Decor</h3>
                         </div>
                     </a>
 
                     <!-- 6. Hair accessories -->
-                    <a href="./categories/hair-accessories.html" class="group block relative aspect-square rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 reveal delay-100">
-                        <div class="absolute inset-0 img-hover-zoom">
-                            <img src="https://placehold.co/500x500/e8e1d5/72886a?text=Hair+Accessories" alt="Hair accessories" class="w-full h-full object-cover">
+                    <a href="./categories/hair-accessories.html" class="group relative overflow-hidden bg-brand-ivory aspect-square rounded-xl md:rounded-2xl reveal-fade delay-100 shadow-sm hover:shadow-xl transition-shadow duration-500 block">
+                        <div class="absolute inset-0 img-hover-container">
+                            <img src="https://placehold.co/600x600/e8e1d5/72886a?text=Hair+Accessories" alt="Hair accessories" class="w-full h-full object-cover">
                         </div>
-                        <div class="absolute inset-0 bg-brand-text/30 group-hover:bg-brand-text/20 transition-colors duration-500"></div>
+                        <div class="absolute inset-0 bg-brand-text/30 group-hover:bg-brand-text/40 transition-colors duration-500"></div>
                         <div class="absolute inset-0 flex items-center justify-center p-4">
-                            <h3 class="font-heading text-xl md:text-2xl text-white font-medium text-center tracking-wide">Hair Accessories</h3>
+                            <h3 class="font-heading text-xl md:text-3xl text-white font-medium text-center">Hair Accessories</h3>
                         </div>
                     </a>
 
                     <!-- 7. Hand accessories -->
-                    <a href="./categories/hand-accessories.html" class="group block relative aspect-square rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 reveal delay-200">
-                        <div class="absolute inset-0 img-hover-zoom">
-                            <img src="https://placehold.co/500x500/dce5d8/5e6b57?text=Hand+Accessories" alt="Hand accessories" class="w-full h-full object-cover">
+                    <a href="./categories/hand-accessories.html" class="group relative overflow-hidden bg-brand-ivory aspect-square rounded-xl md:rounded-2xl reveal-fade delay-200 shadow-sm hover:shadow-xl transition-shadow duration-500 block">
+                        <div class="absolute inset-0 img-hover-container">
+                            <img src="https://placehold.co/600x600/dce5d8/5e6b57?text=Hand+Accessories" alt="Hand accessories" class="w-full h-full object-cover">
                         </div>
-                        <div class="absolute inset-0 bg-brand-text/30 group-hover:bg-brand-text/20 transition-colors duration-500"></div>
+                        <div class="absolute inset-0 bg-brand-text/30 group-hover:bg-brand-text/40 transition-colors duration-500"></div>
                         <div class="absolute inset-0 flex items-center justify-center p-4">
-                            <h3 class="font-heading text-xl md:text-2xl text-white font-medium text-center tracking-wide">Hand Accessories</h3>
+                            <h3 class="font-heading text-xl md:text-3xl text-white font-medium text-center">Hand Accessories</h3>
                         </div>
                     </a>
 
                     <!-- 8. Ear rings -->
-                    <a href="./categories/earrings.html" class="group block relative aspect-square rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 reveal delay-300">
-                        <div class="absolute inset-0 img-hover-zoom">
-                            <img src="https://placehold.co/500x500/f8f5f0/72886a?text=Ear+Rings" alt="Ear rings" class="w-full h-full object-cover">
+                    <a href="./categories/earrings.html" class="group relative overflow-hidden bg-brand-ivory aspect-square rounded-xl md:rounded-2xl reveal-fade delay-300 shadow-sm hover:shadow-xl transition-shadow duration-500 block">
+                        <div class="absolute inset-0 img-hover-container">
+                            <img src="https://placehold.co/600x600/f8f5f0/72886a?text=Ear+Rings" alt="Ear rings" class="w-full h-full object-cover">
                         </div>
-                        <div class="absolute inset-0 bg-brand-text/30 group-hover:bg-brand-text/20 transition-colors duration-500"></div>
+                        <div class="absolute inset-0 bg-brand-text/30 group-hover:bg-brand-text/40 transition-colors duration-500"></div>
                         <div class="absolute inset-0 flex items-center justify-center p-4">
-                            <h3 class="font-heading text-xl md:text-2xl text-white font-medium text-center tracking-wide">Earrings</h3>
+                            <h3 class="font-heading text-xl md:text-3xl text-white font-medium text-center">Earrings</h3>
                         </div>
                     </a>
 
                     <!-- 9. Plushies -->
-                    <a href="./categories/plushies.html" class="group block relative aspect-square rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 reveal">
-                        <div class="absolute inset-0 img-hover-zoom">
-                            <img src="./images/new1.jpg" onerror="this.src='https://placehold.co/500x500/e8e1d5/72886a?text=Plushies'" alt="Plushies" class="w-full h-full object-cover">
+                    <a href="./categories/plushies.html" class="group relative overflow-hidden bg-brand-ivory aspect-square rounded-xl md:rounded-2xl reveal-fade shadow-sm hover:shadow-xl transition-shadow duration-500 block">
+                        <div class="absolute inset-0 img-hover-container">
+                            <img src="./images/new1.jpg" onerror="this.src='https://placehold.co/600x600/e8e1d5/72886a?text=Plushies'" alt="Plushies" class="w-full h-full object-cover">
                         </div>
-                        <div class="absolute inset-0 bg-brand-text/30 group-hover:bg-brand-text/20 transition-colors duration-500"></div>
+                        <div class="absolute inset-0 bg-brand-text/30 group-hover:bg-brand-text/40 transition-colors duration-500"></div>
                         <div class="absolute inset-0 flex items-center justify-center p-4">
-                            <h3 class="font-heading text-xl md:text-2xl text-white font-medium text-center tracking-wide">Plushies</h3>
+                            <h3 class="font-heading text-xl md:text-3xl text-white font-medium text-center">Plushies</h3>
                         </div>
                     </a>
 
                     <!-- 10. Gifting -->
-                    <a href="./categories/gifting.html" class="group block relative aspect-square rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 reveal delay-100">
-                        <div class="absolute inset-0 img-hover-zoom">
-                            <img src="https://placehold.co/500x500/8fa886/ffffff?text=Gifting" alt="Gifting" class="w-full h-full object-cover">
+                    <a href="./categories/gifting.html" class="group relative overflow-hidden bg-brand-ivory aspect-square rounded-xl md:rounded-2xl reveal-fade delay-100 shadow-sm hover:shadow-xl transition-shadow duration-500 block">
+                        <div class="absolute inset-0 img-hover-container">
+                            <img src="https://placehold.co/600x600/8fa886/ffffff?text=Gifting" alt="Gifting" class="w-full h-full object-cover">
                         </div>
-                        <div class="absolute inset-0 bg-brand-text/30 group-hover:bg-brand-text/20 transition-colors duration-500"></div>
+                        <div class="absolute inset-0 bg-brand-text/30 group-hover:bg-brand-text/40 transition-colors duration-500"></div>
                         <div class="absolute inset-0 flex items-center justify-center p-4">
-                            <h3 class="font-heading text-xl md:text-2xl text-white font-medium text-center tracking-wide">Gifting</h3>
+                            <h3 class="font-heading text-xl md:text-3xl text-white font-medium text-center">Gifting</h3>
                         </div>
                     </a>
 
                     <!-- 11. Baby sets -->
-                    <a href="./categories/baby-sets.html" class="group block relative aspect-square rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 reveal delay-200">
-                        <div class="absolute inset-0 img-hover-zoom">
-                            <img src="https://placehold.co/500x500/dce5d8/5e6b57?text=Baby+Sets" alt="Baby sets" class="w-full h-full object-cover">
+                    <a href="./categories/baby-sets.html" class="group relative overflow-hidden bg-brand-ivory aspect-square rounded-xl md:rounded-2xl reveal-fade delay-200 shadow-sm hover:shadow-xl transition-shadow duration-500 block">
+                        <div class="absolute inset-0 img-hover-container">
+                            <img src="https://placehold.co/600x600/dce5d8/5e6b57?text=Baby+Sets" alt="Baby sets" class="w-full h-full object-cover">
                         </div>
-                        <div class="absolute inset-0 bg-brand-text/30 group-hover:bg-brand-text/20 transition-colors duration-500"></div>
+                        <div class="absolute inset-0 bg-brand-text/30 group-hover:bg-brand-text/40 transition-colors duration-500"></div>
                         <div class="absolute inset-0 flex items-center justify-center p-4">
-                            <h3 class="font-heading text-xl md:text-2xl text-white font-medium text-center tracking-wide">Baby Sets</h3>
+                            <h3 class="font-heading text-xl md:text-3xl text-white font-medium text-center">Baby Sets</h3>
                         </div>
                     </a>
 
                     <!-- 12. Cardigans -->
-                    <a href="./categories/cardigans.html" class="group block relative aspect-square rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 reveal delay-300">
-                        <div class="absolute inset-0 img-hover-zoom">
-                            <img src="https://placehold.co/500x500/fdfbf7/5e6b57?text=Cardigans" alt="Cardigans" class="w-full h-full object-cover">
+                    <a href="./categories/cardigans.html" class="group relative overflow-hidden bg-brand-ivory aspect-square rounded-xl md:rounded-2xl reveal-fade delay-300 shadow-sm hover:shadow-xl transition-shadow duration-500 block">
+                        <div class="absolute inset-0 img-hover-container">
+                            <img src="https://placehold.co/600x600/fdfbf7/5e6b57?text=Cardigans" alt="Cardigans" class="w-full h-full object-cover">
                         </div>
-                        <div class="absolute inset-0 bg-brand-text/30 group-hover:bg-brand-text/20 transition-colors duration-500"></div>
+                        <div class="absolute inset-0 bg-brand-text/30 group-hover:bg-brand-text/40 transition-colors duration-500"></div>
                         <div class="absolute inset-0 flex items-center justify-center p-4">
-                            <h3 class="font-heading text-xl md:text-2xl text-white font-medium text-center tracking-wide">Cardigans</h3>
+                            <h3 class="font-heading text-xl md:text-3xl text-white font-medium text-center">Cardigans</h3>
                         </div>
                     </a>
                 </div>
             </div>
         </section>
 
-        <!-- Featured Products -->
-        <section id="shop" class="py-16 md:py-24 bg-brand-ivory relative border-t border-brand-beige/50">
-            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                <div class="flex flex-col md:flex-row justify-between items-end mb-12 reveal">
-                    <div>
-                        <h2 class="font-heading text-4xl md:text-5xl text-brand-text mb-4">Latest Arrivals</h2>
-                        <p class="text-brand-muted">Crafted with patience, ready to be loved.</p>
+        <!-- Horizontal Scrolling Latest Arrivals (Native App Feeling) -->
+        <section id="shop" class="py-24 bg-white relative border-t border-brand-beige/30 overflow-hidden">
+            <div class="max-w-[90rem] mx-auto px-4 sm:px-6 lg:px-12">
+                <div class="flex flex-col md:flex-row justify-between items-end mb-12 lg:mb-16 reveal-fade">
+                    <div class="max-w-xl text-center md:text-left mx-auto md:mx-0">
+                        <span class="text-brand-sage uppercase tracking-[0.2em] text-[10px] font-bold mb-4 block">New Additions</span>
+                        <h2 class="font-heading text-[2.5rem] md:text-5xl lg:text-6xl text-brand-text mb-4">Latest <span class="italic text-brand-olive font-light">Arrivals</span></h2>
+                        <p class="text-brand-muted text-sm md:text-base font-light">Swipe to explore our newest handcrafted creations, made with the utmost care and premium materials.</p>
                     </div>
-                    <a href="#" class="hidden md:inline-flex items-center gap-2 text-brand-olive hover:text-brand-sage font-medium transition-colors border-b border-transparent hover:border-brand-sage pb-1">
-                        View All Products <i class="ph ph-arrow-right"></i>
+                    <a href="#" class="hidden md:inline-flex items-center gap-3 text-xs font-semibold tracking-widest uppercase text-brand-text hover:text-brand-sage transition-colors pb-2 border-b border-brand-text hover:border-brand-sage">
+                        View Entire Shop <i class="ph ph-arrow-right"></i>
                     </a>
                 </div>
+            </div>
 
-                <!-- Products Grid: Mobile forces 2 columns strictly -->
-                <div class="mobile-grid-2 md:grid md:grid-cols-3 lg:grid-cols-3 md:gap-8">
-                    
-                    <!-- Product 1: Plush Toy -->
-                    <div class="group flex flex-col reveal">
-                        <div class="relative aspect-[4/5] rounded-xl overflow-hidden bg-white mb-4 shadow-sm group-hover:shadow-md transition-shadow">
-                            <a href="#" class="block w-full h-full img-hover-zoom">
-                                <img src="./images/new1.jpg" alt="Handmade Bunny Plush" class="w-full h-full object-cover">
-                            </a>
-                            <!-- Badges -->
-                            <div class="absolute top-3 left-3 z-10">
-                                <span class="bg-white/90 backdrop-blur-sm text-brand-text text-[10px] font-semibold uppercase tracking-wider px-2 py-1 rounded">New</span>
-                            </div>
-                            <!-- Wishlist Action -->
-                            <button class="absolute top-3 right-3 z-10 w-8 h-8 bg-white/90 backdrop-blur-sm rounded-full flex items-center justify-center text-brand-muted hover:text-red-500 transition-colors shadow-sm opacity-100 md:opacity-0 group-hover:opacity-100">
-                                <i class="ph ph-heart text-lg"></i>
-                            </button>
-                            <!-- Quick Add (Desktop) -->
-                            <div class="absolute bottom-0 left-0 w-full p-4 translate-y-full group-hover:translate-y-0 transition-transform duration-300 hidden md:block z-10">
-                                <button class="w-full bg-white/95 backdrop-blur text-brand-text py-3 rounded-lg font-medium text-sm hover:bg-brand-sage hover:text-white transition-colors shadow-lg">
-                                    Quick Add
-                                </button>
-                            </div>
-                        </div>
-                        <div class="flex flex-col flex-1 px-1">
-                            <h3 class="font-heading text-lg md:text-xl text-brand-text mb-1"><a href="#">Snuggle Bunny Plush</a></h3>
-                            <p class="text-brand-muted text-xs md:text-sm mb-2 line-clamp-1">Soft cotton yarn, perfect for newborns.</p>
-                            <p class="font-medium text-brand-olive mt-auto">Rs. 3,500</p>
-                        </div>
-                    </div>
-
-                    <!-- Product 2: Handbag -->
-                    <div class="group flex flex-col reveal delay-100">
-                        <div class="relative aspect-[4/5] rounded-xl overflow-hidden bg-white mb-4 shadow-sm group-hover:shadow-md transition-shadow">
-                            <a href="#" class="block w-full h-full img-hover-zoom">
-                                <img src="./images/new3.jpg" alt="Chunky Crochet Tote Bag" class="w-full h-full object-cover">
-                            </a>
-                            <button class="absolute top-3 right-3 z-10 w-8 h-8 bg-white/90 backdrop-blur-sm rounded-full flex items-center justify-center text-brand-muted hover:text-red-500 transition-colors shadow-sm opacity-100 md:opacity-0 group-hover:opacity-100">
-                                <i class="ph ph-heart text-lg"></i>
-                            </button>
-                            <div class="absolute bottom-0 left-0 w-full p-4 translate-y-full group-hover:translate-y-0 transition-transform duration-300 hidden md:block z-10">
-                                <button class="w-full bg-white/95 backdrop-blur text-brand-text py-3 rounded-lg font-medium text-sm hover:bg-brand-sage hover:text-white transition-colors shadow-lg">
-                                    Quick Add
-                                </button>
-                            </div>
-                        </div>
-                        <div class="flex flex-col flex-1 px-1">
-                            <h3 class="font-heading text-lg md:text-xl text-brand-text mb-1"><a href="#">Chunky Knit Tote</a></h3>
-                            <p class="text-brand-muted text-xs md:text-sm mb-2 line-clamp-1">Spacious and stylish for everyday use.</p>
-                            <p class="font-medium text-brand-olive mt-auto">Rs. 5,200</p>
-                        </div>
-                    </div>
-
-                    <!-- Product 3: Bouquet -->
-                    <div class="group flex flex-col reveal delay-200">
-                        <div class="relative aspect-[4/5] rounded-xl overflow-hidden bg-white mb-4 shadow-sm group-hover:shadow-md transition-shadow">
-                            <a href="#" class="block w-full h-full img-hover-zoom">
-                                <img src="./images/new7.png" alt="Everlasting Daisy Bouquet" class="w-full h-full object-cover">
-                            </a>
-                            <div class="absolute top-3 left-3 z-10">
-                                <span class="bg-brand-gold/90 backdrop-blur-sm text-white text-[10px] font-semibold uppercase tracking-wider px-2 py-1 rounded">Bestseller</span>
-                            </div>
-                            <button class="absolute top-3 right-3 z-10 w-8 h-8 bg-white/90 backdrop-blur-sm rounded-full flex items-center justify-center text-brand-muted hover:text-red-500 transition-colors shadow-sm opacity-100 md:opacity-0 group-hover:opacity-100">
-                                <i class="ph ph-heart text-lg"></i>
-                            </button>
-                            <div class="absolute bottom-0 left-0 w-full p-4 translate-y-full group-hover:translate-y-0 transition-transform duration-300 hidden md:block z-10">
-                                <button class="w-full bg-white/95 backdrop-blur text-brand-text py-3 rounded-lg font-medium text-sm hover:bg-brand-sage hover:text-white transition-colors shadow-lg">
-                                    Quick Add
-                                </button>
-                            </div>
-                        </div>
-                        <div class="flex flex-col flex-1 px-1">
-                            <h3 class="font-heading text-lg md:text-xl text-brand-text mb-1"><a href="#">Everlasting Daisy Bouquet</a></h3>
-                            <p class="text-brand-muted text-xs md:text-sm mb-2 line-clamp-1">Flowers that never wilt. A perfect gift.</p>
-                            <p class="font-medium text-brand-olive mt-auto">Rs. 6,500</p>
-                        </div>
-                    </div>
-
-                    <!-- Product 4: Handbag -->
-                    <div class="group flex flex-col reveal">
-                        <div class="relative aspect-[4/5] rounded-xl overflow-hidden bg-white mb-4 shadow-sm group-hover:shadow-md transition-shadow">
-                            <a href="#" class="block w-full h-full img-hover-zoom">
-                                <img src="./images/new4.jpg" alt="Mini Pearl Purse" class="w-full h-full object-cover">
-                            </a>
-                            <button class="absolute top-3 right-3 z-10 w-8 h-8 bg-white/90 backdrop-blur-sm rounded-full flex items-center justify-center text-brand-muted hover:text-red-500 transition-colors shadow-sm opacity-100 md:opacity-0 group-hover:opacity-100">
-                                <i class="ph ph-heart text-lg"></i>
-                            </button>
-                        </div>
-                        <div class="flex flex-col flex-1 px-1">
-                            <h3 class="font-heading text-lg md:text-xl text-brand-text mb-1"><a href="#">Mini Pearl Purse</a></h3>
-                            <p class="text-brand-muted text-xs md:text-sm mb-2 line-clamp-1">Elegant evening wear accessory.</p>
-                            <p class="font-medium text-brand-olive mt-auto">Rs. 4,800</p>
-                        </div>
-                    </div>
-
-                    <!-- Product 5: Handbag -->
-                    <div class="group flex flex-col reveal delay-100">
-                        <div class="relative aspect-[4/5] rounded-xl overflow-hidden bg-white mb-4 shadow-sm group-hover:shadow-md transition-shadow">
-                            <a href="#" class="block w-full h-full img-hover-zoom">
-                                <img src="./images/new8.png" alt="Granny Square Shoulder Bag" class="w-full h-full object-cover">
-                            </a>
-                             <div class="absolute top-3 left-3 z-10">
-                                <span class="bg-brand-sage/90 backdrop-blur-sm text-white text-[10px] font-semibold uppercase tracking-wider px-2 py-1 rounded">Trending</span>
-                            </div>
-                            <button class="absolute top-3 right-3 z-10 w-8 h-8 bg-white/90 backdrop-blur-sm rounded-full flex items-center justify-center text-brand-muted hover:text-red-500 transition-colors shadow-sm opacity-100 md:opacity-0 group-hover:opacity-100">
-                                <i class="ph ph-heart text-lg"></i>
-                            </button>
-                        </div>
-                        <div class="flex flex-col flex-1 px-1">
-                            <h3 class="font-heading text-lg md:text-xl text-brand-text mb-1"><a href="#">Granny Square Shoulder Bag</a></h3>
-                            <p class="text-brand-muted text-xs md:text-sm mb-2 line-clamp-1">Vintage inspired colorful squares.</p>
-                            <p class="font-medium text-brand-olive mt-auto">Rs. 5,800</p>
-                        </div>
-                    </div>
-
-                    <!-- Product 6: Plush Toy -->
-                    <div class="group flex flex-col reveal delay-200">
-                        <div class="relative aspect-[4/5] rounded-xl overflow-hidden bg-white mb-4 shadow-sm group-hover:shadow-md transition-shadow">
-                            <a href="#" class="block w-full h-full img-hover-zoom">
-                                <img src="./images/new5.png" alt="Little Bear Plush" class="w-full h-full object-cover">
-                            </a>
-                            <button class="absolute top-3 right-3 z-10 w-8 h-8 bg-white/90 backdrop-blur-sm rounded-full flex items-center justify-center text-brand-muted hover:text-red-500 transition-colors shadow-sm opacity-100 md:opacity-0 group-hover:opacity-100">
-                                <i class="ph ph-heart text-lg"></i>
-                            </button>
-                        </div>
-                        <div class="flex flex-col flex-1 px-1">
-                            <h3 class="font-heading text-lg md:text-xl text-brand-text mb-1"><a href="#">Sleepy Bear Amigurumi</a></h3>
-                            <p class="text-brand-muted text-xs md:text-sm mb-2 line-clamp-1">The perfect bedtime companion.</p>
-                            <p class="font-medium text-brand-olive mt-auto">Rs. 3,200</p>
-                        </div>
-                    </div>
-
-                </div>
+            <!-- Horizontal Scroll Container -->
+            <!-- snap-x and snap-mandatory ensure cards lock into place beautifully. -->
+            <div class="flex overflow-x-auto gap-6 lg:gap-10 px-4 sm:px-6 lg:px-12 pb-16 pt-4 snap-x snap-mandatory no-scrollbar cursor-grab active:cursor-grabbing">
                 
-                <div class="mt-10 text-center md:hidden reveal">
-                    <a href="#" class="inline-flex items-center justify-center px-6 py-3 border border-brand-olive text-brand-olive rounded-full font-medium text-sm hover:bg-brand-olive hover:text-white transition-colors">
-                        View All Products
-                    </a>
-                </div>
-            </div>
-        </section>
-
-        <!-- Why Choose Us / Value Props -->
-        <section class="py-12 bg-brand-cream border-y border-brand-beige/50">
-            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-6 md:gap-8 text-center">
-                    <div class="flex flex-col items-center reveal">
-                        <div class="w-14 h-14 rounded-full bg-brand-floral flex items-center justify-center text-brand-olive mb-3">
+                <!-- Product 1 (Width calculated to show partial next item for intuitive swiping) -->
+                <div class="group flex flex-col reveal-fade flex-shrink-0 w-[80vw] sm:w-[45vw] md:w-[35vw] lg:w-[25vw] snap-start">
+                    <div class="relative aspect-[4/5] overflow-hidden bg-brand-ivory mb-6 transition-all duration-500 rounded-lg md:rounded-2xl shadow-sm hover:shadow-xl">
+                        <a href="#" class="block w-full h-full img-hover-container">
+                            <img src="./images/new1.jpg" alt="Handmade Bunny Plush" class="w-full h-full object-cover mix-blend-multiply pointer-events-none">
+                        </a>
+                        <div class="absolute top-4 left-4 z-10">
+                            <span class="bg-brand-text text-white text-[9px] font-bold uppercase tracking-widest px-3 py-1.5 rounded-full">New</span>
+                        </div>
+                        <button class="absolute top-4 right-4 z-10 w-10 h-10 bg-white/80 backdrop-blur-md rounded-full flex items-center justify-center text-brand-text hover:bg-brand-sage hover:text-white transition-all duration-300 transform scale-0 group-hover:scale-100">
                             <i class="ph ph-heart text-xl"></i>
+                        </button>
+                        <div class="absolute inset-x-4 bottom-4 translate-y-[120%] group-hover:translate-y-0 transition-transform duration-500 ease-premium hidden md:block z-10">
+                            <button class="w-full bg-brand-text text-white py-4 rounded-xl font-medium text-xs tracking-widest uppercase hover:bg-brand-sage transition-colors">
+                                Quick Add
+                            </button>
                         </div>
-                        <h4 class="font-medium text-brand-text text-xs md:text-sm mb-1">Handmade with Love</h4>
                     </div>
-                    <div class="flex flex-col items-center reveal delay-100">
-                        <div class="w-14 h-14 rounded-full bg-brand-floral flex items-center justify-center text-brand-olive mb-3">
-                            <i class="ph ph-yarn text-xl"></i>
-                        </div>
-                        <h4 class="font-medium text-brand-text text-xs md:text-sm mb-1">Premium Yarn</h4>
+                    <div class="flex flex-col flex-1 px-1 text-center md:text-left">
+                        <h3 class="font-heading text-xl md:text-2xl text-brand-text mb-2"><a href="#" class="hover:text-brand-sage transition-colors">Snuggle Bunny Plush</a></h3>
+                        <p class="text-brand-muted text-xs md:text-sm mb-3 font-light">Soft cotton yarn, perfect for newborns.</p>
+                        <p class="font-sans font-semibold text-brand-olive text-sm md:text-base">Rs. 3,500</p>
                     </div>
-                    <div class="flex flex-col items-center reveal delay-200">
-                        <div class="w-14 h-14 rounded-full bg-brand-floral flex items-center justify-center text-brand-olive mb-3">
-                            <i class="ph ph-gift text-xl"></i>
+                </div>
+
+                <!-- Product 2 -->
+                <div class="group flex flex-col reveal-fade delay-100 flex-shrink-0 w-[80vw] sm:w-[45vw] md:w-[35vw] lg:w-[25vw] snap-start">
+                    <div class="relative aspect-[4/5] overflow-hidden bg-brand-ivory mb-6 transition-all duration-500 rounded-lg md:rounded-2xl shadow-sm hover:shadow-xl">
+                        <a href="#" class="block w-full h-full img-hover-container">
+                            <img src="./images/new3.jpg" alt="Chunky Crochet Tote Bag" class="w-full h-full object-cover mix-blend-multiply pointer-events-none">
+                        </a>
+                        <button class="absolute top-4 right-4 z-10 w-10 h-10 bg-white/80 backdrop-blur-md rounded-full flex items-center justify-center text-brand-text hover:bg-brand-sage hover:text-white transition-all duration-300 transform scale-0 group-hover:scale-100">
+                            <i class="ph ph-heart text-xl"></i>
+                        </button>
+                        <div class="absolute inset-x-4 bottom-4 translate-y-[120%] group-hover:translate-y-0 transition-transform duration-500 ease-premium hidden md:block z-10">
+                            <button class="w-full bg-brand-text text-white py-4 rounded-xl font-medium text-xs tracking-widest uppercase hover:bg-brand-sage transition-colors">
+                                Quick Add
+                            </button>
                         </div>
-                        <h4 class="font-medium text-brand-text text-xs md:text-sm mb-1">Perfect Gifting</h4>
                     </div>
-                    <div class="flex flex-col items-center reveal delay-300">
-                        <div class="w-14 h-14 rounded-full bg-brand-floral flex items-center justify-center text-brand-olive mb-3">
-                            <i class="ph ph-magic-wand text-xl"></i>
-                        </div>
-                        <h4 class="font-medium text-brand-text text-xs md:text-sm mb-1">Custom Designs</h4>
+                    <div class="flex flex-col flex-1 px-1 text-center md:text-left">
+                        <h3 class="font-heading text-xl md:text-2xl text-brand-text mb-2"><a href="#" class="hover:text-brand-sage transition-colors">Chunky Knit Tote</a></h3>
+                        <p class="text-brand-muted text-xs md:text-sm mb-3 font-light">Spacious and stylish for everyday use.</p>
+                        <p class="font-sans font-semibold text-brand-olive text-sm md:text-base">Rs. 5,200</p>
                     </div>
-                    <div class="flex flex-col items-center reveal delay-400">
-                        <div class="w-14 h-14 rounded-full bg-brand-floral flex items-center justify-center text-brand-olive mb-3">
-                            <i class="ph ph-map-pin text-xl"></i>
+                </div>
+
+                <!-- Product 3 -->
+                <div class="group flex flex-col reveal-fade delay-200 flex-shrink-0 w-[80vw] sm:w-[45vw] md:w-[35vw] lg:w-[25vw] snap-start">
+                    <div class="relative aspect-[4/5] overflow-hidden bg-brand-ivory mb-6 transition-all duration-500 rounded-lg md:rounded-2xl shadow-sm hover:shadow-xl">
+                        <a href="#" class="block w-full h-full img-hover-container">
+                            <img src="./images/new7.png" alt="Everlasting Daisy Bouquet" class="w-full h-full object-cover mix-blend-multiply pointer-events-none">
+                        </a>
+                        <div class="absolute top-4 left-4 z-10">
+                            <span class="bg-brand-gold text-white text-[9px] font-bold uppercase tracking-widest px-3 py-1.5 rounded-full">Bestseller</span>
                         </div>
-                        <h4 class="font-medium text-brand-text text-xs md:text-sm mb-1">Made in Pakistan</h4>
+                        <button class="absolute top-4 right-4 z-10 w-10 h-10 bg-white/80 backdrop-blur-md rounded-full flex items-center justify-center text-brand-text hover:bg-brand-sage hover:text-white transition-all duration-300 transform scale-0 group-hover:scale-100">
+                            <i class="ph ph-heart text-xl"></i>
+                        </button>
+                        <div class="absolute inset-x-4 bottom-4 translate-y-[120%] group-hover:translate-y-0 transition-transform duration-500 ease-premium hidden md:block z-10">
+                            <button class="w-full bg-brand-text text-white py-4 rounded-xl font-medium text-xs tracking-widest uppercase hover:bg-brand-sage transition-colors">
+                                Quick Add
+                            </button>
+                        </div>
                     </div>
-                    <div class="flex flex-col items-center reveal delay-500">
-                        <div class="w-14 h-14 rounded-full bg-brand-floral flex items-center justify-center text-brand-olive mb-3">
-                            <i class="ph ph-plant text-xl"></i>
+                    <div class="flex flex-col flex-1 px-1 text-center md:text-left">
+                        <h3 class="font-heading text-xl md:text-2xl text-brand-text mb-2"><a href="#" class="hover:text-brand-sage transition-colors">Daisy Bouquet</a></h3>
+                        <p class="text-brand-muted text-xs md:text-sm mb-3 font-light">Flowers that never wilt. A perfect gift.</p>
+                        <p class="font-sans font-semibold text-brand-olive text-sm md:text-base">Rs. 6,500</p>
+                    </div>
+                </div>
+
+                <!-- Product 4 -->
+                <div class="group flex flex-col reveal-fade delay-300 flex-shrink-0 w-[80vw] sm:w-[45vw] md:w-[35vw] lg:w-[25vw] snap-start">
+                    <div class="relative aspect-[4/5] overflow-hidden bg-brand-ivory mb-6 transition-all duration-500 rounded-lg md:rounded-2xl shadow-sm hover:shadow-xl">
+                        <a href="#" class="block w-full h-full img-hover-container">
+                            <img src="./images/new4.jpg" alt="Mini Pearl Purse" class="w-full h-full object-cover mix-blend-multiply pointer-events-none">
+                        </a>
+                        <div class="absolute inset-x-4 bottom-4 translate-y-[120%] group-hover:translate-y-0 transition-transform duration-500 ease-premium hidden md:block z-10">
+                            <button class="w-full bg-brand-text text-white py-4 rounded-xl font-medium text-xs tracking-widest uppercase hover:bg-brand-sage transition-colors">
+                                Quick Add
+                            </button>
                         </div>
-                        <h4 class="font-medium text-brand-text text-xs md:text-sm mb-1">Slow Artistry</h4>
+                    </div>
+                    <div class="flex flex-col flex-1 px-1 text-center md:text-left">
+                        <h3 class="font-heading text-xl md:text-2xl text-brand-text mb-2"><a href="#" class="hover:text-brand-sage transition-colors">Mini Pearl Purse</a></h3>
+                        <p class="font-sans font-semibold text-brand-olive text-sm md:text-base mt-2">Rs. 4,800</p>
+                    </div>
+                </div>
+
+                <!-- Product 5 -->
+                <div class="group flex flex-col reveal-fade flex-shrink-0 w-[80vw] sm:w-[45vw] md:w-[35vw] lg:w-[25vw] snap-start">
+                    <div class="relative aspect-[4/5] overflow-hidden bg-brand-ivory mb-6 transition-all duration-500 rounded-lg md:rounded-2xl shadow-sm hover:shadow-xl">
+                        <a href="#" class="block w-full h-full img-hover-container">
+                            <img src="./images/new8.png" alt="Granny Square Shoulder Bag" class="w-full h-full object-cover mix-blend-multiply pointer-events-none">
+                        </a>
+                        <div class="absolute inset-x-4 bottom-4 translate-y-[120%] group-hover:translate-y-0 transition-transform duration-500 ease-premium hidden md:block z-10">
+                            <button class="w-full bg-brand-text text-white py-4 rounded-xl font-medium text-xs tracking-widest uppercase hover:bg-brand-sage transition-colors">
+                                Quick Add
+                            </button>
+                        </div>
+                    </div>
+                    <div class="flex flex-col flex-1 px-1 text-center md:text-left">
+                        <h3 class="font-heading text-xl md:text-2xl text-brand-text mb-2"><a href="#" class="hover:text-brand-sage transition-colors">Granny Square Bag</a></h3>
+                        <p class="font-sans font-semibold text-brand-olive text-sm md:text-base mt-2">Rs. 5,800</p>
+                    </div>
+                </div>
+
+                <!-- Product 6 -->
+                <div class="group flex flex-col reveal-fade delay-100 flex-shrink-0 w-[80vw] sm:w-[45vw] md:w-[35vw] lg:w-[25vw] snap-start lg:pr-12">
+                    <div class="relative aspect-[4/5] overflow-hidden bg-brand-ivory mb-6 transition-all duration-500 rounded-lg md:rounded-2xl shadow-sm hover:shadow-xl w-full">
+                        <a href="#" class="block w-full h-full img-hover-container">
+                            <img src="./images/new5.png" alt="Little Bear Plush" class="w-full h-full object-cover mix-blend-multiply pointer-events-none">
+                        </a>
+                        <div class="absolute inset-x-4 bottom-4 translate-y-[120%] group-hover:translate-y-0 transition-transform duration-500 ease-premium hidden md:block z-10">
+                            <button class="w-full bg-brand-text text-white py-4 rounded-xl font-medium text-xs tracking-widest uppercase hover:bg-brand-sage transition-colors">
+                                Quick Add
+                            </button>
+                        </div>
+                    </div>
+                    <div class="flex flex-col flex-1 px-1 text-center md:text-left w-full">
+                        <h3 class="font-heading text-xl md:text-2xl text-brand-text mb-2"><a href="#" class="hover:text-brand-sage transition-colors">Sleepy Bear Amigurumi</a></h3>
+                        <p class="font-sans font-semibold text-brand-olive text-sm md:text-base mt-2">Rs. 3,200</p>
+                    </div>
+                </div>
+
+            </div>
+            
+            <div class="md:hidden text-center mt-4 mb-12">
+                <a href="#" class="inline-flex items-center gap-2 text-xs font-semibold tracking-widest uppercase text-brand-text pb-1 border-b border-brand-text">
+                    View Entire Shop <i class="ph ph-arrow-right"></i>
+                </a>
+            </div>
+        </section>
+
+        <!-- Brand Philosophy / Value Props -->
+        <section class="py-24 bg-brand-text text-brand-cream relative overflow-hidden">
+            <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full text-center pointer-events-none opacity-[0.03]">
+                <span class="font-heading text-[15vw] leading-none whitespace-nowrap">Daisyline Crochet</span>
+            </div>
+            
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+                <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-x-6 gap-y-12 text-center">
+                    <div class="flex flex-col items-center reveal-fade">
+                        <i class="ph ph-heart text-3xl text-brand-sage mb-4 font-light"></i>
+                        <h4 class="font-medium text-xs tracking-widest uppercase mb-2">Made with Love</h4>
+                    </div>
+                    <div class="flex flex-col items-center reveal-fade delay-100">
+                        <i class="ph ph-yarn text-3xl text-brand-sage mb-4 font-light"></i>
+                        <h4 class="font-medium text-xs tracking-widest uppercase mb-2">Premium Yarn</h4>
+                    </div>
+                    <div class="flex flex-col items-center reveal-fade delay-200">
+                        <i class="ph ph-gift text-3xl text-brand-sage mb-4 font-light"></i>
+                        <h4 class="font-medium text-xs tracking-widest uppercase mb-2">Perfect Gifting</h4>
+                    </div>
+                    <div class="flex flex-col items-center reveal-fade delay-100">
+                        <i class="ph ph-magic-wand text-3xl text-brand-sage mb-4 font-light"></i>
+                        <h4 class="font-medium text-xs tracking-widest uppercase mb-2">Custom Designs</h4>
+                    </div>
+                    <div class="flex flex-col items-center reveal-fade delay-200">
+                        <i class="ph ph-map-pin text-3xl text-brand-sage mb-4 font-light"></i>
+                        <h4 class="font-medium text-xs tracking-widest uppercase mb-2">Locally Made</h4>
+                    </div>
+                    <div class="flex flex-col items-center reveal-fade delay-100">
+                        <i class="ph ph-plant text-3xl text-brand-sage mb-4 font-light"></i>
+                        <h4 class="font-medium text-xs tracking-widest uppercase mb-2">Slow Artistry</h4>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- Testimonials -->
-        <section class="py-16 md:py-24 bg-brand-ivory overflow-hidden border-b border-brand-beige/50">
-            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center reveal">
-                <i class="ph-fill ph-quotes text-4xl text-brand-sage mb-6 inline-block"></i>
-                <h2 class="font-heading text-4xl text-brand-text mb-12">Loved by our Customers</h2>
-                
-                <div class="flex flex-col md:flex-row gap-8 justify-center">
-                    <!-- Review 1 -->
-                    <div class="bg-white p-8 rounded-2xl shadow-sm relative text-left w-full md:w-1/3">
-                        <div class="flex text-brand-gold mb-4 text-sm">
-                            <i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i>
-                        </div>
-                        <p class="text-brand-text mb-6 font-light leading-relaxed">"Exactly as shown on the page. The quality of the yarn is amazing. The packaging made it feel like a real luxury gift. 💚"</p>
-                        <div class="flex items-center gap-3">
-                            <div class="w-10 h-10 bg-brand-floral rounded-full flex items-center justify-center text-brand-olive font-heading font-bold">F</div>
-                            <div>
-                                <p class="text-sm font-medium text-brand-text">Fatima A.</p>
-                                <p class="text-xs text-brand-muted">Karachi</p>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Review 2 -->
-                    <div class="bg-white p-8 rounded-2xl shadow-sm relative text-left w-full md:w-1/3 mt-0 md:-mt-6 mb-0 md:mb-6">
-                        <div class="flex text-brand-gold mb-4 text-sm">
-                            <i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i>
-                        </div>
-                        <p class="text-brand-text mb-6 font-light leading-relaxed">"Ordered a custom bouquet for my sister's graduation. It was so unique and beautiful. Everyone at the event kept asking about it!"</p>
-                        <div class="flex items-center gap-3">
-                            <div class="w-10 h-10 bg-brand-floral rounded-full flex items-center justify-center text-brand-olive font-heading font-bold">Z</div>
-                            <div>
-                                <p class="text-sm font-medium text-brand-text">Zainab S.</p>
-                                <p class="text-xs text-brand-muted">Lahore</p>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Review 3 -->
-                    <div class="bg-white p-8 rounded-2xl shadow-sm relative text-left w-full md:w-1/3">
-                        <div class="flex text-brand-gold mb-4 text-sm">
-                            <i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i>
-                        </div>
-                        <p class="text-brand-text mb-6 font-light leading-relaxed">"The mini pearl purse is my new favorite accessory. Packaging was beautiful and the delivery process was very smooth."</p>
-                        <div class="flex items-center gap-3">
-                            <div class="w-10 h-10 bg-brand-floral rounded-full flex items-center justify-center text-brand-olive font-heading font-bold">M</div>
-                            <div>
-                                <p class="text-sm font-medium text-brand-text">Mahnoor R.</p>
-                                <p class="text-xs text-brand-muted">Islamabad</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Instagram Feed -->
-        <section class="py-16 md:py-24 bg-brand-cream">
-            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                <div class="text-center mb-12 reveal">
-                    <h2 class="font-heading text-4xl text-brand-text mb-4">Follow the Thread</h2>
-                    <a href="https://www.instagram.com/daisylinecrochet/" target="_blank" class="inline-flex items-center gap-2 text-brand-muted hover:text-brand-sage transition-colors">
-                        @daisylinecrochet <i class="ph ph-instagram-logo"></i>
-                    </a>
-                </div>
-
-                <div class="grid grid-cols-2 md:grid-cols-4 gap-4 reveal">
-                    <a href="https://www.instagram.com/daisylinecrochet/" target="_blank" class="group block relative aspect-square overflow-hidden bg-white rounded-lg">
-                        <img src="./images/ig1.png" alt="Instagram Post" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
-                        <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
-                            <i class="ph-fill ph-instagram-logo text-white text-3xl"></i>
-                        </div>
-                    </a>
-                    <a href="https://www.instagram.com/daisylinecrochet/" target="_blank" class="group block relative aspect-square overflow-hidden bg-white rounded-lg">
-                        <img src="./images/ig2.png" alt="Instagram Post" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
-                        <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
-                            <i class="ph-fill ph-instagram-logo text-white text-3xl"></i>
-                        </div>
-                    </a>
-                    <a href="https://www.instagram.com/daisylinecrochet/" target="_blank" class="group block relative aspect-square overflow-hidden bg-white rounded-lg">
-                        <img src="./images/ig3.png" alt="Instagram Post" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
-                        <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
-                            <i class="ph-fill ph-instagram-logo text-white text-3xl"></i>
-                        </div>
-                    </a>
-                    <a href="https://www.instagram.com/daisylinecrochet/" target="_blank" class="group block relative aspect-square overflow-hidden bg-white rounded-lg">
-                        <img src="./images/ig4.png" alt="Instagram Post" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
-                        <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
-                            <i class="ph-fill ph-instagram-logo text-white text-3xl"></i>
-                        </div>
-                    </a>
-                </div>
-            </div>
-        </section>
     </main>
 
-    <!-- Footer -->
-    <footer class="bg-brand-text text-brand-ivory pt-20 pb-10">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 lg:gap-8 mb-16">
+    <!-- Super-Footer (Awwwards Style) -->
+    <footer class="bg-brand-text text-brand-ivory pt-24 pb-8 overflow-hidden relative">
+        <div class="max-w-[90rem] mx-auto px-4 sm:px-6 lg:px-12 relative z-10">
+            <!-- Grid container strictly enforcing text centering on mobile, left on desktop -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-12 lg:gap-8 mb-24 text-center md:text-left">
                 
                 <!-- Brand Info -->
-                <div class="space-y-6">
+                <div class="lg:col-span-4 flex flex-col items-center md:items-start space-y-8 pr-0 lg:pr-12">
                     <img src="./images/logo.jpg" alt="Daisyline Crochet" class="h-16 w-auto rounded-full bg-white p-1">
-                    <p class="text-brand-beige text-sm font-light leading-relaxed max-w-xs">
-                        Handmade with love & tradition in Pakistan. Inspired by a legacy of crafting beautiful, slow-made art.
+                    <p class="text-brand-beige/80 text-sm font-light leading-relaxed max-w-sm md:max-w-none">
+                        Handmade with love & tradition in Pakistan. Inspired by a legacy of crafting beautiful, slow-made art for everyday moments.
                     </p>
-                    <div class="flex gap-4">
-                        <a href="https://www.instagram.com/daisylinecrochet/" target="_blank" class="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-brand-sage transition-colors">
-                            <i class="ph ph-instagram-logo text-xl"></i>
+                    <div class="flex justify-center md:justify-start gap-3 w-full">
+                        <a href="https://www.instagram.com/daisylinecrochet/" target="_blank" rel="noopener noreferrer" class="w-10 h-10 rounded-full border border-white/20 flex items-center justify-center hover:bg-brand-sage hover:border-brand-sage transition-colors">
+                            <i class="ph ph-instagram-logo text-lg"></i>
                         </a>
-                        <a href="#" class="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-brand-sage transition-colors">
-                            <i class="ph ph-whatsapp-logo text-xl"></i>
+                        <a href="https://www.facebook.com/share/1HeWDJU5ap/" target="_blank" rel="noopener noreferrer" class="w-10 h-10 rounded-full border border-white/20 flex items-center justify-center hover:bg-brand-sage hover:border-brand-sage transition-colors">
+                            <i class="ph ph-facebook-logo text-lg"></i>
                         </a>
-                        <a href="#" class="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-brand-sage transition-colors">
-                            <i class="ph ph-envelope-simple text-xl"></i>
+                        <a href="https://www.threads.com/@daisylinecrochet" target="_blank" rel="noopener noreferrer" class="w-10 h-10 rounded-full border border-white/20 flex items-center justify-center hover:bg-brand-sage hover:border-brand-sage transition-colors">
+                            <i class="ph ph-threads-logo text-lg"></i>
+                        </a>
+                        <a href="https://www.tiktok.com/@daisylinecrochet?_r=1&_t=ZS-98DQTwu0jqr" target="_blank" rel="noopener noreferrer" class="w-10 h-10 rounded-full border border-white/20 flex items-center justify-center hover:bg-brand-sage hover:border-brand-sage transition-colors">
+                            <i class="ph ph-tiktok-logo text-lg"></i>
                         </a>
                     </div>
                 </div>
 
-                <!-- Quick Links -->
-                <div>
-                    <h4 class="font-heading text-xl mb-6">Quick Links</h4>
-                    <ul class="space-y-3 text-sm font-light text-brand-beige">
+                <!-- Navigation Columns -->
+                <div class="lg:col-span-2">
+                    <h4 class="text-xs font-semibold uppercase tracking-widest text-brand-sage mb-6">Menu</h4>
+                    <ul class="space-y-4 text-sm font-light text-brand-beige/80">
                         <li><a href="./index.html" class="hover:text-white transition-colors">Home</a></li>
-                        <li><a href="#categories" class="hover:text-white transition-colors">Shop by Category</a></li>
+                        <li><a href="#categories" class="hover:text-white transition-colors">Shop</a></li>
                         <li><a href="./custom-orders.html" class="hover:text-white transition-colors">Custom Orders</a></li>
                         <li><a href="./story.html" class="hover:text-white transition-colors">Our Story</a></li>
-                        <li><a href="#" class="hover:text-white transition-colors">Contact Us</a></li>
                     </ul>
                 </div>
 
-                <!-- Categories -->
-                <div>
-                    <h4 class="font-heading text-xl mb-6">Categories</h4>
-                    <ul class="space-y-3 text-sm font-light text-brand-beige">
+                <div class="lg:col-span-3">
+                    <h4 class="text-xs font-semibold uppercase tracking-widest text-brand-sage mb-6">Featured</h4>
+                    <ul class="space-y-4 text-sm font-light text-brand-beige/80">
                         <li><a href="./categories/bags.html" class="hover:text-white transition-colors">Bags & Wallets</a></li>
                         <li><a href="./categories/bouquets.html" class="hover:text-white transition-colors">Bouquets</a></li>
                         <li><a href="./categories/plushies.html" class="hover:text-white transition-colors">Plushies</a></li>
-                        <li><a href="./categories/hair-accessories.html" class="hover:text-white transition-colors">Accessories</a></li>
                         <li><a href="./categories/home-decor.html" class="hover:text-white transition-colors">Home Decor</a></li>
                     </ul>
                 </div>
 
-                <!-- Payment & Shipping -->
-                <div>
-                    <h4 class="font-heading text-xl mb-6">Information</h4>
-                    <ul class="space-y-3 text-sm font-light text-brand-beige mb-6">
+                <div class="lg:col-span-3">
+                    <h4 class="text-xs font-semibold uppercase tracking-widest text-brand-sage mb-6">Support</h4>
+                    <ul class="space-y-4 text-sm font-light text-brand-beige/80 mb-8">
                         <li><a href="#" class="hover:text-white transition-colors">Shipping Policy</a></li>
                         <li><a href="#" class="hover:text-white transition-colors">Return Policy</a></li>
                         <li><a href="#" class="hover:text-white transition-colors">FAQs</a></li>
                     </ul>
-                    <div class="mt-6">
-                        <p class="text-xs text-brand-beige/70 mb-2 uppercase tracking-wider">Accepted Payments</p>
-                        <div class="flex gap-3 text-2xl">
-                            <span class="px-2 py-1 bg-white/10 rounded text-xs font-semibold">Easypaisa</span>
-                            <span class="px-2 py-1 bg-white/10 rounded text-xs font-semibold">JazzCash</span>
-                            <span class="px-2 py-1 bg-white/10 rounded text-xs font-semibold">Bank Transfer</span>
-                        </div>
+                    
+                    <p class="text-[10px] text-brand-beige/50 mb-3 uppercase tracking-widest">Payments</p>
+                    <div class="flex flex-wrap justify-center md:justify-start gap-2">
+                        <span class="inline-flex items-center px-3 py-1.5 border border-white/10 rounded text-[10px] font-semibold text-white/80">
+                            <!-- Native Easypaisa SVG -->
+                            <svg class="w-3.5 h-3.5 mr-1.5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5">
+                                <path d="M24.6025,4.5c8.516,0,15.42,5.7166,15.42,12.7693S33.12,28.6141,24.6025,28.6141Q12.4689,28.3687,7.4111,20.972A1.6469,1.6469,0,0,1,7.1663,19.73Q10.0575,5.2982,24.6025,4.5Zm-.5751,7.9439q-7.3449.7437-8.9894,6.9928,2.2406,1.9754,8.9894,2.1927c4.5207-.0711,7.2591-1.389,7.3129-4.4525C31.0589,13.7933,27.7687,12.3159,24.0274,12.4439Z"/>
+                                <path d="M6.396,24.71C8.9221,31.9571,15.8885,35.99,23.05,35.99c5.9392,0,9.8755-2.5707,11.94-6.4492L41.6456,33.71c-2.32,5.6749-9.1977,9.79-17.3225,9.79-10.0289,0-18.617-6.7591-17.93-18.5113C6.393,24.8952,6.394,24.8017,6.396,24.71Z"/>
+                            </svg>
+                            Easypaisa
+                        </span>
+                        <span class="inline-flex items-center px-3 py-1.5 border border-white/10 rounded text-[10px] font-semibold text-white/80">
+                            <!-- Native JazzCash SVG -->
+                            <svg class="w-3.5 h-3.5 mr-1.5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5">
+                                <path d="M8.3313,15.7309l4.9228,12.34a4.424,4.424,0,0,1-2.4636,5.751l-.0005,0h0A4.424,4.424,0,0,1,5.0445,31.346h0L4.5,29.98"/>
+                                <polyline points="23.413 17.516 30.597 14.65 27.21 27.035 34.394 24.169"/>
+                                <polyline points="32.519 11.861 39.703 8.995 36.316 21.379 43.5 18.513"/>
+                                <path d="M22.8685,24.1931A3.867,3.867,0,0,1,20.71,29.2178l0,0h0a3.8672,3.8672,0,0,1-5.0248-2.1589v0l-.9314-2.3348a3.8672,3.8672,0,0,1,2.1591-5.0248h0a3.867,3.867,0,0,1,5.0247,2.1589l0,0"/>
+                                <line x1="24.3014" y1="27.7853" x2="20.5042" y2="18.2666"/>
+                                <line x1="35.2451" y1="26.1808" x2="38.0646" y2="33.6675"/>
+                                <path d="M36.9015,30.5793a2,2,0,0,1,1.1668-2.5766h0A2,2,0,0,1,40.6449,29.17l1.163,3.0883"/>
+                                <path d="M33.0018,35.0963a2.249,2.249,0,0,0,1.6969-.1612l.42-.1581a1.3237,1.3237,0,0,0,.77-1.706h0a1.3236,1.3236,0,0,0-1.7043-.774l-.84.3163a1.3237,1.3237,0,0,1-1.7043-.774h0a1.3236,1.3236,0,0,1,.77-1.706l.42-.1581a2.25,2.25,0,0,1,1.6969-.1613"/>
+                                <path d="M25.5043,37.3213a1.9991,1.9991,0,0,1-1.27,1.5547h0a2,2,0,0,1-2.5765-1.1668l-.4582-1.2166a2,2,0,0,1,1.1668-2.5765h0a1.9991,1.9991,0,0,1,1.9772.3281"/>
+                                <path d="M30.4852,34.3848a2,2,0,0,1-1.1668,2.5765h0a2,2,0,0,1-2.5765-1.1668l-.4582-1.2166a2,2,0,0,1,1.1668-2.5765h0a2,2,0,0,1,2.5766,1.1668"/>
+                                <line x1="31.1901" y1="36.2564" x2="29.3222" y2="31.2965"/>
+                            </svg>
+                            JazzCash
+                        </span>
+                        <span class="inline-flex items-center px-3 py-1.5 border border-white/10 rounded text-[10px] font-semibold text-white/80">
+                            <i class="ph ph-bank text-sm mr-1.5"></i>Bank Transfer
+                        </span>
                     </div>
                 </div>
             </div>
 
-            <div class="border-t border-white/10 pt-8 flex flex-col md:flex-row justify-between items-center gap-4 text-xs font-light text-brand-beige/60">
-                <p>&copy; <span id="year"></span> Daisyline Crochet. All rights reserved.</p>
-                <p>Designed with ❤️ for handcrafted artistry.</p>
+            <!-- Massive Footer Brand Type -->
+            <div class="w-full border-t border-white/10 pt-10 pb-4 text-center">
+                <h2 class="font-heading text-[12vw] leading-none text-white/5 uppercase tracking-tight select-none">DAISYLINE</h2>
+            </div>
+
+            <div class="flex flex-col md:flex-row justify-between items-center gap-4 text-[10px] tracking-widest uppercase font-semibold text-brand-beige/40 mt-4">
+                <p>&copy; <span id="year"></span> Daisyline Crochet.</p>
+                <p>Designed with intentionality.</p>
             </div>
         </div>
     </footer>
@@ -894,10 +767,10 @@
     <!-- Scripts -->
     <script>
         document.addEventListener('DOMContentLoaded', () => {
-            // Set current year in footer
+            // Set current year
             document.getElementById('year').textContent = new Date().getFullYear();
 
-            // --- Mobile Menu Toggle ---
+            // Mobile Menu Toggle
             const mobileMenuBtn = document.getElementById('mobile-menu-btn');
             const closeMenuBtn = document.getElementById('close-menu-btn');
             const mobileMenu = document.getElementById('mobile-menu');
@@ -907,7 +780,7 @@
                 const isClosed = mobileMenu.classList.contains('-translate-x-full');
                 if (isClosed) {
                     mobileMenu.classList.remove('-translate-x-full');
-                    document.body.style.overflow = 'hidden'; // Prevent scrolling
+                    document.body.style.overflow = 'hidden';
                 } else {
                     mobileMenu.classList.add('-translate-x-full');
                     document.body.style.overflow = '';
@@ -924,19 +797,26 @@
                 });
             });
 
-            // --- Intersection Observer for Scroll Animations ---
-            const revealElements = document.querySelectorAll('.reveal');
-            
+            // Enhanced Scroll Header
+            const header = document.getElementById('navbar');
+            window.addEventListener('scroll', () => {
+                if (window.scrollY > 50) {
+                    header.classList.add('nav-scrolled');
+                } else {
+                    header.classList.remove('nav-scrolled');
+                }
+            }, { passive: true });
+
+            // Intersection Observer for Scroll Reveals
+            const revealElements = document.querySelectorAll('.reveal-fade');
             const revealOptions = {
-                threshold: 0.15,
+                threshold: 0.1,
                 rootMargin: "0px 0px -50px 0px"
             };
 
-            const revealOnScroll = new IntersectionObserver(function(entries, observer) {
+            const revealOnScroll = new IntersectionObserver((entries, observer) => {
                 entries.forEach(entry => {
-                    if (!entry.isIntersecting) {
-                        return;
-                    } else {
+                    if (entry.isIntersecting) {
                         entry.target.classList.add('active');
                         observer.unobserve(entry.target);
                     }
@@ -944,29 +824,110 @@
             }, revealOptions);
 
             revealElements.forEach(el => {
-                revealOnScroll.observe(el);
+                if(el.closest('#home') && window.scrollY < 100) {
+                    setTimeout(() => el.classList.add('active'), 100);
+                } else {
+                    el.classList.remove('active');
+                    revealOnScroll.observe(el);
+                }
             });
 
-            // --- Smooth Scrolling for Anchor Links ---
+            // Hero Carousel Logic
+            const slides = document.querySelectorAll('.hero-slide');
+            const dots = document.querySelectorAll('.carousel-dot');
+            const prevBtn = document.getElementById('prev-slide');
+            const nextBtn = document.getElementById('next-slide');
+            let currentSlide = 0;
+            let slideInterval;
+
+            const goToSlide = (index) => {
+                slides[currentSlide].classList.remove('opacity-100', 'z-10', 'active-slide');
+                slides[currentSlide].classList.add('opacity-0', 'z-0');
+                dots[currentSlide].classList.remove('w-10', 'bg-white');
+                dots[currentSlide].classList.add('w-3', 'bg-white/40');
+                
+                currentSlide = (index + slides.length) % slides.length;
+                
+                slides[currentSlide].classList.remove('opacity-0', 'z-0');
+                slides[currentSlide].classList.add('opacity-100', 'z-10', 'active-slide');
+                dots[currentSlide].classList.remove('w-3', 'bg-white/40');
+                dots[currentSlide].classList.add('w-10', 'bg-white');
+            };
+
+            const nextSlide = () => goToSlide(currentSlide + 1);
+            const prevSlide = () => goToSlide(currentSlide - 1);
+
+            const startInterval = () => {
+                slideInterval = setInterval(nextSlide, 6000);
+            };
+
+            const resetInterval = () => {
+                clearInterval(slideInterval);
+                startInterval();
+            };
+
+            if (nextBtn && prevBtn) {
+                nextBtn.addEventListener('click', () => { nextSlide(); resetInterval(); });
+                prevBtn.addEventListener('click', () => { prevSlide(); resetInterval(); });
+            }
+
+            dots.forEach((dot, index) => {
+                dot.addEventListener('click', () => {
+                    goToSlide(index);
+                    resetInterval();
+                });
+            });
+
+            startInterval(); // Initialize auto-scroll
+
+            // Smooth Scrolling Anchor Links
             document.querySelectorAll('a[href^="#"]').forEach(anchor => {
                 anchor.addEventListener('click', function (e) {
                     const targetId = this.getAttribute('href');
                     if(targetId === '#') return;
-                    
                     const targetElement = document.querySelector(targetId);
                     if (targetElement) {
                         e.preventDefault();
-                        const headerOffset = 100;
+                        const headerOffset = 80;
                         const elementPosition = targetElement.getBoundingClientRect().top;
                         const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
-        
-                        window.scrollTo({
-                            top: offsetPosition,
-                            behavior: "smooth"
-                        });
+                        window.scrollTo({ top: offsetPosition, behavior: "smooth" });
                     }
                 });
             });
+            
+            // Mouse Drag to Scroll for Latest Arrivals
+            const slider = document.querySelector('.snap-x');
+            let isDown = false;
+            let startX;
+            let scrollLeft;
+
+            if(slider) {
+                slider.addEventListener('mousedown', (e) => {
+                    isDown = true;
+                    slider.classList.add('active');
+                    startX = e.pageX - slider.offsetLeft;
+                    scrollLeft = slider.scrollLeft;
+                    slider.style.scrollSnapType = 'none';
+                });
+                slider.addEventListener('mouseleave', () => {
+                    isDown = false;
+                    slider.classList.remove('active');
+                    slider.style.scrollSnapType = 'x mandatory';
+                });
+                slider.addEventListener('mouseup', () => {
+                    isDown = false;
+                    slider.classList.remove('active');
+                    slider.style.scrollSnapType = 'x mandatory';
+                });
+                slider.addEventListener('mousemove', (e) => {
+                    if (!isDown) return;
+                    e.preventDefault();
+                    const x = e.pageX - slider.offsetLeft;
+                    const walk = (x - startX) * 2;
+                    slider.scrollLeft = scrollLeft - walk;
+                });
+            }
         });
     </script>
 </body>
