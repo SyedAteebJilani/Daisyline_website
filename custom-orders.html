@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Custom Orders | Daisyline Crochet</title>
-    <meta name="description" content="Request a custom handmade crochet item from Daisyline Crochet. Personalized plushies, bespoke bags, customized bouquets, and special gifts handmade in Pakistan.">
+    <meta name="description" content="Order bespoke handmade crochet creations from Daisyline Crochet. Follow our simple 3-step process to discuss pricing, complete advance payment, and submit your custom order details.">
     
     <!-- Google Fonts: Cormorant Garamond & Manrope -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -36,6 +36,10 @@
                     fontFamily: {
                         heading: ['"Cormorant Garamond"', 'serif'],
                         sans: ['Manrope', 'sans-serif'],
+                    },
+                    boxShadow: {
+                        'soft-card': '0 10px 30px -5px rgba(28, 33, 26, 0.05), 0 4px 12px -2px rgba(28, 33, 26, 0.03)',
+                        'floating': '0 20px 40px -15px rgba(90, 107, 83, 0.12)',
                     }
                 }
             }
@@ -47,9 +51,40 @@
             color: #1C211A;
             -webkit-font-smoothing: antialiased;
         }
+
+        /* Glassmorphism details */
+        .glass-card {
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+        }
+
+        .step-number-badge {
+            background: linear-gradient(135deg, #8fa886 0%, #5A6B53 100%);
+        }
+
+        /* Custom file input styles */
+        .file-upload-box {
+            transition: all 0.3s ease;
+        }
+        .file-upload-box:hover {
+            border-color: #8fa886;
+            background-color: rgba(212, 221, 209, 0.15);
+        }
+
+        /* Toast animation */
+        #toast {
+            transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.4s ease;
+        }
     </style>
 </head>
 <body class="bg-brand-cream text-brand-text font-sans antialiased selection:bg-brand-sage selection:text-white">
+
+    <!-- Toast Notification for Copy Actions -->
+    <div id="toast" class="fixed bottom-6 right-6 z-50 transform translate-y-20 opacity-0 pointer-events-none bg-brand-text text-white px-5 py-3 rounded-full shadow-2xl flex items-center gap-3 text-xs font-medium">
+        <i class="ph ph-check-circle text-brand-sage text-lg"></i>
+        <span id="toast-message">Copied to clipboard!</span>
+    </div>
 
     <!-- Header / Navigation -->
     <header id="navbar" class="fixed w-full top-0 z-40 transition-all duration-500 py-4 bg-white" style="background: #ffffff !important;">
@@ -213,114 +248,564 @@
     </div>
 
     <!-- Main Content -->
-    <main class="pt-24 md:pt-32 pb-20">
+    <main class="pt-20 md:pt-24 pb-24">
+
         <!-- Hero Section -->
-        <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-16 md:mb-24">
-            <div class="relative w-full h-[45vh] md:h-[55vh] rounded-[2rem] md:rounded-[3rem] overflow-hidden shadow-sm bg-brand-sage group">
-                <img src="./images/new5.png" alt="Custom Crochet Creations" class="w-full h-full object-cover opacity-60 mix-blend-multiply">
-                <div class="absolute inset-0 flex flex-col items-center justify-center text-center p-6 bg-brand-text/20">
-                    <span class="text-white tracking-widest uppercase text-xs md:text-sm font-semibold mb-4 block drop-shadow-md">Bring Your Vision to Life</span>
-                    <h1 class="font-heading text-4xl sm:text-6xl lg:text-7xl text-white mb-4 drop-shadow-lg leading-tight">Custom Crochet Orders</h1>
-                    <p class="text-white/95 text-base md:text-xl font-light max-w-2xl mx-auto drop-shadow-md">Handmade specially for you with premium yarn and extreme attention to detail.</p>
+        <section class="relative bg-brand-cream pt-8 pb-12 md:py-16 overflow-hidden">
+            <!-- Decorative background elements -->
+            <div class="absolute top-0 right-0 w-96 h-96 bg-brand-floral/20 rounded-full blur-3xl -z-10 translate-x-1/3 -translate-y-1/3"></div>
+            <div class="absolute bottom-0 left-0 w-96 h-96 bg-brand-ivory rounded-full blur-3xl -z-10 -translate-x-1/3 translate-y-1/3"></div>
+
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="relative w-full h-[40vh] sm:h-[48vh] md:h-[55vh] rounded-[2.5rem] md:rounded-[3.5rem] overflow-hidden shadow-floating bg-brand-olive group">
+                    <img src="./images/new5.png" alt="Custom Crochet Artistry" class="w-full h-full object-cover opacity-50 mix-blend-overlay transition-transform duration-1000 group-hover:scale-105">
+                    <div class="absolute inset-0 bg-gradient-to-t from-brand-text/80 via-brand-text/40 to-transparent flex flex-col items-center justify-center text-center p-6 md:p-12">
+                        <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/20 backdrop-blur-md border border-white/30 text-white text-[11px] md:text-xs tracking-widest uppercase font-semibold mb-4 drop-shadow-sm">
+                            <i class="ph ph-sparkle text-brand-gold"></i>
+                            Bespoke Handcrafted Creations
+                        </div>
+                        <h1 class="font-heading text-4xl sm:text-6xl lg:text-7xl text-white mb-4 drop-shadow-md leading-tight font-medium">Custom Orders</h1>
+                        <p class="text-white/90 text-sm sm:text-lg md:text-xl font-light max-w-2xl mx-auto drop-shadow leading-relaxed">
+                            Every custom crochet item is lovingly handmade according to your exact specifications, yarn choices, and vision.
+                        </p>
+                    </div>
+                </div>
+                
+                <!-- Breadcrumbs -->
+                <nav class="flex justify-center text-[11px] font-medium text-brand-muted uppercase tracking-widest mt-6 md:mt-8">
+                    <ol class="flex items-center space-x-2 bg-white/60 backdrop-blur-md px-6 py-2.5 rounded-full border border-brand-beige/50 shadow-sm">
+                        <li><a href="./index.html" class="hover:text-brand-sage transition-colors">Home</a></li>
+                        <li><span class="text-brand-beige mx-2">/</span></li>
+                        <li class="text-brand-olive font-semibold">Custom Orders</li>
+                    </ol>
+                </nav>
+
+                <!-- Process Steps Visual Overview Strip -->
+                <div class="mt-10 md:mt-14 max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-4 text-center">
+                    <a href="#step-1" class="group bg-white p-4 rounded-2xl border border-brand-beige/60 shadow-soft-card hover:border-brand-sage transition-all duration-300 flex items-center gap-3 text-left">
+                        <div class="w-10 h-10 rounded-full bg-brand-ivory text-brand-sage font-heading text-lg font-bold flex items-center justify-center shrink-0 group-hover:bg-brand-sage group-hover:text-white transition-colors">1</div>
+                        <div>
+                            <span class="block text-[10px] uppercase font-bold text-brand-gold tracking-wider">Step 01</span>
+                            <span class="text-xs font-semibold text-brand-text group-hover:text-brand-sage transition-colors">Contact Us First</span>
+                        </div>
+                    </a>
+                    <a href="#step-2" class="group bg-white p-4 rounded-2xl border border-brand-beige/60 shadow-soft-card hover:border-brand-sage transition-all duration-300 flex items-center gap-3 text-left">
+                        <div class="w-10 h-10 rounded-full bg-brand-ivory text-brand-sage font-heading text-lg font-bold flex items-center justify-center shrink-0 group-hover:bg-brand-sage group-hover:text-white transition-colors">2</div>
+                        <div>
+                            <span class="block text-[10px] uppercase font-bold text-brand-gold tracking-wider">Step 02</span>
+                            <span class="text-xs font-semibold text-brand-text group-hover:text-brand-sage transition-colors">Advance Payment</span>
+                        </div>
+                    </a>
+                    <a href="#step-3" class="group bg-white p-4 rounded-2xl border border-brand-beige/60 shadow-soft-card hover:border-brand-sage transition-all duration-300 flex items-center gap-3 text-left">
+                        <div class="w-10 h-10 rounded-full bg-brand-ivory text-brand-sage font-heading text-lg font-bold flex items-center justify-center shrink-0 group-hover:bg-brand-sage group-hover:text-white transition-colors">3</div>
+                        <div>
+                            <span class="block text-[10px] uppercase font-bold text-brand-gold tracking-wider">Step 03</span>
+                            <span class="text-xs font-semibold text-brand-text group-hover:text-brand-sage transition-colors">Fill Custom Form</span>
+                        </div>
+                    </a>
                 </div>
             </div>
-            
-            <nav class="flex justify-center text-[10px] sm:text-xs font-medium text-brand-muted uppercase tracking-widest mt-8">
-                <ol class="flex items-center space-x-2">
-                    <li><a href="./index.html" class="hover:text-brand-sage transition-colors">Home</a></li>
-                    <li><span class="text-brand-beige mx-2">/</span></li>
-                    <li class="text-brand-olive">Custom Orders</li>
-                </ol>
-            </nav>
         </section>
 
-        <!-- Custom Order Request Form & Details -->
-        <section class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12">
+        <!-- SECTION 1: STEP 1 — CONTACT US FIRST -->
+        <section id="step-1" class="py-16 md:py-24 bg-brand-ivory/60 border-y border-brand-beige/50 relative">
+            <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
                 
-                <!-- Left: Guidelines & Details -->
-                <div class="lg:col-span-5 space-y-8">
-                    <div class="bg-white p-8 rounded-3xl shadow-sm border border-brand-beige/50">
-                        <div class="w-12 h-12 rounded-full bg-brand-ivory flex items-center justify-center text-brand-sage mb-6">
-                            <i class="ph ph-magic-wand text-2xl"></i>
-                        </div>
-                        <h2 class="font-heading text-3xl text-brand-text mb-4">How Custom Orders Work</h2>
-                        <ul class="space-y-4 text-sm text-brand-muted font-light">
-                            <li class="flex items-start gap-3">
-                                <i class="ph ph-check-circle text-brand-sage text-lg shrink-0 mt-0.5"></i>
-                                <span>Share your idea, reference picture, or color preferences.</span>
-                            </li>
-                            <li class="flex items-start gap-3">
-                                <i class="ph ph-check-circle text-brand-sage text-lg shrink-0 mt-0.5"></i>
-                                <span>We verify feasibility, discuss dimensions, and provide a price quote.</span>
-                            </li>
-                            <li class="flex items-start gap-3">
-                                <i class="ph ph-check-circle text-brand-sage text-lg shrink-0 mt-0.5"></i>
-                                <span>Advance payment via Easypaisa, JazzCash, or Bank Transfer confirms your spot in our queue.</span>
-                            </li>
-                            <li class="flex items-start gap-3">
-                                <i class="ph ph-check-circle text-brand-sage text-lg shrink-0 mt-0.5"></i>
-                                <span>Production takes 5–10 working days depending on order complexity.</span>
-                            </li>
-                        </ul>
+                <!-- Section Header -->
+                <div class="text-center max-w-3xl mx-auto mb-12 md:mb-16">
+                    <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-brand-sage/15 text-brand-olive text-[11px] font-bold tracking-widest uppercase mb-4">
+                        <span class="w-2 h-2 rounded-full bg-brand-sage animate-pulse"></span>
+                        Step 1 — Mandatory First Step
                     </div>
+                    <h2 class="font-heading text-3xl sm:text-5xl text-brand-text mb-4 font-normal">Contact Us First</h2>
+                    <div class="w-16 h-[2px] bg-brand-gold mx-auto mb-6"></div>
+                    <p class="text-brand-muted text-sm sm:text-base font-light leading-relaxed">
+                        Before submitting the custom order form, please reach out to our team via social channels or WhatsApp so we can review your idea, check yarn feasibility, and provide an accurate quotation.
+                    </p>
+                </div>
 
-                    <div class="bg-brand-ivory p-8 rounded-3xl border border-brand-beige/50">
-                        <h3 class="font-heading text-2xl text-brand-text mb-3">Direct Contact</h3>
-                        <p class="text-sm text-brand-muted font-light mb-6">Prefer messaging directly on Instagram or WhatsApp? Send us your reference image for a instant quote.</p>
-                        <a href="https://www.instagram.com/daisylinecrochet/" target="_blank" rel="noopener noreferrer" class="inline-flex items-center justify-center gap-2 w-full py-3.5 px-6 bg-brand-text text-white rounded-full text-xs font-semibold uppercase tracking-wider hover:bg-brand-sage transition-colors">
-                            <i class="ph ph-instagram-logo text-lg"></i> Message on Instagram
-                        </a>
+                <!-- Explanation Box -->
+                <div class="bg-white p-6 sm:p-10 rounded-3xl border border-brand-beige/80 shadow-soft-card mb-12 relative overflow-hidden">
+                    <div class="absolute top-0 right-0 w-32 h-32 bg-brand-floral/30 rounded-bl-full -z-0 pointer-events-none"></div>
+                    
+                    <div class="relative z-10 grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+                        <div class="lg:col-span-7 space-y-4">
+                            <h3 class="font-heading text-2xl sm:text-3xl text-brand-text font-medium flex items-center gap-3">
+                                <i class="ph ph-chat-teardrop-dots text-brand-sage text-2xl"></i>
+                                Why contact us before ordering?
+                            </h3>
+                            <p class="text-brand-muted text-sm font-light leading-relaxed">
+                                Custom crochet requires careful planning regarding colors, yarn texture, sizes, and artisan timeline. When you contact our designer first, we will:
+                            </p>
+                            <ul class="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-2">
+                                <li class="flex items-center gap-3 text-xs sm:text-sm text-brand-text bg-brand-cream/80 p-3 rounded-xl border border-brand-beige/40">
+                                    <i class="ph ph-check-circle text-brand-sage text-lg shrink-0"></i>
+                                    <span>Discuss your exact requirements</span>
+                                </li>
+                                <li class="flex items-center gap-3 text-xs sm:text-sm text-brand-text bg-brand-cream/80 p-3 rounded-xl border border-brand-beige/40">
+                                    <i class="ph ph-check-circle text-brand-sage text-lg shrink-0"></i>
+                                    <span>Check design feasibility</span>
+                                </li>
+                                <li class="flex items-center gap-3 text-xs sm:text-sm text-brand-text bg-brand-cream/80 p-3 rounded-xl border border-brand-beige/40">
+                                    <i class="ph ph-check-circle text-brand-sage text-lg shrink-0"></i>
+                                    <span>Finalize color & dimensions</span>
+                                </li>
+                                <li class="flex items-center gap-3 text-xs sm:text-sm text-brand-text bg-brand-cream/80 p-3 rounded-xl border border-brand-beige/40">
+                                    <i class="ph ph-check-circle text-brand-sage text-lg shrink-0"></i>
+                                    <span>Estimate production timeline</span>
+                                </li>
+                            </ul>
+                        </div>
+
+                        <!-- Important Quote Highlight Banner -->
+                        <div class="lg:col-span-5 bg-brand-floral/20 p-6 rounded-2xl border border-brand-sage/30 flex flex-col justify-center">
+                            <div class="flex items-center gap-3 mb-3 text-brand-olive font-semibold text-xs uppercase tracking-wider">
+                                <i class="ph ph-info text-xl text-brand-sage"></i>
+                                <span>Designer Approval Notice</span>
+                            </div>
+                            <p class="text-xs sm:text-sm text-brand-text font-normal leading-relaxed italic">
+                                "Once our designer approves your design and shares the final quotation, you may proceed with the advance payment and complete the Custom Order Form below."
+                            </p>
+                        </div>
                     </div>
                 </div>
 
-                <!-- Right: Interactive Form -->
-                <div class="lg:col-span-7 bg-white p-8 md:p-10 rounded-3xl shadow-sm border border-brand-beige/50">
-                    <h2 class="font-heading text-3xl text-brand-text mb-2">Request a Custom Creation</h2>
-                    <p class="text-sm text-brand-muted font-light mb-8">Fill out your requirements below and our team will respond with a quote.</p>
+                <!-- Contact Channels Cards Grid -->
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
                     
-                    <form id="custom-order-form" onsubmit="event.preventDefault(); alert('Thank you! Your custom order request has been submitted. We will contact you shortly.'); this.reset();" class="space-y-6">
+                    <!-- WhatsApp -->
+                    <div class="bg-white p-6 rounded-3xl border border-brand-beige/80 shadow-soft-card hover:border-brand-sage hover:shadow-lg transition-all duration-300 flex flex-col justify-between group">
                         <div>
-                            <label class="block text-xs font-semibold uppercase tracking-wider text-brand-text mb-2">Your Name *</label>
-                            <input type="text" required placeholder="Full Name" class="w-full px-4 py-3.5 rounded-xl border border-brand-beige focus:border-brand-sage focus:outline-none text-sm bg-brand-cream/30">
+                            <div class="flex items-center justify-between mb-4">
+                                <div class="w-12 h-12 rounded-2xl bg-[#25D366]/10 text-[#25D366] flex items-center justify-center text-2xl group-hover:scale-110 transition-transform">
+                                    <i class="ph ph-whatsapp-logo"></i>
+                                </div>
+                                <span class="text-[10px] uppercase font-bold tracking-wider text-brand-muted bg-brand-cream px-3 py-1 rounded-full border border-brand-beige/50">Instant Response</span>
+                            </div>
+                            <h4 class="font-heading text-2xl text-brand-text font-medium mb-1">WhatsApp</h4>
+                            <p class="text-xs text-brand-muted mb-4">Direct message our artisan for quick quotes & live chat.</p>
+                            <p class="font-mono text-xs sm:text-sm font-semibold text-brand-text mb-6 tracking-wide bg-brand-cream p-3 rounded-xl border border-brand-beige/40 flex justify-between items-center">
+                                <span>+92 319 8504489</span>
+                                <button onclick="copyToClipboard('+923198504489', 'WhatsApp number copied!')" class="text-brand-sage hover:text-brand-olive text-base p-1" title="Copy Number">
+                                    <i class="ph ph-copy"></i>
+                                </button>
+                            </p>
                         </div>
+                        <a href="https://wa.me/923198504489" target="_blank" rel="noopener noreferrer" class="w-full py-3.5 px-4 bg-[#25D366] text-white rounded-2xl font-semibold text-xs uppercase tracking-wider flex items-center justify-center gap-2 hover:bg-[#1EBE5D] transition-colors shadow-sm">
+                            <i class="ph ph-whatsapp-logo text-lg"></i>
+                            Chat on WhatsApp
+                        </a>
+                    </div>
 
+                    <!-- Instagram -->
+                    <div class="bg-white p-6 rounded-3xl border border-brand-beige/80 shadow-soft-card hover:border-brand-sage hover:shadow-lg transition-all duration-300 flex flex-col justify-between group">
+                        <div>
+                            <div class="flex items-center justify-between mb-4">
+                                <div class="w-12 h-12 rounded-2xl bg-[#E1306C]/10 text-[#E1306C] flex items-center justify-center text-2xl group-hover:scale-110 transition-transform">
+                                    <i class="ph ph-instagram-logo"></i>
+                                </div>
+                                <span class="text-[10px] uppercase font-bold tracking-wider text-brand-muted bg-brand-cream px-3 py-1 rounded-full border border-brand-beige/50">Official Page</span>
+                            </div>
+                            <h4 class="font-heading text-2xl text-brand-text font-medium mb-1">Instagram</h4>
+                            <p class="text-xs text-brand-muted mb-4">Send reference photos, reels, or pins via DMs.</p>
+                            <p class="font-sans text-xs sm:text-sm font-semibold text-brand-text mb-6 tracking-wide bg-brand-cream p-3 rounded-xl border border-brand-beige/40 truncate">
+                                @daisylinecrochet
+                            </p>
+                        </div>
+                        <a href="https://www.instagram.com/daisylinecrochet/" target="_blank" rel="noopener noreferrer" class="w-full py-3.5 px-4 bg-brand-text text-white rounded-2xl font-semibold text-xs uppercase tracking-wider flex items-center justify-center gap-2 hover:bg-brand-sage transition-colors shadow-sm">
+                            <i class="ph ph-instagram-logo text-lg"></i>
+                            Message on Instagram
+                        </a>
+                    </div>
+
+                    <!-- Facebook -->
+                    <div class="bg-white p-6 rounded-3xl border border-brand-beige/80 shadow-soft-card hover:border-brand-sage hover:shadow-lg transition-all duration-300 flex flex-col justify-between group">
+                        <div>
+                            <div class="flex items-center justify-between mb-4">
+                                <div class="w-12 h-12 rounded-2xl bg-[#1877F2]/10 text-[#1877F2] flex items-center justify-center text-2xl group-hover:scale-110 transition-transform">
+                                    <i class="ph ph-facebook-logo"></i>
+                                </div>
+                                <span class="text-[10px] uppercase font-bold tracking-wider text-brand-muted bg-brand-cream px-3 py-1 rounded-full border border-brand-beige/50">Community</span>
+                            </div>
+                            <h4 class="font-heading text-2xl text-brand-text font-medium mb-1">Facebook</h4>
+                            <p class="text-xs text-brand-muted mb-4">Connect with us on Messenger for order inquiries.</p>
+                            <p class="font-sans text-xs sm:text-sm font-semibold text-brand-text mb-6 tracking-wide bg-brand-cream p-3 rounded-xl border border-brand-beige/40 truncate">
+                                Daisyline Crochet
+                            </p>
+                        </div>
+                        <a href="https://www.facebook.com/share/1HeWDJU5ap/" target="_blank" rel="noopener noreferrer" class="w-full py-3.5 px-4 bg-[#1877F2] text-white rounded-2xl font-semibold text-xs uppercase tracking-wider flex items-center justify-center gap-2 hover:bg-[#166FE5] transition-colors shadow-sm">
+                            <i class="ph ph-facebook-logo text-lg"></i>
+                            Visit Facebook
+                        </a>
+                    </div>
+
+                    <!-- Threads -->
+                    <div class="bg-white p-6 rounded-3xl border border-brand-beige/80 shadow-soft-card hover:border-brand-sage hover:shadow-lg transition-all duration-300 flex flex-col justify-between group">
+                        <div>
+                            <div class="flex items-center justify-between mb-4">
+                                <div class="w-12 h-12 rounded-2xl bg-brand-text/10 text-brand-text flex items-center justify-center text-2xl group-hover:scale-110 transition-transform">
+                                    <i class="ph ph-at"></i>
+                                </div>
+                                <span class="text-[10px] uppercase font-bold tracking-wider text-brand-muted bg-brand-cream px-3 py-1 rounded-full border border-brand-beige/50">Social</span>
+                            </div>
+                            <h4 class="font-heading text-2xl text-brand-text font-medium mb-1">Threads</h4>
+                            <p class="text-xs text-brand-muted mb-4">Follow our daily studio updates and behind-the-scenes.</p>
+                            <p class="font-sans text-xs sm:text-sm font-semibold text-brand-text mb-6 tracking-wide bg-brand-cream p-3 rounded-xl border border-brand-beige/40 truncate">
+                                @daisylinecrochet
+                            </p>
+                        </div>
+                        <a href="https://www.threads.com/@daisylinecrochet" target="_blank" rel="noopener noreferrer" class="w-full py-3.5 px-4 bg-brand-text text-white rounded-2xl font-semibold text-xs uppercase tracking-wider flex items-center justify-center gap-2 hover:bg-brand-sage transition-colors shadow-sm">
+                            <i class="ph ph-at text-lg"></i>
+                            Connect on Threads
+                        </a>
+                    </div>
+
+                    <!-- TikTok -->
+                    <div class="bg-white p-6 rounded-3xl border border-brand-beige/80 shadow-soft-card hover:border-brand-sage hover:shadow-lg transition-all duration-300 flex flex-col justify-between group sm:col-span-2 lg:col-span-1">
+                        <div>
+                            <div class="flex items-center justify-between mb-4">
+                                <div class="w-12 h-12 rounded-2xl bg-black/10 text-black flex items-center justify-center text-2xl group-hover:scale-110 transition-transform">
+                                    <i class="ph ph-tiktok-logo"></i>
+                                </div>
+                                <span class="text-[10px] uppercase font-bold tracking-wider text-brand-muted bg-brand-cream px-3 py-1 rounded-full border border-brand-beige/50">Short Videos</span>
+                            </div>
+                            <h4 class="font-heading text-2xl text-brand-text font-medium mb-1">TikTok</h4>
+                            <p class="text-xs text-brand-muted mb-4">Watch video showcases of custom crochet creations.</p>
+                            <p class="font-sans text-xs sm:text-sm font-semibold text-brand-text mb-6 tracking-wide bg-brand-cream p-3 rounded-xl border border-brand-beige/40 truncate">
+                                @daisylinecrochet
+                            </p>
+                        </div>
+                        <a href="https://www.tiktok.com/@daisylinecrochet?_r=1&_t=ZS-98DQTwu0jqr" target="_blank" rel="noopener noreferrer" class="w-full py-3.5 px-4 bg-black text-white rounded-2xl font-semibold text-xs uppercase tracking-wider flex items-center justify-center gap-2 hover:bg-brand-sage transition-colors shadow-sm">
+                            <i class="ph ph-tiktok-logo text-lg"></i>
+                            Watch on TikTok
+                        </a>
+                    </div>
+
+                </div>
+
+            </div>
+        </section>
+
+        <!-- SECTION 2: STEP 2 — MAKE YOUR ADVANCE PAYMENT -->
+        <section id="step-2" class="py-16 md:py-24 bg-brand-floral/20 relative">
+            <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+                
+                <!-- Section Header -->
+                <div class="text-center max-w-3xl mx-auto mb-12 md:mb-16">
+                    <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-brand-gold/20 text-brand-text text-[11px] font-bold tracking-widest uppercase mb-4">
+                        <i class="ph ph-shield-check text-brand-gold text-sm"></i>
+                        Step 2 — Order Confirmation
+                    </div>
+                    <h2 class="font-heading text-3xl sm:text-5xl text-brand-text mb-4 font-normal">Make Your Advance Payment</h2>
+                    <div class="w-16 h-[2px] bg-brand-gold mx-auto mb-6"></div>
+                    <p class="text-brand-muted text-sm sm:text-base font-light leading-relaxed">
+                        After receiving approval & final price estimate from our designer in Step 1, transfer the advance amount to confirm your queue slot.
+                    </p>
+                </div>
+
+                <!-- Payment Accounts Grid -->
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-10">
+                    
+                    <!-- Bank Transfer Card -->
+                    <div class="bg-white p-6 rounded-3xl border border-brand-beige/80 shadow-soft-card hover:shadow-lg transition-all duration-300 relative flex flex-col justify-between">
+                        <div>
+                            <div class="flex items-center justify-between mb-4">
+                                <div class="w-10 h-10 rounded-2xl bg-brand-ivory text-brand-sage flex items-center justify-center text-xl font-bold">
+                                    <i class="ph ph-bank"></i>
+                                </div>
+                                <span class="text-[10px] font-bold uppercase tracking-wider text-brand-olive bg-brand-floral/40 px-3 py-1 rounded-full">Bank Transfer</span>
+                            </div>
+                            <h3 class="font-heading text-2xl text-brand-text font-medium mb-4">Bank Transfer</h3>
+                            
+                            <div class="space-y-3.5 text-xs text-brand-muted font-light">
+                                <div class="p-3 bg-brand-cream/80 rounded-2xl border border-brand-beige/40">
+                                    <span class="block text-[10px] uppercase font-bold text-brand-muted">Account Holder</span>
+                                    <span class="text-sm font-semibold text-brand-text">USWA SHAHID</span>
+                                </div>
+
+                                <div class="p-3 bg-brand-cream/80 rounded-2xl border border-brand-beige/40 flex justify-between items-center">
+                                    <div>
+                                        <span class="block text-[10px] uppercase font-bold text-brand-muted">Account Number</span>
+                                        <span class="font-mono text-sm font-semibold text-brand-text">04050114854547</span>
+                                    </div>
+                                    <button onclick="copyToClipboard('04050114854547', 'Account Number copied!')" class="px-2.5 py-1.5 bg-white text-brand-sage hover:text-brand-olive rounded-xl border border-brand-beige text-[11px] font-semibold flex items-center gap-1 transition-colors">
+                                        <i class="ph ph-copy text-sm"></i> Copy
+                                    </button>
+                                </div>
+
+                                <div class="p-3 bg-brand-cream/80 rounded-2xl border border-brand-beige/40 flex justify-between items-center">
+                                    <div class="pr-2 truncate">
+                                        <span class="block text-[10px] uppercase font-bold text-brand-muted">IBAN</span>
+                                        <span class="font-mono text-xs font-semibold text-brand-text block truncate">PK28MEZN0004050114854547</span>
+                                    </div>
+                                    <button onclick="copyToClipboard('PK28MEZN0004050114854547', 'IBAN copied!')" class="shrink-0 px-2.5 py-1.5 bg-white text-brand-sage hover:text-brand-olive rounded-xl border border-brand-beige text-[11px] font-semibold flex items-center gap-1 transition-colors">
+                                        <i class="ph ph-copy text-sm"></i> Copy
+                                    </button>
+                                </div>
+
+                                <div class="p-3 bg-brand-cream/80 rounded-2xl border border-brand-beige/40">
+                                    <span class="block text-[10px] uppercase font-bold text-brand-muted">Branch</span>
+                                    <span class="text-xs font-semibold text-brand-text">SATYANA RD – FAISALABAD</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- JazzCash Card -->
+                    <div class="bg-white p-6 rounded-3xl border border-brand-beige/80 shadow-soft-card hover:shadow-lg transition-all duration-300 relative flex flex-col justify-between">
+                        <div>
+                            <div class="flex items-center justify-between mb-4">
+                                <div class="w-10 h-10 rounded-2xl bg-brand-ivory text-brand-gold flex items-center justify-center text-xl font-bold">
+                                    <i class="ph ph-device-mobile"></i>
+                                </div>
+                                <span class="text-[10px] font-bold uppercase tracking-wider text-brand-text bg-brand-ivory px-3 py-1 rounded-full">Mobile Wallet</span>
+                            </div>
+                            <h3 class="font-heading text-2xl text-brand-text font-medium mb-4">JazzCash</h3>
+                            
+                            <div class="space-y-3.5 text-xs text-brand-muted font-light">
+                                <div class="p-3 bg-brand-cream/80 rounded-2xl border border-brand-beige/40">
+                                    <span class="block text-[10px] uppercase font-bold text-brand-muted">Account Title</span>
+                                    <span class="text-sm font-semibold text-brand-text">Uswah Shahid</span>
+                                </div>
+
+                                <div class="p-3 bg-brand-cream/80 rounded-2xl border border-brand-beige/40 flex justify-between items-center">
+                                    <div>
+                                        <span class="block text-[10px] uppercase font-bold text-brand-muted">JazzCash Number</span>
+                                        <span class="font-mono text-sm sm:text-base font-bold text-brand-text">0319 8504489</span>
+                                    </div>
+                                    <button onclick="copyToClipboard('03198504489', 'JazzCash number copied!')" class="px-2.5 py-1.5 bg-white text-brand-sage hover:text-brand-olive rounded-xl border border-brand-beige text-[11px] font-semibold flex items-center gap-1 transition-colors">
+                                        <i class="ph ph-copy text-sm"></i> Copy
+                                    </button>
+                                </div>
+
+                                <div class="p-4 bg-brand-floral/10 rounded-2xl border border-brand-sage/20 text-xs text-brand-muted">
+                                    Instant mobile transfer available from any mobile banking app or JazzCash shop.
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- NayaPay Card -->
+                    <div class="bg-white p-6 rounded-3xl border border-brand-beige/80 shadow-soft-card hover:shadow-lg transition-all duration-300 relative flex flex-col justify-between">
+                        <div>
+                            <div class="flex items-center justify-between mb-4">
+                                <div class="w-10 h-10 rounded-2xl bg-brand-ivory text-brand-olive flex items-center justify-center text-xl font-bold">
+                                    <i class="ph ph-wallet"></i>
+                                </div>
+                                <span class="text-[10px] font-bold uppercase tracking-wider text-brand-text bg-brand-ivory px-3 py-1 rounded-full">Digital Wallet</span>
+                            </div>
+                            <h3 class="font-heading text-2xl text-brand-text font-medium mb-4">NayaPay</h3>
+                            
+                            <div class="space-y-3.5 text-xs text-brand-muted font-light">
+                                <div class="p-3 bg-brand-cream/80 rounded-2xl border border-brand-beige/40">
+                                    <span class="block text-[10px] uppercase font-bold text-brand-muted">Account Title</span>
+                                    <span class="text-sm font-semibold text-brand-text">Uswah Shahid</span>
+                                </div>
+
+                                <div class="p-3 bg-brand-cream/80 rounded-2xl border border-brand-beige/40 flex justify-between items-center">
+                                    <div>
+                                        <span class="block text-[10px] uppercase font-bold text-brand-muted">NayaPay ID / Number</span>
+                                        <span class="font-mono text-sm sm:text-base font-bold text-brand-text">0319 8504489</span>
+                                    </div>
+                                    <button onclick="copyToClipboard('03198504489', 'NayaPay number copied!')" class="px-2.5 py-1.5 bg-white text-brand-sage hover:text-brand-olive rounded-xl border border-brand-beige text-[11px] font-semibold flex items-center gap-1 transition-colors">
+                                        <i class="ph ph-copy text-sm"></i> Copy
+                                    </button>
+                                </div>
+
+                                <div class="p-4 bg-brand-floral/10 rounded-2xl border border-brand-sage/20 text-xs text-brand-muted">
+                                    Seamless digital wallet payment supported. Zero extra charges.
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+                <!-- Mandatory Payment Screenshot Notice Bar -->
+                <div class="bg-white p-5 sm:p-6 rounded-2xl border-2 border-dashed border-brand-gold/60 shadow-soft-card flex items-center gap-4 text-brand-text">
+                    <div class="w-12 h-12 rounded-full bg-brand-gold/20 text-brand-gold flex items-center justify-center text-2xl shrink-0">
+                        <i class="ph ph-receipt"></i>
+                    </div>
+                    <div>
+                        <h4 class="font-bold text-xs sm:text-sm uppercase tracking-wider text-brand-text mb-0.5">Important Notice: Keep Payment Screenshot Ready</h4>
+                        <p class="text-xs sm:text-sm text-brand-muted font-light">
+                            Keep your payment screenshot ready because it is strictly required during form submission in Step 3.
+                        </p>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- SECTION 3: STEP 3 — COMPLETE THE CUSTOM ORDER FORM -->
+        <section id="step-3" class="py-16 md:py-24 bg-brand-cream relative">
+            <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+                
+                <!-- Section Header -->
+                <div class="text-center max-w-2xl mx-auto mb-10 md:mb-14">
+                    <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-brand-sage text-white text-[11px] font-bold tracking-widest uppercase mb-4 shadow-sm">
+                        <i class="ph ph-check text-sm"></i>
+                        Step 3 — Order Submission
+                    </div>
+                    <h2 class="font-heading text-3xl sm:text-5xl text-brand-text mb-4 font-normal">Complete Custom Order Form</h2>
+                    <div class="w-16 h-[2px] bg-brand-gold mx-auto mb-6"></div>
+                    <p class="text-brand-muted text-sm sm:text-base font-light leading-relaxed">
+                        Please complete all fields below to register your order into our handmade production queue.
+                    </p>
+                </div>
+
+                <!-- Form Card Wrapper -->
+                <div class="bg-white p-6 sm:p-10 md:p-12 rounded-[2rem] sm:rounded-[2.5rem] shadow-floating border border-brand-beige/80 relative">
+                    
+                    <!-- Top Warning Reminder -->
+                    <div class="mb-8 p-4 rounded-2xl bg-brand-ivory border border-brand-beige/60 flex items-center gap-3 text-xs text-brand-muted">
+                        <i class="ph ph-warning-circle text-brand-gold text-xl shrink-0"></i>
+                        <span>Kindly complete <strong>Step 1</strong> (Designer Approval) & <strong>Step 2</strong> (Advance Payment) prior to submitting this form.</span>
+                    </div>
+
+                    <form id="custom-order-form" onsubmit="handleCustomOrderSubmit(event)" class="space-y-6 md:space-y-8">
+                        
+                        <!-- Personal Info Grid -->
                         <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                            <!-- Full Name -->
                             <div>
-                                <label class="block text-xs font-semibold uppercase tracking-wider text-brand-text mb-2">Phone / WhatsApp *</label>
-                                <input type="tel" required placeholder="03XX-XXXXXXX" class="w-full px-4 py-3.5 rounded-xl border border-brand-beige focus:border-brand-sage focus:outline-none text-sm bg-brand-cream/30">
+                                <label for="fullName" class="block text-xs font-bold uppercase tracking-wider text-brand-text mb-2">
+                                    Full Name <span class="text-red-500">*</span>
+                                </label>
+                                <input type="text" id="fullName" required placeholder="e.g. Ayesha Khan" class="w-full px-4 py-3.5 rounded-2xl border border-brand-beige focus:border-brand-sage focus:ring-2 focus:ring-brand-sage/20 focus:outline-none text-sm bg-brand-cream/40 text-brand-text placeholder-brand-muted/60 transition-all">
                             </div>
+
+                            <!-- Phone / WhatsApp -->
                             <div>
-                                <label class="block text-xs font-semibold uppercase tracking-wider text-brand-text mb-2">Email Address</label>
-                                <input type="email" placeholder="name@example.com" class="w-full px-4 py-3.5 rounded-xl border border-brand-beige focus:border-brand-sage focus:outline-none text-sm bg-brand-cream/30">
+                                <label for="phone" class="block text-xs font-bold uppercase tracking-wider text-brand-text mb-2">
+                                    Phone Number / WhatsApp <span class="text-red-500">*</span>
+                                </label>
+                                <input type="tel" id="phone" required placeholder="03XX-XXXXXXX" class="w-full px-4 py-3.5 rounded-2xl border border-brand-beige focus:border-brand-sage focus:ring-2 focus:ring-brand-sage/20 focus:outline-none text-sm bg-brand-cream/40 text-brand-text placeholder-brand-muted/60 transition-all">
                             </div>
                         </div>
 
-                        <div>
-                            <label class="block text-xs font-semibold uppercase tracking-wider text-brand-text mb-2">Item Type *</label>
-                            <select required class="w-full px-4 py-3.5 rounded-xl border border-brand-beige focus:border-brand-sage focus:outline-none text-sm bg-brand-cream/30">
-                                <option value="">Select Category...</option>
-                                <option value="plushie">Custom Plushie / Toy</option>
-                                <option value="bouquet">Custom Crochet Bouquet</option>
-                                <option value="bag">Custom Bag / Tote</option>
-                                <option value="clothing">Custom Cardigan / Apparel</option>
-                                <option value="accessory">Hair & Hand Accessories</option>
-                                <option value="other">Other Unique Design</option>
-                            </select>
+                        <!-- Email Address & City -->
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                            <!-- Email -->
+                            <div>
+                                <label for="email" class="block text-xs font-bold uppercase tracking-wider text-brand-text mb-2">
+                                    Email Address <span class="text-red-500">*</span>
+                                </label>
+                                <input type="email" id="email" required placeholder="name@example.com" class="w-full px-4 py-3.5 rounded-2xl border border-brand-beige focus:border-brand-sage focus:ring-2 focus:ring-brand-sage/20 focus:outline-none text-sm bg-brand-cream/40 text-brand-text placeholder-brand-muted/60 transition-all">
+                            </div>
+
+                            <!-- City -->
+                            <div>
+                                <label for="city" class="block text-xs font-bold uppercase tracking-wider text-brand-text mb-2">
+                                    City <span class="text-red-500">*</span>
+                                </label>
+                                <input type="text" id="city" required placeholder="e.g. Faisalabad, Lahore, Karachi" class="w-full px-4 py-3.5 rounded-2xl border border-brand-beige focus:border-brand-sage focus:ring-2 focus:ring-brand-sage/20 focus:outline-none text-sm bg-brand-cream/40 text-brand-text placeholder-brand-muted/60 transition-all">
+                            </div>
                         </div>
 
+                        <!-- Item Type Category Dropdown -->
                         <div>
-                            <label class="block text-xs font-semibold uppercase tracking-wider text-brand-text mb-2">Detailed Description & Color Preferences *</label>
-                            <textarea required rows="4" placeholder="Describe what you would like us to make (colors, size, specific details)..." class="w-full px-4 py-3.5 rounded-xl border border-brand-beige focus:border-brand-sage focus:outline-none text-sm bg-brand-cream/30"></textarea>
+                            <label for="itemType" class="block text-xs font-bold uppercase tracking-wider text-brand-text mb-2">
+                                Item Type <span class="text-red-500">*</span>
+                            </label>
+                            <div class="relative">
+                                <select id="itemType" required class="w-full px-4 py-3.5 rounded-2xl border border-brand-beige focus:border-brand-sage focus:ring-2 focus:ring-brand-sage/20 focus:outline-none text-sm bg-brand-cream/40 text-brand-text appearance-none transition-all cursor-pointer">
+                                    <option value="">Select Category...</option>
+                                    <option value="Baby Sets">Baby Sets</option>
+                                    <option value="Bags / Wallets">Bags / Wallets</option>
+                                    <option value="Book Items">Book Items</option>
+                                    <option value="Bouquets">Bouquets</option>
+                                    <option value="Clothing">Clothing</option>
+                                    <option value="Earrings">Earrings</option>
+                                    <option value="Gifting">Gifting</option>
+                                    <option value="Hair Accessories">Hair Accessories</option>
+                                    <option value="Hand Accessories">Hand Accessories</option>
+                                    <option value="Home Decor">Home Decor</option>
+                                    <option value="Keychains">Keychains</option>
+                                    <option value="Plushies">Plushies</option>
+                                </select>
+                                <i class="ph ph-caret-down absolute right-4 top-1/2 -translate-y-1/2 text-brand-muted pointer-events-none"></i>
+                            </div>
                         </div>
 
-                        <button type="submit" class="w-full py-4 bg-brand-sage text-white rounded-full font-semibold text-xs uppercase tracking-widest hover:bg-brand-olive transition-colors shadow-sm">
-                            Submit Custom Request
-                        </button>
+                        <!-- Delivery Address -->
+                        <div>
+                            <label for="deliveryAddress" class="block text-xs font-bold uppercase tracking-wider text-brand-text mb-2">
+                                Delivery Address <span class="text-red-500">*</span>
+                            </label>
+                            <textarea id="deliveryAddress" required rows="3" placeholder="Enter complete home or office address (House #, Street #, Sector/Area, Landmark)..." class="w-full px-4 py-3.5 rounded-2xl border border-brand-beige focus:border-brand-sage focus:ring-2 focus:ring-brand-sage/20 focus:outline-none text-sm bg-brand-cream/40 text-brand-text placeholder-brand-muted/60 transition-all"></textarea>
+                        </div>
+
+                        <!-- Detailed Description -->
+                        <div>
+                            <label for="description" class="block text-xs font-bold uppercase tracking-wider text-brand-text mb-2">
+                                Detailed Description <span class="text-red-500">*</span>
+                            </label>
+                            <textarea id="description" required rows="5" placeholder="Provide as much detail as possible about your custom order (e.g. exact colors, desired height/dimensions, specific yarn texture, personalization names, or agreed quote details from Step 1)..." class="w-full px-4 py-3.5 rounded-2xl border border-brand-beige focus:border-brand-sage focus:ring-2 focus:ring-brand-sage/20 focus:outline-none text-sm bg-brand-cream/40 text-brand-text placeholder-brand-muted/60 transition-all"></textarea>
+                            <p class="mt-2 text-[11px] text-brand-muted font-light">
+                                Encouraged: Include color codes, length preferences, or reference details agreed during Step 1.
+                            </p>
+                        </div>
+
+                        <!-- File Upload Grid: Reference Image (Optional) & Payment Screenshot (Required) -->
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 pt-2">
+                            
+                            <!-- Reference Image (Optional) -->
+                            <div>
+                                <label class="block text-xs font-bold uppercase tracking-wider text-brand-text mb-2 flex items-center justify-between">
+                                    <span>Reference Image</span>
+                                    <span class="text-[10px] font-normal lowercase tracking-normal text-brand-muted">(optional)</span>
+                                </label>
+                                <div class="file-upload-box relative border-2 border-dashed border-brand-beige rounded-2xl p-5 text-center cursor-pointer bg-brand-cream/30">
+                                    <input type="file" id="referenceImage" accept="image/*" onchange="handleFilePreview(this, 'ref-preview', 'ref-filename')" class="absolute inset-0 w-full h-full opacity-0 cursor-pointer z-10">
+                                    <div id="ref-preview-container" class="flex flex-col items-center justify-center">
+                                        <i class="ph ph-image text-3xl text-brand-sage mb-2"></i>
+                                        <span class="text-xs font-semibold text-brand-text block" id="ref-filename">Upload Inspiration Photo</span>
+                                        <span class="text-[10px] text-brand-muted block mt-1">PNG, JPG, WEBP up to 10MB</span>
+                                    </div>
+                                </div>
+                                <p class="mt-2 text-[11px] text-brand-muted font-light leading-snug">
+                                    "If you have inspiration images from Pinterest, Instagram, Facebook, or elsewhere, upload them here. It helps us understand your idea better."
+                                </p>
+                            </div>
+
+                            <!-- Advance Payment Screenshot (REQUIRED) -->
+                            <div>
+                                <label class="block text-xs font-bold uppercase tracking-wider text-brand-text mb-2 flex items-center justify-between">
+                                    <span>Advance Payment Screenshot</span>
+                                    <span class="text-[10px] font-bold uppercase tracking-widest text-red-500 bg-red-50 px-2 py-0.5 rounded">Required *</span>
+                                </label>
+                                <div class="file-upload-box relative border-2 border-dashed border-brand-sage/60 rounded-2xl p-5 text-center cursor-pointer bg-brand-floral/10">
+                                    <input type="file" id="paymentScreenshot" required accept="image/*" onchange="handleFilePreview(this, 'pay-preview', 'pay-filename')" class="absolute inset-0 w-full h-full opacity-0 cursor-pointer z-10">
+                                    <div id="pay-preview-container" class="flex flex-col items-center justify-center">
+                                        <i class="ph ph-receipt text-3xl text-brand-gold mb-2"></i>
+                                        <span class="text-xs font-bold text-brand-text block" id="pay-filename">Upload Payment Screenshot *</span>
+                                        <span class="text-[10px] text-brand-muted block mt-1">Receipt from Bank, JazzCash, or NayaPay</span>
+                                    </div>
+                                </div>
+                                <p class="mt-2 text-[11px] text-red-600/90 font-medium leading-snug">
+                                    Mandatory field: Upload your transfer confirmation image from Step 2 to proceed.
+                                </p>
+                            </div>
+
+                        </div>
+
+                        <!-- Submit Button -->
+                        <div class="pt-4">
+                            <button type="submit" class="w-full py-4 sm:py-5 bg-brand-sage text-white rounded-2xl font-bold text-xs sm:text-sm uppercase tracking-widest hover:bg-brand-olive transition-all duration-300 shadow-floating flex items-center justify-center gap-3 transform hover:-translate-y-0.5 active:translate-y-0">
+                                <i class="ph ph-paper-plane-tilt text-lg"></i>
+                                Submit Custom Order Request
+                            </button>
+                            <p class="text-center text-[11px] text-brand-muted mt-3">
+                                Our team will verify your receipt and send an order confirmation message within 12 hours.
+                            </p>
+                        </div>
+
                     </form>
                 </div>
             </div>
         </section>
+
     </main>
 
     <!-- Footer -->
@@ -362,8 +847,48 @@
             </div>
         </div>
     </footer>
+
+    <!-- Interactive Scripts for Copying, File Previews & Submission -->
     <script>
         document.getElementById('year').textContent = new Date().getFullYear();
+
+        // Copy to clipboard notification toast
+        function copyToClipboard(text, message) {
+            navigator.clipboard.writeText(text).then(function() {
+                const toast = document.getElementById('toast');
+                const toastMessage = document.getElementById('toast-message');
+                toastMessage.textContent = message || 'Copied to clipboard!';
+                toast.classList.remove('translate-y-20', 'opacity-0', 'pointer-events-none');
+                
+                setTimeout(() => {
+                    toast.classList.add('translate-y-20', 'opacity-0', 'pointer-events-none');
+                }, 3000);
+            }).catch(function(err) {
+                console.error('Could not copy text: ', err);
+            });
+        }
+
+        // File upload visual indication preview
+        function handleFilePreview(input, previewId, filenameId) {
+            if (input.files && input.files[0]) {
+                const fileName = input.files[0].name;
+                const labelElem = document.getElementById(filenameId);
+                if (labelElem) {
+                    labelElem.textContent = 'Selected: ' + fileName;
+                    labelElem.classList.add('text-brand-sage', 'font-bold');
+                }
+            }
+        }
+
+        // Handle Custom Order Submission
+        function handleCustomOrderSubmit(event) {
+            event.preventDefault();
+            const fullName = document.getElementById('fullName').value;
+            alert(`Thank you ${fullName}! Your custom order request and payment screenshot have been received. Our team will contact you on WhatsApp / Email shortly.`);
+            document.getElementById('custom-order-form').reset();
+            document.getElementById('ref-filename').textContent = 'Upload Inspiration Photo';
+            document.getElementById('pay-filename').textContent = 'Upload Payment Screenshot *';
+        }
     </script>
 </body>
 </html>
