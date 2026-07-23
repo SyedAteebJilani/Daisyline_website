@@ -37,6 +37,9 @@
                     fontFamily: {
                         heading: ['"Cormorant Garamond"', 'serif'],
                         sans: ['Manrope', 'sans-serif'],
+                    },
+                    boxShadow: {
+                        'soft-card': '0 10px 30px -5px rgba(28, 33, 26, 0.05), 0 4px 12px -2px rgba(28, 33, 26, 0.03)',
                     }
                 }
             }
@@ -55,12 +58,33 @@
         .img-hover-container:hover img {
             transform: scale(1.05);
         }
+
+        /* Smooth Accordion Content Transitions */
+        .accordion-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.5s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.4s ease;
+            opacity: 0;
+        }
+        .accordion-content.expanded {
+            max-height: 3000px;
+            opacity: 1;
+        }
+        
+        /* Hide scrollbar for quick nav pills on mobile */
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .no-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
     </style>
 </head>
 <body class="bg-brand-cream text-brand-text font-sans antialiased selection:bg-brand-sage selection:text-white">
 
     <!-- Header / Navigation -->
-    <header id="navbar" class="fixed w-full top-0 z-40 transition-all duration-500 py-4 bg-white" style="background: #ffffff !important;">
+    <header id="navbar" class="relative w-full z-40 transition-all duration-500 py-4 bg-white" style="background: #ffffff !important;">
         <div class="max-w-[90rem] mx-auto px-4 sm:px-8 lg:px-12">
             <div class="flex justify-between items-center h-16 md:h-20">
                 <!-- Mobile Menu Button -->
@@ -221,35 +245,35 @@
     </div>
 
     <!-- Main Content -->
-    <main class="pt-24 md:pt-32 pb-20">
-        <!-- Hero Banner -->
-        <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-16 md:mb-24">
-            <div class="relative w-full h-[50vh] md:h-[65vh] rounded-[2rem] md:rounded-[3rem] overflow-hidden shadow-sm bg-brand-sage group">
+    <main class="pt-4 md:pt-6 pb-20">
+        <!-- Hero Banner (Kept intact) -->
+        <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-12 md:mb-16">
+            <div class="relative w-full h-[45vh] md:h-[60vh] rounded-[2rem] md:rounded-[3rem] overflow-hidden shadow-sm bg-brand-sage group">
                 <img src="./images/hero_image.webp" alt="Handmade Crochet Bouquet" class="w-full h-full object-cover opacity-60 mix-blend-multiply">
                 <div class="absolute inset-0 flex flex-col items-center justify-center text-center p-6 bg-brand-text/10">
                     <span class="text-white tracking-widest uppercase text-xs md:text-sm font-semibold mb-4 block drop-shadow-md">Handcrafted with Love in Pakistan</span>
-                    <h1 class="font-heading text-5xl md:text-7xl lg:text-8xl text-white mb-6 drop-shadow-lg leading-tight">About Daisyline</h1>
-                    <p class="text-white/95 text-lg md:text-2xl font-light max-w-2xl mx-auto drop-shadow-md">A journey of yarn, tradition, and slow-made art.</p>
+                    <h1 class="font-heading text-4xl sm:text-6xl md:text-7xl lg:text-8xl text-white mb-4 md:mb-6 drop-shadow-lg leading-tight">About Daisyline</h1>
+                    <p class="text-white/95 text-base md:text-2xl font-light max-w-2xl mx-auto drop-shadow-md">A journey of yarn, tradition, and slow-made art.</p>
                 </div>
             </div>
             
-            <nav class="flex justify-center text-[10px] sm:text-xs font-medium text-brand-muted uppercase tracking-widest mt-8">
+            <nav class="flex justify-center text-[10px] sm:text-xs font-medium text-brand-muted uppercase tracking-widest mt-6 md:mt-8">
                 <ol class="flex items-center space-x-2">
                     <li><a href="./index.html" class="hover:text-brand-sage transition-colors">Home</a></li>
                     <li><span class="text-brand-beige mx-2">/</span></li>
-                    <li class="text-brand-olive">About Us</li>
+                    <li class="text-brand-olive font-semibold">About Us</li>
                 </ol>
             </nav>
         </section>
 
-        <!-- Our Story -->
-        <section id="story" class="py-16 md:py-24 bg-brand-cream relative">
+        <!-- Our Story (Kept intact) -->
+        <section id="story" class="py-12 md:py-16 bg-brand-cream relative">
             <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-                <div class="inline-flex items-center justify-center w-16 h-16 rounded-full bg-brand-beige/50 text-brand-sage mb-8">
-                    <i class="ph ph-heart text-3xl"></i>
+                <div class="inline-flex items-center justify-center w-14 h-14 md:w-16 md:h-16 rounded-full bg-brand-beige/50 text-brand-sage mb-6">
+                    <i class="ph ph-heart text-2xl md:text-3xl"></i>
                 </div>
-                <h2 class="font-heading text-4xl md:text-5xl text-brand-text mb-8">Our Story</h2>
-                <div class="space-y-6 text-brand-text/80 text-lg md:text-xl font-light leading-relaxed">
+                <h2 class="font-heading text-3xl sm:text-4xl md:text-5xl text-brand-text mb-6">Our Story</h2>
+                <div class="space-y-5 text-brand-text/80 text-base md:text-xl font-light leading-relaxed">
                     <p>Every piece at Daisyline is handmade with love. We believe in the magic of slow living and the beauty of things crafted carefully, loop by loop, stitch by stitch.</p>
                     <p>From cozy cardigans to everlasting bouquets, we pay incredible attention to detail, ensuring that each piece is a unique creation made specially for our customers.</p>
                     <p>By choosing Daisyline, you are not just purchasing a product; you are supporting handmade craftsmanship and keeping a beautiful tradition alive.</p>
@@ -257,190 +281,467 @@
             </div>
         </section>
 
-        <!-- How to Order Timeline -->
-        <section id="how-to-order" class="py-20 md:py-28 bg-brand-ivory relative overflow-hidden">
-            <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-                <div class="text-center mb-16">
-                    <h2 class="font-heading text-4xl md:text-5xl text-brand-text mb-4">How to Order</h2>
-                    <p class="text-brand-muted text-lg font-light">Your journey to owning a handcrafted piece.</p>
-                </div>
-                
-                <div class="space-y-8 relative before:absolute before:inset-0 before:ml-5 before:-translate-x-px md:before:mx-auto md:before:translate-x-0 before:h-full before:w-0.5 before:bg-gradient-to-b before:from-transparent before:via-brand-sage/50 before:to-transparent">
-                    <!-- Step 1 -->
-                    <div class="relative flex items-center justify-between md:justify-normal md:odd:flex-row-reverse group">
-                        <div class="flex items-center justify-center w-10 h-10 rounded-full border-4 border-brand-ivory bg-brand-sage text-white shadow shrink-0 md:order-1 md:group-odd:-translate-x-1/2 md:group-even:translate-x-1/2">
-                            <span class="font-heading text-xl font-bold">1</span>
-                        </div>
-                        <div class="w-[calc(100%-4rem)] md:w-[calc(50%-2.5rem)] p-6 rounded-2xl bg-white shadow-sm hover:shadow-lg transition-all duration-300">
-                            <h3 class="font-heading text-2xl text-brand-text mb-2">Choose your favourite</h3>
-                            <p class="text-brand-muted font-light text-sm">Browse our curated collections and choose your favourite handmade products.</p>
-                        </div>
-                    </div>
+        <!-- Quick Navigation Pills Component -->
+        <section class="py-6 bg-brand-ivory/60 border-y border-brand-beige/50 sticky top-0 z-30 backdrop-blur-md">
+            <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="flex items-center justify-start md:justify-center gap-3 overflow-x-auto no-scrollbar py-1">
                     
-                    <!-- Step 2 -->
-                    <div class="relative flex items-center justify-between md:justify-normal md:odd:flex-row-reverse group">
-                        <div class="flex items-center justify-center w-10 h-10 rounded-full border-4 border-brand-ivory bg-brand-sage text-white shadow shrink-0 md:order-1 md:group-odd:-translate-x-1/2 md:group-even:translate-x-1/2">
-                            <span class="font-heading text-xl font-bold">2</span>
+                    <button onclick="scrollToAndExpand('how-to-order')" class="quick-pill shrink-0 inline-flex items-center gap-2 px-4 py-2.5 rounded-full bg-white border border-brand-beige/80 text-brand-text hover:border-brand-sage hover:bg-brand-sage hover:text-white text-xs font-semibold uppercase tracking-wider transition-all duration-300 shadow-sm">
+                        <i class="ph ph-book-open text-base text-brand-sage group-hover:text-white"></i>
+                        <span>How to Order</span>
+                    </button>
+
+                    <button onclick="scrollToAndExpand('shipping')" class="quick-pill shrink-0 inline-flex items-center gap-2 px-4 py-2.5 rounded-full bg-white border border-brand-beige/80 text-brand-text hover:border-brand-sage hover:bg-brand-sage hover:text-white text-xs font-semibold uppercase tracking-wider transition-all duration-300 shadow-sm">
+                        <i class="ph ph-truck text-base text-brand-sage group-hover:text-white"></i>
+                        <span>Shipping Policy</span>
+                    </button>
+
+                    <button onclick="scrollToAndExpand('returns')" class="quick-pill shrink-0 inline-flex items-center gap-2 px-4 py-2.5 rounded-full bg-white border border-brand-beige/80 text-brand-text hover:border-brand-sage hover:bg-brand-sage hover:text-white text-xs font-semibold uppercase tracking-wider transition-all duration-300 shadow-sm">
+                        <i class="ph ph-arrows-counter-clockwise text-base text-brand-sage group-hover:text-white"></i>
+                        <span>Return Policy</span>
+                    </button>
+
+                    <button onclick="scrollToAndExpand('faq')" class="quick-pill shrink-0 inline-flex items-center gap-2 px-4 py-2.5 rounded-full bg-white border border-brand-beige/80 text-brand-text hover:border-brand-sage hover:bg-brand-sage hover:text-white text-xs font-semibold uppercase tracking-wider transition-all duration-300 shadow-sm">
+                        <i class="ph ph-question text-base text-brand-sage group-hover:text-white"></i>
+                        <span>FAQs</span>
+                    </button>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- Interactive Expandable Accordion Container -->
+        <section class="py-12 md:py-16 bg-brand-cream">
+            <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 space-y-5">
+
+                <!-- SECTION 1: How to Order Accordion -->
+                <div id="acc-how-to-order" class="bg-white rounded-3xl border border-brand-beige/80 shadow-soft-card overflow-hidden transition-all duration-300">
+                    <button onclick="toggleAccordion('acc-how-to-order')" class="w-full p-6 sm:p-7 text-left flex items-center justify-between gap-4 focus:outline-none group">
+                        <div class="flex items-center gap-4">
+                            <div class="w-12 h-12 rounded-2xl bg-brand-ivory text-brand-sage flex items-center justify-center text-2xl shrink-0 group-hover:bg-brand-sage group-hover:text-white transition-colors">
+                                <i class="ph ph-book-open"></i>
+                            </div>
+                            <div>
+                                <span class="text-[10px] uppercase font-bold tracking-widest text-brand-gold block">Section 01</span>
+                                <h3 class="font-heading text-2xl sm:text-3xl text-brand-text font-medium">How to Order</h3>
+                                <p class="text-xs text-brand-muted font-light hidden sm:block">Complete guide for Website & Custom orders</p>
+                            </div>
                         </div>
-                        <div class="w-[calc(100%-4rem)] md:w-[calc(50%-2.5rem)] p-6 rounded-2xl bg-white shadow-sm hover:shadow-lg transition-all duration-300">
-                            <h3 class="font-heading text-2xl text-brand-text mb-2">Add to cart</h3>
-                            <p class="text-brand-muted font-light text-sm">Add products to your cart to begin the secure checkout process.</p>
+                        <div class="w-10 h-10 rounded-full bg-brand-cream flex items-center justify-center text-brand-text shrink-0 group-hover:bg-brand-sage group-hover:text-white transition-colors">
+                            <i id="icon-acc-how-to-order" class="ph ph-caret-down text-xl transition-transform duration-300"></i>
+                        </div>
+                    </button>
+
+                    <!-- Accordion Content Panel -->
+                    <div id="content-acc-how-to-order" class="accordion-content border-t border-brand-beige/40">
+                        <div class="p-6 sm:p-8 space-y-12 bg-brand-cream/30">
+                            
+                            <!-- Part 1: Website Orders -->
+                            <div>
+                                <div class="mb-6 flex items-center gap-3">
+                                    <span class="px-3.5 py-1.5 rounded-full bg-brand-sage text-white text-[11px] font-bold tracking-wider uppercase">
+                                        Part 1 — Website Orders
+                                    </span>
+                                    <h4 class="font-heading text-2xl text-brand-text">Direct Website Purchase</h4>
+                                </div>
+
+                                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                                    <div class="bg-white p-5 rounded-2xl border border-brand-beige/60 shadow-sm">
+                                        <div class="w-8 h-8 rounded-full bg-brand-ivory text-brand-sage font-bold flex items-center justify-center text-sm mb-3">1</div>
+                                        <h5 class="font-heading text-xl text-brand-text mb-1">Choose your favourite</h5>
+                                        <p class="text-xs text-brand-muted font-light">Browse our curated collections and choose your favourite handmade products.</p>
+                                    </div>
+
+                                    <div class="bg-white p-5 rounded-2xl border border-brand-beige/60 shadow-sm">
+                                        <div class="w-8 h-8 rounded-full bg-brand-ivory text-brand-sage font-bold flex items-center justify-center text-sm mb-3">2</div>
+                                        <h5 class="font-heading text-xl text-brand-text mb-1">Add to cart</h5>
+                                        <p class="text-xs text-brand-muted font-light">Add products to your cart to begin the secure checkout process.</p>
+                                    </div>
+
+                                    <div class="bg-white p-5 rounded-2xl border border-brand-beige/60 shadow-sm border-l-4 border-l-brand-gold">
+                                        <div class="w-8 h-8 rounded-full bg-brand-ivory text-brand-gold font-bold flex items-center justify-center text-sm mb-3">3</div>
+                                        <h5 class="font-heading text-xl text-brand-text mb-1">Checkout & Payment</h5>
+                                        <p class="text-xs text-brand-muted font-light mb-2">Complete the checkout form.</p>
+                                        <div class="bg-brand-floral/30 p-2.5 rounded-xl text-[11px] text-brand-olive font-medium">
+                                            <i class="ph ph-warning-circle inline-block mr-1"></i> Uploading advance payment screenshot is mandatory.
+                                        </div>
+                                    </div>
+
+                                    <div class="bg-white p-5 rounded-2xl border border-brand-beige/60 shadow-sm">
+                                        <div class="w-8 h-8 rounded-full bg-brand-ivory text-brand-sage font-bold flex items-center justify-center text-sm mb-3">4</div>
+                                        <h5 class="font-heading text-xl text-brand-text mb-1">Confirmation</h5>
+                                        <p class="text-xs text-brand-muted font-light">After verification, your order will be confirmed with estimated production timeline.</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Part 2: Custom Orders -->
+                            <div class="pt-6 border-t border-brand-beige/50">
+                                <div class="mb-6 flex items-center gap-3">
+                                    <span class="px-3.5 py-1.5 rounded-full bg-brand-gold text-white text-[11px] font-bold tracking-wider uppercase">
+                                        Part 2 — Custom Orders
+                                    </span>
+                                    <h4 class="font-heading text-2xl text-brand-text">How to Place a Custom Order</h4>
+                                </div>
+
+                                <div class="space-y-4">
+                                    <!-- Step 1 -->
+                                    <div class="bg-white p-5 rounded-2xl border border-brand-beige/60 shadow-sm">
+                                        <div class="flex items-center gap-3 mb-2">
+                                            <span class="w-7 h-7 rounded-full bg-brand-gold text-white font-bold flex items-center justify-center text-xs">1</span>
+                                            <h5 class="font-heading text-xl text-brand-text">Contact Our Team</h5>
+                                        </div>
+                                        <p class="text-xs text-brand-muted font-light mb-3">Before placing a custom order, please contact us so we can discuss requirements, review design, check feasibility, finalize price, and estimate production time.</p>
+                                        <div class="flex flex-wrap gap-2">
+                                            <a href="https://wa.me/923198504489" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1 px-3 py-1 rounded-full bg-[#25D366]/10 text-[#25D366] text-[11px] font-semibold">
+                                                <i class="ph ph-whatsapp-logo"></i> WhatsApp (+92 319 8504489)
+                                            </a>
+                                            <a href="https://www.instagram.com/daisylinecrochet/" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1 px-3 py-1 rounded-full bg-[#E1306C]/10 text-[#E1306C] text-[11px] font-semibold">
+                                                <i class="ph ph-instagram-logo"></i> Instagram
+                                            </a>
+                                            <a href="https://www.facebook.com/share/1HeWDJU5ap/" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1 px-3 py-1 rounded-full bg-[#1877F2]/10 text-[#1877F2] text-[11px] font-semibold">
+                                                <i class="ph ph-facebook-logo"></i> Facebook
+                                            </a>
+                                            <a href="https://www.threads.com/@daisylinecrochet" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1 px-3 py-1 rounded-full bg-brand-text/10 text-brand-text text-[11px] font-semibold">
+                                                <i class="ph ph-at"></i> Threads
+                                            </a>
+                                            <a href="https://www.tiktok.com/@daisylinecrochet?_r=1&_t=ZS-98DQTwu0jqr" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1 px-3 py-1 rounded-full bg-black/10 text-black text-[11px] font-semibold">
+                                                <i class="ph ph-tiktok-logo"></i> TikTok
+                                            </a>
+                                        </div>
+                                    </div>
+
+                                    <!-- Step 2 -->
+                                    <div class="bg-white p-5 rounded-2xl border border-brand-beige/60 shadow-sm">
+                                        <div class="flex items-center gap-3 mb-2">
+                                            <span class="w-7 h-7 rounded-full bg-brand-gold text-white font-bold flex items-center justify-center text-xs">2</span>
+                                            <h5 class="font-heading text-xl text-brand-text">Wait for Approval</h5>
+                                        </div>
+                                        <p class="text-xs text-brand-muted font-light">Our designer will review your request, confirm feasibility, share final quotation, and inform production timeline.</p>
+                                    </div>
+
+                                    <!-- Step 3 -->
+                                    <div class="bg-white p-5 rounded-2xl border border-brand-beige/60 shadow-sm border-l-4 border-l-brand-gold">
+                                        <div class="flex items-center gap-3 mb-2">
+                                            <span class="w-7 h-7 rounded-full bg-brand-gold text-white font-bold flex items-center justify-center text-xs">3</span>
+                                            <h5 class="font-heading text-xl text-brand-text">Make Advance Payment</h5>
+                                        </div>
+                                        <p class="text-xs text-brand-muted font-light mb-2">After approval, make advance payment via JazzCash, NayaPay, or Bank Transfer.</p>
+                                        <div class="bg-brand-floral/30 p-2 rounded-xl text-[11px] text-brand-olive font-medium">
+                                            <i class="ph ph-warning-circle inline-block mr-1"></i> Keep payment screenshot ready for form submission.
+                                        </div>
+                                    </div>
+
+                                    <!-- Step 4 -->
+                                    <div class="bg-white p-5 rounded-2xl border border-brand-beige/60 shadow-sm">
+                                        <div class="flex items-center gap-3 mb-2">
+                                            <span class="w-7 h-7 rounded-full bg-brand-gold text-white font-bold flex items-center justify-center text-xs">4</span>
+                                            <h5 class="font-heading text-xl text-brand-text">Complete Form</h5>
+                                        </div>
+                                        <p class="text-xs text-brand-muted font-light mb-3">Visit the Custom Orders page, upload inspiration pictures from Pinterest/Instagram, and submit details.</p>
+                                        <a href="./custom-orders.html" class="inline-flex items-center gap-1.5 px-4 py-2 bg-brand-sage text-white rounded-full text-xs font-semibold uppercase tracking-wider hover:bg-brand-olive transition-colors">
+                                            Fill Custom Order Form <i class="ph ph-arrow-right"></i>
+                                        </a>
+                                    </div>
+
+                                    <!-- Step 5 -->
+                                    <div class="bg-white p-5 rounded-2xl border border-brand-beige/60 shadow-sm">
+                                        <div class="flex items-center gap-3 mb-2">
+                                            <span class="w-7 h-7 rounded-full bg-brand-gold text-white font-bold flex items-center justify-center text-xs">5</span>
+                                            <h5 class="font-heading text-xl text-brand-text">Order Confirmation</h5>
+                                        </div>
+                                        <p class="text-xs text-brand-muted font-light">Once receipt and form details are verified, your custom order begins crafting in studio.</p>
+                                    </div>
+
+                                </div>
+                            </div>
+
                         </div>
                     </div>
+                </div>
 
-                    <!-- Step 3 -->
-                    <div class="relative flex items-center justify-between md:justify-normal md:odd:flex-row-reverse group">
-                        <div class="flex items-center justify-center w-10 h-10 rounded-full border-4 border-brand-ivory bg-brand-sage text-white shadow shrink-0 md:order-1 md:group-odd:-translate-x-1/2 md:group-even:translate-x-1/2">
-                            <span class="font-heading text-xl font-bold">3</span>
+                <!-- SECTION 2: Shipping Policy Accordion -->
+                <div id="acc-shipping" class="bg-white rounded-3xl border border-brand-beige/80 shadow-soft-card overflow-hidden transition-all duration-300">
+                    <button onclick="toggleAccordion('acc-shipping')" class="w-full p-6 sm:p-7 text-left flex items-center justify-between gap-4 focus:outline-none group">
+                        <div class="flex items-center gap-4">
+                            <div class="w-12 h-12 rounded-2xl bg-brand-ivory text-brand-sage flex items-center justify-center text-2xl shrink-0 group-hover:bg-brand-sage group-hover:text-white transition-colors">
+                                <i class="ph ph-truck"></i>
+                            </div>
+                            <div>
+                                <span class="text-[10px] uppercase font-bold tracking-widest text-brand-gold block">Section 02</span>
+                                <h3 class="font-heading text-2xl sm:text-3xl text-brand-text font-medium">Shipping Policy</h3>
+                                <p class="text-xs text-brand-muted font-light hidden sm:block">Delivery timelines, charges & parcel tracking</p>
+                            </div>
                         </div>
-                        <div class="w-[calc(100%-4rem)] md:w-[calc(50%-2.5rem)] p-6 rounded-2xl bg-white shadow-sm hover:shadow-lg transition-all duration-300 border-l-4 border-brand-gold md:border-l-0 md:border-r-4">
-                            <h3 class="font-heading text-2xl text-brand-text mb-2">Checkout & Payment</h3>
-                            <p class="text-brand-muted font-light text-sm mb-3">Complete the checkout form.</p>
-                            <div class="bg-brand-floral/30 p-3 rounded-lg text-sm text-brand-olive font-medium">
-                                <i class="ph ph-warning-circle inline-block mr-1"></i> Uploading the advance payment screenshot is mandatory. Orders are not processed until screenshot verification.
+                        <div class="w-10 h-10 rounded-full bg-brand-cream flex items-center justify-center text-brand-text shrink-0 group-hover:bg-brand-sage group-hover:text-white transition-colors">
+                            <i id="icon-acc-shipping" class="ph ph-caret-down text-xl transition-transform duration-300"></i>
+                        </div>
+                    </button>
+
+                    <!-- Accordion Content Panel -->
+                    <div id="content-acc-shipping" class="accordion-content border-t border-brand-beige/40">
+                        <div class="p-6 sm:p-8 bg-brand-cream/30 space-y-4">
+                            <div class="bg-white p-5 rounded-2xl border border-brand-beige/60 flex gap-3 items-start shadow-sm">
+                                <i class="ph ph-check-circle text-brand-sage text-xl shrink-0 mt-0.5"></i>
+                                <div>
+                                    <h4 class="font-semibold text-sm text-brand-text mb-1">Nationwide Deliveries</h4>
+                                    <p class="text-xs text-brand-muted font-light">Parcels are delivered across Pakistan within 3–5 working days after crafting is complete.</p>
+                                </div>
+                            </div>
+
+                            <div class="bg-white p-5 rounded-2xl border border-brand-beige/60 flex gap-3 items-start shadow-sm">
+                                <i class="ph ph-calculator text-brand-sage text-xl shrink-0 mt-0.5"></i>
+                                <div>
+                                    <h4 class="font-semibold text-sm text-brand-text mb-1">Calculated Shipping</h4>
+                                    <p class="text-xs text-brand-muted font-light">Delivery charges are automatically calculated at checkout based on weight and location.</p>
+                                </div>
+                            </div>
+
+                            <div class="bg-white p-5 rounded-2xl border border-brand-beige/60 flex gap-3 items-start shadow-sm">
+                                <i class="ph ph-path text-brand-sage text-xl shrink-0 mt-0.5"></i>
+                                <div>
+                                    <h4 class="font-semibold text-sm text-brand-text mb-1">Real-time Tracking</h4>
+                                    <p class="text-xs text-brand-muted font-light">A tracking ID is sent directly via SMS/Email as soon as your parcel dispatches.</p>
+                                </div>
                             </div>
                         </div>
                     </div>
+                </div>
 
-                    <!-- Step 4 -->
-                    <div class="relative flex items-center justify-between md:justify-normal md:odd:flex-row-reverse group">
-                        <div class="flex items-center justify-center w-10 h-10 rounded-full border-4 border-brand-ivory bg-brand-sage text-white shadow shrink-0 md:order-1 md:group-odd:-translate-x-1/2 md:group-even:translate-x-1/2">
-                            <span class="font-heading text-xl font-bold">4</span>
+                <!-- SECTION 3: Return Policy Accordion -->
+                <div id="acc-returns" class="bg-white rounded-3xl border border-brand-beige/80 shadow-soft-card overflow-hidden transition-all duration-300">
+                    <button onclick="toggleAccordion('acc-returns')" class="w-full p-6 sm:p-7 text-left flex items-center justify-between gap-4 focus:outline-none group">
+                        <div class="flex items-center gap-4">
+                            <div class="w-12 h-12 rounded-2xl bg-brand-ivory text-brand-sage flex items-center justify-center text-2xl shrink-0 group-hover:bg-brand-sage group-hover:text-white transition-colors">
+                                <i class="ph ph-arrows-counter-clockwise"></i>
+                            </div>
+                            <div>
+                                <span class="text-[10px] uppercase font-bold tracking-widest text-brand-gold block">Section 03</span>
+                                <h3 class="font-heading text-2xl sm:text-3xl text-brand-text font-medium">Return Policy</h3>
+                                <p class="text-xs text-brand-muted font-light hidden sm:block">Claims, replacements & return guidelines</p>
+                            </div>
                         </div>
-                        <div class="w-[calc(100%-4rem)] md:w-[calc(50%-2.5rem)] p-6 rounded-2xl bg-white shadow-sm hover:shadow-lg transition-all duration-300">
-                            <h3 class="font-heading text-2xl text-brand-text mb-2">Confirmation</h3>
-                            <p class="text-brand-muted font-light text-sm">After verification, your order will be confirmed. You will receive confirmation detailing the production timeline.</p>
+                        <div class="w-10 h-10 rounded-full bg-brand-cream flex items-center justify-center text-brand-text shrink-0 group-hover:bg-brand-sage group-hover:text-white transition-colors">
+                            <i id="icon-acc-returns" class="ph ph-caret-down text-xl transition-transform duration-300"></i>
+                        </div>
+                    </button>
+
+                    <!-- Accordion Content Panel -->
+                    <div id="content-acc-returns" class="accordion-content border-t border-brand-beige/40">
+                        <div class="p-6 sm:p-8 bg-brand-cream/30 space-y-4">
+                            <div class="bg-white p-5 rounded-2xl border border-brand-beige/60 flex gap-3 items-start shadow-sm">
+                                <i class="ph ph-clock text-brand-sage text-xl shrink-0 mt-0.5"></i>
+                                <div>
+                                    <h4 class="font-semibold text-sm text-brand-text mb-1">3-Day Window</h4>
+                                    <p class="text-xs text-brand-muted font-light">Returns are accepted within 3 days of parcel delivery for damaged or defective items.</p>
+                                </div>
+                            </div>
+
+                            <div class="bg-white p-5 rounded-2xl border border-brand-beige/60 flex gap-3 items-start shadow-sm">
+                                <i class="ph ph-video-camera text-brand-sage text-xl shrink-0 mt-0.5"></i>
+                                <div>
+                                    <h4 class="font-semibold text-sm text-brand-text mb-1">Unboxing Video Requirement</h4>
+                                    <p class="text-xs text-brand-muted font-light">A clear unboxing video is strictly mandatory to process replacement claims.</p>
+                                </div>
+                            </div>
+
+                            <div class="bg-white p-5 rounded-2xl border border-brand-beige/60 flex gap-3 items-start shadow-sm border-l-4 border-l-red-400">
+                                <i class="ph ph-x-circle text-red-500 text-xl shrink-0 mt-0.5"></i>
+                                <div>
+                                    <h4 class="font-semibold text-sm text-brand-text mb-1">Custom Items Excluded</h4>
+                                    <p class="text-xs text-brand-muted font-light">Bespoke custom-made items are strictly non-returnable once production is confirmed.</p>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
-        </section>
 
-        <!-- Custom Orders Details Section -->
-        <section id="custom-orders" class="py-20 md:py-24 bg-brand-cream border-t border-brand-beige/50">
-            <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-                <div class="w-16 h-16 rounded-full bg-brand-sage/20 text-brand-sage flex items-center justify-center mx-auto mb-6">
-                    <i class="ph ph-magic-wand text-3xl"></i>
-                </div>
-                <h2 class="font-heading text-4xl md:text-5xl text-brand-text mb-4">Custom Orders</h2>
-                <p class="text-brand-muted text-lg font-light mb-8">Want something tailored specifically to your taste? We create bespoke items from scratch.</p>
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-6 text-left mb-10">
-                    <div class="bg-white p-6 rounded-2xl border border-brand-beige/50">
-                        <h4 class="font-heading text-xl text-brand-text mb-2">Bespoke Specifications</h4>
-                        <p class="text-sm text-brand-muted font-light">Custom colors, custom sizes, initial embroideries, and personalized packaging available.</p>
-                    </div>
-                    <div class="bg-white p-6 rounded-2xl border border-brand-beige/50">
-                        <h4 class="font-heading text-xl text-brand-text mb-2">Turnaround & Proofing</h4>
-                        <p class="text-sm text-brand-muted font-light">Custom pieces take 5–10 days. We send progress pictures before final dispatch.</p>
-                    </div>
-                </div>
-                <a href="./custom-orders.html" class="inline-flex items-center justify-center px-8 py-4 bg-brand-sage text-white rounded-full text-xs font-semibold uppercase tracking-widest hover:bg-brand-olive transition-colors">
-                    Request Custom Design
-                </a>
-            </div>
-        </section>
-
-        <!-- Shipping & Returns Section -->
-        <section class="py-20 md:py-24 bg-white border-t border-brand-beige/50">
-            <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
-                    
-                    <!-- Shipping Policy -->
-                    <div id="shipping" class="space-y-4">
-                        <div class="flex items-center gap-3">
-                            <div class="w-10 h-10 rounded-full bg-brand-ivory flex items-center justify-center text-brand-sage"><i class="ph ph-truck text-xl"></i></div>
-                            <h2 class="font-heading text-3xl text-brand-text">Shipping Policy</h2>
+                <!-- SECTION 4: FAQs Accordion -->
+                <div id="acc-faq" class="bg-white rounded-3xl border border-brand-beige/80 shadow-soft-card overflow-hidden transition-all duration-300">
+                    <button onclick="toggleAccordion('acc-faq')" class="w-full p-6 sm:p-7 text-left flex items-center justify-between gap-4 focus:outline-none group">
+                        <div class="flex items-center gap-4">
+                            <div class="w-12 h-12 rounded-2xl bg-brand-ivory text-brand-sage flex items-center justify-center text-2xl shrink-0 group-hover:bg-brand-sage group-hover:text-white transition-colors">
+                                <i class="ph ph-question"></i>
+                            </div>
+                            <div>
+                                <span class="text-[10px] uppercase font-bold tracking-widest text-brand-gold block">Section 04</span>
+                                <h3 class="font-heading text-2xl sm:text-3xl text-brand-text font-medium">Frequently Asked Questions</h3>
+                                <p class="text-xs text-brand-muted font-light hidden sm:block">Answers about timelines, payments & customization</p>
+                            </div>
                         </div>
-                        <ul class="space-y-3 text-sm text-brand-muted font-light">
-                            <li class="flex gap-2"><i class="ph ph-check text-brand-sage mt-0.5"></i> Deliveries nationwide across Pakistan within 3–5 working days after crafting.</li>
-                            <li class="flex gap-2"><i class="ph ph-check text-brand-sage mt-0.5"></i> Shipping charges are calculated at checkout based on location.</li>
-                            <li class="flex gap-2"><i class="ph ph-check text-brand-sage mt-0.5"></i> Tracking ID sent via SMS/Email as soon as parcel dispatches.</li>
-                        </ul>
-                    </div>
-
-                    <!-- Return Policy -->
-                    <div id="returns" class="space-y-4">
-                        <div class="flex items-center gap-3">
-                            <div class="w-10 h-10 rounded-full bg-brand-ivory flex items-center justify-center text-brand-sage"><i class="ph ph-arrows-counter-clockwise text-xl"></i></div>
-                            <h2 class="font-heading text-3xl text-brand-text">Return Policy</h2>
+                        <div class="w-10 h-10 rounded-full bg-brand-cream flex items-center justify-center text-brand-text shrink-0 group-hover:bg-brand-sage group-hover:text-white transition-colors">
+                            <i id="icon-acc-faq" class="ph ph-caret-down text-xl transition-transform duration-300"></i>
                         </div>
-                        <ul class="space-y-3 text-sm text-brand-muted font-light">
-                            <li class="flex gap-2"><i class="ph ph-check text-brand-sage mt-0.5"></i> Returns accepted within 3 days of parcel delivery for damaged/defective items.</li>
-                            <li class="flex gap-2"><i class="ph ph-check text-brand-sage mt-0.5"></i> Unboxing video mandatory to process replacement or claim.</li>
-                            <li class="flex gap-2"><i class="ph ph-x text-red-400 mt-0.5"></i> Custom-made items are strictly non-returnable once confirmed.</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </section>
+                    </button>
 
-        <!-- FAQs Section -->
-        <section id="faq" class="py-20 md:py-24 bg-brand-cream border-t border-brand-beige/50">
-            <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-                <div class="text-center mb-16">
-                    <h2 class="font-heading text-4xl md:text-5xl text-brand-text mb-4">Frequently Asked Questions</h2>
-                    <p class="text-brand-muted text-lg font-light">Got questions? We've got answers.</p>
-                </div>
-                
-                <div class="space-y-6">
-                    <div class="bg-white p-6 rounded-2xl border border-brand-beige/50">
-                        <h3 class="font-heading text-xl text-brand-text mb-2">How long does an order take to arrive?</h3>
-                        <p class="text-sm text-brand-muted font-light">Standard orders are dispatched in 3–5 working days. Custom items take 5–10 days depending on complexity.</p>
-                    </div>
-                    <div class="bg-white p-6 rounded-2xl border border-brand-beige/50">
-                        <h3 class="font-heading text-xl text-brand-text mb-2">What payment methods do you support?</h3>
-                        <p class="text-sm text-brand-muted font-light">We accept Easypaisa, JazzCash, and direct Bank Transfer. Advance payment screenshot upload is required.</p>
-                    </div>
-                    <div class="bg-white p-6 rounded-2xl border border-brand-beige/50">
-                        <h3 class="font-heading text-xl text-brand-text mb-2">Can I request color changes for standard items?</h3>
-                        <p class="text-sm text-brand-muted font-light">Yes! Simply select or mention your color preferences in the order notes or custom order form.</p>
+                    <!-- Accordion Content Panel -->
+                    <div id="content-acc-faq" class="accordion-content border-t border-brand-beige/40">
+                        <div class="p-6 sm:p-8 bg-brand-cream/30 space-y-4">
+                            <div class="bg-white p-5 rounded-2xl border border-brand-beige/60 shadow-sm">
+                                <h4 class="font-heading text-xl text-brand-text mb-1">How long does an order take to arrive?</h4>
+                                <p class="text-xs text-brand-muted font-light leading-relaxed">Standard orders are dispatched in 5–10 working days. Custom items take 10–15 days depending on complexity.</p>
+                            </div>
+
+                            <div class="bg-white p-5 rounded-2xl border border-brand-beige/60 shadow-sm">
+                                <h4 class="font-heading text-xl text-brand-text mb-1">What payment methods do you support?</h4>
+                                <p class="text-xs text-brand-muted font-light leading-relaxed">We accept NayaPay, JazzCash, and direct Bank Transfer. Advance payment screenshot upload is required.</p>
+                            </div>
+
+                            <div class="bg-white p-5 rounded-2xl border border-brand-beige/60 shadow-sm">
+                                <h4 class="font-heading text-xl text-brand-text mb-1">Can I request color changes for standard items?</h4>
+                                <p class="text-xs text-brand-muted font-light leading-relaxed">Yes! Simply select or mention your color preferences in the order notes or custom order form.</p>
+                            </div>
+                        </div>
                     </div>
                 </div>
+
+                <!-- SECTION 5: Custom Order Banner CTA Card -->
+                <div id="custom-orders" class="bg-brand-ivory p-8 sm:p-10 rounded-3xl border border-brand-beige/80 text-center shadow-soft-card relative overflow-hidden">
+                    <div class="w-14 h-14 rounded-full bg-brand-sage/20 text-brand-sage flex items-center justify-center mx-auto mb-4">
+                        <i class="ph ph-magic-wand text-3xl"></i>
+                    </div>
+                    <h3 class="font-heading text-3xl sm:text-4xl text-brand-text mb-3">Custom Orders</h3>
+                    <p class="text-sm text-brand-muted font-light mb-6 max-w-lg mx-auto leading-relaxed">
+                        Want something tailored specifically to your taste? We create bespoke handmade items from scratch according to your exact specifications.
+                    </p>
+                    <a href="./custom-orders.html" class="inline-flex items-center justify-center px-8 py-4 bg-brand-sage text-white rounded-full text-xs font-bold uppercase tracking-widest hover:bg-brand-olive transition-colors shadow-sm">
+                        Request Custom Design
+                    </a>
+                </div>
+
             </div>
         </section>
     </main>
 
     <!-- Footer -->
-    <footer class="bg-brand-text text-white pt-20 pb-12 border-t border-brand-beige/20">
+    <footer class="bg-brand-text text-white pt-16 md:pt-20 pb-12 border-t border-brand-beige/20 relative">
         <div class="max-w-[90rem] mx-auto px-4 sm:px-8 lg:px-12">
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-16">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-10 md:gap-12 lg:gap-16 mb-16 text-left">
+                <!-- Column 1: Daisyline -->
                 <div>
-                    <span class="font-heading text-3xl tracking-wide text-white block mb-6">Daisyline.</span>
-                    <p class="text-sm font-light text-brand-beige/80 leading-relaxed mb-6">Handmade crochet plush toys, handbags, bouquets, and custom gifts. Inspired by slow living and timeless craftsmanship.</p>
+                    <span class="font-heading text-3xl tracking-wide text-white block mb-5">Daisyline.</span>
+                    <p class="text-sm font-light text-brand-beige/80 leading-relaxed mb-6 max-w-sm">
+                        Handmade crochet plush toys, handbags, bouquets, and custom gifts. Inspired by slow living and timeless craftsmanship in Pakistan.
+                    </p>
                 </div>
+
+                <!-- Column 2: Support -->
                 <div>
-                    <h4 class="font-heading text-xl text-white mb-6">Quick Links</h4>
-                    <ul class="space-y-4 text-sm font-light text-brand-beige/80">
-                        <li><a href="./index.html" class="hover:text-white transition-colors">Home</a></li>
+                    <h4 class="font-heading text-xl text-white mb-5">Support</h4>
+                    <ul class="space-y-3.5 text-sm font-light text-brand-beige/80">
                         <li><a href="./about_us.html" class="hover:text-white transition-colors">About Us</a></li>
-                        <li><a href="./custom-orders.html" class="hover:text-white transition-colors">Custom Orders</a></li>
-                    </ul>
-                </div>
-                <div>
-                    <h4 class="font-heading text-xl text-white mb-6">Customer Support</h4>
-                    <ul class="space-y-4 text-sm font-light text-brand-beige/80">
                         <li><a href="./how-to-order.html" class="hover:text-white transition-colors">How to Order</a></li>
                         <li><a href="./about_us.html#shipping" class="hover:text-white transition-colors">Shipping Policy</a></li>
                         <li><a href="./about_us.html#returns" class="hover:text-white transition-colors">Return Policy</a></li>
                         <li><a href="./about_us.html#faq" class="hover:text-white transition-colors">FAQs</a></li>
                     </ul>
                 </div>
+
+                <!-- Column 3: Follow Us & Payments -->
                 <div>
-                    <h4 class="font-heading text-xl text-white mb-6">Follow Us</h4>
-                    <div class="flex gap-4">
-                        <a href="https://www.instagram.com/daisylinecrochet/" target="_blank" rel="noopener noreferrer" class="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-brand-sage transition-colors"><i class="ph ph-instagram-logo text-xl"></i></a>
-                        <a href="https://www.facebook.com/share/1HeWDJU5ap/" target="_blank" rel="noopener noreferrer" class="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-brand-sage transition-colors"><i class="ph ph-facebook-logo text-xl"></i></a>
-                        <a href="https://www.tiktok.com/@daisylinecrochet?_r=1&_t=ZS-98DQTwu0jqr" target="_blank" rel="noopener noreferrer" class="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-brand-sage transition-colors"><i class="ph ph-tiktok-logo text-xl"></i></a>
+                    <h4 class="font-heading text-xl text-white mb-5">Follow Us</h4>
+                    <div class="flex gap-3 mb-8">
+                        <a href="https://www.instagram.com/daisylinecrochet/" target="_blank" rel="noopener noreferrer" class="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-brand-sage transition-colors" aria-label="Instagram">
+                            <i class="ph ph-instagram-logo text-xl"></i>
+                        </a>
+                        <a href="https://www.facebook.com/share/1HeWDJU5ap/" target="_blank" rel="noopener noreferrer" class="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-brand-sage transition-colors" aria-label="Facebook">
+                            <i class="ph ph-facebook-logo text-xl"></i>
+                        </a>
+                        <a href="https://www.threads.com/@daisylinecrochet" target="_blank" rel="noopener noreferrer" class="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-brand-sage transition-colors" aria-label="Threads">
+                            <i class="ph ph-at text-xl"></i>
+                        </a>
+                        <a href="https://www.tiktok.com/@daisylinecrochet?_r=1&_t=ZS-98DQTwu0jqr" target="_blank" rel="noopener noreferrer" class="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-brand-sage transition-colors" aria-label="TikTok">
+                            <i class="ph ph-tiktok-logo text-xl"></i>
+                        </a>
+                    </div>
+
+                    <h4 class="font-heading text-xl text-white mb-4">Payments</h4>
+                    <div class="flex flex-wrap gap-2.5">
+                        <span class="inline-flex items-center px-3.5 py-1.5 border border-white/15 rounded-full text-xs font-medium text-brand-beige/90 bg-white/5">
+                            <i class="ph ph-device-mobile text-sm mr-1.5 text-brand-gold"></i>JazzCash
+                        </span>
+                        <span class="inline-flex items-center px-3.5 py-1.5 border border-white/15 rounded-full text-xs font-medium text-brand-beige/90 bg-white/5">
+                            <i class="ph ph-wallet text-sm mr-1.5 text-brand-sage"></i>NayaPay
+                        </span>
+                        <span class="inline-flex items-center px-3.5 py-1.5 border border-white/15 rounded-full text-xs font-medium text-brand-beige/90 bg-white/5">
+                            <i class="ph ph-bank text-sm mr-1.5 text-brand-beige"></i>Bank Transfer
+                        </span>
                     </div>
                 </div>
             </div>
-            <div class="pt-8 border-t border-white/10 flex flex-col md:flex-row justify-between items-center text-xs text-brand-beige/50">
+
+            <!-- Footer Bottom Bar -->
+            <div class="pt-8 border-t border-white/10 flex flex-col md:flex-row justify-between items-center text-center md:text-left gap-3 text-xs text-brand-beige/60">
                 <p>&copy; <span id="year"></span> Daisyline Crochet. All rights reserved.</p>
+                <p>Designed and created by Ateeb Jilani</p>
             </div>
         </div>
     </footer>
+
+    <!-- Interactive Accordion Logic -->
     <script>
         document.getElementById('year').textContent = new Date().getFullYear();
+
+        // Toggle Accordion Section
+        function toggleAccordion(id) {
+            const content = document.getElementById('content-' + id);
+            const icon = document.getElementById('icon-' + id);
+            const isExpanded = content.classList.contains('expanded');
+
+            // Close all open accordions for compact mobile experience
+            document.querySelectorAll('.accordion-content').forEach(el => {
+                el.classList.remove('expanded');
+            });
+            document.querySelectorAll('[id^="icon-acc-"]').forEach(i => {
+                i.classList.remove('rotate-180');
+            });
+
+            // If it wasn't expanded before, expand it now
+            if (!isExpanded) {
+                content.classList.add('expanded');
+                if (icon) icon.classList.add('rotate-180');
+            }
+        }
+
+        // Quick Pill Navigation Action (Scrolls & Expands)
+        function scrollToAndExpand(targetKey) {
+            const accId = 'acc-' + targetKey;
+            const accElem = document.getElementById(accId);
+            
+            // Expand the section
+            const content = document.getElementById('content-' + accId);
+            const icon = document.getElementById('icon-' + accId);
+            
+            if (content && !content.classList.contains('expanded')) {
+                toggleAccordion(accId);
+            }
+
+            // Smooth scroll
+            if (accElem) {
+                const offset = 80;
+                const bodyRect = document.body.getBoundingClientRect().top;
+                const elementRect = accElem.getBoundingClientRect().top;
+                const elementPosition = elementRect - bodyRect;
+                const offsetPosition = elementPosition - offset;
+
+                window.scrollTo({
+                    top: offsetPosition,
+                    behavior: 'smooth'
+                });
+            }
+        }
+
+        // Handle URL Hash Deeplinking (e.g. about_us.html#shipping)
+        window.addEventListener('DOMContentLoaded', () => {
+            const hash = window.location.hash.replace('#', '');
+            if (hash) {
+                setTimeout(() => {
+                    if (['how-to-order', 'shipping', 'returns', 'faq'].includes(hash)) {
+                        scrollToAndExpand(hash);
+                    }
+                }, 300);
+            }
+        });
     </script>
 </body>
 </html>
