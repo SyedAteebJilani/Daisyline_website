@@ -6,10 +6,10 @@
     <title>Daisyline Crochet | Handmade with Love & Tradition</title>
     <meta name="description" content="Inspired by Grandma's crochet legacy. Handmade crochet plush toys, handbags, bouquets, and custom gifts. Made in Pakistan.">
     
-    <!-- Google Fonts: Cormorant Garamond (Headings) & Manrope (Body) -->
+    <!-- Google Fonts: Cormorant Garamond, Plus Jakarta Sans, Sacramento -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400;1,500&family=Manrope:wght@200;300;400;500;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400;1,600&family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=Sacramento&display=swap" rel="stylesheet">
     
     <!-- Phosphor Icons -->
     <script src="https://unpkg.com/@phosphor-icons/web"></script>
@@ -24,728 +24,867 @@
                     colors: {
                         brand: {
                             sage: '#8fa886',
-                            cream: '#F9F8F6',
-                            ivory: '#F3EFEA',
+                            cream: '#FAF8F5',
+                            ivory: '#F5EFE6',
                             olive: '#5A6B53',
                             beige: '#E6DED3',
                             floral: '#D4DDD1',
                             gold: '#D4B773',
-                            text: '#1C211A',
-                            muted: '#7A8576'
+                            text: '#282421',
+                            muted: '#787068',
+                            blush: '#FFF0F3',
+                            peach: '#FFEBE3'
                         }
                     },
                     fontFamily: {
                         heading: ['"Cormorant Garamond"', 'serif'],
-                        sans: ['Manrope', 'sans-serif'],
-                    },
-                    transitionTimingFunction: {
-                        'premium': 'cubic-bezier(0.16, 1, 0.3, 1)',
-                    },
-                    animation: {
-                        'marquee': 'marquee 30s linear infinite',
-                    },
-                    keyframes: {
-                        marquee: {
-                            '0%': { transform: 'translateX(0%)' },
-                            '100%': { transform: 'translateX(-50%)' },
-                        }
+                        sans: ['"Plus Jakarta Sans"', 'Manrope', 'sans-serif'],
+                        script: ['Sacramento', 'cursive']
                     }
                 }
             }
         }
     </script>
-    
-    <style>
-        :root {
-            --ease-premium: cubic-bezier(0.16, 1, 0.3, 1);
-        }
 
-        body {
-            background-color: theme('colors.brand.cream');
-            color: theme('colors.brand.text');
-            -webkit-font-smoothing: antialiased;
-            -moz-osx-font-smoothing: grayscale;
-        }
-
-        /* Subtle Handcrafted Noise Texture */
-        .noise-overlay {
-            position: fixed;
-            top: 0; left: 0; width: 100vw; height: 100vh;
-            pointer-events: none;
-            z-index: 9999;
-            background: url('data:image/svg+xml;utf8,%3Csvg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg"%3E%3Cfilter id="noiseFilter"%3E%3CfeTurbulence type="fractalNoise" baseFrequency="0.75" numOctaves="3" stitchTiles="stitch"/%3E%3C/filter%3E%3Crect width="100%25" height="100%25" filter="url(%23noiseFilter)"/%3E%3C/svg%3E');
-            opacity: 0.025;
-            mix-blend-mode: multiply;
-        }
-
-        /* Premium Scroll Animations */
-        .reveal-fade {
-            opacity: 0;
-            transform: translateY(20px);
-            transition: opacity 1.2s var(--ease-premium), transform 1.2s var(--ease-premium);
-        }
-        .reveal-fade.active {
-            opacity: 1;
-            transform: translateY(0);
-        }
-        
-        /* Delays */
-        .delay-100 { transition-delay: 100ms; }
-        .delay-200 { transition-delay: 200ms; }
-        .delay-300 { transition-delay: 300ms; }
-
-        /* Hide scrollbar completely for horizontal scroll */
-        .no-scrollbar::-webkit-scrollbar {
-            display: none;
-        }
-        .no-scrollbar {
-            -ms-overflow-style: none;
-            scrollbar-width: none;
-        }
-
-        /* Hover Engine */
-        .img-hover-container { overflow: hidden; }
-        .img-hover-container img {
-            transition: transform 1.2s var(--ease-premium);
-            will-change: transform;
-        }
-        .group:hover .img-hover-container img {
-            transform: scale(1.08);
-        }
-
-        
-
-        /* Hero Carousel Slide Animation */
-        .hero-slide {
-            transition: opacity 1.5s var(--ease-premium), transform 1.5s var(--ease-premium);
-        }
-        .hero-slide.active-slide img {
-            animation: kenburns 15s ease-out forwards;
-        }
-        @keyframes kenburns {
-            0% { transform: scale(1.05); }
-            100% { transform: scale(1.15); }
-        }
-    </style>
+    <!-- Global Design System & Homepage CSS -->
+    <link rel="stylesheet" href="./assets/css/homepage.css">
+    <script src="./assets/js/homepage.js" defer></script>
 </head>
 <body class="font-sans antialiased overflow-x-hidden selection:bg-brand-sage selection:text-white">
 
-    <div class="noise-overlay"></div>
-
-    <!-- Minimalist Marquee -->
-    <div class="bg-brand-text text-brand-cream text-[10px] md:text-xs font-semibold tracking-[0.2em] uppercase py-2.5 overflow-hidden relative z-50">
-        <div class="whitespace-nowrap flex w-fit animate-marquee hover:[animation-play-state:paused] cursor-default">
-            <span class="mx-4 flex items-center gap-8">
-                <span>Handmade Crochet with Love</span> <span class="w-1 h-1 rounded-full bg-brand-gold"></span>
-                <span>Custom Orders Available</span> <span class="w-1 h-1 rounded-full bg-brand-gold"></span>
-                <span>Premium Gift Packaging</span> <span class="w-1 h-1 rounded-full bg-brand-gold"></span>
-                <span>Inspired by Legacy</span> <span class="w-1 h-1 rounded-full bg-brand-gold"></span>
-                <span>Made in Pakistan</span> <span class="w-1 h-1 rounded-full bg-brand-gold"></span>
-            </span>
-            <span class="mx-4 flex items-center gap-8">
-                <span>Handmade Crochet with Love</span> <span class="w-1 h-1 rounded-full bg-brand-gold"></span>
-                <span>Custom Orders Available</span> <span class="w-1 h-1 rounded-full bg-brand-gold"></span>
-                <span>Premium Gift Packaging</span> <span class="w-1 h-1 rounded-full bg-brand-gold"></span>
-                <span>Inspired by Legacy</span> <span class="w-1 h-1 rounded-full bg-brand-gold"></span>
-                <span>Made in Pakistan</span> <span class="w-1 h-1 rounded-full bg-brand-gold"></span>
-            </span>
+    <!-- 1. GLOBAL ANNOUNCEMENT BAR -->
+    <div class="dl-announcement-bar">
+        <div class="dl-announcement-content" id="announcement-slider">
+            <span class="dl-announcement-slide active">✨ Handmade Crochet Crafted with Love</span>
+            <span class="dl-announcement-slide">🚚 Delivery Available Across Pakistan</span>
+            <span class="dl-announcement-slide">🎁 Personalized Crochet Gifts Available</span>
+            <span class="dl-announcement-slide">🧶 Premium Quality Handmade Products</span>
         </div>
     </div>
 
-    <!-- Editorial Header -->
-        <header id="navbar" class="relative w-full z-40 transition-all duration-500 py-4 bg-white" style="background: #ffffff !important;">
-        <div class="max-w-[90rem] mx-auto px-4 sm:px-8 lg:px-12">
-            <div class="flex justify-between items-center h-16 md:h-20">
-                <!-- Mobile Menu Button -->
-                <div class="flex items-center lg:hidden w-1/3">
-                    <button id="mobile-menu-btn" onclick="document.getElementById('mobile-menu').classList.remove('-translate-x-full'); document.body.style.overflow='hidden';"  class="text-brand-text hover:text-brand-sage transition-colors -ml-2 p-2 group" aria-label="Open menu">
-                        <div class="w-6 flex flex-col gap-1.5 items-start">
-                            <span class="w-full h-[1px] bg-current transition-all group-hover:w-4"></span>
-                            <span class="w-4 h-[1px] bg-current transition-all group-hover:w-full"></span>
-                        </div>
+    <!-- 2. GLOBAL HEADER -->
+    <header id="dl-navbar" class="dl-global-header">
+        <div class="dl-header-container">
+            <div class="dl-header-row">
+                
+                <!-- Left: Logo & Mobile Hamburger -->
+                <div class="dl-header-left">
+                    <button id="dl-mobile-menu-btn" class="dl-mobile-menu-btn" aria-label="Open Mobile Menu">
+                        <i class="ph ph-list"></i>
                     </button>
-                </div>
-
-                <!-- Logo -->
-                <div class="flex-shrink-0 flex items-center justify-center w-1/3 lg:w-auto absolute lg:relative left-1/2 lg:left-0 transform -translate-x-1/2 lg:translate-x-0 pointer-events-none lg:pointer-events-auto z-50">
-                    <a href="./index.html" class="pointer-events-auto flex items-center gap-4 group">
-                        <img src="./images/logo.jpg" alt="Daisyline Crochet Logo" class="h-10 md:h-12 w-auto object-contain rounded-full shadow-sm transition-transform duration-700 group-hover:rotate-12">
-                        <span class="font-heading text-2xl md:text-3xl font-medium tracking-wide text-brand-text hidden lg:block">Daisyline.</span>
+                    <a href="./index.html" class="dl-logo-link">
+                        <img src="./assets/images/logo.jpg" alt="Daisyline Crochet Logo" class="dl-logo-img">
+                        <span class="dl-logo-text">Daisyline.</span>
                     </a>
                 </div>
 
-                <!-- Desktop Menu -->
-                <nav class="hidden lg:flex space-x-10 items-center h-full absolute left-1/2 transform -translate-x-1/2">
-                    <a href="./index.html" class="text-brand-text hover:text-brand-sage font-medium text-xs tracking-[0.1em] uppercase transition-colors relative py-8 group">
-                        Home
-                        <span class="absolute bottom-6 left-0 w-full h-[1px] bg-brand-sage origin-left scale-x-0 transition-transform duration-500 group-hover:scale-x-100"></span>
-                    </a>
-                    
-                    <!-- Categories Mega Dropdown -->
-                    <div class="relative group h-full flex items-center">
-                        <a href="./index.html#categories" class="text-brand-text hover:text-brand-sage font-medium text-xs tracking-[0.1em] uppercase transition-colors py-8 flex items-center gap-1.5 cursor-pointer">
-                            Categories <i class="ph ph-caret-down text-[10px] transition-transform duration-500 group-hover:rotate-180"></i>
-                        </a>
+                <!-- Center: Desktop Navigation Bar -->
+                <nav class="dl-desktop-nav" aria-label="Main Navigation">
+                    <ul class="dl-nav-list">
                         
-                        <!-- Invisible bridge -->
-                        <div class="absolute top-[80%] left-0 w-full h-10"></div>
+                        <!-- 1. Home -->
+                        <li class="dl-nav-item">
+                            <a href="./index.html" class="dl-nav-link active">Home</a>
+                        </li>
 
-                        <!-- Mega Menu Panel -->
-                        <div class="absolute top-full left-1/2 transform -translate-x-1/2 w-[800px] bg-white/95 backdrop-blur-2xl border border-brand-beige/50 rounded-2xl shadow-2xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-500 z-50 overflow-hidden mt-2">
-                            <div class="p-8 grid grid-cols-4 gap-x-4 gap-y-6">
-                                <a href="./categories/baby-sets.html" class="group/item flex items-center gap-3">
-                                    <div class="w-8 h-8 rounded-full bg-brand-ivory flex items-center justify-center text-brand-text group-hover/item:bg-brand-sage group-hover/item:text-white transition-all duration-300 shadow-sm"><i class="ph ph-baby text-sm"></i></div>
-                                    <span class="text-xs font-medium text-brand-text group-hover/item:text-brand-sage transition-colors">Baby Sets</span>
-                                </a>
-                                <a href="./categories/bags.html" class="group/item flex items-center gap-3">
-                                    <div class="w-8 h-8 rounded-full bg-brand-ivory flex items-center justify-center text-brand-text group-hover/item:bg-brand-sage group-hover/item:text-white transition-all duration-300 shadow-sm"><i class="ph ph-tote text-sm"></i></div>
-                                    <span class="text-xs font-medium text-brand-text group-hover/item:text-brand-sage transition-colors">Bags / Wallets</span>
-                                </a>
-                                <a href="./categories/book-items.html" class="group/item flex items-center gap-3">
-                                    <div class="w-8 h-8 rounded-full bg-brand-ivory flex items-center justify-center text-brand-text group-hover/item:bg-brand-sage group-hover/item:text-white transition-all duration-300 shadow-sm"><i class="ph ph-book-open text-sm"></i></div>
-                                    <span class="text-xs font-medium text-brand-text group-hover/item:text-brand-sage transition-colors">Book Items</span>
-                                </a>
-                                <a href="./categories/bouquets.html" class="group/item flex items-center gap-3">
-                                    <div class="w-8 h-8 rounded-full bg-brand-ivory flex items-center justify-center text-brand-text group-hover/item:bg-brand-sage group-hover/item:text-white transition-all duration-300 shadow-sm"><i class="ph ph-flower-tulip text-sm"></i></div>
-                                    <span class="text-xs font-medium text-brand-text group-hover/item:text-brand-sage transition-colors">Bouquets</span>
-                                </a>
-                                <a href="./categories/clothing.html" class="group/item flex items-center gap-3">
-                                    <div class="w-8 h-8 rounded-full bg-brand-ivory flex items-center justify-center text-brand-text group-hover/item:bg-brand-sage group-hover/item:text-white transition-all duration-300 shadow-sm"><i class="ph ph-coat-hanger text-sm"></i></div>
-                                    <span class="text-xs font-medium text-brand-text group-hover/item:text-brand-sage transition-colors">Clothing</span>
-                                </a>
-                                <a href="./categories/earrings.html" class="group/item flex items-center gap-3">
-                                    <div class="w-8 h-8 rounded-full bg-brand-ivory flex items-center justify-center text-brand-text group-hover/item:bg-brand-sage group-hover/item:text-white transition-all duration-300 shadow-sm"><i class="ph ph-sparkle text-sm"></i></div>
-                                    <span class="text-xs font-medium text-brand-text group-hover/item:text-brand-sage transition-colors">Earrings</span>
-                                </a>
-                                <a href="./categories/gifting.html" class="group/item flex items-center gap-3">
-                                    <div class="w-8 h-8 rounded-full bg-brand-ivory flex items-center justify-center text-brand-text group-hover/item:bg-brand-sage group-hover/item:text-white transition-all duration-300 shadow-sm"><i class="ph ph-gift text-sm"></i></div>
-                                    <span class="text-xs font-medium text-brand-text group-hover/item:text-brand-sage transition-colors">Gifting</span>
-                                </a>
-                                <a href="./categories/hair-accessories.html" class="group/item flex items-center gap-3">
-                                    <div class="w-8 h-8 rounded-full bg-brand-ivory flex items-center justify-center text-brand-text group-hover/item:bg-brand-sage group-hover/item:text-white transition-all duration-300 shadow-sm"><i class="ph ph-scissors text-sm"></i></div>
-                                    <span class="text-xs font-medium text-brand-text group-hover/item:text-brand-sage transition-colors">Hair Accessories</span>
-                                </a>
-                                <a href="./categories/hand-accessories.html" class="group/item flex items-center gap-3">
-                                    <div class="w-8 h-8 rounded-full bg-brand-ivory flex items-center justify-center text-brand-text group-hover/item:bg-brand-sage group-hover/item:text-white transition-all duration-300 shadow-sm"><i class="ph ph-hand-swipe-left text-sm"></i></div>
-                                    <span class="text-xs font-medium text-brand-text group-hover/item:text-brand-sage transition-colors">Hand Accessories</span>
-                                </a>
-                                <a href="./categories/home-decor.html" class="group/item flex items-center gap-3">
-                                    <div class="w-8 h-8 rounded-full bg-brand-ivory flex items-center justify-center text-brand-text group-hover/item:bg-brand-sage group-hover/item:text-white transition-all duration-300 shadow-sm"><i class="ph ph-house-line text-sm"></i></div>
-                                    <span class="text-xs font-medium text-brand-text group-hover/item:text-brand-sage transition-colors">Home Decor</span>
-                                </a>
-                                <a href="./categories/keychain.html" class="group/item flex items-center gap-3">
-                                    <div class="w-8 h-8 rounded-full bg-brand-ivory flex items-center justify-center text-brand-text group-hover/item:bg-brand-sage group-hover/item:text-white transition-all duration-300 shadow-sm"><i class="ph ph-key text-sm"></i></div>
-                                    <span class="text-xs font-medium text-brand-text group-hover/item:text-brand-sage transition-colors">Keychains</span>
-                                </a>
-                                <a href="./categories/plushies.html" class="group/item flex items-center gap-3">
-                                    <div class="w-8 h-8 rounded-full bg-brand-ivory flex items-center justify-center text-brand-text group-hover/item:bg-brand-sage group-hover/item:text-white transition-all duration-300 shadow-sm"><i class="ph ph-teddy-bear text-sm"></i></div>
-                                    <span class="text-xs font-medium text-brand-text group-hover/item:text-brand-sage transition-colors">Plushies</span>
-                                </a>
+                        <!-- 2. Shop (Mega Menu Dropdown) -->
+                        <li class="dl-nav-item dl-has-megamenu">
+                            <a href="./index.html#categories" class="dl-nav-link ">
+                                Shop <i class="ph ph-caret-down dl-caret-icon"></i>
+                            </a>
+
+                            <!-- MEGA MENU PANEL -->
+                            <div class="dl-megamenu-panel">
+                                <div class="dl-megamenu-inner">
+                                    
+                                    <!-- Column 1: New & Featured -->
+                                    <div class="dl-mega-col">
+                                        <h4 class="dl-mega-heading"><i class="ph ph-sparkle"></i> New &amp; Featured</h4>
+                                        <ul class="dl-mega-links">
+                                            <li><a href="./categories/bags.html">All Products</a></li>
+                                            <li><a href="./index.html#new-arrivals">New Arrivals <span class="dl-badge-mini">New</span></a></li>
+                                            <li><a href="./index.html#best-sellers">Best Sellers <span class="dl-badge-mini dl-badge-hot">Hot</span></a></li>
+                                            <li><a href="./categories/clothing.html">Sale %</a></li>
+                                        </ul>
+                                    </div>
+
+                                    <!-- Column 2: Gajras & Hair Accessories -->
+                                    <div class="dl-mega-col">
+                                        <h4 class="dl-mega-heading"><a href="./categories/gajras.html">🌸 Gajras</a></h4>
+                                        <ul class="dl-mega-links">
+                                            <li><a href="./categories/gajras.html">Floral Gajras</a></li>
+                                            <li><a href="./categories/gajras.html">Bridal Gajras</a></li>
+                                            <li><a href="./categories/gajras.html">Custom Gajras</a></li>
+                                        </ul>
+                                        <h4 class="dl-mega-heading" style="margin-top: 16px;"><a href="./categories/hair-accessories.html">🎀 Hair Accessories</a></h4>
+                                        <ul class="dl-mega-links">
+                                            <li><a href="./categories/hair-accessories.html">Scrunchies</a></li>
+                                            <li><a href="./categories/hair-accessories.html">Hair Bows</a></li>
+                                            <li><a href="./categories/hair-accessories.html">Hair Clips</a></li>
+                                            <li><a href="./categories/hair-accessories.html">Headbands</a></li>
+                                            <li><a href="./categories/hair-accessories.html">Hair Pins</a></li>
+                                            <li><a href="./categories/hair-accessories.html">Parandas</a></li>
+                                        </ul>
+                                    </div>
+
+                                    <!-- Column 3: Bags & Keychains -->
+                                    <div class="dl-mega-col">
+                                        <h4 class="dl-mega-heading"><a href="./categories/bags.html">👜 Bags</a></h4>
+                                        <ul class="dl-mega-links">
+                                            <li><a href="./categories/bags.html">Tote Bags</a></li>
+                                            <li><a href="./categories/bags.html">Shoulder Bags</a></li>
+                                            <li><a href="./categories/bags.html">Crossbody Bags</a></li>
+                                            <li><a href="./categories/bags.html">Handbags</a></li>
+                                            <li><a href="./categories/bags.html">Wallets</a></li>
+                                            <li><a href="./categories/bags.html">Pouches</a></li>
+                                        </ul>
+                                        <h4 class="dl-mega-heading" style="margin-top: 16px;"><a href="./categories/keychain.html">🔑 Keychains</a></h4>
+                                        <ul class="dl-mega-links">
+                                            <li><a href="./categories/keychain.html">Car Hanging</a></li>
+                                            <li><a href="./categories/keychain.html">Animal Keychains</a></li>
+                                            <li><a href="./categories/keychain.html">Alphabet Keychains</a></li>
+                                            <li><a href="./categories/keychain.html">Bag Charms</a></li>
+                                        </ul>
+                                    </div>
+
+                                    <!-- Column 4: Bouquets & Baby Collection -->
+                                    <div class="dl-mega-col">
+                                        <h4 class="dl-mega-heading"><a href="./categories/bouquets.html">💐 Bouquets</a></h4>
+                                        <ul class="dl-mega-links">
+                                            <li><a href="./categories/bouquets.html">Mixed Flower Bouquets</a></li>
+                                            <li><a href="./categories/bouquets.html">Mini Bouquets</a></li>
+                                            <li><a href="./categories/bouquets.html">Blanket Bouquet</a></li>
+                                        </ul>
+                                        <h4 class="dl-mega-heading" style="margin-top: 16px;"><a href="./categories/baby-sets.html">👶 Baby Collection</a></h4>
+                                        <ul class="dl-mega-links">
+                                            <li><a href="./categories/baby-sets.html">Baby Shoes</a></li>
+                                            <li><a href="./categories/baby-sets.html">Baby Caps</a></li>
+                                            <li><a href="./categories/baby-sets.html">Baby Headbands</a></li>
+                                            <li><a href="./categories/baby-sets.html">Baby Blankets</a></li>
+                                            <li><a href="./categories/baby-sets.html">Baby Sets</a></li>
+                                            <li><a href="./categories/baby-sets.html">Baby Rattles</a></li>
+                                        </ul>
+                                    </div>
+
+                                    <!-- Column 5: Wearables & Plushies -->
+                                    <div class="dl-mega-col">
+                                        <h4 class="dl-mega-heading"><a href="./categories/clothing.html">👕 Wearables</a></h4>
+                                        <div class="dl-mega-sublabel">Women</div>
+                                        <ul class="dl-mega-links">
+                                            <li><a href="./categories/clothing.html">Cardigans</a></li>
+                                            <li><a href="./categories/clothing.html">Summer Tops</a></li>
+                                        </ul>
+                                        <div class="dl-mega-sublabel" style="margin-top: 8px;">Men</div>
+                                        <ul class="dl-mega-links">
+                                            <li><a href="./categories/clothing.html">Sweaters</a></li>
+                                            <li><a href="./categories/clothing.html">Mufflers</a></li>
+                                            <li><a href="./categories/clothing.html">Gloves</a></li>
+                                            <li><a href="./categories/clothing.html">Beanies</a></li>
+                                        </ul>
+                                        <h4 class="dl-mega-heading" style="margin-top: 14px;"><a href="./categories/plushies.html">🧸 Plushies</a></h4>
+                                        <ul class="dl-mega-links">
+                                            <li><a href="./categories/plushies.html">Characters</a></li>
+                                            <li><a href="./categories/plushies.html">Mini Plushies</a></li>
+                                            <li><a href="./categories/plushies.html">Dolls</a></li>
+                                        </ul>
+                                    </div>
+
+                                    <!-- Column 6: Home Decor & Gift Collection -->
+                                    <div class="dl-mega-col">
+                                        <h4 class="dl-mega-heading"><a href="./categories/home-decor.html">🏡 Home Decor</a></h4>
+                                        <ul class="dl-mega-links">
+                                            <li><a href="./categories/home-decor.html">Coasters</a></li>
+                                            <li><a href="./categories/home-decor.html">Table Runners</a></li>
+                                            <li><a href="./categories/home-decor.html">Placemats</a></li>
+                                            <li><a href="./categories/home-decor.html">Wall Hangings</a></li>
+                                            <li><a href="./categories/home-decor.html">Cushion Covers</a></li>
+                                            <li><a href="./categories/home-decor.html">Crochet Mirrors</a></li>
+                                        </ul>
+                                        <h4 class="dl-mega-heading" style="margin-top: 14px;"><a href="./categories/gifting.html">🎁 Gift Collection</a></h4>
+                                        <ul class="dl-mega-links">
+                                            <li><a href="./categories/gifting.html">Birthday Gifts</a></li>
+                                            <li><a href="./categories/gifting.html">Anniversary Gifts</a></li>
+                                            <li><a href="./categories/gifting.html">Bridal Gifts</a></li>
+                                            <li><a href="./categories/gifting.html">Baby Shower Gifts</a></li>
+                                            <li><a href="./categories/gifting.html">Gift Boxes</a></li>
+                                            <li><a href="./categories/gifting.html">Customized Gift Sets</a></li>
+                                        </ul>
+                                    </div>
+
+                                </div>
                             </div>
-                        </div>
-                    </div>
+                        </li>
 
-                    <a href="./about_us.html" class="text-brand-text hover:text-brand-sage font-medium text-xs tracking-[0.1em] uppercase transition-colors relative py-8 group">
-                        About Us
-                        <span class="absolute bottom-6 left-0 w-full h-[1px] bg-brand-sage origin-left scale-x-0 transition-transform duration-500 group-hover:scale-x-100"></span>
-                    </a>
-                    
-                    <a href="./custom-orders.html" class="text-brand-text hover:text-brand-sage font-medium text-xs tracking-[0.1em] uppercase transition-colors relative py-8 group">
-                        Custom Orders
-                        <span class="absolute bottom-6 left-0 w-full h-[1px] bg-brand-sage origin-left scale-x-0 transition-transform duration-500 group-hover:scale-x-100"></span>
-                    </a>
+                        <!-- 3. Custom Orders -->
+                        <li class="dl-nav-item">
+                            <a href="./pages/custom-orders.html" class="dl-nav-link ">Custom Orders</a>
+                        </li>
+
+                        <!-- 4. About Us -->
+                        <li class="dl-nav-item">
+                            <a href="./pages/about_us.html" class="dl-nav-link ">About Us</a>
+                        </li>
+
+                        <!-- 5. Reviews -->
+                        <li class="dl-nav-item">
+                            <a href="./index.html#reviews" class="dl-nav-link">Reviews</a>
+                        </li>
+
+                        <!-- 6. Gallery -->
+                        <li class="dl-nav-item">
+                            <a href="./index.html#insta-track" class="dl-nav-link">Gallery</a>
+                        </li>
+
+                        <!-- 7. FAQs -->
+                        <li class="dl-nav-item">
+                            <a href="./pages/about_us.html#faq" class="dl-nav-link">FAQs</a>
+                        </li>
+
+                        <!-- 8. Contact -->
+                        <li class="dl-nav-item">
+                            <a href="./pages/how-to-order.html" class="dl-nav-link ">Contact</a>
+                        </li>
+
+                    </ul>
                 </nav>
 
-                <!-- Action Icons -->
-                <div class="flex items-center space-x-6 w-1/3 justify-end z-50">
-                    <a href="javascript:void(0)" class="text-brand-text hover:text-brand-sage transition-colors relative group" aria-label="Search">
-                        <i class="ph ph-magnifying-glass text-xl"></i>
+                <!-- Right: Action Icons (Search, Wishlist, Cart, Account) -->
+                <div class="dl-header-actions">
+                    
+                    <!-- Search Button -->
+                    <button class="dl-action-icon dl-search-trigger" id="dl-search-btn" aria-label="Search">
+                        <i class="ph ph-magnifying-glass"></i>
+                    </button>
+
+                    <!-- Desktop Search Bar Input Container -->
+                    <div class="dl-desktop-search-bar" id="dl-desktop-search-bar">
+                        <input type="text" placeholder="Search handmade crochet..." class="dl-search-input" id="dl-search-input">
+                        <button class="dl-search-close" id="dl-search-close"><i class="ph ph-x"></i></button>
+                        <div class="dl-search-results" id="dl-desktop-search-results"></div>
+                    </div>
+
+                    <!-- Wishlist Icon -->
+                    <a href="javascript:void(0)" class="dl-action-icon dl-wishlist-icon" aria-label="Wishlist">
+                        <i class="ph ph-heart"></i>
+                        <span class="dl-badge">0</span>
                     </a>
-                    <a href="javascript:void(0)" class="text-brand-text hover:text-brand-sage transition-colors relative group flex items-center gap-2" aria-label="Cart">
-                        <div class="relative">
-                            <i class="ph ph-tote text-xl"></i>
-                            <span class="absolute -top-1 -right-2 bg-brand-text text-white text-[9px] font-bold h-4 w-4 rounded-full flex items-center justify-center group-hover:bg-brand-sage transition-colors">0</span>
-                        </div>
-                        <span class="hidden md:block text-xs font-semibold uppercase tracking-wider ml-1">Cart</span>
+
+                    <!-- Cart Icon -->
+                    <a href="javascript:void(0)" class="dl-action-icon dl-cart-icon" aria-label="Shopping Cart">
+                        <i class="ph ph-shopping-bag"></i>
+                        <span class="dl-badge dl-badge-cart">0</span>
+                    </a>
+
+                    <!-- Account Icon -->
+                    <a href="javascript:void(0)" class="dl-action-icon dl-account-icon" aria-label="User Account">
+                        <i class="ph ph-user"></i>
                     </a>
                 </div>
+
             </div>
         </div>
     </header>
 
-    <!-- Mobile Menu Overlay -->
-        <div id="mobile-menu" class="fixed inset-0 bg-white text-brand-text z-50 transform -translate-x-full transition-transform duration-700 lg:hidden flex flex-col">
-        <div class="flex justify-between items-center p-6 border-b border-brand-beige/30">
-            <span class="font-heading text-2xl tracking-wide text-brand-text">Daisyline.</span>
-            <button id="close-menu-btn" onclick="document.getElementById('mobile-menu').classList.add('-translate-x-full'); document.body.style.overflow='';"  class="text-brand-text hover:text-brand-sage p-2 transition-colors" aria-label="Close menu">
-                <i class="ph ph-x text-2xl"></i>
+    <!-- MOBILE DRAWER OVERLAY & SIDEBAR -->
+    <div class="dl-drawer-overlay" id="dl-drawer-overlay"></div>
+
+    <aside class="dl-mobile-drawer" id="dl-mobile-drawer" aria-label="Mobile Navigation Drawer">
+        <div class="dl-drawer-header">
+            <a href="./index.html" class="dl-logo-link">
+                <img src="./assets/images/logo.jpg" alt="Daisyline Logo" class="dl-logo-img">
+                <span class="dl-logo-text">Daisyline.</span>
+            </a>
+            <button class="dl-drawer-close-btn" id="dl-drawer-close-btn" aria-label="Close Menu">
+                <i class="ph ph-x"></i>
             </button>
         </div>
-        
-        <div class="flex-1 overflow-y-auto py-12 px-8 flex flex-col justify-start text-left">
-            <div class="flex flex-col gap-8">
-                <a href="./index.html" class="mobile-link font-heading text-4xl md:text-5xl font-light italic text-brand-text hover:text-brand-sage transition-colors">Home</a>
-                
-                <!-- Mobile Categories Dropdown Accordion -->
-                <div class="flex flex-col w-full">
-                    <button id="mobile-categories-btn" onclick="document.getElementById('mobile-categories-dropdown').classList.toggle('hidden'); document.getElementById('mobile-categories-dropdown').classList.toggle('flex'); document.getElementById('mobile-categories-icon').classList.toggle('rotate-180');"  class="flex items-center justify-between font-heading text-4xl md:text-5xl font-light italic text-brand-text hover:text-brand-sage transition-colors w-full text-left">
-                        <span>Categories</span>
-                        <i class="ph ph-caret-down text-2xl transition-transform duration-300" id="mobile-categories-icon"></i>
-                    </button>
-                    <!-- Sub-links container hidden by default -->
-                    <div id="mobile-categories-dropdown" class="hidden flex-col gap-5 pl-4 pt-6 border-l border-brand-beige/50 ml-2 mt-2">
-                        <a href="./categories/baby-sets.html" class="mobile-link text-lg font-sans text-brand-muted hover:text-brand-sage">Baby Sets</a>
-                        <a href="./categories/bags.html" class="mobile-link text-lg font-sans text-brand-muted hover:text-brand-sage">Bags / Wallets</a>
-                        <a href="./categories/book-items.html" class="mobile-link text-lg font-sans text-brand-muted hover:text-brand-sage">Book Items</a>
-                        <a href="./categories/bouquets.html" class="mobile-link text-lg font-sans text-brand-muted hover:text-brand-sage">Bouquets</a>
-                        <a href="./categories/clothing.html" class="mobile-link text-lg font-sans text-brand-muted hover:text-brand-sage">Clothing</a>
-                        <a href="./categories/earrings.html" class="mobile-link text-lg font-sans text-brand-muted hover:text-brand-sage">Earrings</a>
-                        <a href="./categories/gifting.html" class="mobile-link text-lg font-sans text-brand-muted hover:text-brand-sage">Gifting</a>
-                        <a href="./categories/hair-accessories.html" class="mobile-link text-lg font-sans text-brand-muted hover:text-brand-sage">Hair Accessories</a>
-                        <a href="./categories/hand-accessories.html" class="mobile-link text-lg font-sans text-brand-muted hover:text-brand-sage">Hand Accessories</a>
-                        <a href="./categories/home-decor.html" class="mobile-link text-lg font-sans text-brand-muted hover:text-brand-sage">Home Decor</a>
-                        <a href="./categories/keychain.html" class="mobile-link text-lg font-sans text-brand-muted hover:text-brand-sage">Keychains</a>
-                        <a href="./categories/plushies.html" class="mobile-link text-lg font-sans text-brand-muted hover:text-brand-sage">Plushies</a>
-                    </div>
-                </div>
 
-                <a href="./about_us.html" class="mobile-link font-heading text-4xl md:text-5xl font-light italic text-brand-text hover:text-brand-sage transition-colors">About Us</a>
-                <a href="./custom-orders.html" class="mobile-link font-heading text-4xl md:text-5xl font-light italic text-brand-text hover:text-brand-sage transition-colors">Custom Orders</a>
+        <div class="dl-drawer-body">
+            <ul class="dl-mobile-nav-list">
+                <!-- 1. Home -->
+                <li>
+                    <a href="./index.html" class="dl-mobile-nav-link active">Home</a>
+                </li>
+
+                <!-- 2. Shop Accordion -->
+                <li class="dl-mobile-accordion-item">
+                    <button class="dl-mobile-accordion-btn" id="dl-shop-acc-btn">
+                        <span>Shop</span>
+                        <i class="ph ph-caret-down dl-acc-icon"></i>
+                    </button>
+                    <div class="dl-mobile-accordion-content" id="dl-shop-acc-content">
+                        <div class="dl-mobile-sub-group">
+                            <a href="./categories/bags.html" class="dl-mobile-sub-heading">Featured Collections</a>
+                            <a href="./index.html#new-arrivals" class="dl-mobile-sub-link">New Arrivals</a>
+                            <a href="./index.html#best-sellers" class="dl-mobile-sub-link">Best Sellers</a>
+                        </div>
+
+                        <!-- Sub Category Accordions -->
+                        <div class="dl-mobile-sub-acc">
+                            <button class="dl-sub-acc-btn"><span>🌸 Gajras</span> <i class="ph ph-plus"></i></button>
+                            <div class="dl-sub-acc-content">
+                                <a href="./categories/gajras.html">Floral Gajras</a>
+                                <a href="./categories/gajras.html">Bridal Gajras</a>
+                                <a href="./categories/gajras.html">Custom Gajras</a>
+                            </div>
+                        </div>
+
+                        <div class="dl-mobile-sub-acc">
+                            <button class="dl-sub-acc-btn"><span>🎀 Hair Accessories</span> <i class="ph ph-plus"></i></button>
+                            <div class="dl-sub-acc-content">
+                                <a href="./categories/hair-accessories.html">Scrunchies</a>
+                                <a href="./categories/hair-accessories.html">Hair Bows</a>
+                                <a href="./categories/hair-accessories.html">Hair Clips</a>
+                                <a href="./categories/hair-accessories.html">Headbands</a>
+                                <a href="./categories/hair-accessories.html">Hair Pins</a>
+                            </div>
+                        </div>
+
+                        <div class="dl-mobile-sub-acc">
+                            <button class="dl-sub-acc-btn"><span>👜 Bags</span> <i class="ph ph-plus"></i></button>
+                            <div class="dl-sub-acc-content">
+                                <a href="./categories/bags.html">Tote Bags</a>
+                                <a href="./categories/bags.html">Shoulder Bags</a>
+                                <a href="./categories/bags.html">Crossbody Bags</a>
+                                <a href="./categories/bags.html">Wallets</a>
+                            </div>
+                        </div>
+
+                        <div class="dl-mobile-sub-acc">
+                            <button class="dl-sub-acc-btn"><span>🔑 Keychains</span> <i class="ph ph-plus"></i></button>
+                            <div class="dl-sub-acc-content">
+                                <a href="./categories/keychain.html">Car Hanging</a>
+                                <a href="./categories/keychain.html">Animal Keychains</a>
+                                <a href="./categories/keychain.html">Alphabet Keychains</a>
+                            </div>
+                        </div>
+
+                        <div class="dl-mobile-sub-acc">
+                            <button class="dl-sub-acc-btn"><span>💐 Bouquets</span> <i class="ph ph-plus"></i></button>
+                            <div class="dl-sub-acc-content">
+                                <a href="./categories/bouquets.html">Flower Bouquets</a>
+                                <a href="./categories/bouquets.html">Mini Bouquets</a>
+                            </div>
+                        </div>
+
+                        <div class="dl-mobile-sub-acc">
+                            <button class="dl-sub-acc-btn"><span>👶 Baby Collection</span> <i class="ph ph-plus"></i></button>
+                            <div class="dl-sub-acc-content">
+                                <a href="./categories/baby-sets.html">Baby Shoes</a>
+                                <a href="./categories/baby-sets.html">Baby Caps</a>
+                                <a href="./categories/baby-sets.html">Baby Blankets</a>
+                            </div>
+                        </div>
+
+                        <div class="dl-mobile-sub-acc">
+                            <button class="dl-sub-acc-btn"><span>👕 Wearables</span> <i class="ph ph-plus"></i></button>
+                            <div class="dl-sub-acc-content">
+                                <a href="./categories/clothing.html">Cardigans</a>
+                                <a href="./categories/clothing.html">Summer Tops</a>
+                                <a href="./categories/clothing.html">Sweaters &amp; Mufflers</a>
+                            </div>
+                        </div>
+
+                        <div class="dl-mobile-sub-acc">
+                            <button class="dl-sub-acc-btn"><span>🧸 Plushies</span> <i class="ph ph-plus"></i></button>
+                            <div class="dl-sub-acc-content">
+                                <a href="./categories/plushies.html">Characters</a>
+                                <a href="./categories/plushies.html">Mini Plushies</a>
+                                <a href="./categories/plushies.html">Dolls</a>
+                            </div>
+                        </div>
+
+                        <div class="dl-mobile-sub-acc">
+                            <button class="dl-sub-acc-btn"><span>🏡 Home Decor</span> <i class="ph ph-plus"></i></button>
+                            <div class="dl-sub-acc-content">
+                                <a href="./categories/home-decor.html">Coasters</a>
+                                <a href="./categories/home-decor.html">Table Runners</a>
+                                <a href="./categories/home-decor.html">Cushion Covers</a>
+                            </div>
+                        </div>
+
+                        <div class="dl-mobile-sub-acc">
+                            <button class="dl-sub-acc-btn"><span>🎁 Gift Collection</span> <i class="ph ph-plus"></i></button>
+                            <div class="dl-sub-acc-content">
+                                <a href="./categories/gifting.html">Birthday Gifts</a>
+                                <a href="./categories/gifting.html">Anniversary Gifts</a>
+                                <a href="./categories/gifting.html">Bridal Gifts</a>
+                            </div>
+                        </div>
+
+                    </div>
+                </li>
+
+                <!-- 3. Custom Orders -->
+                <li>
+                    <a href="./pages/custom-orders.html" class="dl-mobile-nav-link ">Custom Orders</a>
+                </li>
+
+                <!-- 4. About Us -->
+                <li>
+                    <a href="./pages/about_us.html" class="dl-mobile-nav-link ">About Us</a>
+                </li>
+
+                <!-- 5. Reviews -->
+                <li>
+                    <a href="./index.html#reviews" class="dl-mobile-nav-link">Reviews</a>
+                </li>
+
+                <!-- 6. Gallery -->
+                <li>
+                    <a href="./index.html#insta-track" class="dl-mobile-nav-link">Gallery</a>
+                </li>
+
+                <!-- 7. FAQs -->
+                <li>
+                    <a href="./pages/about_us.html#faq" class="dl-mobile-nav-link">FAQs</a>
+                </li>
+
+                <!-- 8. Contact -->
+                <li>
+                    <a href="./pages/how-to-order.html" class="dl-mobile-nav-link ">Contact</a>
+                </li>
+            </ul>
+        </div>
+    </aside>
+
+    <!-- MOBILE SEARCH MODAL -->
+    <div class="dl-search-modal" id="dl-search-modal">
+        <div class="dl-search-modal-box">
+            <div class="dl-search-modal-header">
+                <span class="dl-search-modal-title">Search DaisyLine</span>
+                <button class="dl-search-modal-close" id="dl-search-modal-close"><i class="ph ph-x"></i></button>
             </div>
-            
-            <div class="mt-12 pt-8 border-t border-brand-beige/30 flex gap-6">
-                <a href="https://www.instagram.com/daisylinecrochet/" target="_blank" rel="noopener noreferrer" class="text-brand-text hover:text-brand-sage transition-colors"><i class="ph ph-instagram-logo text-3xl"></i></a>
-                <a href="https://www.facebook.com/share/1HeWDJU5ap/" target="_blank" rel="noopener noreferrer" class="text-brand-text hover:text-brand-sage transition-colors"><i class="ph ph-facebook-logo text-3xl"></i></a>
-                <a href="https://www.tiktok.com/@daisylinecrochet?_r=1&_t=ZS-98DQTwu0jqr" target="_blank" rel="noopener noreferrer" class="text-brand-text hover:text-brand-sage transition-colors"><i class="ph ph-tiktok-logo text-3xl"></i></a>
+            <div class="dl-search-modal-body">
+                <input type="text" placeholder="Search handmade crochet gifts, gajras, plushies..." class="dl-search-modal-input" id="dl-mobile-search-input">
+                <div class="dl-search-quick-tags">
+                    <span>Quick Search:</span>
+                    <a href="./categories/gajras.html">Gajras</a>
+                    <a href="./categories/bags.html">Tote Bags</a>
+                    <a href="./categories/plushies.html">Plushies</a>
+                    <a href="./categories/keychain.html">Keychains</a>
+                </div>
+                <div class="dl-search-results" id="dl-mobile-search-results"></div>
             </div>
         </div>
     </div>
+    
 
-    <main>
-        <!-- Cinematic Hero Carousel (Height Reduced) -->
-        <section id="home" class="relative w-full h-[70svh] md:h-[80svh] overflow-hidden bg-brand-ivory">
-            
-            <!-- Slides Container -->
-            <div id="carousel-container" class="relative w-full h-full">
-                
+    <main class="dl-main">
+
+        <!-- SECTION 3: HERO BANNER SLIDER -->
+        <section class="dl-hero" id="hero">
+            <div class="dl-hero-slider">
                 <!-- Slide 1 -->
-                <div class="hero-slide active-slide absolute inset-0 z-10 opacity-100 flex items-center justify-center">
-                    <div class="absolute inset-0 img-hover-container">
-                        <img src="./images/hero_image.webp" alt="Handmade Crochet Bouquet" class="w-full h-full object-cover">
-                        <!-- Dark gradient overlay for text readability -->
-                        <div class="absolute inset-0 bg-gradient-to-b from-black/40 via-black/20 to-black/60 mix-blend-multiply"></div>
-                    </div>
-                    <!-- Margins adjusted for shorter height container -->
-                    <div class="relative z-20 text-center px-4 mt-8 md:mt-12 max-w-4xl mx-auto">
-                        <span class="text-white/80 uppercase tracking-[0.3em] text-[10px] md:text-xs font-bold mb-4 md:mb-6 block reveal-fade active">Handcrafted in Pakistan</span>
-                        <!-- Slightly reduced text size to fit shorter bounds perfectly -->
-                        <h1 class="font-heading text-[3.5rem] sm:text-5xl md:text-[6rem] lg:text-[7.5rem] leading-[0.9] text-white tracking-tighter mb-6">
-                            <span class="block reveal-fade active delay-100">The Art of</span>
-                            <span class="block reveal-fade active delay-200 italic font-light text-brand-gold">Slow Living.</span>
-                        </h1>
-                        <a href="#categories" class="inline-flex items-center justify-center px-8 py-4 bg-white text-brand-text rounded-full font-medium text-xs tracking-[0.15em] uppercase hover:bg-brand-sage hover:text-white transition-all duration-500 reveal-fade active delay-300">
-                            Explore Collection
-                        </a>
+                <div class="dl-hero-slide active">
+                    <img src="data:image/svg+xml;charset=UTF-8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%221920%22%20height%3D%221080%22%20viewBox%3D%220%200%201920%201080%22%3E%3Crect%20width%3D%221920%22%20height%3D%221080%22%20fill%3D%22%23F5EFE6%22%2F%3E%3Ccircle%20cx%3D%22960%22%20cy%3D%22540%22%20r%3D%22400%22%20fill%3D%22none%22%20stroke%3D%22%238FA886%22%20stroke-width%3D%224%22%20stroke-dasharray%3D%2212%2012%22%20opacity%3D%220.4%22%2F%3E%3Ctext%20x%3D%22960%22%20y%3D%22500%22%20font-family%3D%22'Sacramento'%2C%20cursive%22%20font-size%3D%22120%22%20text-anchor%3D%22middle%22%20fill%3D%22%238FA886%22%3EHandmade%20Gajras%20%26%20Florals%3C%2Ftext%3E%3Ctext%20x%3D%22960%22%20y%3D%22600%22%20font-family%3D%22'Cormorant%20Garamond'%2C%20serif%22%20font-size%3D%2242%22%20letter-spacing%3D%224%22%20text-anchor%3D%22middle%22%20fill%3D%22%235A6B53%22%3EDAISYLINE%20HANDMADE%20CROCHET%3C%2Ftext%3E%3C%2Fsvg%3E" alt="Handmade Crochet Gajras Collection" class="dl-hero-bg">
+                    <div class="dl-hero-overlay"></div>
+                    <div class="dl-hero-content">
+                        <span class="dl-hero-badge">Boutique Collection</span>
+                        <h1 class="dl-hero-title">Handmade Crochet Collection</h1>
+                        <p class="dl-hero-subtitle">Made with Love, Crafted for You.</p>
+                        <div class="dl-hero-actions">
+                            <a href="#categories" class="dl-btn dl-btn-primary">Shop Now</a>
+                            <a href="#new-arrivals" class="dl-btn dl-btn-secondary">Explore Collection</a>
+                        </div>
                     </div>
                 </div>
 
                 <!-- Slide 2 -->
-                <div class="hero-slide absolute inset-0 z-0 opacity-0 flex items-center justify-center">
-                    <div class="absolute inset-0 img-hover-container">
-                        <img src="./images/new6.jpg" alt="Everlasting Crochet Bouquets" class="w-full h-full object-cover">
-                        <div class="absolute inset-0 bg-gradient-to-t from-brand-text/80 to-transparent"></div>
-                    </div>
-                    <div class="relative z-20 text-center px-4 mt-12 md:mt-16 max-w-4xl mx-auto">
-                        <span class="text-brand-floral uppercase tracking-[0.3em] text-[10px] md:text-xs font-bold mb-4 md:mb-6 block">Gifts that Last Forever</span>
-                        <h2 class="font-heading text-[3rem] sm:text-5xl md:text-[5.5rem] lg:text-[6.5rem] leading-[0.9] text-white tracking-tighter mb-6">
-                            <span class="block">Everlasting</span>
-                            <span class="block italic font-light">Elegance.</span>
-                        </h2>
-                        <a href="./categories/bouquets.html" class="inline-flex items-center justify-center px-8 py-4 bg-brand-sage text-white rounded-full font-medium text-xs tracking-[0.15em] uppercase hover:bg-white hover:text-brand-text transition-all duration-500">
-                            Shop Bouquets
-                        </a>
+                <div class="dl-hero-slide">
+                    <img src="data:image/svg+xml;charset=UTF-8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%221920%22%20height%3D%221080%22%20viewBox%3D%220%200%201920%201080%22%3E%3Crect%20width%3D%221920%22%20height%3D%221080%22%20fill%3D%22%23FFF0F3%22%2F%3E%3Ccircle%20cx%3D%22960%22%20cy%3D%22540%22%20r%3D%22400%22%20fill%3D%22none%22%20stroke%3D%22%238FA886%22%20stroke-width%3D%224%22%20stroke-dasharray%3D%2212%2012%22%20opacity%3D%220.4%22%2F%3E%3Ctext%20x%3D%22960%22%20y%3D%22500%22%20font-family%3D%22'Sacramento'%2C%20cursive%22%20font-size%3D%22120%22%20text-anchor%3D%22middle%22%20fill%3D%22%238FA886%22%3EBouquets%20%26%20Custom%20Gifts%3C%2Ftext%3E%3Ctext%20x%3D%22960%22%20y%3D%22600%22%20font-family%3D%22'Cormorant%20Garamond'%2C%20serif%22%20font-size%3D%2242%22%20letter-spacing%3D%224%22%20text-anchor%3D%22middle%22%20fill%3D%22%235A6B53%22%3ETIMELSS%20GIFTS%20%26%20KEYCHAINS%3C%2Ftext%3E%3C%2Fsvg%3E" alt="Custom Crochet Gifts" class="dl-hero-bg">
+                    <div class="dl-hero-overlay"></div>
+                    <div class="dl-hero-content">
+                        <span class="dl-hero-badge">Bespoke Craftsmanship</span>
+                        <h2 class="dl-hero-title">Custom Crochet Gifts</h2>
+                        <p class="dl-hero-subtitle">Made Just the Way You Imagine.</p>
+                        <div class="dl-hero-actions">
+                            <a href="./pages/custom-orders.html" class="dl-btn dl-btn-primary">Start Custom Order</a>
+                            <a href="#custom-section" class="dl-btn dl-btn-secondary">Learn More</a>
+                        </div>
                     </div>
                 </div>
 
                 <!-- Slide 3 -->
-                <div class="hero-slide absolute inset-0 z-0 opacity-0 flex items-center justify-center">
-                    <div class="absolute inset-0 img-hover-container">
-                        <img src="./images/new3.jpg" alt="Chunky Crochet Tote Bag" class="w-full h-full object-cover">
-                        <div class="absolute inset-0 bg-black/40"></div>
-                    </div>
-                    <div class="relative z-20 text-center px-4 mt-12 md:mt-16 max-w-4xl mx-auto">
-                        <span class="text-white/80 uppercase tracking-[0.3em] text-[10px] md:text-xs font-bold mb-4 md:mb-6 block">Everyday Essentials</span>
-                        <h2 class="font-heading text-[3rem] sm:text-5xl md:text-[5.5rem] lg:text-[6.5rem] leading-[0.9] text-white tracking-tighter mb-6">
-                            <span class="block">Thoughtful</span>
-                            <span class="block italic font-light text-brand-floral">Details.</span>
-                        </h2>
-                        <a href="./categories/bags.html" class="inline-flex items-center justify-center px-8 py-4 border border-white text-white rounded-full font-medium text-xs tracking-[0.15em] uppercase hover:bg-white hover:text-brand-text transition-all duration-500">
-                            View Handbags
-                        </a>
+                <div class="dl-hero-slide">
+                    <img src="data:image/svg+xml;charset=UTF-8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%221920%22%20height%3D%221080%22%20viewBox%3D%220%200%201920%201080%22%3E%3Crect%20width%3D%221920%22%20height%3D%221080%22%20fill%3D%22%23FAF8F5%22%2F%3E%3Ccircle%20cx%3D%22960%22%20cy%3D%22540%22%20r%3D%22400%22%20fill%3D%22none%22%20stroke%3D%22%238FA886%22%20stroke-width%3D%224%22%20stroke-dasharray%3D%2212%2012%22%20opacity%3D%220.4%22%2F%3E%3Ctext%20x%3D%22960%22%20y%3D%22500%22%20font-family%3D%22'Sacramento'%2C%20cursive%22%20font-size%3D%22120%22%20text-anchor%3D%22middle%22%20fill%3D%22%238FA886%22%3EHandcrafted%20Wearables%3C%2Ftext%3E%3Ctext%20x%3D%22960%22%20y%3D%22600%22%20font-family%3D%22'Cormorant%20Garamond'%2C%20serif%22%20font-size%3D%2242%22%20letter-spacing%3D%224%22%20text-anchor%3D%22middle%22%20fill%3D%22%235A6B53%22%3ECARDIGANS%20%E2%80%A2%20TOPS%20%E2%80%A2%20ACCESSORIES%3C%2Ftext%3E%3C%2Fsvg%3E" alt="New Wearables Collection" class="dl-hero-bg">
+                    <div class="dl-hero-overlay"></div>
+                    <div class="dl-hero-content">
+                        <span class="dl-hero-badge">Apparel Collection</span>
+                        <h2 class="dl-hero-title">New Wearables Collection</h2>
+                        <p class="dl-hero-subtitle">Cardigans &bull; Summer Tops &bull; Accessories</p>
+                        <div class="dl-hero-actions">
+                            <a href="./categories/clothing.html" class="dl-btn dl-btn-primary">Shop Wearables</a>
+                            <a href="#new-arrivals" class="dl-btn dl-btn-secondary">View Collection</a>
+                        </div>
                     </div>
                 </div>
 
+                <!-- Slide 4 -->
+                <div class="dl-hero-slide">
+                    <img src="data:image/svg+xml;charset=UTF-8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%221920%22%20height%3D%221080%22%20viewBox%3D%220%200%201920%201080%22%3E%3Crect%20width%3D%221920%22%20height%3D%221080%22%20fill%3D%22%23FFEBE3%22%2F%3E%3Ccircle%20cx%3D%22960%22%20cy%3D%22540%22%20r%3D%22400%22%20fill%3D%22none%22%20stroke%3D%22%238FA886%22%20stroke-width%3D%224%22%20stroke-dasharray%3D%2212%2012%22%20opacity%3D%220.4%22%2F%3E%3Ctext%20x%3D%22960%22%20y%3D%22500%22%20font-family%3D%22'Sacramento'%2C%20cursive%22%20font-size%3D%22120%22%20text-anchor%3D%22middle%22%20fill%3D%22%238FA886%22%3ECozy%20Home%20Decor%3C%2Ftext%3E%3Ctext%20x%3D%22960%22%20y%3D%22600%22%20font-family%3D%22'Cormorant%20Garamond'%2C%20serif%22%20font-size%3D%2242%22%20letter-spacing%3D%224%22%20text-anchor%3D%22middle%22%20fill%3D%22%235A6B53%22%3ECOASTERS%20%E2%80%A2%20TABLE%20RUNNERS%3C%2Ftext%3E%3C%2Fsvg%3E" alt="Home Decor Collection" class="dl-hero-bg">
+                    <div class="dl-hero-overlay"></div>
+                    <div class="dl-hero-content">
+                        <span class="dl-hero-badge">Interior Accents</span>
+                        <h2 class="dl-hero-title">Home Decor Collection</h2>
+                        <p class="dl-hero-subtitle">Beautify Every Corner of Your Home. Coasters &bull; Table Runners</p>
+                        <div class="dl-hero-actions">
+                            <a href="./categories/home-decor.html" class="dl-btn dl-btn-primary">Shop Home Decor</a>
+                            <a href="#categories" class="dl-btn dl-btn-secondary">View Collection</a>
+                        </div>
+                    </div>
+                </div>
             </div>
 
-            <!-- Carousel Controls -->
-            <div class="absolute bottom-8 md:bottom-12 left-1/2 -translate-x-1/2 z-30 flex items-center gap-4">
-                <button aria-label="Slide 1" class="carousel-dot w-10 h-1 bg-white transition-all duration-300 rounded-full"></button>
-                <button aria-label="Slide 2" class="carousel-dot w-3 h-1 bg-white/40 hover:bg-white/70 transition-all duration-300 rounded-full"></button>
-                <button aria-label="Slide 3" class="carousel-dot w-3 h-1 bg-white/40 hover:bg-white/70 transition-all duration-300 rounded-full"></button>
+            <!-- Hero Controls -->
+            <div class="dl-hero-controls">
+                <button class="dl-hero-dot active" aria-label="Hero Slide 1"></button>
+                <button class="dl-hero-dot" aria-label="Hero Slide 2"></button>
+                <button class="dl-hero-dot" aria-label="Hero Slide 3"></button>
+                <button class="dl-hero-dot" aria-label="Hero Slide 4"></button>
             </div>
-            
-            <!-- Side Arrows (Desktop only) -->
-            <button id="prev-slide" class="absolute top-1/2 left-8 -translate-y-1/2 z-30 w-12 h-12 rounded-full border border-white/30 text-white flex items-center justify-center hover:bg-white hover:text-brand-text transition-all duration-300 hidden md:flex backdrop-blur-sm">
-                <i class="ph ph-arrow-left text-xl"></i>
-            </button>
-            <button id="next-slide" class="absolute top-1/2 right-8 -translate-y-1/2 z-30 w-12 h-12 rounded-full border border-white/30 text-white flex items-center justify-center hover:bg-white hover:text-brand-text transition-all duration-300 hidden md:flex backdrop-blur-sm">
-                <i class="ph ph-arrow-right text-xl"></i>
-            </button>
         </section>
 
-        <!-- Collections (Strict Equal Sizing Grid - ALL 12 Categories Preserved) -->
-        <section id="categories" class="pt-24 pb-16 lg:pt-32 lg:pb-24 bg-brand-cream relative">
-            <div class="max-w-[90rem] mx-auto px-4 sm:px-6 lg:px-12">
-                <div class="flex flex-col md:flex-row justify-between items-end mb-16 lg:mb-24 reveal-fade">
-                    <div class="max-w-2xl">
-                        <h2 class="font-heading text-[2.5rem] md:text-5xl lg:text-6xl text-brand-text mb-4 leading-none">Curated <span class="italic text-brand-olive font-light">Collections</span></h2>
-                        <p class="text-brand-muted text-sm md:text-base font-light">Explore our range of meticulously handcrafted items. Every piece tells a story of dedication.</p>
-                    </div>
-                    <a href="./custom-orders.html" class="hidden md:inline-flex items-center gap-3 text-xs font-semibold tracking-widest uppercase text-brand-text hover:text-brand-sage transition-colors pb-2 border-b border-brand-text hover:border-brand-sage">
-                        Request Custom <i class="ph ph-arrow-right"></i>
-                    </a>
+        <!-- SECTION 4: SHOP BY CATEGORY -->
+        <section class="dl-section dl-bg-cream" id="categories">
+            <div class="dl-container">
+                <div class="dl-header-group dl-reveal">
+                    <span class="dl-tagline">Explore Our World</span>
+                    <h2 class="dl-section-title">Shop by Category</h2>
+                    <p class="dl-section-subtitle">Handmade with precision, warmth, and love in every stitch.</p>
                 </div>
 
-                <!-- STRICT REQUIREMENT: Grid forcing equal height and width on all cards -->
-                <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 md:gap-6 lg:gap-8">
-                    
-                    <!-- 1. Bags/Wallets -->
-                    <a href="./categories/bags.html" class="group relative overflow-hidden bg-brand-ivory aspect-square rounded-xl md:rounded-2xl reveal-fade shadow-sm hover:shadow-xl transition-shadow duration-500 block">
-                        <div class="absolute inset-0 img-hover-container">
-                            <img src="https://placehold.co/600x600/e8e1d5/72886a?text=Bags" alt="Bags & Wallets" class="w-full h-full object-cover">
+                <div class="dl-category-grid">
+                    <!-- 1. Gajras -->
+                    <a href="./categories/gajras.html" class="dl-category-card dl-reveal dl-delay-1">
+                        <div class="dl-category-img-wrapper">
+                            <img src="data:image/svg+xml;charset=UTF-8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22300%22%20height%3D%22300%22%20viewBox%3D%220%200%20300%20300%22%3E%3Crect%20width%3D%22300%22%20height%3D%22300%22%20fill%3D%22%23FFF0F3%22%2F%3E%3Ctext%20x%3D%22150%22%20y%3D%22165%22%20font-size%3D%2260%22%20text-anchor%3D%22middle%22%3E🌸%3C%2Ftext%3E%3C%2Fsvg%3E" alt="Gajras">
                         </div>
-                        <div class="absolute inset-0 bg-brand-text/30 group-hover:bg-brand-text/40 transition-colors duration-500"></div>
-                        <div class="absolute inset-0 flex items-center justify-center p-4">
-                            <h3 class="font-heading text-xl md:text-3xl text-white font-medium text-center">Bags & Wallets</h3>
-                        </div>
+                        <span class="dl-category-name">Gajras</span>
+                        <span class="dl-category-count">Traditional &amp; Eternal</span>
                     </a>
 
-                    <!-- 2. Keychains -->
-                    <a href="./categories/keychain.html" class="group relative overflow-hidden bg-brand-ivory aspect-square rounded-xl md:rounded-2xl reveal-fade delay-100 shadow-sm hover:shadow-xl transition-shadow duration-500 block">
-                        <div class="absolute inset-0 img-hover-container">
-                            <img src="https://placehold.co/600x600/dce5d8/5e6b57?text=Keychains" alt="Keychains" class="w-full h-full object-cover">
+                    <!-- 2. Hair Accessories -->
+                    <a href="./categories/hair-accessories.html" class="dl-category-card dl-reveal dl-delay-2">
+                        <div class="dl-category-img-wrapper">
+                            <img src="data:image/svg+xml;charset=UTF-8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22300%22%20height%3D%22300%22%20viewBox%3D%220%200%20300%20300%22%3E%3Crect%20width%3D%22300%22%20height%3D%22300%22%20fill%3D%22%23F5EFE6%22%2F%3E%3Ctext%20x%3D%22150%22%20y%3D%22165%22%20font-size%3D%2260%22%20text-anchor%3D%22middle%22%3E🎀%3C%2Ftext%3E%3C%2Fsvg%3E" alt="Hair Accessories">
                         </div>
-                        <div class="absolute inset-0 bg-brand-text/30 group-hover:bg-brand-text/40 transition-colors duration-500"></div>
-                        <div class="absolute inset-0 flex items-center justify-center p-4">
-                            <h3 class="font-heading text-xl md:text-3xl text-white font-medium text-center">Keychains</h3>
-                        </div>
+                        <span class="dl-category-name">Hair Accessories</span>
+                        <span class="dl-category-count">Clips &amp; Scrunchies</span>
                     </a>
 
-                    <!-- 3. Bouquets -->
-                    <a href="./categories/bouquets.html" class="group relative overflow-hidden bg-brand-ivory aspect-square rounded-xl md:rounded-2xl reveal-fade delay-200 shadow-sm hover:shadow-xl transition-shadow duration-500 block">
-                        <div class="absolute inset-0 img-hover-container">
-                            <img src="./images/new6.jpg" onerror="this.src='https://placehold.co/600x600/f8f5f0/72886a?text=Bouquets'" alt="Bouquets" class="w-full h-full object-cover">
+                    <!-- 3. Bags -->
+                    <a href="./categories/bags.html" class="dl-category-card dl-reveal dl-delay-3">
+                        <div class="dl-category-img-wrapper">
+                            <img src="data:image/svg+xml;charset=UTF-8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22300%22%20height%3D%22300%22%20viewBox%3D%220%200%20300%20300%22%3E%3Crect%20width%3D%22300%22%20height%3D%22300%22%20fill%3D%22%23FFEBE3%22%2F%3E%3Ctext%20x%3D%22150%22%20y%3D%22165%22%20font-size%3D%2260%22%20text-anchor%3D%22middle%22%3E👜%3C%2Ftext%3E%3C%2Fsvg%3E" alt="Bags">
                         </div>
-                        <div class="absolute inset-0 bg-brand-text/30 group-hover:bg-brand-text/40 transition-colors duration-500"></div>
-                        <div class="absolute inset-0 flex items-center justify-center p-4">
-                            <h3 class="font-heading text-xl md:text-3xl text-white font-medium text-center">Bouquets</h3>
-                        </div>
+                        <span class="dl-category-name">Bags</span>
+                        <span class="dl-category-count">Totes &amp; Wallets</span>
                     </a>
 
-                    <!-- 4. Book items -->
-                    <a href="./categories/book-items.html" class="group relative overflow-hidden bg-brand-ivory aspect-square rounded-xl md:rounded-2xl reveal-fade delay-300 shadow-sm hover:shadow-xl transition-shadow duration-500 block">
-                        <div class="absolute inset-0 img-hover-container">
-                            <img src="https://placehold.co/600x600/8fa886/ffffff?text=Book+Items" alt="Book items" class="w-full h-full object-cover">
+                    <!-- 4. Keychains -->
+                    <a href="./categories/keychain.html" class="dl-category-card dl-reveal dl-delay-4">
+                        <div class="dl-category-img-wrapper">
+                            <img src="data:image/svg+xml;charset=UTF-8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22300%22%20height%3D%22300%22%20viewBox%3D%220%200%20300%20300%22%3E%3Crect%20width%3D%22300%22%20height%3D%22300%22%20fill%3D%22%23FAF8F5%22%2F%3E%3Ctext%20x%3D%22150%22%20y%3D%22165%22%20font-size%3D%2260%22%20text-anchor%3D%22middle%22%3E🔑%3C%2Ftext%3E%3C%2Fsvg%3E" alt="Keychains">
                         </div>
-                        <div class="absolute inset-0 bg-brand-text/30 group-hover:bg-brand-text/40 transition-colors duration-500"></div>
-                        <div class="absolute inset-0 flex items-center justify-center p-4">
-                            <h3 class="font-heading text-xl md:text-3xl text-white font-medium text-center">Book Items</h3>
-                        </div>
+                        <span class="dl-category-name">Keychains</span>
+                        <span class="dl-category-count">Cute &amp; Custom</span>
                     </a>
 
-                    <!-- 5. Home decor -->
-                    <a href="./categories/home-decor.html" class="group relative overflow-hidden bg-brand-ivory aspect-square rounded-xl md:rounded-2xl reveal-fade shadow-sm hover:shadow-xl transition-shadow duration-500 block">
-                        <div class="absolute inset-0 img-hover-container">
-                            <img src="https://placehold.co/600x600/fdfbf7/5e6b57?text=Home+Decor" alt="Home decor" class="w-full h-full object-cover">
+                    <!-- 5. Bouquets -->
+                    <a href="./categories/bouquets.html" class="dl-category-card dl-reveal dl-delay-1">
+                        <div class="dl-category-img-wrapper">
+                            <img src="data:image/svg+xml;charset=UTF-8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22300%22%20height%3D%22300%22%20viewBox%3D%220%200%20300%20300%22%3E%3Crect%20width%3D%22300%22%20height%3D%22300%22%20fill%3D%22%23FFF0F3%22%2F%3E%3Ctext%20x%3D%22150%22%20y%3D%22165%22%20font-size%3D%2260%22%20text-anchor%3D%22middle%22%3E💐%3C%2Ftext%3E%3C%2Fsvg%3E" alt="Bouquets">
                         </div>
-                        <div class="absolute inset-0 bg-brand-text/30 group-hover:bg-brand-text/40 transition-colors duration-500"></div>
-                        <div class="absolute inset-0 flex items-center justify-center p-4">
-                            <h3 class="font-heading text-xl md:text-3xl text-white font-medium text-center">Home Decor</h3>
-                        </div>
+                        <span class="dl-category-name">Bouquets</span>
+                        <span class="dl-category-count">Forever Flowers</span>
                     </a>
 
-                    <!-- 6. Hair accessories -->
-                    <a href="./categories/hair-accessories.html" class="group relative overflow-hidden bg-brand-ivory aspect-square rounded-xl md:rounded-2xl reveal-fade delay-100 shadow-sm hover:shadow-xl transition-shadow duration-500 block">
-                        <div class="absolute inset-0 img-hover-container">
-                            <img src="https://placehold.co/600x600/e8e1d5/72886a?text=Hair+Accessories" alt="Hair accessories" class="w-full h-full object-cover">
+                    <!-- 6. Baby Collection -->
+                    <a href="./categories/baby-sets.html" class="dl-category-card dl-reveal dl-delay-2">
+                        <div class="dl-category-img-wrapper">
+                            <img src="data:image/svg+xml;charset=UTF-8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22300%22%20height%3D%22300%22%20viewBox%3D%220%200%20300%20300%22%3E%3Crect%20width%3D%22300%22%20height%3D%22300%22%20fill%3D%22%23FFEBE3%22%2F%3E%3Ctext%20x%3D%22150%22%20y%3D%22165%22%20font-size%3D%2260%22%20text-anchor%3D%22middle%22%3E🍼%3C%2Ftext%3E%3C%2Fsvg%3E" alt="Baby Collection">
                         </div>
-                        <div class="absolute inset-0 bg-brand-text/30 group-hover:bg-brand-text/40 transition-colors duration-500"></div>
-                        <div class="absolute inset-0 flex items-center justify-center p-4">
-                            <h3 class="font-heading text-xl md:text-3xl text-white font-medium text-center">Hair Accessories</h3>
-                        </div>
+                        <span class="dl-category-name">Baby Collection</span>
+                        <span class="dl-category-count">Soft &amp; Gentle</span>
                     </a>
 
-                    <!-- 7. Hand accessories -->
-                    <a href="./categories/hand-accessories.html" class="group relative overflow-hidden bg-brand-ivory aspect-square rounded-xl md:rounded-2xl reveal-fade delay-200 shadow-sm hover:shadow-xl transition-shadow duration-500 block">
-                        <div class="absolute inset-0 img-hover-container">
-                            <img src="https://placehold.co/600x600/dce5d8/5e6b57?text=Hand+Accessories" alt="Hand accessories" class="w-full h-full object-cover">
+                    <!-- 7. Wearables -->
+                    <a href="./categories/clothing.html" class="dl-category-card dl-reveal dl-delay-3">
+                        <div class="dl-category-img-wrapper">
+                            <img src="data:image/svg+xml;charset=UTF-8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22300%22%20height%3D%22300%22%20viewBox%3D%220%200%20300%20300%22%3E%3Crect%20width%3D%22300%22%20height%3D%22300%22%20fill%3D%22%23F5EFE6%22%2F%3E%3Ctext%20x%3D%22150%22%20y%3D%22165%22%20font-size%3D%2260%22%20text-anchor%3D%22middle%22%3E🧥%3C%2Ftext%3E%3C%2Fsvg%3E" alt="Wearables">
                         </div>
-                        <div class="absolute inset-0 bg-brand-text/30 group-hover:bg-brand-text/40 transition-colors duration-500"></div>
-                        <div class="absolute inset-0 flex items-center justify-center p-4">
-                            <h3 class="font-heading text-xl md:text-3xl text-white font-medium text-center">Hand Accessories</h3>
-                        </div>
+                        <span class="dl-category-name">Wearables</span>
+                        <span class="dl-category-count">Cardigans &amp; Tops</span>
                     </a>
 
-                    <!-- 8. Ear rings -->
-                    <a href="./categories/earrings.html" class="group relative overflow-hidden bg-brand-ivory aspect-square rounded-xl md:rounded-2xl reveal-fade delay-300 shadow-sm hover:shadow-xl transition-shadow duration-500 block">
-                        <div class="absolute inset-0 img-hover-container">
-                            <img src="https://placehold.co/600x600/f8f5f0/72886a?text=Ear+Rings" alt="Ear rings" class="w-full h-full object-cover">
+                    <!-- 8. Plushies -->
+                    <a href="./categories/plushies.html" class="dl-category-card dl-reveal dl-delay-4">
+                        <div class="dl-category-img-wrapper">
+                            <img src="data:image/svg+xml;charset=UTF-8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22300%22%20height%3D%22300%22%20viewBox%3D%220%200%20300%20300%22%3E%3Crect%20width%3D%22300%22%20height%3D%22300%22%20fill%3D%22%23FAF8F5%22%2F%3E%3Ctext%20x%3D%22150%22%20y%3D%22165%22%20font-size%3D%2260%22%20text-anchor%3D%22middle%22%3E🧸%3C%2Ftext%3E%3C%2Fsvg%3E" alt="Plushies">
                         </div>
-                        <div class="absolute inset-0 bg-brand-text/30 group-hover:bg-brand-text/40 transition-colors duration-500"></div>
-                        <div class="absolute inset-0 flex items-center justify-center p-4">
-                            <h3 class="font-heading text-xl md:text-3xl text-white font-medium text-center">Earrings</h3>
-                        </div>
+                        <span class="dl-category-name">Plushies</span>
+                        <span class="dl-category-count">Cute Companions</span>
                     </a>
 
-                    <!-- 9. Plushies -->
-                    <a href="./categories/plushies.html" class="group relative overflow-hidden bg-brand-ivory aspect-square rounded-xl md:rounded-2xl reveal-fade shadow-sm hover:shadow-xl transition-shadow duration-500 block">
-                        <div class="absolute inset-0 img-hover-container">
-                            <img src="./images/new1.jpg" onerror="this.src='https://placehold.co/600x600/e8e1d5/72886a?text=Plushies'" alt="Plushies" class="w-full h-full object-cover">
+                    <!-- 9. Home Decor -->
+                    <a href="./categories/home-decor.html" class="dl-category-card dl-reveal dl-delay-1">
+                        <div class="dl-category-img-wrapper">
+                            <img src="data:image/svg+xml;charset=UTF-8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22300%22%20height%3D%22300%22%20viewBox%3D%220%200%20300%20300%22%3E%3Crect%20width%3D%22300%22%20height%3D%22300%22%20fill%3D%22%23FFF0F3%22%2F%3E%3Ctext%20x%3D%22150%22%20y%3D%22165%22%20font-size%3D%2260%22%20text-anchor%3D%22middle%22%3E🏡%3C%2Ftext%3E%3C%2Fsvg%3E" alt="Home Decor">
                         </div>
-                        <div class="absolute inset-0 bg-brand-text/30 group-hover:bg-brand-text/40 transition-colors duration-500"></div>
-                        <div class="absolute inset-0 flex items-center justify-center p-4">
-                            <h3 class="font-heading text-xl md:text-3xl text-white font-medium text-center">Plushies</h3>
-                        </div>
+                        <span class="dl-category-name">Home Decor</span>
+                        <span class="dl-category-count">Coasters &amp; Runners</span>
                     </a>
 
-                    <!-- 10. Gifting -->
-                    <a href="./categories/gifting.html" class="group relative overflow-hidden bg-brand-ivory aspect-square rounded-xl md:rounded-2xl reveal-fade delay-100 shadow-sm hover:shadow-xl transition-shadow duration-500 block">
-                        <div class="absolute inset-0 img-hover-container">
-                            <img src="https://placehold.co/600x600/8fa886/ffffff?text=Gifting" alt="Gifting" class="w-full h-full object-cover">
+                    <!-- 10. Gift Collection -->
+                    <a href="./categories/gifting.html" class="dl-category-card dl-reveal dl-delay-2">
+                        <div class="dl-category-img-wrapper">
+                            <img src="data:image/svg+xml;charset=UTF-8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22300%22%20height%3D%22300%22%20viewBox%3D%220%200%20300%20300%22%3E%3Crect%20width%3D%22300%22%20height%3D%22300%22%20fill%3D%22%23FFEBE3%22%2F%3E%3Ctext%20x%3D%22150%22%20y%3D%22165%22%20font-size%3D%2260%22%20text-anchor%3D%22middle%22%3E🎁%3C%2Ftext%3E%3C%2Fsvg%3E" alt="Gift Collection">
                         </div>
-                        <div class="absolute inset-0 bg-brand-text/30 group-hover:bg-brand-text/40 transition-colors duration-500"></div>
-                        <div class="absolute inset-0 flex items-center justify-center p-4">
-                            <h3 class="font-heading text-xl md:text-3xl text-white font-medium text-center">Gifting</h3>
-                        </div>
-                    </a>
-
-                    <!-- 11. Baby sets -->
-                    <a href="./categories/baby-sets.html" class="group relative overflow-hidden bg-brand-ivory aspect-square rounded-xl md:rounded-2xl reveal-fade delay-200 shadow-sm hover:shadow-xl transition-shadow duration-500 block">
-                        <div class="absolute inset-0 img-hover-container">
-                            <img src="https://placehold.co/600x600/dce5d8/5e6b57?text=Baby+Sets" alt="Baby sets" class="w-full h-full object-cover">
-                        </div>
-                        <div class="absolute inset-0 bg-brand-text/30 group-hover:bg-brand-text/40 transition-colors duration-500"></div>
-                        <div class="absolute inset-0 flex items-center justify-center p-4">
-                            <h3 class="font-heading text-xl md:text-3xl text-white font-medium text-center">Baby Sets</h3>
-                        </div>
-                    </a>
-
-                    <!-- 12. Clothing -->
-                    <a href="./categories/clothing.html" class="group relative overflow-hidden bg-brand-ivory aspect-square rounded-xl md:rounded-2xl reveal-fade delay-300 shadow-sm hover:shadow-xl transition-shadow duration-500 block">
-                        <div class="absolute inset-0 img-hover-container">
-                            <img src="https://placehold.co/600x600/fdfbf7/5e6b57?text=Clothing" alt="Clothing" class="w-full h-full object-cover">
-                        </div>
-                        <div class="absolute inset-0 bg-brand-text/30 group-hover:bg-brand-text/40 transition-colors duration-500"></div>
-                        <div class="absolute inset-0 flex items-center justify-center p-4">
-                            <h3 class="font-heading text-xl md:text-3xl text-white font-medium text-center">Clothing</h3>
-                        </div>
+                        <span class="dl-category-name">Gift Collection</span>
+                        <span class="dl-category-count">Curated Boxes</span>
                     </a>
                 </div>
             </div>
         </section>
 
-        <!-- Horizontal Scrolling Latest Arrivals (Native App Feeling) -->
-        <section id="shop" class="pt-10 pb-24 md:pt-20 md:pb-24 bg-white relative border-t border-brand-beige/30 overflow-hidden">
-            <div class="max-w-[90rem] mx-auto px-4 sm:px-6 lg:px-12">
-                <div class="flex flex-col md:flex-row justify-between items-end mb-8 md:mb-16 reveal-fade">
-                    <div class="max-w-xl text-center md:text-left mx-auto md:mx-0">
-                        <h2 class="font-heading text-[2.5rem] md:text-5xl lg:text-6xl text-brand-text mb-4">Latest <span class="italic text-brand-olive font-light">Arrivals</span></h2>
-                        <p class="text-brand-muted text-sm md:text-base font-light">Swipe to explore our newest handcrafted creations, made with the utmost care and premium materials.</p>
-                    </div>
-                    <a href="javascript:void(0)" class="hidden md:inline-flex items-center gap-3 text-xs font-semibold tracking-widest uppercase text-brand-text hover:text-brand-sage transition-colors pb-2 border-b border-brand-text hover:border-brand-sage">
-                        View Entire Shop <i class="ph ph-arrow-right"></i>
-                    </a>
-                </div>
-            </div>
-
-            <!-- Horizontal Scroll Container -->
-            <!-- snap-x and snap-mandatory ensure cards lock into place beautifully. -->
-            <div class="flex overflow-x-auto gap-6 lg:gap-10 px-4 sm:px-6 lg:px-12 pb-16 pt-4 snap-x snap-mandatory no-scrollbar cursor-grab active:cursor-grabbing">
-                
-                <!-- Product 1 (Width calculated to show partial next item for intuitive swiping) -->
-                <div class="group flex flex-col reveal-fade flex-shrink-0 w-[80vw] sm:w-[45vw] md:w-[35vw] lg:w-[25vw] snap-start">
-                    <div class="relative aspect-[4/5] overflow-hidden bg-brand-ivory mb-6 transition-all duration-500 rounded-lg md:rounded-2xl shadow-sm hover:shadow-xl">
-                        <a href="javascript:void(0)" class="block w-full h-full img-hover-container">
-                            <img src="./images/new1.jpg" alt="Handmade Bunny Plush" class="w-full h-full object-cover mix-blend-multiply pointer-events-none">
-                        </a>
-                        <div class="absolute top-4 left-4 z-10">
-                            <span class="bg-brand-text text-white text-[9px] font-bold uppercase tracking-widest px-3 py-1.5 rounded-full">New</span>
-                        </div>
-                        <button class="absolute top-4 right-4 z-10 w-10 h-10 bg-white/80 backdrop-blur-md rounded-full flex items-center justify-center text-brand-text hover:bg-brand-sage hover:text-white transition-all duration-300 transform scale-0 group-hover:scale-100">
-                            <i class="ph ph-heart text-xl"></i>
-                        </button>
-                        <div class="absolute inset-x-4 bottom-4 translate-y-[120%] group-hover:translate-y-0 transition-transform duration-500 ease-premium hidden md:block z-10">
-                            <button class="w-full bg-brand-text text-white py-4 rounded-xl font-medium text-xs tracking-widest uppercase hover:bg-brand-sage transition-colors">
-                                Quick Add
-                            </button>
-                        </div>
-                    </div>
-                    <div class="flex flex-col flex-1 px-1 text-center md:text-left">
-                        <h3 class="font-heading text-xl md:text-2xl text-brand-text mb-2"><a href="javascript:void(0)" class="hover:text-brand-sage transition-colors">Snuggle Bunny Plush</a></h3>
-                        <p class="text-brand-muted text-xs md:text-sm mb-3 font-light">Soft cotton yarn, perfect for newborns.</p>
-                        <p class="font-sans font-semibold text-brand-olive text-sm md:text-base">Rs. 3,500</p>
-                    </div>
+        <!-- SECTION 5: NEW ARRIVALS -->
+        <section class="dl-section dl-bg-white" id="new-arrivals">
+            <div class="dl-container">
+                <div class="dl-header-group dl-reveal">
+                    <span class="dl-tagline">Fresh off the Hook</span>
+                    <h2 class="dl-section-title">New Arrivals</h2>
+                    <p class="dl-section-subtitle">Discover our latest handcrafted crochet creations.</p>
                 </div>
 
-                <!-- Product 2 -->
-                <div class="group flex flex-col reveal-fade delay-100 flex-shrink-0 w-[80vw] sm:w-[45vw] md:w-[35vw] lg:w-[25vw] snap-start">
-                    <div class="relative aspect-[4/5] overflow-hidden bg-brand-ivory mb-6 transition-all duration-500 rounded-lg md:rounded-2xl shadow-sm hover:shadow-xl">
-                        <a href="javascript:void(0)" class="block w-full h-full img-hover-container">
-                            <img src="./images/new3.jpg" alt="Chunky Crochet Tote Bag" class="w-full h-full object-cover mix-blend-multiply pointer-events-none">
-                        </a>
-                        <button class="absolute top-4 right-4 z-10 w-10 h-10 bg-white/80 backdrop-blur-md rounded-full flex items-center justify-center text-brand-text hover:bg-brand-sage hover:text-white transition-all duration-300 transform scale-0 group-hover:scale-100">
-                            <i class="ph ph-heart text-xl"></i>
-                        </button>
-                        <div class="absolute inset-x-4 bottom-4 translate-y-[120%] group-hover:translate-y-0 transition-transform duration-500 ease-premium hidden md:block z-10">
-                            <button class="w-full bg-brand-text text-white py-4 rounded-xl font-medium text-xs tracking-widest uppercase hover:bg-brand-sage transition-colors">
-                                Quick Add
-                            </button>
+                <div class="dl-product-slider-wrapper">
+                    <div class="dl-product-slider">
+                        <div class="dl-product-track" id="new-arrivals-track">
+                            <!-- Populated dynamically by JS -->
                         </div>
-                    </div>
-                    <div class="flex flex-col flex-1 px-1 text-center md:text-left">
-                        <h3 class="font-heading text-xl md:text-2xl text-brand-text mb-2"><a href="javascript:void(0)" class="hover:text-brand-sage transition-colors">Chunky Knit Tote</a></h3>
-                        <p class="text-brand-muted text-xs md:text-sm mb-3 font-light">Spacious and stylish for everyday use.</p>
-                        <p class="font-sans font-semibold text-brand-olive text-sm md:text-base">Rs. 5,200</p>
                     </div>
                 </div>
-
-                <!-- Product 3 -->
-                <div class="group flex flex-col reveal-fade delay-200 flex-shrink-0 w-[80vw] sm:w-[45vw] md:w-[35vw] lg:w-[25vw] snap-start">
-                    <div class="relative aspect-[4/5] overflow-hidden bg-brand-ivory mb-6 transition-all duration-500 rounded-lg md:rounded-2xl shadow-sm hover:shadow-xl">
-                        <a href="javascript:void(0)" class="block w-full h-full img-hover-container">
-                            <img src="./images/new7.png" alt="Everlasting Daisy Bouquet" class="w-full h-full object-cover mix-blend-multiply pointer-events-none">
-                        </a>
-                        <div class="absolute top-4 left-4 z-10">
-                            <span class="bg-brand-gold text-white text-[9px] font-bold uppercase tracking-widest px-3 py-1.5 rounded-full">Bestseller</span>
-                        </div>
-                        <button class="absolute top-4 right-4 z-10 w-10 h-10 bg-white/80 backdrop-blur-md rounded-full flex items-center justify-center text-brand-text hover:bg-brand-sage hover:text-white transition-all duration-300 transform scale-0 group-hover:scale-100">
-                            <i class="ph ph-heart text-xl"></i>
-                        </button>
-                        <div class="absolute inset-x-4 bottom-4 translate-y-[120%] group-hover:translate-y-0 transition-transform duration-500 ease-premium hidden md:block z-10">
-                            <button class="w-full bg-brand-text text-white py-4 rounded-xl font-medium text-xs tracking-widest uppercase hover:bg-brand-sage transition-colors">
-                                Quick Add
-                            </button>
-                        </div>
-                    </div>
-                    <div class="flex flex-col flex-1 px-1 text-center md:text-left">
-                        <h3 class="font-heading text-xl md:text-2xl text-brand-text mb-2"><a href="javascript:void(0)" class="hover:text-brand-sage transition-colors">Daisy Bouquet</a></h3>
-                        <p class="text-brand-muted text-xs md:text-sm mb-3 font-light">Flowers that never wilt. A perfect gift.</p>
-                        <p class="font-sans font-semibold text-brand-olive text-sm md:text-base">Rs. 6,500</p>
-                    </div>
-                </div>
-
-                <!-- Product 4 -->
-                <div class="group flex flex-col reveal-fade delay-300 flex-shrink-0 w-[80vw] sm:w-[45vw] md:w-[35vw] lg:w-[25vw] snap-start">
-                    <div class="relative aspect-[4/5] overflow-hidden bg-brand-ivory mb-6 transition-all duration-500 rounded-lg md:rounded-2xl shadow-sm hover:shadow-xl">
-                        <a href="javascript:void(0)" class="block w-full h-full img-hover-container">
-                            <img src="./images/new4.jpg" alt="Mini Pearl Purse" class="w-full h-full object-cover mix-blend-multiply pointer-events-none">
-                        </a>
-                        <div class="absolute inset-x-4 bottom-4 translate-y-[120%] group-hover:translate-y-0 transition-transform duration-500 ease-premium hidden md:block z-10">
-                            <button class="w-full bg-brand-text text-white py-4 rounded-xl font-medium text-xs tracking-widest uppercase hover:bg-brand-sage transition-colors">
-                                Quick Add
-                            </button>
-                        </div>
-                    </div>
-                    <div class="flex flex-col flex-1 px-1 text-center md:text-left">
-                        <h3 class="font-heading text-xl md:text-2xl text-brand-text mb-2"><a href="javascript:void(0)" class="hover:text-brand-sage transition-colors">Mini Pearl Purse</a></h3>
-                        <p class="font-sans font-semibold text-brand-olive text-sm md:text-base mt-2">Rs. 4,800</p>
-                    </div>
-                </div>
-
-                <!-- Product 5 -->
-                <div class="group flex flex-col reveal-fade flex-shrink-0 w-[80vw] sm:w-[45vw] md:w-[35vw] lg:w-[25vw] snap-start">
-                    <div class="relative aspect-[4/5] overflow-hidden bg-brand-ivory mb-6 transition-all duration-500 rounded-lg md:rounded-2xl shadow-sm hover:shadow-xl">
-                        <a href="javascript:void(0)" class="block w-full h-full img-hover-container">
-                            <img src="./images/new8.png" alt="Granny Square Shoulder Bag" class="w-full h-full object-cover mix-blend-multiply pointer-events-none">
-                        </a>
-                        <div class="absolute inset-x-4 bottom-4 translate-y-[120%] group-hover:translate-y-0 transition-transform duration-500 ease-premium hidden md:block z-10">
-                            <button class="w-full bg-brand-text text-white py-4 rounded-xl font-medium text-xs tracking-widest uppercase hover:bg-brand-sage transition-colors">
-                                Quick Add
-                            </button>
-                        </div>
-                    </div>
-                    <div class="flex flex-col flex-1 px-1 text-center md:text-left">
-                        <h3 class="font-heading text-xl md:text-2xl text-brand-text mb-2"><a href="javascript:void(0)" class="hover:text-brand-sage transition-colors">Granny Square Bag</a></h3>
-                        <p class="font-sans font-semibold text-brand-olive text-sm md:text-base mt-2">Rs. 5,800</p>
-                    </div>
-                </div>
-
-                <!-- Product 6 -->
-                <div class="group flex flex-col reveal-fade delay-100 flex-shrink-0 w-[80vw] sm:w-[45vw] md:w-[35vw] lg:w-[25vw] snap-start lg:pr-12">
-                    <div class="relative aspect-[4/5] overflow-hidden bg-brand-ivory mb-6 transition-all duration-500 rounded-lg md:rounded-2xl shadow-sm hover:shadow-xl w-full">
-                        <a href="javascript:void(0)" class="block w-full h-full img-hover-container">
-                            <img src="./images/new5.png" alt="Little Bear Plush" class="w-full h-full object-cover mix-blend-multiply pointer-events-none">
-                        </a>
-                        <div class="absolute inset-x-4 bottom-4 translate-y-[120%] group-hover:translate-y-0 transition-transform duration-500 ease-premium hidden md:block z-10">
-                            <button class="w-full bg-brand-text text-white py-4 rounded-xl font-medium text-xs tracking-widest uppercase hover:bg-brand-sage transition-colors">
-                                Quick Add
-                            </button>
-                        </div>
-                    </div>
-                    <div class="flex flex-col flex-1 px-1 text-center md:text-left w-full">
-                        <h3 class="font-heading text-xl md:text-2xl text-brand-text mb-2"><a href="javascript:void(0)" class="hover:text-brand-sage transition-colors">Sleepy Bear Amigurumi</a></h3>
-                        <p class="font-sans font-semibold text-brand-olive text-sm md:text-base mt-2">Rs. 3,200</p>
-                    </div>
-                </div>
-
-            </div>
-            
-            <div class="md:hidden text-center mt-4 mb-12">
-                <a href="javascript:void(0)" class="inline-flex items-center gap-2 text-xs font-semibold tracking-widest uppercase text-brand-text pb-1 border-b border-brand-text">
-                    View Entire Shop <i class="ph ph-arrow-right"></i>
-                </a>
             </div>
         </section>
 
-        <!-- Brand Philosophy / Value Props -->
-        <section class="py-24 bg-brand-text text-brand-cream relative overflow-hidden">
-            <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full text-center pointer-events-none opacity-[0.03]">
-                <span class="font-heading text-[15vw] leading-none whitespace-nowrap">Daisyline Crochet</span>
+        <!-- SECTION 6: BEST SELLERS -->
+        <section class="dl-section dl-bg-ivory" id="best-sellers">
+            <div class="dl-container">
+                <div class="dl-header-group dl-reveal">
+                    <span class="dl-tagline">Customer Favorites</span>
+                    <h2 class="dl-section-title">Best Sellers</h2>
+                    <p class="dl-section-subtitle">Our most beloved, high-demand handmade pieces.</p>
+                </div>
+
+                <div class="dl-product-slider-wrapper">
+                    <div class="dl-product-slider">
+                        <div class="dl-product-track" id="best-sellers-track">
+                            <!-- Populated dynamically by JS -->
+                        </div>
+                    </div>
+                </div>
             </div>
+        </section>
+
+        <!-- SECTION 7: CREATE YOUR DREAM CROCHET PIECE -->
+        <section class="dl-section dl-custom-cta-section" id="custom-section">
+            <div class="dl-blob-1"></div>
+            <div class="dl-blob-2"></div>
             
-            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-                <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-x-6 gap-y-12 text-center">
-                    <div class="flex flex-col items-center reveal-fade">
-                        <i class="ph ph-heart text-3xl text-brand-sage mb-4 font-light"></i>
-                        <h4 class="font-medium text-xs tracking-widest uppercase mb-2">Made with Love</h4>
+            <div class="dl-container">
+                <div class="dl-custom-cta-card dl-reveal">
+                    <span class="dl-tagline">Bespoke Customization</span>
+                    <h2 class="dl-section-title" style="margin-bottom:12px;">Create Your Dream Crochet Piece</h2>
+                    <p class="dl-section-subtitle" style="max-width:540px; margin:0 auto 28px auto;">
+                        Have a specific vision, color theme, or special gift idea? We bring your unique imagination to life with handcrafted perfection.
+                    </p>
+
+                    <div class="dl-steps-grid">
+                        <!-- Step 1 -->
+                        <div class="dl-step-card">
+                            <span class="dl-step-number">1</span>
+                            <div class="dl-step-icon">🎨</div>
+                            <h4 class="dl-step-title">Choose Colours</h4>
+                            <p class="dl-step-desc">Select from our palette of ultra-soft pastel &amp; warm yarns.</p>
+                        </div>
+
+                        <!-- Step 2 -->
+                        <div class="dl-step-card">
+                            <span class="dl-step-number">2</span>
+                            <div class="dl-step-icon">📏</div>
+                            <h4 class="dl-step-title">Choose Size</h4>
+                            <p class="dl-step-desc">Pick custom dimensions for wearable clothing or decor.</p>
+                        </div>
+
+                        <!-- Step 3 -->
+                        <div class="dl-step-card">
+                            <span class="dl-step-number">3</span>
+                            <div class="dl-step-icon">✨</div>
+                            <h4 class="dl-step-title">Add Your Name</h4>
+                            <p class="dl-step-desc">Personalize with embroidered initials or custom name tags.</p>
+                        </div>
+
+                        <!-- Step 4 -->
+                        <div class="dl-step-card">
+                            <span class="dl-step-number">4</span>
+                            <div class="dl-step-icon">📸</div>
+                            <h4 class="dl-step-title">Upload Reference</h4>
+                            <p class="dl-step-desc">Attach photos or Pinterest inspiration for exact matching.</p>
+                        </div>
                     </div>
-                    <div class="flex flex-col items-center reveal-fade delay-100">
-                        <i class="ph ph-yarn text-3xl text-brand-sage mb-4 font-light"></i>
-                        <h4 class="font-medium text-xs tracking-widest uppercase mb-2">Premium Yarn</h4>
+
+                    <div>
+                        <a href="./pages/custom-orders.html" class="dl-btn dl-btn-primary dl-btn-large">
+                            🩷 Start Custom Order
+                        </a>
                     </div>
-                    <div class="flex flex-col items-center reveal-fade delay-200">
-                        <i class="ph ph-gift text-3xl text-brand-sage mb-4 font-light"></i>
-                        <h4 class="font-medium text-xs tracking-widest uppercase mb-2">Perfect Gifting</h4>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 8: FEATURED PRODUCTS (Continuous Horizontal Marquee) -->
+        <section class="dl-section dl-bg-cream" style="padding-bottom: 40px;">
+            <div class="dl-container-fluid">
+                <div class="dl-header-group dl-reveal" style="margin-bottom: 32px;">
+                    <span class="dl-tagline">Continuous Showcase</span>
+                    <h2 class="dl-section-title">Featured Products</h2>
+                </div>
+
+                <div class="dl-marquee-wrapper">
+                    <div class="dl-marquee-track" id="featured-track">
+                        <!-- Populated continuously by JS -->
                     </div>
-                    <div class="flex flex-col items-center reveal-fade delay-100">
-                        <i class="ph ph-magic-wand text-3xl text-brand-sage mb-4 font-light"></i>
-                        <h4 class="font-medium text-xs tracking-widest uppercase mb-2">Custom Designs</h4>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 9: WHY CHOOSE DAISYLINE -->
+        <section class="dl-section dl-bg-white">
+            <div class="dl-container">
+                <div class="dl-header-group dl-reveal">
+                    <span class="dl-tagline">The Daisyline Difference</span>
+                    <h2 class="dl-section-title">Why Choose DaisyLine</h2>
+                    <p class="dl-section-subtitle">We craft memories with slow living, warmth, and ethical hands.</p>
+                </div>
+
+                <div class="dl-features-grid">
+                    <!-- Feature 1 -->
+                    <div class="dl-feature-card dl-reveal dl-delay-1">
+                        <div class="dl-feature-icon">🧶</div>
+                        <h4 class="dl-feature-title">Handmade</h4>
+                        <p class="dl-feature-desc">100% handcrafted with love &amp; dedicated artisan patience.</p>
                     </div>
-                    <div class="flex flex-col items-center reveal-fade delay-200">
-                        <i class="ph ph-map-pin text-3xl text-brand-sage mb-4 font-light"></i>
-                        <h4 class="font-medium text-xs tracking-widest uppercase mb-2">Locally Made</h4>
+
+                    <!-- Feature 2 -->
+                    <div class="dl-feature-card dl-reveal dl-delay-2">
+                        <div class="dl-feature-icon">🎨</div>
+                        <h4 class="dl-feature-title">Customisable</h4>
+                        <p class="dl-feature-desc">Tailor colors, sizes, and embroidered personal details.</p>
                     </div>
-                    <div class="flex flex-col items-center reveal-fade delay-100">
-                        <i class="ph ph-plant text-3xl text-brand-sage mb-4 font-light"></i>
-                        <h4 class="font-medium text-xs tracking-widest uppercase mb-2">Slow Artistry</h4>
+
+                    <!-- Feature 3 -->
+                    <div class="dl-feature-card dl-reveal dl-delay-3">
+                        <div class="dl-feature-icon">🌿</div>
+                        <h4 class="dl-feature-title">Premium Yarn</h4>
+                        <p class="dl-feature-desc">Hypoallergenic, ultra-soft yarn made to last for years.</p>
                     </div>
+
+                    <!-- Feature 4 -->
+                    <div class="dl-feature-card dl-reveal dl-delay-1">
+                        <div class="dl-feature-icon">🚚</div>
+                        <h4 class="dl-feature-title">Fast Delivery</h4>
+                        <p class="dl-feature-desc">Reliable and swift dispatch across all cities in Pakistan.</p>
+                    </div>
+
+                    <!-- Feature 5 -->
+                    <div class="dl-feature-card dl-reveal dl-delay-2">
+                        <div class="dl-feature-icon">🎁</div>
+                        <h4 class="dl-feature-title">Gift Packaging</h4>
+                        <p class="dl-feature-desc">Elegantly wrapped in soft tissue, ribbon &amp; handwritten note.</p>
+                    </div>
+
+                    <!-- Feature 6 -->
+                    <div class="dl-feature-card dl-reveal dl-delay-3">
+                        <div class="dl-feature-icon">💳</div>
+                        <h4 class="dl-feature-title">Secure Payment</h4>
+                        <p class="dl-feature-desc">Easy payments via JazzCash, NayaPay &amp; Direct Bank.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 10: ABOUT DAISYLINE PREVIEW -->
+        <section class="dl-section dl-bg-ivory">
+            <div class="dl-container">
+                <div class="dl-about-box dl-reveal">
+                    <span class="dl-tagline">Our Story</span>
+                    <h2 class="dl-section-title">About DaisyLine</h2>
+                    <p class="dl-about-text">
+                        DaisyLine is born out of a deep reverence for handcrafted artistry and the cozy comfort of yarn. 
+                        Inspired by a rich heritage of slow living, every piece we make carries a piece of our heart—carefully 
+                        crocheted in Pakistan to bring warmth, beauty, and smiles into your everyday moments.
+                    </p>
+                    <a href="./pages/about_us.html" class="dl-btn dl-btn-secondary">
+                        Read Our Full Story
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 11: CUSTOMER REVIEWS -->
+        <section class="dl-section dl-bg-blush" id="reviews">
+            <div class="dl-container">
+                <div class="dl-header-group dl-reveal">
+                    <span class="dl-tagline">Words of Love</span>
+                    <h2 class="dl-section-title">Customer Reviews</h2>
+                    <p class="dl-section-subtitle">Real experiences from our lovely DaisyLine family.</p>
+                </div>
+
+                <div class="dl-testimonial-slider dl-reveal" id="testimonial-slider">
+                    <!-- Dynamic Testimonial Slider Populated by JS -->
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 12: INSTAGRAM FEED -->
+        <section class="dl-section dl-bg-white" style="padding-bottom:48px;">
+            <div class="dl-container-fluid">
+                <div class="dl-header-group dl-reveal" style="margin-bottom:28px;">
+                    <span class="dl-tagline">@daisylinecrochet</span>
+                    <h2 class="dl-section-title">Follow Us on Instagram</h2>
+                    <p class="dl-section-subtitle">Peek inside our studio &amp; daily handmade stitches.</p>
+                </div>
+
+                <div class="dl-insta-wrapper">
+                    <div class="dl-insta-track" id="insta-track">
+                        <!-- Populated by JS -->
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 13: NEWSLETTER SECTION -->
+        <section class="dl-section dl-bg-cream">
+            <div class="dl-container">
+                <div class="dl-newsletter-card dl-reveal">
+                    <span class="dl-tagline">Stay Connected</span>
+                    <h2 class="dl-section-title" style="margin-bottom:10px;">Join Our Crochet Family 💕</h2>
+                    <p class="dl-section-subtitle">
+                        Subscribe to get special handcrafted offers, new collection alerts, and secret giveaways.
+                    </p>
+                    <form class="dl-newsletter-form" id="newsletter-form">
+                        <input type="email" placeholder="Enter your email address..." required class="dl-newsletter-input" aria-label="Email address">
+                        <button type="submit" class="dl-btn dl-btn-primary">
+                            Subscribe
+                        </button>
+                    </form>
                 </div>
             </div>
         </section>
 
     </main>
 
-        <!-- Footer -->
+    <!-- 14. FOOTER (EXISTING UNTOUCHED FOOTER) -->
     <footer class="bg-brand-text text-white pt-16 md:pt-20 pb-12 border-t border-brand-beige/20 relative">
         <div class="max-w-[90rem] mx-auto px-4 sm:px-8 lg:px-12">
             <div class="grid grid-cols-1 md:grid-cols-3 gap-10 md:gap-12 lg:gap-16 mb-16 text-left">
@@ -761,11 +900,11 @@
                 <div>
                     <h4 class="font-heading text-xl text-white mb-5">Support</h4>
                     <ul class="space-y-3.5 text-sm font-light text-brand-beige/80">
-                        <li><a href="./about_us.html" class="hover:text-white transition-colors">About Us</a></li>
-                        <li><a href="./how-to-order.html" class="hover:text-white transition-colors">How to Order</a></li>
-                        <li><a href="./about_us.html#shipping" class="hover:text-white transition-colors">Shipping Policy</a></li>
-                        <li><a href="./about_us.html#returns" class="hover:text-white transition-colors">Return Policy</a></li>
-                        <li><a href="./about_us.html#faq" class="hover:text-white transition-colors">FAQs</a></li>
+                        <li><a href="./pages/about_us.html" class="hover:text-white transition-colors">About Us</a></li>
+                        <li><a href="./pages/how-to-order.html" class="hover:text-white transition-colors">How to Order</a></li>
+                        <li><a href="./pages/about_us.html#shipping" class="hover:text-white transition-colors">Shipping Policy</a></li>
+                        <li><a href="./pages/about_us.html#returns" class="hover:text-white transition-colors">Return Policy</a></li>
+                        <li><a href="./pages/about_us.html#faq" class="hover:text-white transition-colors">FAQs</a></li>
                     </ul>
                 </div>
 
@@ -810,146 +949,11 @@
         </div>
     </footer>
 
-    <!-- Scripts -->
+    <!-- Footer Scripts -->
     <script>
         document.addEventListener('DOMContentLoaded', () => {
-            // Set current year
-            document.getElementById('year').textContent = new Date().getFullYear();
-
-            // Mobile Menu Toggle (Handled by inline onclick attributes)
-            const mobileMenuBtn = document.getElementById('mobile-menu-btn');
-            const closeMenuBtn = document.getElementById('close-menu-btn');
-            const mobileMenu = document.getElementById('mobile-menu');
-            const mobileLinks = document.querySelectorAll('.mobile-link');
-            const mobileCategoriesBtn = document.getElementById('mobile-categories-btn');
-            const mobileCategoriesDropdown = document.getElementById('mobile-categories-dropdown');
-            const mobileCategoriesIcon = document.getElementById('mobile-categories-icon');
-
-            // Toggle Mobile Categories Accordion (Handled by inline onclick attribute)
-
-            
-
-            // Intersection Observer for Scroll Reveals
-            const revealElements = document.querySelectorAll('.reveal-fade');
-            const revealOptions = {
-                threshold: 0.1,
-                rootMargin: "0px 0px -50px 0px"
-            };
-
-            const revealOnScroll = new IntersectionObserver((entries, observer) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        entry.target.classList.add('active');
-                        observer.unobserve(entry.target);
-                    }
-                });
-            }, revealOptions);
-
-            revealElements.forEach(el => {
-                if(el.closest('#home') && window.scrollY < 100) {
-                    setTimeout(() => el.classList.add('active'), 100);
-                } else {
-                    el.classList.remove('active');
-                    revealOnScroll.observe(el);
-                }
-            });
-
-            // Hero Carousel Logic
-            const slides = document.querySelectorAll('.hero-slide');
-            const dots = document.querySelectorAll('.carousel-dot');
-            const prevBtn = document.getElementById('prev-slide');
-            const nextBtn = document.getElementById('next-slide');
-            let currentSlide = 0;
-            let slideInterval;
-
-            const goToSlide = (index) => {
-                slides[currentSlide].classList.remove('opacity-100', 'z-10', 'active-slide');
-                slides[currentSlide].classList.add('opacity-0', 'z-0');
-                dots[currentSlide].classList.remove('w-10', 'bg-white');
-                dots[currentSlide].classList.add('w-3', 'bg-white/40');
-                
-                currentSlide = (index + slides.length) % slides.length;
-                
-                slides[currentSlide].classList.remove('opacity-0', 'z-0');
-                slides[currentSlide].classList.add('opacity-100', 'z-10', 'active-slide');
-                dots[currentSlide].classList.remove('w-3', 'bg-white/40');
-                dots[currentSlide].classList.add('w-10', 'bg-white');
-            };
-
-            const nextSlide = () => goToSlide(currentSlide + 1);
-            const prevSlide = () => goToSlide(currentSlide - 1);
-
-            const startInterval = () => {
-                slideInterval = setInterval(nextSlide, 6000);
-            };
-
-            const resetInterval = () => {
-                clearInterval(slideInterval);
-                startInterval();
-            };
-
-            if (nextBtn && prevBtn) {
-                nextBtn.addEventListener('click', () => { nextSlide(); resetInterval(); });
-                prevBtn.addEventListener('click', () => { prevSlide(); resetInterval(); });
-            }
-
-            dots.forEach((dot, index) => {
-                dot.addEventListener('click', () => {
-                    goToSlide(index);
-                    resetInterval();
-                });
-            });
-
-            startInterval(); // Initialize auto-scroll
-
-            // Smooth Scrolling Anchor Links
-            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-                anchor.addEventListener('click', function (e) {
-                    const targetId = this.getAttribute('href');
-                    if(targetId === '#') return;
-                    const targetElement = document.querySelector(targetId);
-                    if (targetElement) {
-                        e.preventDefault();
-                        const headerOffset = 80;
-                        const elementPosition = targetElement.getBoundingClientRect().top;
-                        const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
-                        window.scrollTo({ top: offsetPosition, behavior: "smooth" });
-                    }
-                });
-            });
-            
-            // Mouse Drag to Scroll for Latest Arrivals
-            const slider = document.querySelector('.snap-x');
-            let isDown = false;
-            let startX;
-            let scrollLeft;
-
-            if(slider) {
-                slider.addEventListener('mousedown', (e) => {
-                    isDown = true;
-                    slider.classList.add('active');
-                    startX = e.pageX - slider.offsetLeft;
-                    scrollLeft = slider.scrollLeft;
-                    slider.style.scrollSnapType = 'none';
-                });
-                slider.addEventListener('mouseleave', () => {
-                    isDown = false;
-                    slider.classList.remove('active');
-                    slider.style.scrollSnapType = 'x mandatory';
-                });
-                slider.addEventListener('mouseup', () => {
-                    isDown = false;
-                    slider.classList.remove('active');
-                    slider.style.scrollSnapType = 'x mandatory';
-                });
-                slider.addEventListener('mousemove', (e) => {
-                    if (!isDown) return;
-                    e.preventDefault();
-                    const x = e.pageX - slider.offsetLeft;
-                    const walk = (x - startX) * 2;
-                    slider.scrollLeft = scrollLeft - walk;
-                });
-            }
+            const yearEl = document.getElementById('year');
+            if (yearEl) yearEl.textContent = new Date().getFullYear();
         });
     </script>
 </body>

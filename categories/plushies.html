@@ -3,1183 +3,581 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Plushies | Daisyline Crochet</title>
-    <meta name="description" content="Shop our collection of handmade crochet plushies, amigurumi animals, and keychain plushies. Handmade with love and premium yarn in Pakistan.">
+    <title>Plushies & Toys | Daisyline Crochet</title>
+    <meta name="description" content="Adorable velvet plush toys, stuffed animals, characters, and handmade dolls.">
     
-    <!-- Google Fonts: Cormorant Garamond (Headings) & Manrope (Body) -->
+    <!-- Google Fonts: Cormorant Garamond, Plus Jakarta Sans, Sacramento -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=Manrope:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400;1,600&family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=Sacramento&display=swap" rel="stylesheet">
     
-    <!-- Phosphor Icons for elegant line icons -->
-    <script src="https://unpkg.com/@phosphor-icons/web">
-    </script>
+    <!-- Phosphor Icons -->
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
     
     <!-- Tailwind CSS -->
-    <script src="https://cdn.tailwindcss.com">
-    </script>
-    
+    <script src="https://cdn.tailwindcss.com"></script>
     <script>
         tailwind.config = {
             theme: {
                 extend: {
                     colors: {
                         brand: {
-                            sage: '#8fa886',      // Soft Sage Green
-                            cream: '#fdfbf7',     // Warm Cream
-                            ivory: '#f8f5f0',     // Ivory background
-                            olive: '#72886a',     // Dusty Olive
-                            beige: '#e8e1d5',     // Soft Beige
-                            floral: '#dce5d8',    // Muted Floral Green
-                            gold: '#d4b773',      // Light Gold
-                            text: '#2c3329',      // Dark olive/grey
-                            muted: '#5e6b57'      // Muted text
+                            sage: '#8fa886', cream: '#FAF8F5', ivory: '#F5EFE6',
+                            olive: '#5A6B53', beige: '#E6DED3', floral: '#D4DDD1',
+                            gold: '#D4B773', text: '#282421', muted: '#787068',
+                            blush: '#FFF0F3', peach: '#FFEBE3'
                         }
                     },
                     fontFamily: {
                         heading: ['"Cormorant Garamond"', 'serif'],
-                        sans: ['Manrope', 'sans-serif'],
-                    },
-                    boxShadow: {
-                        'soft': '0 10px 40px -10px rgba(114, 136, 106, 0.08)',
-                        'glow': '0 0 20px rgba(143, 168, 134, 0.15)',
-                        'dropdown': '0 20px 40px -10px rgba(0,0,0,0.05)',
-                    },
-                    animation: {
-                        'marquee': 'marquee 25s linear infinite',
-                        'fade-in-up': 'fadeInUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards',
-                    },
-                    keyframes: {
-                        marquee: {
-                            '0%': { transform: 'translateX(0%)' },
-                            '100%': { transform: 'translateX(-50%)' },
-                        },
-                        fadeInUp: {
-                            '0%': { opacity: '0', transform: 'translateY(20px)' },
-                            '100%': { opacity: '1', transform: 'translateY(0)' },
-                        }
+                        sans: ['"Plus Jakarta Sans"', 'Manrope', 'sans-serif'],
+                        script: ['Sacramento', 'cursive']
                     }
                 }
             }
         }
     </script>
-    
-    <style>
-        body {
-            background-color: theme('colors.brand.cream');
-            color: theme('colors.brand.text');
-            -webkit-font-smoothing: antialiased;
-            -moz-osx-font-smoothing: grayscale;
-        }
 
-        .reveal {
-            opacity: 0;
-            transform: translateY(30px);
-            transition: all 0.9s cubic-bezier(0.16, 1, 0.3, 1);
-        }
-        
-        .reveal.active {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        .delay-100 { transition-delay: 100ms; }
-        .delay-200 { transition-delay: 200ms; }
-
-        .no-scrollbar::-webkit-scrollbar { display: none; }
-        .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
-
-        .img-hover-zoom { overflow: hidden; }
-        .img-hover-zoom img { transition: transform 0.7s cubic-bezier(0.25, 0.46, 0.45, 0.94); }
-        .group:hover .img-hover-zoom img { transform: scale(1.05); }
-        
-        @media (max-width: 639px) {
-            .mobile-grid-2 {
-                display: grid;
-                grid-template-columns: repeat(2, minmax(0, 1fr));
-                gap: 0.75rem;
-            }
-        }
-
-        /* Carousel specific styles */
-        .carousel-slide {
-            opacity: 0;
-            transition: opacity 1s cubic-bezier(0.4, 0, 0.2, 1);
-            z-index: 0;
-        }
-        .carousel-slide.active {
-            opacity: 1;
-            z-index: 10;
-        }
-        .carousel-text {
-            opacity: 0;
-            transform: translateY(20px);
-            transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1) 0.3s;
-        }
-        .carousel-slide.active .carousel-text {
-            opacity: 1;
-            transform: translateY(0);
-        }
-        
-        /* Dropdown custom height and invisible bridge */
-        .dropdown-bridge {
-            position: absolute;
-            top: 100%;
-            left: 0;
-            width: 100%;
-            height: 20px;
-            background: transparent;
-        }
-    </style>
+    <!-- Global Design System & Homepage CSS -->
+    <link rel="stylesheet" href="../assets/css/homepage.css">
+    <script src="../assets/js/homepage.js" defer></script>
 </head>
 <body class="font-sans antialiased overflow-x-hidden selection:bg-brand-sage selection:text-white">
 
-    <!-- Announcement Bar -->
-    <div class="bg-brand-sage text-white text-xs md:text-sm font-medium tracking-wider uppercase py-2 overflow-hidden relative z-50">
-        <div class="whitespace-nowrap flex w-fit animate-marquee hover:[animation-play-state:paused] cursor-default">
-            <span class="mx-4 flex items-center gap-4">
-                ✨ Handmade Crochet with Love <span class="text-brand-gold opacity-60">•</span>
-                Custom Orders Available <span class="text-brand-gold opacity-60">•</span>
-                Premium Gift Packaging <span class="text-brand-gold opacity-60">•</span>
-                Inspired by Grandma's Legacy <span class="text-brand-gold opacity-60">•</span>
-                Made in Pakistan ✨
-            </span>
-            <span class="mx-4 flex items-center gap-4">
-                ✨ Handmade Crochet with Love <span class="text-brand-gold opacity-60">•</span>
-                Custom Orders Available <span class="text-brand-gold opacity-60">•</span>
-                Premium Gift Packaging <span class="text-brand-gold opacity-60">•</span>
-                Inspired by Grandma's Legacy <span class="text-brand-gold opacity-60">•</span>
-                Made in Pakistan ✨
-            </span>
+    <!-- 1. GLOBAL ANNOUNCEMENT BAR -->
+    <div class="dl-announcement-bar">
+        <div class="dl-announcement-content" id="announcement-slider">
+            <span class="dl-announcement-slide active">✨ Handmade Crochet Crafted with Love</span>
+            <span class="dl-announcement-slide">🚚 Delivery Available Across Pakistan</span>
+            <span class="dl-announcement-slide">🎁 Personalized Crochet Gifts Available</span>
+            <span class="dl-announcement-slide">🧶 Premium Quality Handmade Products</span>
         </div>
     </div>
 
-    <!-- Navigation -->
-        <header id="navbar" class="relative w-full z-40 transition-all duration-500 py-4 bg-white" style="background: #ffffff !important;">
-        <div class="max-w-[90rem] mx-auto px-4 sm:px-8 lg:px-12">
-            <div class="flex justify-between items-center h-16 md:h-20">
-                <!-- Mobile Menu Button -->
-                <div class="flex items-center lg:hidden w-1/3">
-                    <button id="mobile-menu-btn" onclick="document.getElementById('mobile-menu').classList.remove('-translate-x-full'); document.body.style.overflow='hidden';"  class="text-brand-text hover:text-brand-sage transition-colors -ml-2 p-2 group" aria-label="Open menu">
-                        <div class="w-6 flex flex-col gap-1.5 items-start">
-                            <span class="w-full h-[1px] bg-current transition-all group-hover:w-4"></span>
-                            <span class="w-4 h-[1px] bg-current transition-all group-hover:w-full"></span>
-                        </div>
+    <!-- 2. GLOBAL HEADER -->
+    <header id="dl-navbar" class="dl-global-header">
+        <div class="dl-header-container">
+            <div class="dl-header-row">
+                
+                <!-- Left: Logo & Mobile Hamburger -->
+                <div class="dl-header-left">
+                    <button id="dl-mobile-menu-btn" class="dl-mobile-menu-btn" aria-label="Open Mobile Menu">
+                        <i class="ph ph-list"></i>
                     </button>
-                </div>
-
-                <!-- Logo -->
-                <div class="flex-shrink-0 flex items-center justify-center w-1/3 lg:w-auto absolute lg:relative left-1/2 lg:left-0 transform -translate-x-1/2 lg:translate-x-0 pointer-events-none lg:pointer-events-auto z-50">
-                    <a href="../index.html" class="pointer-events-auto flex items-center gap-4 group">
-                        <img src="../images/logo.jpg" alt="Daisyline Crochet Logo" class="h-10 md:h-12 w-auto object-contain rounded-full shadow-sm transition-transform duration-700 group-hover:rotate-12">
-                        <span class="font-heading text-2xl md:text-3xl font-medium tracking-wide text-brand-text hidden lg:block">Daisyline.</span>
+                    <a href="../index.html" class="dl-logo-link">
+                        <img src="../assets/images/logo.jpg" alt="Daisyline Crochet Logo" class="dl-logo-img">
+                        <span class="dl-logo-text">Daisyline.</span>
                     </a>
                 </div>
 
-                <!-- Desktop Menu -->
-                <nav class="hidden lg:flex space-x-10 items-center h-full absolute left-1/2 transform -translate-x-1/2">
-                    <a href="../index.html" class="text-brand-text hover:text-brand-sage font-medium text-xs tracking-[0.1em] uppercase transition-colors relative py-8 group">
-                        Home
-                        <span class="absolute bottom-6 left-0 w-full h-[1px] bg-brand-sage origin-left scale-x-0 transition-transform duration-500 group-hover:scale-x-100"></span>
-                    </a>
-                    
-                    <!-- Categories Mega Dropdown -->
-                    <div class="relative group h-full flex items-center">
-                        <a href="../index.html#categories" class="text-brand-text hover:text-brand-sage font-medium text-xs tracking-[0.1em] uppercase transition-colors py-8 flex items-center gap-1.5 cursor-pointer">
-                            Categories <i class="ph ph-caret-down text-[10px] transition-transform duration-500 group-hover:rotate-180"></i>
-                        </a>
+                <!-- Center: Desktop Navigation Bar -->
+                <nav class="dl-desktop-nav" aria-label="Main Navigation">
+                    <ul class="dl-nav-list">
                         
-                        <!-- Invisible bridge -->
-                        <div class="absolute top-[80%] left-0 w-full h-10"></div>
+                        <!-- 1. Home -->
+                        <li class="dl-nav-item">
+                            <a href="../index.html" class="dl-nav-link ">Home</a>
+                        </li>
 
-                        <!-- Mega Menu Panel -->
-                        <div class="absolute top-full left-1/2 transform -translate-x-1/2 w-[800px] bg-white/95 backdrop-blur-2xl border border-brand-beige/50 rounded-2xl shadow-2xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-500 z-50 overflow-hidden mt-2">
-                            <div class="p-8 grid grid-cols-4 gap-x-4 gap-y-6">
-                                <a href="./baby-sets.html" class="group/item flex items-center gap-3">
-                                    <div class="w-8 h-8 rounded-full bg-brand-ivory flex items-center justify-center text-brand-text group-hover/item:bg-brand-sage group-hover/item:text-white transition-all duration-300 shadow-sm"><i class="ph ph-baby text-sm"></i></div>
-                                    <span class="text-xs font-medium text-brand-text group-hover/item:text-brand-sage transition-colors">Baby Sets</span>
-                                </a>
-                                <a href="./bags.html" class="group/item flex items-center gap-3">
-                                    <div class="w-8 h-8 rounded-full bg-brand-ivory flex items-center justify-center text-brand-text group-hover/item:bg-brand-sage group-hover/item:text-white transition-all duration-300 shadow-sm"><i class="ph ph-tote text-sm"></i></div>
-                                    <span class="text-xs font-medium text-brand-text group-hover/item:text-brand-sage transition-colors">Bags / Wallets</span>
-                                </a>
-                                <a href="./book-items.html" class="group/item flex items-center gap-3">
-                                    <div class="w-8 h-8 rounded-full bg-brand-ivory flex items-center justify-center text-brand-text group-hover/item:bg-brand-sage group-hover/item:text-white transition-all duration-300 shadow-sm"><i class="ph ph-book-open text-sm"></i></div>
-                                    <span class="text-xs font-medium text-brand-text group-hover/item:text-brand-sage transition-colors">Book Items</span>
-                                </a>
-                                <a href="./bouquets.html" class="group/item flex items-center gap-3">
-                                    <div class="w-8 h-8 rounded-full bg-brand-ivory flex items-center justify-center text-brand-text group-hover/item:bg-brand-sage group-hover/item:text-white transition-all duration-300 shadow-sm"><i class="ph ph-flower-tulip text-sm"></i></div>
-                                    <span class="text-xs font-medium text-brand-text group-hover/item:text-brand-sage transition-colors">Bouquets</span>
-                                </a>
-                                <a href="./clothing.html" class="group/item flex items-center gap-3">
-                                    <div class="w-8 h-8 rounded-full bg-brand-ivory flex items-center justify-center text-brand-text group-hover/item:bg-brand-sage group-hover/item:text-white transition-all duration-300 shadow-sm"><i class="ph ph-coat-hanger text-sm"></i></div>
-                                    <span class="text-xs font-medium text-brand-text group-hover/item:text-brand-sage transition-colors">Clothing</span>
-                                </a>
-                                <a href="./earrings.html" class="group/item flex items-center gap-3">
-                                    <div class="w-8 h-8 rounded-full bg-brand-ivory flex items-center justify-center text-brand-text group-hover/item:bg-brand-sage group-hover/item:text-white transition-all duration-300 shadow-sm"><i class="ph ph-sparkle text-sm"></i></div>
-                                    <span class="text-xs font-medium text-brand-text group-hover/item:text-brand-sage transition-colors">Earrings</span>
-                                </a>
-                                <a href="./gifting.html" class="group/item flex items-center gap-3">
-                                    <div class="w-8 h-8 rounded-full bg-brand-ivory flex items-center justify-center text-brand-text group-hover/item:bg-brand-sage group-hover/item:text-white transition-all duration-300 shadow-sm"><i class="ph ph-gift text-sm"></i></div>
-                                    <span class="text-xs font-medium text-brand-text group-hover/item:text-brand-sage transition-colors">Gifting</span>
-                                </a>
-                                <a href="./hair-accessories.html" class="group/item flex items-center gap-3">
-                                    <div class="w-8 h-8 rounded-full bg-brand-ivory flex items-center justify-center text-brand-text group-hover/item:bg-brand-sage group-hover/item:text-white transition-all duration-300 shadow-sm"><i class="ph ph-scissors text-sm"></i></div>
-                                    <span class="text-xs font-medium text-brand-text group-hover/item:text-brand-sage transition-colors">Hair Accessories</span>
-                                </a>
-                                <a href="./hand-accessories.html" class="group/item flex items-center gap-3">
-                                    <div class="w-8 h-8 rounded-full bg-brand-ivory flex items-center justify-center text-brand-text group-hover/item:bg-brand-sage group-hover/item:text-white transition-all duration-300 shadow-sm"><i class="ph ph-hand-swipe-left text-sm"></i></div>
-                                    <span class="text-xs font-medium text-brand-text group-hover/item:text-brand-sage transition-colors">Hand Accessories</span>
-                                </a>
-                                <a href="./home-decor.html" class="group/item flex items-center gap-3">
-                                    <div class="w-8 h-8 rounded-full bg-brand-ivory flex items-center justify-center text-brand-text group-hover/item:bg-brand-sage group-hover/item:text-white transition-all duration-300 shadow-sm"><i class="ph ph-house-line text-sm"></i></div>
-                                    <span class="text-xs font-medium text-brand-text group-hover/item:text-brand-sage transition-colors">Home Decor</span>
-                                </a>
-                                <a href="./keychain.html" class="group/item flex items-center gap-3">
-                                    <div class="w-8 h-8 rounded-full bg-brand-ivory flex items-center justify-center text-brand-text group-hover/item:bg-brand-sage group-hover/item:text-white transition-all duration-300 shadow-sm"><i class="ph ph-key text-sm"></i></div>
-                                    <span class="text-xs font-medium text-brand-text group-hover/item:text-brand-sage transition-colors">Keychains</span>
-                                </a>
-                                <a href="./plushies.html" class="group/item flex items-center gap-3">
-                                    <div class="w-8 h-8 rounded-full bg-brand-ivory flex items-center justify-center text-brand-text group-hover/item:bg-brand-sage group-hover/item:text-white transition-all duration-300 shadow-sm"><i class="ph ph-teddy-bear text-sm"></i></div>
-                                    <span class="text-xs font-medium text-brand-text group-hover/item:text-brand-sage transition-colors">Plushies</span>
-                                </a>
+                        <!-- 2. Shop (Mega Menu Dropdown) -->
+                        <li class="dl-nav-item dl-has-megamenu">
+                            <a href="../index.html#categories" class="dl-nav-link active">
+                                Shop <i class="ph ph-caret-down dl-caret-icon"></i>
+                            </a>
+
+                            <!-- MEGA MENU PANEL -->
+                            <div class="dl-megamenu-panel">
+                                <div class="dl-megamenu-inner">
+                                    
+                                    <!-- Column 1: New & Featured -->
+                                    <div class="dl-mega-col">
+                                        <h4 class="dl-mega-heading"><i class="ph ph-sparkle"></i> New &amp; Featured</h4>
+                                        <ul class="dl-mega-links">
+                                            <li><a href="./bags.html">All Products</a></li>
+                                            <li><a href="../index.html#new-arrivals">New Arrivals <span class="dl-badge-mini">New</span></a></li>
+                                            <li><a href="../index.html#best-sellers">Best Sellers <span class="dl-badge-mini dl-badge-hot">Hot</span></a></li>
+                                            <li><a href="./clothing.html">Sale %</a></li>
+                                        </ul>
+                                    </div>
+
+                                    <!-- Column 2: Gajras & Hair Accessories -->
+                                    <div class="dl-mega-col">
+                                        <h4 class="dl-mega-heading"><a href="./gajras.html">🌸 Gajras</a></h4>
+                                        <ul class="dl-mega-links">
+                                            <li><a href="./gajras.html">Floral Gajras</a></li>
+                                            <li><a href="./gajras.html">Bridal Gajras</a></li>
+                                            <li><a href="./gajras.html">Custom Gajras</a></li>
+                                        </ul>
+                                        <h4 class="dl-mega-heading" style="margin-top: 16px;"><a href="./hair-accessories.html">🎀 Hair Accessories</a></h4>
+                                        <ul class="dl-mega-links">
+                                            <li><a href="./hair-accessories.html">Scrunchies</a></li>
+                                            <li><a href="./hair-accessories.html">Hair Bows</a></li>
+                                            <li><a href="./hair-accessories.html">Hair Clips</a></li>
+                                            <li><a href="./hair-accessories.html">Headbands</a></li>
+                                            <li><a href="./hair-accessories.html">Hair Pins</a></li>
+                                            <li><a href="./hair-accessories.html">Parandas</a></li>
+                                        </ul>
+                                    </div>
+
+                                    <!-- Column 3: Bags & Keychains -->
+                                    <div class="dl-mega-col">
+                                        <h4 class="dl-mega-heading"><a href="./bags.html">👜 Bags</a></h4>
+                                        <ul class="dl-mega-links">
+                                            <li><a href="./bags.html">Tote Bags</a></li>
+                                            <li><a href="./bags.html">Shoulder Bags</a></li>
+                                            <li><a href="./bags.html">Crossbody Bags</a></li>
+                                            <li><a href="./bags.html">Handbags</a></li>
+                                            <li><a href="./bags.html">Wallets</a></li>
+                                            <li><a href="./bags.html">Pouches</a></li>
+                                        </ul>
+                                        <h4 class="dl-mega-heading" style="margin-top: 16px;"><a href="./keychain.html">🔑 Keychains</a></h4>
+                                        <ul class="dl-mega-links">
+                                            <li><a href="./keychain.html">Car Hanging</a></li>
+                                            <li><a href="./keychain.html">Animal Keychains</a></li>
+                                            <li><a href="./keychain.html">Alphabet Keychains</a></li>
+                                            <li><a href="./keychain.html">Bag Charms</a></li>
+                                        </ul>
+                                    </div>
+
+                                    <!-- Column 4: Bouquets & Baby Collection -->
+                                    <div class="dl-mega-col">
+                                        <h4 class="dl-mega-heading"><a href="./bouquets.html">💐 Bouquets</a></h4>
+                                        <ul class="dl-mega-links">
+                                            <li><a href="./bouquets.html">Mixed Flower Bouquets</a></li>
+                                            <li><a href="./bouquets.html">Mini Bouquets</a></li>
+                                            <li><a href="./bouquets.html">Blanket Bouquet</a></li>
+                                        </ul>
+                                        <h4 class="dl-mega-heading" style="margin-top: 16px;"><a href="./baby-sets.html">👶 Baby Collection</a></h4>
+                                        <ul class="dl-mega-links">
+                                            <li><a href="./baby-sets.html">Baby Shoes</a></li>
+                                            <li><a href="./baby-sets.html">Baby Caps</a></li>
+                                            <li><a href="./baby-sets.html">Baby Headbands</a></li>
+                                            <li><a href="./baby-sets.html">Baby Blankets</a></li>
+                                            <li><a href="./baby-sets.html">Baby Sets</a></li>
+                                            <li><a href="./baby-sets.html">Baby Rattles</a></li>
+                                        </ul>
+                                    </div>
+
+                                    <!-- Column 5: Wearables & Plushies -->
+                                    <div class="dl-mega-col">
+                                        <h4 class="dl-mega-heading"><a href="./clothing.html">👕 Wearables</a></h4>
+                                        <div class="dl-mega-sublabel">Women</div>
+                                        <ul class="dl-mega-links">
+                                            <li><a href="./clothing.html">Cardigans</a></li>
+                                            <li><a href="./clothing.html">Summer Tops</a></li>
+                                        </ul>
+                                        <div class="dl-mega-sublabel" style="margin-top: 8px;">Men</div>
+                                        <ul class="dl-mega-links">
+                                            <li><a href="./clothing.html">Sweaters</a></li>
+                                            <li><a href="./clothing.html">Mufflers</a></li>
+                                            <li><a href="./clothing.html">Gloves</a></li>
+                                            <li><a href="./clothing.html">Beanies</a></li>
+                                        </ul>
+                                        <h4 class="dl-mega-heading" style="margin-top: 14px;"><a href="./plushies.html">🧸 Plushies</a></h4>
+                                        <ul class="dl-mega-links">
+                                            <li><a href="./plushies.html">Characters</a></li>
+                                            <li><a href="./plushies.html">Mini Plushies</a></li>
+                                            <li><a href="./plushies.html">Dolls</a></li>
+                                        </ul>
+                                    </div>
+
+                                    <!-- Column 6: Home Decor & Gift Collection -->
+                                    <div class="dl-mega-col">
+                                        <h4 class="dl-mega-heading"><a href="./home-decor.html">🏡 Home Decor</a></h4>
+                                        <ul class="dl-mega-links">
+                                            <li><a href="./home-decor.html">Coasters</a></li>
+                                            <li><a href="./home-decor.html">Table Runners</a></li>
+                                            <li><a href="./home-decor.html">Placemats</a></li>
+                                            <li><a href="./home-decor.html">Wall Hangings</a></li>
+                                            <li><a href="./home-decor.html">Cushion Covers</a></li>
+                                            <li><a href="./home-decor.html">Crochet Mirrors</a></li>
+                                        </ul>
+                                        <h4 class="dl-mega-heading" style="margin-top: 14px;"><a href="./gifting.html">🎁 Gift Collection</a></h4>
+                                        <ul class="dl-mega-links">
+                                            <li><a href="./gifting.html">Birthday Gifts</a></li>
+                                            <li><a href="./gifting.html">Anniversary Gifts</a></li>
+                                            <li><a href="./gifting.html">Bridal Gifts</a></li>
+                                            <li><a href="./gifting.html">Baby Shower Gifts</a></li>
+                                            <li><a href="./gifting.html">Gift Boxes</a></li>
+                                            <li><a href="./gifting.html">Customized Gift Sets</a></li>
+                                        </ul>
+                                    </div>
+
+                                </div>
                             </div>
-                        </div>
-                    </div>
+                        </li>
 
-                    <a href="../about_us.html" class="text-brand-text hover:text-brand-sage font-medium text-xs tracking-[0.1em] uppercase transition-colors relative py-8 group">
-                        About Us
-                        <span class="absolute bottom-6 left-0 w-full h-[1px] bg-brand-sage origin-left scale-x-0 transition-transform duration-500 group-hover:scale-x-100"></span>
-                    </a>
-                    
-                    <a href="../custom-orders.html" class="text-brand-text hover:text-brand-sage font-medium text-xs tracking-[0.1em] uppercase transition-colors relative py-8 group">
-                        Custom Orders
-                        <span class="absolute bottom-6 left-0 w-full h-[1px] bg-brand-sage origin-left scale-x-0 transition-transform duration-500 group-hover:scale-x-100"></span>
-                    </a>
+                        <!-- 3. Custom Orders -->
+                        <li class="dl-nav-item">
+                            <a href="../pages/custom-orders.html" class="dl-nav-link ">Custom Orders</a>
+                        </li>
+
+                        <!-- 4. About Us -->
+                        <li class="dl-nav-item">
+                            <a href="../pages/about_us.html" class="dl-nav-link ">About Us</a>
+                        </li>
+
+                        <!-- 5. Reviews -->
+                        <li class="dl-nav-item">
+                            <a href="../index.html#reviews" class="dl-nav-link">Reviews</a>
+                        </li>
+
+                        <!-- 6. Gallery -->
+                        <li class="dl-nav-item">
+                            <a href="../index.html#insta-track" class="dl-nav-link">Gallery</a>
+                        </li>
+
+                        <!-- 7. FAQs -->
+                        <li class="dl-nav-item">
+                            <a href="../pages/about_us.html#faq" class="dl-nav-link">FAQs</a>
+                        </li>
+
+                        <!-- 8. Contact -->
+                        <li class="dl-nav-item">
+                            <a href="../pages/how-to-order.html" class="dl-nav-link ">Contact</a>
+                        </li>
+
+                    </ul>
                 </nav>
 
-                <!-- Action Icons -->
-                <div class="flex items-center space-x-6 w-1/3 justify-end z-50">
-                    <a href="javascript:void(0)" class="text-brand-text hover:text-brand-sage transition-colors relative group" aria-label="Search">
-                        <i class="ph ph-magnifying-glass text-xl"></i>
+                <!-- Right: Action Icons (Search, Wishlist, Cart, Account) -->
+                <div class="dl-header-actions">
+                    
+                    <!-- Search Button -->
+                    <button class="dl-action-icon dl-search-trigger" id="dl-search-btn" aria-label="Search">
+                        <i class="ph ph-magnifying-glass"></i>
+                    </button>
+
+                    <!-- Desktop Search Bar Input Container -->
+                    <div class="dl-desktop-search-bar" id="dl-desktop-search-bar">
+                        <input type="text" placeholder="Search handmade crochet..." class="dl-search-input" id="dl-search-input">
+                        <button class="dl-search-close" id="dl-search-close"><i class="ph ph-x"></i></button>
+                        <div class="dl-search-results" id="dl-desktop-search-results"></div>
+                    </div>
+
+                    <!-- Wishlist Icon -->
+                    <a href="javascript:void(0)" class="dl-action-icon dl-wishlist-icon" aria-label="Wishlist">
+                        <i class="ph ph-heart"></i>
+                        <span class="dl-badge">0</span>
                     </a>
-                    <a href="javascript:void(0)" class="text-brand-text hover:text-brand-sage transition-colors relative group flex items-center gap-2" aria-label="Cart">
-                        <div class="relative">
-                            <i class="ph ph-tote text-xl"></i>
-                            <span class="absolute -top-1 -right-2 bg-brand-text text-white text-[9px] font-bold h-4 w-4 rounded-full flex items-center justify-center group-hover:bg-brand-sage transition-colors">0</span>
-                        </div>
-                        <span class="hidden md:block text-xs font-semibold uppercase tracking-wider ml-1">Cart</span>
+
+                    <!-- Cart Icon -->
+                    <a href="javascript:void(0)" class="dl-action-icon dl-cart-icon" aria-label="Shopping Cart">
+                        <i class="ph ph-shopping-bag"></i>
+                        <span class="dl-badge dl-badge-cart">0</span>
+                    </a>
+
+                    <!-- Account Icon -->
+                    <a href="javascript:void(0)" class="dl-action-icon dl-account-icon" aria-label="User Account">
+                        <i class="ph ph-user"></i>
                     </a>
                 </div>
+
             </div>
         </div>
     </header>
 
-    <!-- Mobile Menu Overlay -->
-        <div id="mobile-menu" class="fixed inset-0 bg-white text-brand-text z-50 transform -translate-x-full transition-transform duration-700 lg:hidden flex flex-col">
-        <div class="flex justify-between items-center p-6 border-b border-brand-beige/30">
-            <span class="font-heading text-2xl tracking-wide text-brand-text">Daisyline.</span>
-            <button id="close-menu-btn" onclick="document.getElementById('mobile-menu').classList.add('-translate-x-full'); document.body.style.overflow='';"  class="text-brand-text hover:text-brand-sage p-2 transition-colors" aria-label="Close menu">
-                <i class="ph ph-x text-2xl"></i>
+    <!-- MOBILE DRAWER OVERLAY & SIDEBAR -->
+    <div class="dl-drawer-overlay" id="dl-drawer-overlay"></div>
+
+    <aside class="dl-mobile-drawer" id="dl-mobile-drawer" aria-label="Mobile Navigation Drawer">
+        <div class="dl-drawer-header">
+            <a href="../index.html" class="dl-logo-link">
+                <img src="../assets/images/logo.jpg" alt="Daisyline Logo" class="dl-logo-img">
+                <span class="dl-logo-text">Daisyline.</span>
+            </a>
+            <button class="dl-drawer-close-btn" id="dl-drawer-close-btn" aria-label="Close Menu">
+                <i class="ph ph-x"></i>
             </button>
         </div>
-        
-        <div class="flex-1 overflow-y-auto py-12 px-8 flex flex-col justify-start text-left">
-            <div class="flex flex-col gap-8">
-                <a href="../index.html" class="mobile-link font-heading text-4xl md:text-5xl font-light italic text-brand-text hover:text-brand-sage transition-colors">Home</a>
-                
-                <!-- Mobile Categories Dropdown Accordion -->
-                <div class="flex flex-col w-full">
-                    <button id="mobile-categories-btn" onclick="document.getElementById('mobile-categories-dropdown').classList.toggle('hidden'); document.getElementById('mobile-categories-dropdown').classList.toggle('flex'); document.getElementById('mobile-categories-icon').classList.toggle('rotate-180');"  class="flex items-center justify-between font-heading text-4xl md:text-5xl font-light italic text-brand-text hover:text-brand-sage transition-colors w-full text-left">
-                        <span>Categories</span>
-                        <i class="ph ph-caret-down text-2xl transition-transform duration-300" id="mobile-categories-icon"></i>
-                    </button>
-                    <!-- Sub-links container hidden by default -->
-                    <div id="mobile-categories-dropdown" class="hidden flex-col gap-5 pl-4 pt-6 border-l border-brand-beige/50 ml-2 mt-2">
-                        <a href="./baby-sets.html" class="mobile-link text-lg font-sans text-brand-muted hover:text-brand-sage">Baby Sets</a>
-                        <a href="./bags.html" class="mobile-link text-lg font-sans text-brand-muted hover:text-brand-sage">Bags / Wallets</a>
-                        <a href="./book-items.html" class="mobile-link text-lg font-sans text-brand-muted hover:text-brand-sage">Book Items</a>
-                        <a href="./bouquets.html" class="mobile-link text-lg font-sans text-brand-muted hover:text-brand-sage">Bouquets</a>
-                        <a href="./clothing.html" class="mobile-link text-lg font-sans text-brand-muted hover:text-brand-sage">Clothing</a>
-                        <a href="./earrings.html" class="mobile-link text-lg font-sans text-brand-muted hover:text-brand-sage">Earrings</a>
-                        <a href="./gifting.html" class="mobile-link text-lg font-sans text-brand-muted hover:text-brand-sage">Gifting</a>
-                        <a href="./hair-accessories.html" class="mobile-link text-lg font-sans text-brand-muted hover:text-brand-sage">Hair Accessories</a>
-                        <a href="./hand-accessories.html" class="mobile-link text-lg font-sans text-brand-muted hover:text-brand-sage">Hand Accessories</a>
-                        <a href="./home-decor.html" class="mobile-link text-lg font-sans text-brand-muted hover:text-brand-sage">Home Decor</a>
-                        <a href="./keychain.html" class="mobile-link text-lg font-sans text-brand-muted hover:text-brand-sage">Keychains</a>
-                        <a href="./plushies.html" class="mobile-link text-lg font-sans text-brand-muted hover:text-brand-sage">Plushies</a>
-                    </div>
-                </div>
 
-                <a href="../about_us.html" class="mobile-link font-heading text-4xl md:text-5xl font-light italic text-brand-text hover:text-brand-sage transition-colors">About Us</a>
-                <a href="../custom-orders.html" class="mobile-link font-heading text-4xl md:text-5xl font-light italic text-brand-text hover:text-brand-sage transition-colors">Custom Orders</a>
+        <div class="dl-drawer-body">
+            <ul class="dl-mobile-nav-list">
+                <!-- 1. Home -->
+                <li>
+                    <a href="../index.html" class="dl-mobile-nav-link ">Home</a>
+                </li>
+
+                <!-- 2. Shop Accordion -->
+                <li class="dl-mobile-accordion-item">
+                    <button class="dl-mobile-accordion-btn" id="dl-shop-acc-btn">
+                        <span>Shop</span>
+                        <i class="ph ph-caret-down dl-acc-icon"></i>
+                    </button>
+                    <div class="dl-mobile-accordion-content" id="dl-shop-acc-content">
+                        <div class="dl-mobile-sub-group">
+                            <a href="./bags.html" class="dl-mobile-sub-heading">Featured Collections</a>
+                            <a href="../index.html#new-arrivals" class="dl-mobile-sub-link">New Arrivals</a>
+                            <a href="../index.html#best-sellers" class="dl-mobile-sub-link">Best Sellers</a>
+                        </div>
+
+                        <!-- Sub Category Accordions -->
+                        <div class="dl-mobile-sub-acc">
+                            <button class="dl-sub-acc-btn"><span>🌸 Gajras</span> <i class="ph ph-plus"></i></button>
+                            <div class="dl-sub-acc-content">
+                                <a href="./gajras.html">Floral Gajras</a>
+                                <a href="./gajras.html">Bridal Gajras</a>
+                                <a href="./gajras.html">Custom Gajras</a>
+                            </div>
+                        </div>
+
+                        <div class="dl-mobile-sub-acc">
+                            <button class="dl-sub-acc-btn"><span>🎀 Hair Accessories</span> <i class="ph ph-plus"></i></button>
+                            <div class="dl-sub-acc-content">
+                                <a href="./hair-accessories.html">Scrunchies</a>
+                                <a href="./hair-accessories.html">Hair Bows</a>
+                                <a href="./hair-accessories.html">Hair Clips</a>
+                                <a href="./hair-accessories.html">Headbands</a>
+                                <a href="./hair-accessories.html">Hair Pins</a>
+                            </div>
+                        </div>
+
+                        <div class="dl-mobile-sub-acc">
+                            <button class="dl-sub-acc-btn"><span>👜 Bags</span> <i class="ph ph-plus"></i></button>
+                            <div class="dl-sub-acc-content">
+                                <a href="./bags.html">Tote Bags</a>
+                                <a href="./bags.html">Shoulder Bags</a>
+                                <a href="./bags.html">Crossbody Bags</a>
+                                <a href="./bags.html">Wallets</a>
+                            </div>
+                        </div>
+
+                        <div class="dl-mobile-sub-acc">
+                            <button class="dl-sub-acc-btn"><span>🔑 Keychains</span> <i class="ph ph-plus"></i></button>
+                            <div class="dl-sub-acc-content">
+                                <a href="./keychain.html">Car Hanging</a>
+                                <a href="./keychain.html">Animal Keychains</a>
+                                <a href="./keychain.html">Alphabet Keychains</a>
+                            </div>
+                        </div>
+
+                        <div class="dl-mobile-sub-acc">
+                            <button class="dl-sub-acc-btn"><span>💐 Bouquets</span> <i class="ph ph-plus"></i></button>
+                            <div class="dl-sub-acc-content">
+                                <a href="./bouquets.html">Flower Bouquets</a>
+                                <a href="./bouquets.html">Mini Bouquets</a>
+                            </div>
+                        </div>
+
+                        <div class="dl-mobile-sub-acc">
+                            <button class="dl-sub-acc-btn"><span>👶 Baby Collection</span> <i class="ph ph-plus"></i></button>
+                            <div class="dl-sub-acc-content">
+                                <a href="./baby-sets.html">Baby Shoes</a>
+                                <a href="./baby-sets.html">Baby Caps</a>
+                                <a href="./baby-sets.html">Baby Blankets</a>
+                            </div>
+                        </div>
+
+                        <div class="dl-mobile-sub-acc">
+                            <button class="dl-sub-acc-btn"><span>👕 Wearables</span> <i class="ph ph-plus"></i></button>
+                            <div class="dl-sub-acc-content">
+                                <a href="./clothing.html">Cardigans</a>
+                                <a href="./clothing.html">Summer Tops</a>
+                                <a href="./clothing.html">Sweaters &amp; Mufflers</a>
+                            </div>
+                        </div>
+
+                        <div class="dl-mobile-sub-acc">
+                            <button class="dl-sub-acc-btn"><span>🧸 Plushies</span> <i class="ph ph-plus"></i></button>
+                            <div class="dl-sub-acc-content">
+                                <a href="./plushies.html">Characters</a>
+                                <a href="./plushies.html">Mini Plushies</a>
+                                <a href="./plushies.html">Dolls</a>
+                            </div>
+                        </div>
+
+                        <div class="dl-mobile-sub-acc">
+                            <button class="dl-sub-acc-btn"><span>🏡 Home Decor</span> <i class="ph ph-plus"></i></button>
+                            <div class="dl-sub-acc-content">
+                                <a href="./home-decor.html">Coasters</a>
+                                <a href="./home-decor.html">Table Runners</a>
+                                <a href="./home-decor.html">Cushion Covers</a>
+                            </div>
+                        </div>
+
+                        <div class="dl-mobile-sub-acc">
+                            <button class="dl-sub-acc-btn"><span>🎁 Gift Collection</span> <i class="ph ph-plus"></i></button>
+                            <div class="dl-sub-acc-content">
+                                <a href="./gifting.html">Birthday Gifts</a>
+                                <a href="./gifting.html">Anniversary Gifts</a>
+                                <a href="./gifting.html">Bridal Gifts</a>
+                            </div>
+                        </div>
+
+                    </div>
+                </li>
+
+                <!-- 3. Custom Orders -->
+                <li>
+                    <a href="../pages/custom-orders.html" class="dl-mobile-nav-link ">Custom Orders</a>
+                </li>
+
+                <!-- 4. About Us -->
+                <li>
+                    <a href="../pages/about_us.html" class="dl-mobile-nav-link ">About Us</a>
+                </li>
+
+                <!-- 5. Reviews -->
+                <li>
+                    <a href="../index.html#reviews" class="dl-mobile-nav-link">Reviews</a>
+                </li>
+
+                <!-- 6. Gallery -->
+                <li>
+                    <a href="../index.html#insta-track" class="dl-mobile-nav-link">Gallery</a>
+                </li>
+
+                <!-- 7. FAQs -->
+                <li>
+                    <a href="../pages/about_us.html#faq" class="dl-mobile-nav-link">FAQs</a>
+                </li>
+
+                <!-- 8. Contact -->
+                <li>
+                    <a href="../pages/how-to-order.html" class="dl-mobile-nav-link ">Contact</a>
+                </li>
+            </ul>
+        </div>
+    </aside>
+
+    <!-- MOBILE SEARCH MODAL -->
+    <div class="dl-search-modal" id="dl-search-modal">
+        <div class="dl-search-modal-box">
+            <div class="dl-search-modal-header">
+                <span class="dl-search-modal-title">Search DaisyLine</span>
+                <button class="dl-search-modal-close" id="dl-search-modal-close"><i class="ph ph-x"></i></button>
             </div>
-            
-            <div class="mt-12 pt-8 border-t border-brand-beige/30 flex gap-6">
-                <a href="https://www.instagram.com/daisylinecrochet/" target="_blank" rel="noopener noreferrer" class="text-brand-text hover:text-brand-sage transition-colors"><i class="ph ph-instagram-logo text-3xl"></i></a>
-                <a href="https://www.facebook.com/share/1HeWDJU5ap/" target="_blank" rel="noopener noreferrer" class="text-brand-text hover:text-brand-sage transition-colors"><i class="ph ph-facebook-logo text-3xl"></i></a>
-                <a href="https://www.tiktok.com/@daisylinecrochet?_r=1&_t=ZS-98DQTwu0jqr" target="_blank" rel="noopener noreferrer" class="text-brand-text hover:text-brand-sage transition-colors"><i class="ph ph-tiktok-logo text-3xl"></i></a>
+            <div class="dl-search-modal-body">
+                <input type="text" placeholder="Search handmade crochet gifts, gajras, plushies..." class="dl-search-modal-input" id="dl-mobile-search-input">
+                <div class="dl-search-quick-tags">
+                    <span>Quick Search:</span>
+                    <a href="./gajras.html">Gajras</a>
+                    <a href="./bags.html">Tote Bags</a>
+                    <a href="./plushies.html">Plushies</a>
+                    <a href="./keychain.html">Keychains</a>
+                </div>
+                <div class="dl-search-results" id="dl-mobile-search-results"></div>
             </div>
         </div>
     </div>
+    
 
-    <main class="pt-4 md:pt-6">
-        <!-- Premium Hero Carousel -->
-        <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-16 md:mb-24">
-            <div class="relative w-full h-[50vh] md:h-[65vh] rounded-3xl overflow-hidden shadow-soft bg-brand-ivory group">
-                
-                <!-- Slide 1 -->
-                <div class="carousel-slide active absolute inset-0 w-full h-full">
-                    <img src="https://placehold.co/1200x800/e8e1d5/72886a?text=Animal+Plushies" alt="Animal Plushies" class="w-full h-full object-cover">
-                    <div class="absolute inset-0 bg-black/20"></div>
-                    <div class="absolute inset-0 flex flex-col items-center justify-center text-center p-6">
-                        <div class="carousel-text">
-                            <span class="text-white tracking-widest uppercase text-xs font-semibold mb-3 block drop-shadow-md">The Cuddle Collection</span>
-                            <h1 class="font-heading text-5xl md:text-6xl text-white mb-4 drop-shadow-lg">Animal Plushies</h1>
-                            <p class="text-white/90 text-lg md:text-xl font-light max-w-lg mx-auto drop-shadow-md">Soft, huggable amigurumi friends made with love.</p>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Slide 2 -->
-                <div class="carousel-slide absolute inset-0 w-full h-full">
-                    <img src="https://placehold.co/1200x800/dce5d8/5e6b57?text=Keychain+Plushies" alt="Keychain Plushies" class="w-full h-full object-cover">
-                    <div class="absolute inset-0 bg-black/30"></div>
-                    <div class="absolute inset-0 flex flex-col items-center justify-center text-center p-6">
-                        <div class="carousel-text">
-                            <span class="text-white tracking-widest uppercase text-xs font-semibold mb-3 block drop-shadow-md">Tiny Companions</span>
-                            <h2 class="font-heading text-5xl md:text-6xl text-white mb-4 drop-shadow-lg">Keychain Plushies</h2>
-                            <p class="text-white/90 text-lg md:text-xl font-light max-w-lg mx-auto drop-shadow-md">Miniature plush charms to take everywhere with you.</p>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Slide 3 -->
-                <div class="carousel-slide absolute inset-0 w-full h-full">
-                    <img src="https://placehold.co/1200x800/f8f5f0/72886a?text=Character+Plushies" alt="Character Plushies" class="w-full h-full object-cover">
-                    <div class="absolute inset-0 bg-black/20"></div>
-                    <div class="absolute inset-0 flex flex-col items-center justify-center text-center p-6">
-                        <div class="carousel-text">
-                            <span class="text-white tracking-widest uppercase text-xs font-semibold mb-3 block drop-shadow-md">Character Corner</span>
-                            <h2 class="font-heading text-5xl md:text-6xl text-white mb-4 drop-shadow-lg">Character Plushies</h2>
-                            <p class="text-white/90 text-lg md:text-xl font-light max-w-lg mx-auto drop-shadow-md">Whimsical crochet characters for gifting and keeping.</p>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Carousel Controls -->
-                <button id="prev-slide" class="absolute left-6 top-1/2 transform -translate-y-1/2 w-10 h-10 rounded-full bg-white/20 backdrop-blur hover:bg-white/40 text-white flex items-center justify-center transition-all opacity-0 group-hover:opacity-100 z-20">
-                    <i class="ph ph-caret-left text-xl"></i>
-                </button>
-                <button id="next-slide" class="absolute right-6 top-1/2 transform -translate-y-1/2 w-10 h-10 rounded-full bg-white/20 backdrop-blur hover:bg-white/40 text-white flex items-center justify-center transition-all opacity-0 group-hover:opacity-100 z-20">
-                    <i class="ph ph-caret-right text-xl"></i>
-                </button>
-
-                <!-- Carousel Dots -->
-                <div class="absolute bottom-6 left-1/2 transform -translate-x-1/2 flex gap-3 z-20">
-                    <button class="carousel-dot w-2 h-2 rounded-full bg-white transition-all w-6" data-index="0"></button>
-                    <button class="carousel-dot w-2 h-2 rounded-full bg-white/50 hover:bg-white/80 transition-all" data-index="1"></button>
-                    <button class="carousel-dot w-2 h-2 rounded-full bg-white/50 hover:bg-white/80 transition-all" data-index="2"></button>
-                </div>
-            </div>
+    <main class="dl-main">
+        <div class="dl-container">
             
-            <!-- Breadcrumbs placed cleanly below Hero -->
-            <nav class="flex justify-center text-[10px] sm:text-xs font-medium text-brand-muted uppercase tracking-widest mt-6">
-                <ol class="flex items-center space-x-2">
-                    <li><a href="./../index.html" class="hover:text-brand-sage transition-colors">Home</a></li>
-                    <li><span class="text-brand-beige mx-2">/</span></li>
-                    <li><a href="./../index.html#categories" class="hover:text-brand-sage transition-colors">Categories</a></li>
-                    <li><span class="text-brand-beige mx-2">/</span></li>
-                    <li class="text-brand-olive">Plushies</li>
-                </ol>
+            <!-- Breadcrumbs -->
+            <nav class="dl-breadcrumb" aria-label="Breadcrumb">
+                <a href="../index.html">Home</a>
+                <i class="ph ph-caret-right text-xs text-brand-muted"></i>
+                <a href="../pages/shop.html">Shop</a>
+                <i class="ph ph-caret-right text-xs text-brand-muted"></i>
+                <span class="dl-crumb-current">Plushies & Toys</span>
             </nav>
-        </section>
 
-        <!-- Shop Section -->
-        <section class="pb-16 md:pb-24 bg-brand-cream relative">
-            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                
-                <!-- Filters, Search & Sort Controls -->
-                <div class="flex flex-col xl:flex-row justify-between items-start xl:items-center gap-6 pb-8 mb-8 border-b border-brand-beige/50 reveal">
-                    
-                    <!-- Categories Pill Navigation -->
-                    <div class="flex flex-wrap items-center gap-2" id="category-filters">
-                        <button class="filter-btn active px-5 py-2 rounded-full text-sm font-medium bg-brand-sage text-white transition-colors border border-brand-sage" data-cat="all">All Styles</button>
-                        <button class="filter-btn px-5 py-2 rounded-full text-sm font-medium bg-transparent text-brand-text border border-brand-beige hover:border-brand-sage hover:text-brand-sage transition-colors" data-cat="animals">Animal Plushies</button>
-                        <button class="filter-btn px-5 py-2 rounded-full text-sm font-medium bg-transparent text-brand-text border border-brand-beige hover:border-brand-sage hover:text-brand-sage transition-colors" data-cat="keychains">Keychain Plushies</button>
-                        <button class="filter-btn px-5 py-2 rounded-full text-sm font-medium bg-transparent text-brand-text border border-brand-beige hover:border-brand-sage hover:text-brand-sage transition-colors" data-cat="characters">Character Plushies</button>
-                        <button class="filter-btn px-5 py-2 rounded-full text-sm font-medium bg-transparent text-brand-text border border-brand-beige hover:border-brand-sage hover:text-brand-sage transition-colors" data-cat="mini">Mini Plushies</button>
-                    </div>
+            <!-- Category Banner -->
+            <section class="dl-shop-hero dl-reveal">
+                <span class="dl-tagline">🧸 Premium Handcrafted Collection</span>
+                <h1 class="dl-shop-hero-title">Plushies & Toys</h1>
+                <p class="dl-shop-hero-sub">Adorable velvet plush toys, stuffed animals, characters, and handmade dolls.</p>
+            </section>
 
-                    <!-- Search & Sort -->
-                    <div class="flex flex-col sm:flex-row items-center gap-4 w-full xl:w-auto">
-                        <p id="product-count" class="text-brand-muted text-sm font-medium hidden sm:block whitespace-nowrap mr-2">20 items</p>
-                        
-                        <!-- Search Bar -->
-                        <div class="relative w-full sm:w-64">
-                            <i class="ph ph-magnifying-glass absolute left-4 top-1/2 transform -translate-y-1/2 text-brand-muted text-lg"></i>
-                            <input type="text" id="search-input" placeholder="Search plushies..." class="w-full pl-11 pr-4 py-2.5 bg-white border border-brand-beige rounded-full text-sm text-brand-text placeholder-brand-muted focus:outline-none focus:border-brand-sage focus:ring-1 focus:ring-brand-sage transition-all">
-                        </div>
-                        
-                        <!-- Sort Dropdown -->
-                        <div class="relative w-full sm:w-48">
-                            <select id="sort" class="w-full appearance-none bg-white border border-brand-beige text-brand-text text-sm rounded-full focus:ring-brand-sage focus:border-brand-sage py-2.5 pl-4 pr-10 outline-none cursor-pointer transition-all">
-                                <option value="featured">Featured Layout</option>
-                                <option value="newest">Newest Arrivals</option>
-                                <option value="price-low">Price: Low to High</option>
-                                <option value="price-high">Price: High to Low</option>
-                            </select>
-                            <i class="ph ph-caret-down absolute right-4 top-1/2 transform -translate-y-1/2 text-brand-muted pointer-events-none"></i>
-                        </div>
+            <!-- Toolbar -->
+            <div class="dl-toolbar dl-reveal">
+                <div class="dl-toolbar-left">
+                    <div class="dl-toolbar-search">
+                        <i class="ph ph-magnifying-glass"></i>
+                        <input type="text" placeholder="Search Plushies & Toys..." id="dl-grid-search">
                     </div>
+                    <span class="dl-toolbar-count">Showing 8 Products</span>
                 </div>
 
-                <!-- Uniform Products Grid -->
-                <div class="mobile-grid-2 md:grid md:grid-cols-3 lg:grid-cols-4 md:gap-x-6 md:gap-y-10 grid-flow-row-dense" id="products-grid">
-                    
-                    <!-- Product 1 -->
-                    <div class="product-card group flex flex-col" data-name="Cuddly Bear Plushie" data-category="animals" data-price="700" data-date="2023-06-15">
-                        <div class="img-wrapper relative rounded-xl overflow-hidden bg-white mb-4 shadow-sm group-hover:shadow-md transition-all duration-500">
-                            <a href="javascript:void(0)" class="block w-full h-full img-hover-zoom">
-                                <img src="https://placehold.co/600x750/e8e1d5/72886a?text=Cuddly+Bear+Plushie" alt="Cuddly Bear Plushie" class="w-full h-full object-cover">
-                            </a>
-                            <button class="absolute top-3 right-3 z-10 w-9 h-9 bg-white/90 backdrop-blur-sm rounded-full flex items-center justify-center text-brand-muted hover:text-red-500 transition-colors shadow-sm opacity-100 lg:opacity-0 group-hover:opacity-100">
-                                <i class="ph ph-heart text-xl"></i>
-                            </button>
-                            <div class="absolute bottom-0 left-0 w-full p-4 translate-y-full group-hover:translate-y-0 transition-transform duration-300 hidden lg:block z-10">
-                                <button class="w-full bg-white/95 backdrop-blur text-brand-text py-3 rounded-lg font-medium text-sm hover:bg-brand-sage hover:text-white transition-colors shadow-lg">Quick Add</button>
-                            </div>
-                        </div>
-                        <div class="flex flex-col flex-1 px-1">
-                            <h3 class="font-heading text-lg md:text-xl text-brand-text mb-1"><a href="javascript:void(0)">Cuddly Bear Plushie</a></h3>
-                            <p class="text-brand-muted text-xs md:text-sm mb-2 line-clamp-1">Huggable, handmade softies for every age.</p>
-                            <p class="font-medium text-brand-olive mt-auto tracking-wide">Rs. 700</p>
-                        </div>
-                    </div>
+                <div class="dl-toolbar-right">
+                    <select class="dl-sort-select" aria-label="Sort items">
+                        <option value="newest">Sort by: Newest</option>
+                        <option value="bestselling">Sort by: Best Selling</option>
+                        <option value="low-high">Price: Low → High</option>
+                        <option value="high-low">Price: High → Low</option>
+                        <option value="alpha">Alphabetical</option>
+                    </select>
 
-                    <!-- Product 2 -->
-                    <div class="product-card group flex flex-col" data-name="Chubby Bunny Amigurumi" data-category="keychains" data-price="2000" data-date="2023-07-01">
-                        <div class="img-wrapper relative rounded-xl overflow-hidden bg-white mb-4 shadow-sm group-hover:shadow-md transition-all duration-500">
-                            <a href="javascript:void(0)" class="block w-full h-full img-hover-zoom">
-                                <img src="https://placehold.co/600x750/dce5d8/5e6b57?text=Chubby+Bunny+Amigurumi" alt="Chubby Bunny Amigurumi" class="w-full h-full object-cover">
-                            </a>
-                            <button class="absolute top-3 right-3 z-10 w-9 h-9 bg-white/90 backdrop-blur-sm rounded-full flex items-center justify-center text-brand-muted hover:text-red-500 transition-colors shadow-sm opacity-100 lg:opacity-0 group-hover:opacity-100">
-                                <i class="ph ph-heart text-xl"></i>
-                            </button>
-                            <div class="absolute bottom-0 left-0 w-full p-4 translate-y-full group-hover:translate-y-0 transition-transform duration-300 hidden lg:block z-10">
-                                <button class="w-full bg-white/95 backdrop-blur text-brand-text py-3 rounded-lg font-medium text-sm hover:bg-brand-sage hover:text-white transition-colors shadow-lg">Quick Add</button>
-                            </div>
-                        </div>
-                        <div class="flex flex-col flex-1 px-1">
-                            <h3 class="font-heading text-lg md:text-xl text-brand-text mb-1"><a href="javascript:void(0)">Chubby Bunny Amigurumi</a></h3>
-                            <p class="text-brand-muted text-xs md:text-sm mb-2 line-clamp-1">Huggable, handmade softies for every age.</p>
-                            <p class="font-medium text-brand-olive mt-auto tracking-wide">Rs. 2,000</p>
-                        </div>
-                    </div>
-
-                    <!-- Product 3 -->
-                    <div class="product-card group flex flex-col" data-name="Sleepy Cat Keychain Plush" data-category="characters" data-price="3300" data-date="2023-07-20">
-                        <div class="img-wrapper relative rounded-xl overflow-hidden bg-white mb-4 shadow-sm group-hover:shadow-md transition-all duration-500">
-                            <a href="javascript:void(0)" class="block w-full h-full img-hover-zoom">
-                                <img src="https://placehold.co/600x750/f8f5f0/72886a?text=Sleepy+Cat+Keychain+Plush" alt="Sleepy Cat Keychain Plush" class="w-full h-full object-cover">
-                            </a>
-                            <button class="absolute top-3 right-3 z-10 w-9 h-9 bg-white/90 backdrop-blur-sm rounded-full flex items-center justify-center text-brand-muted hover:text-red-500 transition-colors shadow-sm opacity-100 lg:opacity-0 group-hover:opacity-100">
-                                <i class="ph ph-heart text-xl"></i>
-                            </button>
-                            <div class="absolute bottom-0 left-0 w-full p-4 translate-y-full group-hover:translate-y-0 transition-transform duration-300 hidden lg:block z-10">
-                                <button class="w-full bg-white/95 backdrop-blur text-brand-text py-3 rounded-lg font-medium text-sm hover:bg-brand-sage hover:text-white transition-colors shadow-lg">Quick Add</button>
-                            </div>
-                        </div>
-                        <div class="flex flex-col flex-1 px-1">
-                            <h3 class="font-heading text-lg md:text-xl text-brand-text mb-1"><a href="javascript:void(0)">Sleepy Cat Keychain Plush</a></h3>
-                            <p class="text-brand-muted text-xs md:text-sm mb-2 line-clamp-1">Huggable, handmade softies for every age.</p>
-                            <p class="font-medium text-brand-olive mt-auto tracking-wide">Rs. 3,300</p>
-                        </div>
-                    </div>
-
-                    <!-- Product 4 -->
-                    <div class="product-card group flex flex-col" data-name="Baby Elephant Mini Plush" data-category="mini" data-price="1100" data-date="2023-08-10">
-                        <div class="img-wrapper relative rounded-xl overflow-hidden bg-white mb-4 shadow-sm group-hover:shadow-md transition-all duration-500">
-                            <a href="javascript:void(0)" class="block w-full h-full img-hover-zoom">
-                                <img src="https://placehold.co/600x750/8fa886/ffffff?text=Baby+Elephant+Mini+Plush" alt="Baby Elephant Mini Plush" class="w-full h-full object-cover">
-                            </a>
-                            <div class="absolute top-3 left-3 z-10">
-                                <span class="bg-brand-sage/90 backdrop-blur-sm text-white text-[10px] font-semibold uppercase tracking-wider px-3 py-1.5 rounded-md shadow-sm">Bestseller</span>
-                            </div>
-                            <button class="absolute top-3 right-3 z-10 w-9 h-9 bg-white/90 backdrop-blur-sm rounded-full flex items-center justify-center text-brand-muted hover:text-red-500 transition-colors shadow-sm opacity-100 lg:opacity-0 group-hover:opacity-100">
-                                <i class="ph ph-heart text-xl"></i>
-                            </button>
-                            <div class="absolute bottom-0 left-0 w-full p-4 translate-y-full group-hover:translate-y-0 transition-transform duration-300 hidden lg:block z-10">
-                                <button class="w-full bg-white/95 backdrop-blur text-brand-text py-3 rounded-lg font-medium text-sm hover:bg-brand-sage hover:text-white transition-colors shadow-lg">Quick Add</button>
-                            </div>
-                        </div>
-                        <div class="flex flex-col flex-1 px-1">
-                            <h3 class="font-heading text-lg md:text-xl text-brand-text mb-1"><a href="javascript:void(0)">Baby Elephant Mini Plush</a></h3>
-                            <p class="text-brand-muted text-xs md:text-sm mb-2 line-clamp-1">Huggable, handmade softies for every age.</p>
-                            <p class="font-medium text-brand-olive mt-auto tracking-wide">Rs. 1,100</p>
-                        </div>
-                    </div>
-
-                    <!-- Product 5 -->
-                    <div class="product-card group flex flex-col" data-name="Round Frog Cuddle Toy" data-category="animals" data-price="2400" data-date="2023-08-20">
-                        <div class="img-wrapper relative rounded-xl overflow-hidden bg-white mb-4 shadow-sm group-hover:shadow-md transition-all duration-500">
-                            <a href="javascript:void(0)" class="block w-full h-full img-hover-zoom">
-                                <img src="https://placehold.co/600x750/fdfbf7/72886a?text=Round+Frog+Cuddle+Toy" alt="Round Frog Cuddle Toy" class="w-full h-full object-cover">
-                            </a>
-                            <button class="absolute top-3 right-3 z-10 w-9 h-9 bg-white/90 backdrop-blur-sm rounded-full flex items-center justify-center text-brand-muted hover:text-red-500 transition-colors shadow-sm opacity-100 lg:opacity-0 group-hover:opacity-100">
-                                <i class="ph ph-heart text-xl"></i>
-                            </button>
-                            <div class="absolute bottom-0 left-0 w-full p-4 translate-y-full group-hover:translate-y-0 transition-transform duration-300 hidden lg:block z-10">
-                                <button class="w-full bg-white/95 backdrop-blur text-brand-text py-3 rounded-lg font-medium text-sm hover:bg-brand-sage hover:text-white transition-colors shadow-lg">Quick Add</button>
-                            </div>
-                        </div>
-                        <div class="flex flex-col flex-1 px-1">
-                            <h3 class="font-heading text-lg md:text-xl text-brand-text mb-1"><a href="javascript:void(0)">Round Frog Cuddle Toy</a></h3>
-                            <p class="text-brand-muted text-xs md:text-sm mb-2 line-clamp-1">Huggable, handmade softies for every age.</p>
-                            <p class="font-medium text-brand-olive mt-auto tracking-wide">Rs. 2,400</p>
-                        </div>
-                    </div>
-
-                    <!-- Product 6 -->
-                    <div class="product-card group flex flex-col" data-name="Fluffy Duck Stuffed Friend" data-category="keychains" data-price="3700" data-date="2023-08-30">
-                        <div class="img-wrapper relative rounded-xl overflow-hidden bg-white mb-4 shadow-sm group-hover:shadow-md transition-all duration-500">
-                            <a href="javascript:void(0)" class="block w-full h-full img-hover-zoom">
-                                <img src="https://placehold.co/600x750/72886a/ffffff?text=Fluffy+Duck+Stuffed+Friend" alt="Fluffy Duck Stuffed Friend" class="w-full h-full object-cover">
-                            </a>
-                            <button class="absolute top-3 right-3 z-10 w-9 h-9 bg-white/90 backdrop-blur-sm rounded-full flex items-center justify-center text-brand-muted hover:text-red-500 transition-colors shadow-sm opacity-100 lg:opacity-0 group-hover:opacity-100">
-                                <i class="ph ph-heart text-xl"></i>
-                            </button>
-                            <div class="absolute bottom-0 left-0 w-full p-4 translate-y-full group-hover:translate-y-0 transition-transform duration-300 hidden lg:block z-10">
-                                <button class="w-full bg-white/95 backdrop-blur text-brand-text py-3 rounded-lg font-medium text-sm hover:bg-brand-sage hover:text-white transition-colors shadow-lg">Quick Add</button>
-                            </div>
-                        </div>
-                        <div class="flex flex-col flex-1 px-1">
-                            <h3 class="font-heading text-lg md:text-xl text-brand-text mb-1"><a href="javascript:void(0)">Fluffy Duck Stuffed Friend</a></h3>
-                            <p class="text-brand-muted text-xs md:text-sm mb-2 line-clamp-1">Huggable, handmade softies for every age.</p>
-                            <p class="font-medium text-brand-olive mt-auto tracking-wide">Rs. 3,700</p>
-                        </div>
-                    </div>
-
-                    <!-- Product 7 -->
-                    <div class="product-card group flex flex-col" data-name="Mini Fox Plush Charm" data-category="characters" data-price="1500" data-date="2023-09-05">
-                        <div class="img-wrapper relative rounded-xl overflow-hidden bg-white mb-4 shadow-sm group-hover:shadow-md transition-all duration-500">
-                            <a href="javascript:void(0)" class="block w-full h-full img-hover-zoom">
-                                <img src="https://placehold.co/600x750/d4b773/ffffff?text=Mini+Fox+Plush+Charm" alt="Mini Fox Plush Charm" class="w-full h-full object-cover">
-                            </a>
-                            <div class="absolute top-3 left-3 z-10">
-                                <span class="bg-brand-sage/90 backdrop-blur-sm text-white text-[10px] font-semibold uppercase tracking-wider px-3 py-1.5 rounded-md shadow-sm">Trending</span>
-                            </div>
-                            <button class="absolute top-3 right-3 z-10 w-9 h-9 bg-white/90 backdrop-blur-sm rounded-full flex items-center justify-center text-brand-muted hover:text-red-500 transition-colors shadow-sm opacity-100 lg:opacity-0 group-hover:opacity-100">
-                                <i class="ph ph-heart text-xl"></i>
-                            </button>
-                            <div class="absolute bottom-0 left-0 w-full p-4 translate-y-full group-hover:translate-y-0 transition-transform duration-300 hidden lg:block z-10">
-                                <button class="w-full bg-white/95 backdrop-blur text-brand-text py-3 rounded-lg font-medium text-sm hover:bg-brand-sage hover:text-white transition-colors shadow-lg">Quick Add</button>
-                            </div>
-                        </div>
-                        <div class="flex flex-col flex-1 px-1">
-                            <h3 class="font-heading text-lg md:text-xl text-brand-text mb-1"><a href="javascript:void(0)">Mini Fox Plush Charm</a></h3>
-                            <p class="text-brand-muted text-xs md:text-sm mb-2 line-clamp-1">Huggable, handmade softies for every age.</p>
-                            <p class="font-medium text-brand-olive mt-auto tracking-wide">Rs. 1,500</p>
-                        </div>
-                    </div>
-
-                    <!-- Product 8 -->
-                    <div class="product-card group flex flex-col" data-name="Soft Penguin Soft Toy" data-category="mini" data-price="2800" data-date="2023-09-15">
-                        <div class="img-wrapper relative rounded-xl overflow-hidden bg-white mb-4 shadow-sm group-hover:shadow-md transition-all duration-500">
-                            <a href="javascript:void(0)" class="block w-full h-full img-hover-zoom">
-                                <img src="https://placehold.co/600x750/dce5d8/72886a?text=Soft+Penguin+Soft+Toy" alt="Soft Penguin Soft Toy" class="w-full h-full object-cover">
-                            </a>
-                            <button class="absolute top-3 right-3 z-10 w-9 h-9 bg-white/90 backdrop-blur-sm rounded-full flex items-center justify-center text-brand-muted hover:text-red-500 transition-colors shadow-sm opacity-100 lg:opacity-0 group-hover:opacity-100">
-                                <i class="ph ph-heart text-xl"></i>
-                            </button>
-                            <div class="absolute bottom-0 left-0 w-full p-4 translate-y-full group-hover:translate-y-0 transition-transform duration-300 hidden lg:block z-10">
-                                <button class="w-full bg-white/95 backdrop-blur text-brand-text py-3 rounded-lg font-medium text-sm hover:bg-brand-sage hover:text-white transition-colors shadow-lg">Quick Add</button>
-                            </div>
-                        </div>
-                        <div class="flex flex-col flex-1 px-1">
-                            <h3 class="font-heading text-lg md:text-xl text-brand-text mb-1"><a href="javascript:void(0)">Soft Penguin Soft Toy</a></h3>
-                            <p class="text-brand-muted text-xs md:text-sm mb-2 line-clamp-1">Huggable, handmade softies for every age.</p>
-                            <p class="font-medium text-brand-olive mt-auto tracking-wide">Rs. 2,800</p>
-                        </div>
-                    </div>
-
-                    <!-- Product 9 -->
-                    <div class="product-card group flex flex-col" data-name="Dreamy Cloud Desk Buddy" data-category="animals" data-price="4100" data-date="2023-09-25">
-                        <div class="img-wrapper relative rounded-xl overflow-hidden bg-white mb-4 shadow-sm group-hover:shadow-md transition-all duration-500">
-                            <a href="javascript:void(0)" class="block w-full h-full img-hover-zoom">
-                                <img src="https://placehold.co/600x750/e8e1d5/72886a?text=Dreamy+Cloud+Desk+Buddy" alt="Dreamy Cloud Desk Buddy" class="w-full h-full object-cover">
-                            </a>
-                            <button class="absolute top-3 right-3 z-10 w-9 h-9 bg-white/90 backdrop-blur-sm rounded-full flex items-center justify-center text-brand-muted hover:text-red-500 transition-colors shadow-sm opacity-100 lg:opacity-0 group-hover:opacity-100">
-                                <i class="ph ph-heart text-xl"></i>
-                            </button>
-                            <div class="absolute bottom-0 left-0 w-full p-4 translate-y-full group-hover:translate-y-0 transition-transform duration-300 hidden lg:block z-10">
-                                <button class="w-full bg-white/95 backdrop-blur text-brand-text py-3 rounded-lg font-medium text-sm hover:bg-brand-sage hover:text-white transition-colors shadow-lg">Quick Add</button>
-                            </div>
-                        </div>
-                        <div class="flex flex-col flex-1 px-1">
-                            <h3 class="font-heading text-lg md:text-xl text-brand-text mb-1"><a href="javascript:void(0)">Dreamy Cloud Desk Buddy</a></h3>
-                            <p class="text-brand-muted text-xs md:text-sm mb-2 line-clamp-1">Huggable, handmade softies for every age.</p>
-                            <p class="font-medium text-brand-olive mt-auto tracking-wide">Rs. 4,100</p>
-                        </div>
-                    </div>
-
-                    <!-- Product 10 -->
-                    <div class="product-card group flex flex-col" data-name="Tiny Panda Bag Charm Plush" data-category="keychains" data-price="1900" data-date="2023-10-01">
-                        <div class="img-wrapper relative rounded-xl overflow-hidden bg-white mb-4 shadow-sm group-hover:shadow-md transition-all duration-500">
-                            <a href="javascript:void(0)" class="block w-full h-full img-hover-zoom">
-                                <img src="https://placehold.co/600x750/dce5d8/5e6b57?text=Tiny+Panda+Bag+Charm+Plush" alt="Tiny Panda Bag Charm Plush" class="w-full h-full object-cover">
-                            </a>
-                            <div class="absolute top-3 left-3 z-10">
-                                <span class="bg-brand-sage/90 backdrop-blur-sm text-white text-[10px] font-semibold uppercase tracking-wider px-3 py-1.5 rounded-md shadow-sm">New</span>
-                            </div>
-                            <button class="absolute top-3 right-3 z-10 w-9 h-9 bg-white/90 backdrop-blur-sm rounded-full flex items-center justify-center text-brand-muted hover:text-red-500 transition-colors shadow-sm opacity-100 lg:opacity-0 group-hover:opacity-100">
-                                <i class="ph ph-heart text-xl"></i>
-                            </button>
-                            <div class="absolute bottom-0 left-0 w-full p-4 translate-y-full group-hover:translate-y-0 transition-transform duration-300 hidden lg:block z-10">
-                                <button class="w-full bg-white/95 backdrop-blur text-brand-text py-3 rounded-lg font-medium text-sm hover:bg-brand-sage hover:text-white transition-colors shadow-lg">Quick Add</button>
-                            </div>
-                        </div>
-                        <div class="flex flex-col flex-1 px-1">
-                            <h3 class="font-heading text-lg md:text-xl text-brand-text mb-1"><a href="javascript:void(0)">Tiny Panda Bag Charm Plush</a></h3>
-                            <p class="text-brand-muted text-xs md:text-sm mb-2 line-clamp-1">Huggable, handmade softies for every age.</p>
-                            <p class="font-medium text-brand-olive mt-auto tracking-wide">Rs. 1,900</p>
-                        </div>
-                    </div>
-
-                    <!-- Product 11 -->
-                    <div class="product-card group flex flex-col" data-name="Plump Pig Plushie" data-category="characters" data-price="3200" data-date="2023-10-05">
-                        <div class="img-wrapper relative rounded-xl overflow-hidden bg-white mb-4 shadow-sm group-hover:shadow-md transition-all duration-500">
-                            <a href="javascript:void(0)" class="block w-full h-full img-hover-zoom">
-                                <img src="https://placehold.co/600x750/f8f5f0/72886a?text=Plump+Pig+Plushie" alt="Plump Pig Plushie" class="w-full h-full object-cover">
-                            </a>
-                            <button class="absolute top-3 right-3 z-10 w-9 h-9 bg-white/90 backdrop-blur-sm rounded-full flex items-center justify-center text-brand-muted hover:text-red-500 transition-colors shadow-sm opacity-100 lg:opacity-0 group-hover:opacity-100">
-                                <i class="ph ph-heart text-xl"></i>
-                            </button>
-                            <div class="absolute bottom-0 left-0 w-full p-4 translate-y-full group-hover:translate-y-0 transition-transform duration-300 hidden lg:block z-10">
-                                <button class="w-full bg-white/95 backdrop-blur text-brand-text py-3 rounded-lg font-medium text-sm hover:bg-brand-sage hover:text-white transition-colors shadow-lg">Quick Add</button>
-                            </div>
-                        </div>
-                        <div class="flex flex-col flex-1 px-1">
-                            <h3 class="font-heading text-lg md:text-xl text-brand-text mb-1"><a href="javascript:void(0)">Plump Pig Plushie</a></h3>
-                            <p class="text-brand-muted text-xs md:text-sm mb-2 line-clamp-1">Huggable, handmade softies for every age.</p>
-                            <p class="font-medium text-brand-olive mt-auto tracking-wide">Rs. 3,200</p>
-                        </div>
-                    </div>
-
-                    <!-- Product 12 -->
-                    <div class="product-card group flex flex-col" data-name="Smiling Sun Amigurumi" data-category="mini" data-price="900" data-date="2023-10-10">
-                        <div class="img-wrapper relative rounded-xl overflow-hidden bg-white mb-4 shadow-sm group-hover:shadow-md transition-all duration-500">
-                            <a href="javascript:void(0)" class="block w-full h-full img-hover-zoom">
-                                <img src="https://placehold.co/600x750/8fa886/ffffff?text=Smiling+Sun+Amigurumi" alt="Smiling Sun Amigurumi" class="w-full h-full object-cover">
-                            </a>
-                            <button class="absolute top-3 right-3 z-10 w-9 h-9 bg-white/90 backdrop-blur-sm rounded-full flex items-center justify-center text-brand-muted hover:text-red-500 transition-colors shadow-sm opacity-100 lg:opacity-0 group-hover:opacity-100">
-                                <i class="ph ph-heart text-xl"></i>
-                            </button>
-                            <div class="absolute bottom-0 left-0 w-full p-4 translate-y-full group-hover:translate-y-0 transition-transform duration-300 hidden lg:block z-10">
-                                <button class="w-full bg-white/95 backdrop-blur text-brand-text py-3 rounded-lg font-medium text-sm hover:bg-brand-sage hover:text-white transition-colors shadow-lg">Quick Add</button>
-                            </div>
-                        </div>
-                        <div class="flex flex-col flex-1 px-1">
-                            <h3 class="font-heading text-lg md:text-xl text-brand-text mb-1"><a href="javascript:void(0)">Smiling Sun Amigurumi</a></h3>
-                            <p class="text-brand-muted text-xs md:text-sm mb-2 line-clamp-1">Huggable, handmade softies for every age.</p>
-                            <p class="font-medium text-brand-olive mt-auto tracking-wide">Rs. 900</p>
-                        </div>
-                    </div>
-
-                    <!-- Product 13 -->
-                    <div class="product-card group flex flex-col" data-name="Cozy Owl Keychain Plush" data-category="animals" data-price="2200" data-date="2023-10-12">
-                        <div class="img-wrapper relative rounded-xl overflow-hidden bg-white mb-4 shadow-sm group-hover:shadow-md transition-all duration-500">
-                            <a href="javascript:void(0)" class="block w-full h-full img-hover-zoom">
-                                <img src="https://placehold.co/600x750/fdfbf7/72886a?text=Cozy+Owl+Keychain+Plush" alt="Cozy Owl Keychain Plush" class="w-full h-full object-cover">
-                            </a>
-                            <button class="absolute top-3 right-3 z-10 w-9 h-9 bg-white/90 backdrop-blur-sm rounded-full flex items-center justify-center text-brand-muted hover:text-red-500 transition-colors shadow-sm opacity-100 lg:opacity-0 group-hover:opacity-100">
-                                <i class="ph ph-heart text-xl"></i>
-                            </button>
-                            <div class="absolute bottom-0 left-0 w-full p-4 translate-y-full group-hover:translate-y-0 transition-transform duration-300 hidden lg:block z-10">
-                                <button class="w-full bg-white/95 backdrop-blur text-brand-text py-3 rounded-lg font-medium text-sm hover:bg-brand-sage hover:text-white transition-colors shadow-lg">Quick Add</button>
-                            </div>
-                        </div>
-                        <div class="flex flex-col flex-1 px-1">
-                            <h3 class="font-heading text-lg md:text-xl text-brand-text mb-1"><a href="javascript:void(0)">Cozy Owl Keychain Plush</a></h3>
-                            <p class="text-brand-muted text-xs md:text-sm mb-2 line-clamp-1">Huggable, handmade softies for every age.</p>
-                            <p class="font-medium text-brand-olive mt-auto tracking-wide">Rs. 2,200</p>
-                        </div>
-                    </div>
-
-                    <!-- Product 14 -->
-                    <div class="product-card group flex flex-col" data-name="Little Lamb Mini Plush" data-category="keychains" data-price="3500" data-date="2023-06-25">
-                        <div class="img-wrapper relative rounded-xl overflow-hidden bg-white mb-4 shadow-sm group-hover:shadow-md transition-all duration-500">
-                            <a href="javascript:void(0)" class="block w-full h-full img-hover-zoom">
-                                <img src="https://placehold.co/600x750/72886a/ffffff?text=Little+Lamb+Mini+Plush" alt="Little Lamb Mini Plush" class="w-full h-full object-cover">
-                            </a>
-                            <div class="absolute top-3 left-3 z-10">
-                                <span class="bg-brand-sage/90 backdrop-blur-sm text-white text-[10px] font-semibold uppercase tracking-wider px-3 py-1.5 rounded-md shadow-sm">Lux</span>
-                            </div>
-                            <button class="absolute top-3 right-3 z-10 w-9 h-9 bg-white/90 backdrop-blur-sm rounded-full flex items-center justify-center text-brand-muted hover:text-red-500 transition-colors shadow-sm opacity-100 lg:opacity-0 group-hover:opacity-100">
-                                <i class="ph ph-heart text-xl"></i>
-                            </button>
-                            <div class="absolute bottom-0 left-0 w-full p-4 translate-y-full group-hover:translate-y-0 transition-transform duration-300 hidden lg:block z-10">
-                                <button class="w-full bg-white/95 backdrop-blur text-brand-text py-3 rounded-lg font-medium text-sm hover:bg-brand-sage hover:text-white transition-colors shadow-lg">Quick Add</button>
-                            </div>
-                        </div>
-                        <div class="flex flex-col flex-1 px-1">
-                            <h3 class="font-heading text-lg md:text-xl text-brand-text mb-1"><a href="javascript:void(0)">Little Lamb Mini Plush</a></h3>
-                            <p class="text-brand-muted text-xs md:text-sm mb-2 line-clamp-1">Huggable, handmade softies for every age.</p>
-                            <p class="font-medium text-brand-olive mt-auto tracking-wide">Rs. 3,500</p>
-                        </div>
-                    </div>
-
-                    <!-- Product 15 -->
-                    <div class="product-card group flex flex-col" data-name="Huggable Hippo Cuddle Toy" data-category="characters" data-price="1300" data-date="2023-07-08">
-                        <div class="img-wrapper relative rounded-xl overflow-hidden bg-white mb-4 shadow-sm group-hover:shadow-md transition-all duration-500">
-                            <a href="javascript:void(0)" class="block w-full h-full img-hover-zoom">
-                                <img src="https://placehold.co/600x750/d4b773/ffffff?text=Huggable+Hippo+Cuddle+Toy" alt="Huggable Hippo Cuddle Toy" class="w-full h-full object-cover">
-                            </a>
-                            <button class="absolute top-3 right-3 z-10 w-9 h-9 bg-white/90 backdrop-blur-sm rounded-full flex items-center justify-center text-brand-muted hover:text-red-500 transition-colors shadow-sm opacity-100 lg:opacity-0 group-hover:opacity-100">
-                                <i class="ph ph-heart text-xl"></i>
-                            </button>
-                            <div class="absolute bottom-0 left-0 w-full p-4 translate-y-full group-hover:translate-y-0 transition-transform duration-300 hidden lg:block z-10">
-                                <button class="w-full bg-white/95 backdrop-blur text-brand-text py-3 rounded-lg font-medium text-sm hover:bg-brand-sage hover:text-white transition-colors shadow-lg">Quick Add</button>
-                            </div>
-                        </div>
-                        <div class="flex flex-col flex-1 px-1">
-                            <h3 class="font-heading text-lg md:text-xl text-brand-text mb-1"><a href="javascript:void(0)">Huggable Hippo Cuddle Toy</a></h3>
-                            <p class="text-brand-muted text-xs md:text-sm mb-2 line-clamp-1">Huggable, handmade softies for every age.</p>
-                            <p class="font-medium text-brand-olive mt-auto tracking-wide">Rs. 1,300</p>
-                        </div>
-                    </div>
-
-                    <!-- Product 16 -->
-                    <div class="product-card group flex flex-col" data-name="Sweet Sloth Stuffed Friend" data-category="mini" data-price="2600" data-date="2023-08-02">
-                        <div class="img-wrapper relative rounded-xl overflow-hidden bg-white mb-4 shadow-sm group-hover:shadow-md transition-all duration-500">
-                            <a href="javascript:void(0)" class="block w-full h-full img-hover-zoom">
-                                <img src="https://placehold.co/600x750/dce5d8/72886a?text=Sweet+Sloth+Stuffed+Friend" alt="Sweet Sloth Stuffed Friend" class="w-full h-full object-cover">
-                            </a>
-                            <button class="absolute top-3 right-3 z-10 w-9 h-9 bg-white/90 backdrop-blur-sm rounded-full flex items-center justify-center text-brand-muted hover:text-red-500 transition-colors shadow-sm opacity-100 lg:opacity-0 group-hover:opacity-100">
-                                <i class="ph ph-heart text-xl"></i>
-                            </button>
-                            <div class="absolute bottom-0 left-0 w-full p-4 translate-y-full group-hover:translate-y-0 transition-transform duration-300 hidden lg:block z-10">
-                                <button class="w-full bg-white/95 backdrop-blur text-brand-text py-3 rounded-lg font-medium text-sm hover:bg-brand-sage hover:text-white transition-colors shadow-lg">Quick Add</button>
-                            </div>
-                        </div>
-                        <div class="flex flex-col flex-1 px-1">
-                            <h3 class="font-heading text-lg md:text-xl text-brand-text mb-1"><a href="javascript:void(0)">Sweet Sloth Stuffed Friend</a></h3>
-                            <p class="text-brand-muted text-xs md:text-sm mb-2 line-clamp-1">Huggable, handmade softies for every age.</p>
-                            <p class="font-medium text-brand-olive mt-auto tracking-wide">Rs. 2,600</p>
-                        </div>
-                    </div>
-
-                    <!-- Product 17 -->
-                    <div class="product-card group flex flex-col" data-name="Round Chick Plush Charm" data-category="animals" data-price="3900" data-date="2023-09-18">
-                        <div class="img-wrapper relative rounded-xl overflow-hidden bg-white mb-4 shadow-sm group-hover:shadow-md transition-all duration-500">
-                            <a href="javascript:void(0)" class="block w-full h-full img-hover-zoom">
-                                <img src="https://placehold.co/600x750/e8e1d5/72886a?text=Round+Chick+Plush+Charm" alt="Round Chick Plush Charm" class="w-full h-full object-cover">
-                            </a>
-                            <div class="absolute top-3 left-3 z-10">
-                                <span class="bg-brand-sage/90 backdrop-blur-sm text-white text-[10px] font-semibold uppercase tracking-wider px-3 py-1.5 rounded-md shadow-sm">Bestseller</span>
-                            </div>
-                            <button class="absolute top-3 right-3 z-10 w-9 h-9 bg-white/90 backdrop-blur-sm rounded-full flex items-center justify-center text-brand-muted hover:text-red-500 transition-colors shadow-sm opacity-100 lg:opacity-0 group-hover:opacity-100">
-                                <i class="ph ph-heart text-xl"></i>
-                            </button>
-                            <div class="absolute bottom-0 left-0 w-full p-4 translate-y-full group-hover:translate-y-0 transition-transform duration-300 hidden lg:block z-10">
-                                <button class="w-full bg-white/95 backdrop-blur text-brand-text py-3 rounded-lg font-medium text-sm hover:bg-brand-sage hover:text-white transition-colors shadow-lg">Quick Add</button>
-                            </div>
-                        </div>
-                        <div class="flex flex-col flex-1 px-1">
-                            <h3 class="font-heading text-lg md:text-xl text-brand-text mb-1"><a href="javascript:void(0)">Round Chick Plush Charm</a></h3>
-                            <p class="text-brand-muted text-xs md:text-sm mb-2 line-clamp-1">Huggable, handmade softies for every age.</p>
-                            <p class="font-medium text-brand-olive mt-auto tracking-wide">Rs. 3,900</p>
-                        </div>
-                    </div>
-
-                    <!-- Product 18 -->
-                    <div class="product-card group flex flex-col" data-name="Baby Dino Soft Toy" data-category="keychains" data-price="1700" data-date="2023-10-20">
-                        <div class="img-wrapper relative rounded-xl overflow-hidden bg-white mb-4 shadow-sm group-hover:shadow-md transition-all duration-500">
-                            <a href="javascript:void(0)" class="block w-full h-full img-hover-zoom">
-                                <img src="https://placehold.co/600x750/dce5d8/5e6b57?text=Baby+Dino+Soft+Toy" alt="Baby Dino Soft Toy" class="w-full h-full object-cover">
-                            </a>
-                            <button class="absolute top-3 right-3 z-10 w-9 h-9 bg-white/90 backdrop-blur-sm rounded-full flex items-center justify-center text-brand-muted hover:text-red-500 transition-colors shadow-sm opacity-100 lg:opacity-0 group-hover:opacity-100">
-                                <i class="ph ph-heart text-xl"></i>
-                            </button>
-                            <div class="absolute bottom-0 left-0 w-full p-4 translate-y-full group-hover:translate-y-0 transition-transform duration-300 hidden lg:block z-10">
-                                <button class="w-full bg-white/95 backdrop-blur text-brand-text py-3 rounded-lg font-medium text-sm hover:bg-brand-sage hover:text-white transition-colors shadow-lg">Quick Add</button>
-                            </div>
-                        </div>
-                        <div class="flex flex-col flex-1 px-1">
-                            <h3 class="font-heading text-lg md:text-xl text-brand-text mb-1"><a href="javascript:void(0)">Baby Dino Soft Toy</a></h3>
-                            <p class="text-brand-muted text-xs md:text-sm mb-2 line-clamp-1">Huggable, handmade softies for every age.</p>
-                            <p class="font-medium text-brand-olive mt-auto tracking-wide">Rs. 1,700</p>
-                        </div>
-                    </div>
-
-                    <!-- Product 19 -->
-                    <div class="product-card group flex flex-col" data-name="Cuddle Cow Desk Buddy" data-category="characters" data-price="3000" data-date="2023-06-05">
-                        <div class="img-wrapper relative rounded-xl overflow-hidden bg-white mb-4 shadow-sm group-hover:shadow-md transition-all duration-500">
-                            <a href="javascript:void(0)" class="block w-full h-full img-hover-zoom">
-                                <img src="https://placehold.co/600x750/f8f5f0/72886a?text=Cuddle+Cow+Desk+Buddy" alt="Cuddle Cow Desk Buddy" class="w-full h-full object-cover">
-                            </a>
-                            <button class="absolute top-3 right-3 z-10 w-9 h-9 bg-white/90 backdrop-blur-sm rounded-full flex items-center justify-center text-brand-muted hover:text-red-500 transition-colors shadow-sm opacity-100 lg:opacity-0 group-hover:opacity-100">
-                                <i class="ph ph-heart text-xl"></i>
-                            </button>
-                            <div class="absolute bottom-0 left-0 w-full p-4 translate-y-full group-hover:translate-y-0 transition-transform duration-300 hidden lg:block z-10">
-                                <button class="w-full bg-white/95 backdrop-blur text-brand-text py-3 rounded-lg font-medium text-sm hover:bg-brand-sage hover:text-white transition-colors shadow-lg">Quick Add</button>
-                            </div>
-                        </div>
-                        <div class="flex flex-col flex-1 px-1">
-                            <h3 class="font-heading text-lg md:text-xl text-brand-text mb-1"><a href="javascript:void(0)">Cuddle Cow Desk Buddy</a></h3>
-                            <p class="text-brand-muted text-xs md:text-sm mb-2 line-clamp-1">Huggable, handmade softies for every age.</p>
-                            <p class="font-medium text-brand-olive mt-auto tracking-wide">Rs. 3,000</p>
-                        </div>
-                    </div>
-
-                    <!-- Product 20 -->
-                    <div class="product-card group flex flex-col" data-name="Squishy Octopus Bag Charm Plush" data-category="mini" data-price="800" data-date="2023-07-28">
-                        <div class="img-wrapper relative rounded-xl overflow-hidden bg-white mb-4 shadow-sm group-hover:shadow-md transition-all duration-500">
-                            <a href="javascript:void(0)" class="block w-full h-full img-hover-zoom">
-                                <img src="https://placehold.co/600x750/8fa886/ffffff?text=Squishy+Octopus+Bag+Charm+Plush" alt="Squishy Octopus Bag Charm Plush" class="w-full h-full object-cover">
-                            </a>
-                            <div class="absolute top-3 left-3 z-10">
-                                <span class="bg-brand-sage/90 backdrop-blur-sm text-white text-[10px] font-semibold uppercase tracking-wider px-3 py-1.5 rounded-md shadow-sm">Trending</span>
-                            </div>
-                            <button class="absolute top-3 right-3 z-10 w-9 h-9 bg-white/90 backdrop-blur-sm rounded-full flex items-center justify-center text-brand-muted hover:text-red-500 transition-colors shadow-sm opacity-100 lg:opacity-0 group-hover:opacity-100">
-                                <i class="ph ph-heart text-xl"></i>
-                            </button>
-                            <div class="absolute bottom-0 left-0 w-full p-4 translate-y-full group-hover:translate-y-0 transition-transform duration-300 hidden lg:block z-10">
-                                <button class="w-full bg-white/95 backdrop-blur text-brand-text py-3 rounded-lg font-medium text-sm hover:bg-brand-sage hover:text-white transition-colors shadow-lg">Quick Add</button>
-                            </div>
-                        </div>
-                        <div class="flex flex-col flex-1 px-1">
-                            <h3 class="font-heading text-lg md:text-xl text-brand-text mb-1"><a href="javascript:void(0)">Squishy Octopus Bag Charm Plush</a></h3>
-                            <p class="text-brand-muted text-xs md:text-sm mb-2 line-clamp-1">Huggable, handmade softies for every age.</p>
-                            <p class="font-medium text-brand-olive mt-auto tracking-wide">Rs. 800</p>
-                        </div>
+                    <div class="dl-view-toggle">
+                        <button class="dl-view-btn active" id="dl-view-grid-btn" aria-label="Grid View"><i class="ph ph-squares-four"></i></button>
+                        <button class="dl-view-btn" id="dl-view-list-btn" aria-label="List View"><i class="ph ph-list-bullets"></i></button>
                     </div>
                 </div>
             </div>
-        </section>
 
-        <!-- Artisan's Note / Behind the Seams -->
-        <section class="py-20 md:py-32 bg-brand-ivory border-t border-brand-beige/50 overflow-hidden relative">
-            <div class="absolute top-0 right-0 w-96 h-96 bg-brand-floral/30 rounded-full blur-3xl -translate-y-1/2 translate-x-1/3"></div>
-            <div class="absolute bottom-0 left-0 w-64 h-64 bg-brand-sage/10 rounded-full blur-3xl translate-y-1/3 -translate-x-1/4"></div>
-            
-            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-                <div class="flex flex-col lg:flex-row items-center gap-16 lg:gap-24">
-                    <div class="w-full lg:w-1/2 relative reveal">
-                        <div class="aspect-square md:aspect-[4/3] rounded-[2rem] overflow-hidden shadow-2xl relative bg-brand-beige">
-                            <!-- Elegant looping video player -->
-                            <video autoplay loop muted playsinline poster="https://placehold.co/1000x800/dce5d8/5e6b57?text=Artisan+Crafting+Video" class="w-full h-full object-cover">
-                                <source src="../images/process.mp4" type="video/mp4">
-                                Your browser does not support the video tag.
-                            </video>
-                            <div class="absolute inset-0 bg-brand-text/10 pointer-events-none"></div>
-                        </div>
-                        <div class="absolute -bottom-8 -right-8 w-48 h-48 bg-white rounded-full p-4 shadow-xl hidden md:block animate-float">
-                            <div class="w-full h-full rounded-full border border-brand-beige flex flex-col items-center justify-center text-center p-4">
-                                <i class="ph ph-yarn text-3xl text-brand-sage mb-2"></i>
-                                <span class="font-heading text-xl text-brand-text leading-tight">40+ Hours<br>Per Plushie</span>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div class="w-full lg:w-1/2 reveal delay-200">
-                        <h2 class="font-heading text-4xl lg:text-5xl text-brand-text mb-6 leading-tight">
-                            The Anatomy of a <span class="italic text-brand-olive">Daisyline Plushie.</span>
-                        </h2>
-                        <p class="text-brand-muted font-light text-lg mb-8 leading-relaxed">
-                            True luxury isn't found in a factory line. It is woven stitch by stitch, loop by loop, over countless hours. We source only the finest, softest premium yarns to ensure that your plushie isn't just a beautiful statement piece, but a huggable companion designed to last a lifetime.
-                        </p>
-                        
-                        <div class="space-y-6">
-                            <div class="flex items-start gap-4">
-                                <div class="w-12 h-12 rounded-full bg-brand-floral flex-shrink-0 flex items-center justify-center text-brand-olive">
-                                    <i class="ph ph-plant text-xl"></i>
-                                </div>
-                                <div>
-                                    <h4 class="font-medium text-brand-text mb-1">Premium Fibers</h4>
-                                    <p class="text-sm text-brand-muted font-light">We use highly durable, color-fast cotton and soft velvet yarns.</p>
-                                </div>
-                            </div>
-                            <div class="flex items-start gap-4">
-                                <div class="w-12 h-12 rounded-full bg-brand-floral flex-shrink-0 flex items-center justify-center text-brand-olive">
-                                    <i class="ph ph-hand-heart text-xl"></i>
-                                </div>
-                                <div>
-                                    <h4 class="font-medium text-brand-text mb-1">Slow Made Process</h4>
-                                    <p class="text-sm text-brand-muted font-light">Each plushie takes several days to complete, ensuring absolute perfection in shape and stuffing.</p>
-                                </div>
-                            </div>
-                            <div class="flex items-start gap-4">
-                                <div class="w-12 h-12 rounded-full bg-brand-floral flex-shrink-0 flex items-center justify-center text-brand-olive">
-                                    <i class="ph ph-gift text-xl"></i>
-                                </div>
-                                <div>
-                                    <h4 class="font-medium text-brand-text mb-1">Heritage Inspired</h4>
-                                    <p class="text-sm text-brand-muted font-light">Our patterns pay homage to traditional Pakistani craftsmanship and vintage crochet lore.</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+            <!-- Product Grid -->
+            <div class="dl-product-grid" id="dl-shop-product-grid">
+                <!-- Products dynamically rendered -->
+            </div>
+
+            <!-- Empty State Component Placeholder (Hidden by default) -->
+            <div class="dl-empty-state" id="dl-empty-state" style="display:none;">
+                <div class="dl-empty-icon">🧸</div>
+                <h3 class="dl-empty-title">New handmade creations are coming soon</h3>
+                <p class="dl-empty-desc">We are currently crafting new items for Plushies & Toys. Check back shortly!</p>
+                <a href="../pages/shop.html" class="dl-btn dl-btn-primary">Browse Other Categories</a>
+            </div>
+
+        </div>
+
+        <!-- NEWSLETTER SECTION -->
+        <section class="dl-section dl-bg-cream">
+            <div class="dl-container">
+                <div class="dl-newsletter-card dl-reveal">
+                    <span class="dl-tagline">Stay Connected</span>
+                    <h2 class="dl-section-title" style="margin-bottom:10px;">Join Our Crochet Family 💕</h2>
+                    <p class="dl-section-subtitle">
+                        Subscribe to get special handcrafted offers, new collection alerts, and secret giveaways.
+                    </p>
+                    <form class="dl-newsletter-form" id="newsletter-form">
+                        <input type="email" placeholder="Enter your email address..." required class="dl-newsletter-input" aria-label="Email address">
+                        <button type="submit" class="dl-btn dl-btn-primary">
+                            Subscribe
+                        </button>
+                    </form>
                 </div>
             </div>
         </section>
+    </main>
 
-        <!-- Footer -->
+    <!-- GLOBAL FOOTER -->
     <footer class="bg-brand-text text-white pt-16 md:pt-20 pb-12 border-t border-brand-beige/20 relative">
         <div class="max-w-[90rem] mx-auto px-4 sm:px-8 lg:px-12">
             <div class="grid grid-cols-1 md:grid-cols-3 gap-10 md:gap-12 lg:gap-16 mb-16 text-left">
-                <!-- Column 1: Daisyline -->
                 <div>
                     <span class="font-heading text-3xl tracking-wide text-white block mb-5">Daisyline.</span>
                     <p class="text-sm font-light text-brand-beige/80 leading-relaxed mb-6 max-w-sm">
                         Handmade crochet plush toys, handbags, bouquets, and custom gifts. Inspired by slow living and timeless craftsmanship in Pakistan.
                     </p>
                 </div>
-
-                <!-- Column 2: Support -->
                 <div>
                     <h4 class="font-heading text-xl text-white mb-5">Support</h4>
                     <ul class="space-y-3.5 text-sm font-light text-brand-beige/80">
-                        <li><a href="../about_us.html" class="hover:text-white transition-colors">About Us</a></li>
-                        <li><a href="../how-to-order.html" class="hover:text-white transition-colors">How to Order</a></li>
-                        <li><a href="../about_us.html#shipping" class="hover:text-white transition-colors">Shipping Policy</a></li>
-                        <li><a href="../about_us.html#returns" class="hover:text-white transition-colors">Return Policy</a></li>
-                        <li><a href="../about_us.html#faq" class="hover:text-white transition-colors">FAQs</a></li>
+                        <li><a href="../pages/about_us.html" class="hover:text-white transition-colors">About Us</a></li>
+                        <li><a href="../pages/how-to-order.html" class="hover:text-white transition-colors">How to Order</a></li>
+                        <li><a href="../pages/about_us.html#faq" class="hover:text-white transition-colors">FAQs</a></li>
                     </ul>
                 </div>
-
-                <!-- Column 3: Follow Us & Payments -->
                 <div>
                     <h4 class="font-heading text-xl text-white mb-5">Follow Us</h4>
                     <div class="flex gap-3 mb-8">
-                        <a href="https://www.instagram.com/daisylinecrochet/" target="_blank" rel="noopener noreferrer" class="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-brand-sage transition-colors" aria-label="Instagram">
-                            <i class="ph ph-instagram-logo text-xl"></i>
-                        </a>
-                        <a href="https://www.facebook.com/share/1HeWDJU5ap/" target="_blank" rel="noopener noreferrer" class="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-brand-sage transition-colors" aria-label="Facebook">
-                            <i class="ph ph-facebook-logo text-xl"></i>
-                        </a>
-                        <a href="https://www.threads.com/@daisylinecrochet" target="_blank" rel="noopener noreferrer" class="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-brand-sage transition-colors" aria-label="Threads">
-                            <i class="ph ph-at text-xl"></i>
-                        </a>
-                        <a href="https://www.tiktok.com/@daisylinecrochet?_r=1&_t=ZS-98DQTwu0jqr" target="_blank" rel="noopener noreferrer" class="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-brand-sage transition-colors" aria-label="TikTok">
-                            <i class="ph ph-tiktok-logo text-xl"></i>
-                        </a>
-                    </div>
-
-                    <h4 class="font-heading text-xl text-white mb-4">Payments</h4>
-                    <div class="flex flex-wrap gap-2.5">
-                        <span class="inline-flex items-center px-3.5 py-1.5 border border-white/15 rounded-full text-xs font-medium text-brand-beige/90 bg-white/5">
-                            <i class="ph ph-device-mobile text-sm mr-1.5 text-brand-gold"></i>JazzCash
-                        </span>
-                        <span class="inline-flex items-center px-3.5 py-1.5 border border-white/15 rounded-full text-xs font-medium text-brand-beige/90 bg-white/5">
-                            <i class="ph ph-wallet text-sm mr-1.5 text-brand-sage"></i>NayaPay
-                        </span>
-                        <span class="inline-flex items-center px-3.5 py-1.5 border border-white/15 rounded-full text-xs font-medium text-brand-beige/90 bg-white/5">
-                            <i class="ph ph-bank text-sm mr-1.5 text-brand-beige"></i>Bank Transfer
-                        </span>
+                        <a href="https://www.instagram.com/daisylinecrochet/" target="_blank" rel="noopener noreferrer" class="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-brand-sage transition-colors"><i class="ph ph-instagram-logo text-xl"></i></a>
+                        <a href="https://www.facebook.com/share/1HeWDJU5ap/" target="_blank" rel="noopener noreferrer" class="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-brand-sage transition-colors"><i class="ph ph-facebook-logo text-xl"></i></a>
                     </div>
                 </div>
             </div>
-
-            <!-- Footer Bottom Bar -->
-            <div class="pt-8 border-t border-white/10 flex flex-col md:flex-row justify-between items-center text-center md:text-left gap-3 text-xs text-brand-beige/60">
+            <div class="pt-8 border-t border-white/10 flex flex-col md:flex-row justify-between items-center text-xs text-brand-beige/60">
                 <p>&copy; <span id="year"></span> Daisyline Crochet. All rights reserved.</p>
                 <p>Designed and created by Ateeb Jilani</p>
             </div>
         </div>
     </footer>
-
-    <!-- Scripts -->
     <script>
         document.addEventListener('DOMContentLoaded', () => {
-            // Set current year in footer
-            document.getElementById('year').textContent = new Date().getFullYear();
-
-            // --- Hero Carousel Logic ---
-            const slides = document.querySelectorAll('.carousel-slide');
-            const dots = document.querySelectorAll('.carousel-dot');
-            const prevBtn = document.getElementById('prev-slide');
-            const nextBtn = document.getElementById('next-slide');
-            let currentSlide = 0;
-            let slideInterval;
-
-            const goToSlide = (n) => {
-                slides[currentSlide].classList.remove('active');
-                dots[currentSlide].classList.remove('w-6', 'bg-white');
-                dots[currentSlide].classList.add('w-2', 'bg-white/50');
-                
-                currentSlide = (n + slides.length) % slides.length;
-                
-                slides[currentSlide].classList.add('active');
-                dots[currentSlide].classList.remove('w-2', 'bg-white/50');
-                dots[currentSlide].classList.add('w-6', 'bg-white');
-            };
-
-            const nextSlide = () => goToSlide(currentSlide + 1);
-            const prevSlide = () => goToSlide(currentSlide - 1);
-
-            const startCarousel = () => { slideInterval = setInterval(nextSlide, 5000); };
-            const stopCarousel = () => { clearInterval(slideInterval); };
-
-            prevBtn.addEventListener('click', () => { stopCarousel(); prevSlide(); startCarousel(); });
-            nextBtn.addEventListener('click', () => { stopCarousel(); nextSlide(); startCarousel(); });
-            
-            dots.forEach((dot, index) => {
-                dot.addEventListener('click', () => {
-                    stopCarousel();
-                    goToSlide(index);
-                    startCarousel();
-                });
-            });
-
-            startCarousel(); // Init
-
-            // --- Mobile Menu Toggle ---
-            const mobileMenuBtn = document.getElementById('mobile-menu-btn');
-            const closeMenuBtn = document.getElementById('close-menu-btn');
-            const mobileMenu = document.getElementById('mobile-menu');
-            const mobileLinks = document.querySelectorAll('.mobile-link');
-
-            const toggleMenu = () => {
-                const isClosed = mobileMenu.classList.contains('-translate-x-full');
-                if (isClosed) {
-                    mobileMenu.classList.remove('-translate-x-full');
-                    document.body.style.overflow = 'hidden'; 
-                } else {
-                    mobileMenu.classList.add('-translate-x-full');
-                    document.body.style.overflow = '';
-                }
-            };
-
-            mobileMenuBtn.addEventListener('click', toggleMenu);
-            closeMenuBtn.addEventListener('click', toggleMenu);
-
-            mobileLinks.forEach(link => {
-                link.addEventListener('click', () => {
-                    mobileMenu.classList.add('-translate-x-full');
-                    document.body.style.overflow = '';
-                });
-            });
-
-            // --- Intersection Observer for Scroll Animations ---
-            const revealOptions = {
-                threshold: 0.10,
-                rootMargin: "0px 0px -50px 0px"
-            };
-
-            const revealOnScroll = new IntersectionObserver(function(entries, observer) {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        entry.target.classList.add('active');
-                        // Do not unobserve here if we want them to re-animate on filter changes
-                    }
-                });
-            }, revealOptions);
-
-            // Initially observe static reveal elements (heroes, footers, etc)
-            document.querySelectorAll('.reveal').forEach(el => revealOnScroll.observe(el));
-
-            // --- Product Grid, Search, Sort & Filter Logic ---
-            const gridContainer = document.getElementById('products-grid');
-            const productNodes = Array.from(document.querySelectorAll('.product-card'));
-            const countDisplay = document.getElementById('product-count');
-            
-            // Extract product data for Javascript processing
-            let productsData = productNodes.map((node, index) => ({
-                node: node,
-                name: node.dataset.name.toLowerCase(),
-                category: node.dataset.category,
-                price: parseInt(node.dataset.price),
-                date: new Date(node.dataset.date).getTime(),
-                originalIndex: index
-            }));
-
-            const searchInput = document.getElementById('search-input');
-            const sortSelect = document.getElementById('sort');
-            const filterBtns = document.querySelectorAll('.filter-btn');
-
-            function updateGrid() {
-                const query = searchInput.value.toLowerCase();
-                const activeCategory = document.querySelector('.filter-btn.active').dataset.cat;
-                const sortMode = sortSelect.value;
-
-                let filtered = productsData.filter(p => {
-                    const matchesSearch = p.name.includes(query);
-                    const matchesCat = activeCategory === 'all' || p.category === activeCategory;
-                    return matchesSearch && matchesCat;
-                });
-
-                if (sortMode === 'newest') {
-                    filtered.sort((a, b) => b.date - a.date);
-                } else if (sortMode === 'price-low') {
-                    filtered.sort((a, b) => a.price - b.price);
-                } else if (sortMode === 'price-high') {
-                    filtered.sort((a, b) => b.price - a.price);
-                } else {
-                    filtered.sort((a, b) => a.originalIndex - b.originalIndex);
-                }
-
-                gridContainer.innerHTML = '';
-                
-                if (filtered.length === 0) {
-                    gridContainer.innerHTML = `<div class="col-span-full py-20 text-center">
-                        <i class="ph ph-magnifying-glass text-4xl text-brand-beige mb-4 inline-block"></i>
-                        <p class="text-brand-muted text-lg">No handcrafted items found matching your search.</p>
-                    </div>`;
-                    countDisplay.textContent = `0 items`;
-                    return;
-                }
-
-                // Uniform Grid Layout (All cards exactly equal size)
-                filtered.forEach((item, index) => {
-                    const el = item.node;
-                    const imgWrapper = el.querySelector('.img-wrapper');
-                    
-                    // Reset styling to ensure perfect uniformity
-                    el.classList.remove('lg:col-span-2', 'active', 'reveal'); 
-                    imgWrapper.classList.remove('lg:aspect-[8/5]', 'aspect-[4/5]');
-                    
-                    // Force completely equal square/portrait ratio for every single card
-                    imgWrapper.classList.add('aspect-[4/5]');
-
-                    el.style.transition = 'all 0.9s cubic-bezier(0.16, 1, 0.3, 1)';
-                    el.style.opacity = '0';
-                    el.style.transform = 'translateY(30px)';
-                    el.style.transitionDelay = `${(index % 4) * 50}ms`;
-
-                    gridContainer.appendChild(el);
-                    
-                    requestAnimationFrame(() => {
-                        requestAnimationFrame(() => {
-                            el.style.opacity = '1';
-                            el.style.transform = 'translateY(0)';
-                        });
-                    });
-                });
-
-                countDisplay.textContent = `${filtered.length} beautiful item${filtered.length !== 1 ? 's' : ''}`;
-            }
-
-            searchInput.addEventListener('input', updateGrid);
-            sortSelect.addEventListener('change', updateGrid);
-            
-            filterBtns.forEach(btn => {
-                btn.addEventListener('click', (e) => {
-                    // Update active styling
-                    filterBtns.forEach(b => {
-                        b.classList.remove('bg-brand-sage', 'text-white', 'active');
-                        b.classList.add('bg-transparent', 'text-brand-text');
-                    });
-                    e.target.classList.add('bg-brand-sage', 'text-white', 'active');
-                    e.target.classList.remove('bg-transparent', 'text-brand-text');
-                    
-                    // Run update
-                    updateGrid();
-                });
-            });
-
-            // Initial render
-            updateGrid();
+            const yearEl = document.getElementById('year');
+            if (yearEl) yearEl.textContent = new Date().getFullYear();
         });
     </script>
 </body>

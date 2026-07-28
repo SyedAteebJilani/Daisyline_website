@@ -1,0 +1,639 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us | Daisyline Crochet</title>
+    <meta name="description" content="Get in touch with Daisyline Crochet. Contact us on WhatsApp, Instagram, Facebook, or submit a message for custom order inquiries across Pakistan.">
+    
+    <!-- Google Fonts: Cormorant Garamond, Plus Jakarta Sans, Sacramento -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400;1,600&family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=Sacramento&display=swap" rel="stylesheet">
+    
+    <!-- Phosphor Icons -->
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            sage: '#8fa886', cream: '#FAF8F5', ivory: '#F5EFE6',
+                            olive: '#5A6B53', beige: '#E6DED3', floral: '#D4DDD1',
+                            gold: '#D4B773', text: '#282421', muted: '#787068',
+                            blush: '#FFF0F3', peach: '#FFEBE3'
+                        }
+                    },
+                    fontFamily: {
+                        heading: ['"Cormorant Garamond"', 'serif'],
+                        sans: ['"Plus Jakarta Sans"', 'Manrope', 'sans-serif'],
+                        script: ['Sacramento', 'cursive']
+                    }
+                }
+            }
+        }
+    </script>
+
+    <!-- Global Styles & Scripts -->
+    <link rel="stylesheet" href="../assets/css/homepage.css">
+    <script src="../assets/js/homepage.js" defer></script>
+</head>
+<body class="font-sans antialiased overflow-x-hidden selection:bg-brand-sage selection:text-white">
+
+    <!-- 1. GLOBAL ANNOUNCEMENT BAR -->
+    <div class="dl-announcement-bar">
+        <div class="dl-announcement-content" id="announcement-slider">
+            <span class="dl-announcement-slide active">✨ Handmade Crochet Crafted with Love</span>
+            <span class="dl-announcement-slide">🚚 Delivery Available Across Pakistan</span>
+            <span class="dl-announcement-slide">🎁 Personalized Crochet Gifts Available</span>
+            <span class="dl-announcement-slide">🧶 Premium Quality Handmade Products</span>
+        </div>
+    </div>
+
+    <!-- 2. GLOBAL HEADER -->
+    <header id="dl-navbar" class="dl-global-header">
+        <div class="dl-header-container">
+            <div class="dl-header-row">
+                
+                <!-- Left: Logo & Mobile Hamburger -->
+                <div class="dl-header-left">
+                    <button id="dl-mobile-menu-btn" class="dl-mobile-menu-btn" aria-label="Open Mobile Menu">
+                        <i class="ph ph-list"></i>
+                    </button>
+                    <a href="./index.html" class="dl-logo-link">
+                        <img src="../assets/images/logo.jpg" alt="Daisyline Crochet Logo" class="dl-logo-img">
+                        <span class="dl-logo-text">Daisyline.</span>
+                    </a>
+                </div>
+
+                <!-- Center: Desktop Navigation Bar -->
+                <nav class="dl-desktop-nav" aria-label="Main Navigation">
+                    <ul class="dl-nav-list">
+                        
+                        <!-- 1. Home -->
+                        <li class="dl-nav-item">
+                            <a href="./index.html" class="dl-nav-link ">Home</a>
+                        </li>
+
+                        <!-- 2. Shop (Mega Menu Dropdown) -->
+                        <li class="dl-nav-item dl-has-megamenu">
+                            <a href="./index.html#categories" class="dl-nav-link ">
+                                Shop <i class="ph ph-caret-down dl-caret-icon"></i>
+                            </a>
+
+                            <!-- MEGA MENU PANEL -->
+                            <div class="dl-megamenu-panel">
+                                <div class="dl-megamenu-inner">
+                                    
+                                    <!-- Column 1: New & Featured -->
+                                    <div class="dl-mega-col">
+                                        <h4 class="dl-mega-heading"><i class="ph ph-sparkle"></i> New &amp; Featured</h4>
+                                        <ul class="dl-mega-links">
+                                            <li><a href="./categories/bags.html">All Products</a></li>
+                                            <li><a href="./index.html#new-arrivals">New Arrivals <span class="dl-badge-mini">New</span></a></li>
+                                            <li><a href="./index.html#best-sellers">Best Sellers <span class="dl-badge-mini dl-badge-hot">Hot</span></a></li>
+                                            <li><a href="./categories/clothing.html">Sale %</a></li>
+                                        </ul>
+                                    </div>
+
+                                    <!-- Column 2: Gajras & Hair Accessories -->
+                                    <div class="dl-mega-col">
+                                        <h4 class="dl-mega-heading"><a href="./categories/gajras.html">🌸 Gajras</a></h4>
+                                        <ul class="dl-mega-links">
+                                            <li><a href="./categories/gajras.html">Floral Gajras</a></li>
+                                            <li><a href="./categories/gajras.html">Bridal Gajras</a></li>
+                                            <li><a href="./categories/gajras.html">Custom Gajras</a></li>
+                                        </ul>
+                                        <h4 class="dl-mega-heading" style="margin-top: 16px;"><a href="./categories/hair-accessories.html">🎀 Hair Accessories</a></h4>
+                                        <ul class="dl-mega-links">
+                                            <li><a href="./categories/hair-accessories.html">Scrunchies</a></li>
+                                            <li><a href="./categories/hair-accessories.html">Hair Bows</a></li>
+                                            <li><a href="./categories/hair-accessories.html">Hair Clips</a></li>
+                                            <li><a href="./categories/hair-accessories.html">Headbands</a></li>
+                                            <li><a href="./categories/hair-accessories.html">Hair Pins</a></li>
+                                            <li><a href="./categories/hair-accessories.html">Parandas</a></li>
+                                        </ul>
+                                    </div>
+
+                                    <!-- Column 3: Bags & Keychains -->
+                                    <div class="dl-mega-col">
+                                        <h4 class="dl-mega-heading"><a href="./categories/bags.html">👜 Bags</a></h4>
+                                        <ul class="dl-mega-links">
+                                            <li><a href="./categories/bags.html">Tote Bags</a></li>
+                                            <li><a href="./categories/bags.html">Shoulder Bags</a></li>
+                                            <li><a href="./categories/bags.html">Crossbody Bags</a></li>
+                                            <li><a href="./categories/bags.html">Handbags</a></li>
+                                            <li><a href="./categories/bags.html">Wallets</a></li>
+                                            <li><a href="./categories/bags.html">Pouches</a></li>
+                                        </ul>
+                                        <h4 class="dl-mega-heading" style="margin-top: 16px;"><a href="./categories/keychain.html">🔑 Keychains</a></h4>
+                                        <ul class="dl-mega-links">
+                                            <li><a href="./categories/keychain.html">Car Hanging</a></li>
+                                            <li><a href="./categories/keychain.html">Animal Keychains</a></li>
+                                            <li><a href="./categories/keychain.html">Alphabet Keychains</a></li>
+                                            <li><a href="./categories/keychain.html">Bag Charms</a></li>
+                                        </ul>
+                                    </div>
+
+                                    <!-- Column 4: Bouquets & Baby Collection -->
+                                    <div class="dl-mega-col">
+                                        <h4 class="dl-mega-heading"><a href="./categories/bouquets.html">💐 Bouquets</a></h4>
+                                        <ul class="dl-mega-links">
+                                            <li><a href="./categories/bouquets.html">Mixed Flower Bouquets</a></li>
+                                            <li><a href="./categories/bouquets.html">Mini Bouquets</a></li>
+                                            <li><a href="./categories/bouquets.html">Blanket Bouquet</a></li>
+                                        </ul>
+                                        <h4 class="dl-mega-heading" style="margin-top: 16px;"><a href="./categories/baby-sets.html">👶 Baby Collection</a></h4>
+                                        <ul class="dl-mega-links">
+                                            <li><a href="./categories/baby-sets.html">Baby Shoes</a></li>
+                                            <li><a href="./categories/baby-sets.html">Baby Caps</a></li>
+                                            <li><a href="./categories/baby-sets.html">Baby Headbands</a></li>
+                                            <li><a href="./categories/baby-sets.html">Baby Blankets</a></li>
+                                            <li><a href="./categories/baby-sets.html">Baby Sets</a></li>
+                                            <li><a href="./categories/baby-sets.html">Baby Rattles</a></li>
+                                        </ul>
+                                    </div>
+
+                                    <!-- Column 5: Wearables & Plushies -->
+                                    <div class="dl-mega-col">
+                                        <h4 class="dl-mega-heading"><a href="./categories/clothing.html">👕 Wearables</a></h4>
+                                        <div class="dl-mega-sublabel">Women</div>
+                                        <ul class="dl-mega-links">
+                                            <li><a href="./categories/clothing.html">Cardigans</a></li>
+                                            <li><a href="./categories/clothing.html">Summer Tops</a></li>
+                                        </ul>
+                                        <div class="dl-mega-sublabel" style="margin-top: 8px;">Men</div>
+                                        <ul class="dl-mega-links">
+                                            <li><a href="./categories/clothing.html">Sweaters</a></li>
+                                            <li><a href="./categories/clothing.html">Mufflers</a></li>
+                                            <li><a href="./categories/clothing.html">Gloves</a></li>
+                                            <li><a href="./categories/clothing.html">Beanies</a></li>
+                                        </ul>
+                                        <h4 class="dl-mega-heading" style="margin-top: 14px;"><a href="./categories/plushies.html">🧸 Plushies</a></h4>
+                                        <ul class="dl-mega-links">
+                                            <li><a href="./categories/plushies.html">Characters</a></li>
+                                            <li><a href="./categories/plushies.html">Mini Plushies</a></li>
+                                            <li><a href="./categories/plushies.html">Dolls</a></li>
+                                        </ul>
+                                    </div>
+
+                                    <!-- Column 6: Home Decor & Gift Collection -->
+                                    <div class="dl-mega-col">
+                                        <h4 class="dl-mega-heading"><a href="./categories/home-decor.html">🏡 Home Decor</a></h4>
+                                        <ul class="dl-mega-links">
+                                            <li><a href="./categories/home-decor.html">Coasters</a></li>
+                                            <li><a href="./categories/home-decor.html">Table Runners</a></li>
+                                            <li><a href="./categories/home-decor.html">Placemats</a></li>
+                                            <li><a href="./categories/home-decor.html">Wall Hangings</a></li>
+                                            <li><a href="./categories/home-decor.html">Cushion Covers</a></li>
+                                            <li><a href="./categories/home-decor.html">Crochet Mirrors</a></li>
+                                        </ul>
+                                        <h4 class="dl-mega-heading" style="margin-top: 14px;"><a href="./categories/gifting.html">🎁 Gift Collection</a></h4>
+                                        <ul class="dl-mega-links">
+                                            <li><a href="./categories/gifting.html">Birthday Gifts</a></li>
+                                            <li><a href="./categories/gifting.html">Anniversary Gifts</a></li>
+                                            <li><a href="./categories/gifting.html">Bridal Gifts</a></li>
+                                            <li><a href="./categories/gifting.html">Baby Shower Gifts</a></li>
+                                            <li><a href="./categories/gifting.html">Gift Boxes</a></li>
+                                            <li><a href="./categories/gifting.html">Customized Gift Sets</a></li>
+                                        </ul>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </li>
+
+                        <!-- 3. Custom Orders -->
+                        <li class="dl-nav-item">
+                            <a href="./custom-orders.html" class="dl-nav-link ">Custom Orders</a>
+                        </li>
+
+                        <!-- 4. About Us -->
+                        <li class="dl-nav-item">
+                            <a href="./about_us.html" class="dl-nav-link ">About Us</a>
+                        </li>
+
+                        <!-- 5. Reviews -->
+                        <li class="dl-nav-item">
+                            <a href="./index.html#reviews" class="dl-nav-link">Reviews</a>
+                        </li>
+
+                        <!-- 6. Gallery -->
+                        <li class="dl-nav-item">
+                            <a href="./index.html#insta-track" class="dl-nav-link">Gallery</a>
+                        </li>
+
+                        <!-- 7. FAQs -->
+                        <li class="dl-nav-item">
+                            <a href="./about_us.html#faq" class="dl-nav-link">FAQs</a>
+                        </li>
+
+                        <!-- 8. Contact -->
+                        <li class="dl-nav-item">
+                            <a href="./how-to-order.html" class="dl-nav-link active">Contact</a>
+                        </li>
+
+                    </ul>
+                </nav>
+
+                <!-- Right: Action Icons (Search, Wishlist, Cart, Account) -->
+                <div class="dl-header-actions">
+                    
+                    <!-- Search Button -->
+                    <button class="dl-action-icon dl-search-trigger" id="dl-search-btn" aria-label="Search">
+                        <i class="ph ph-magnifying-glass"></i>
+                    </button>
+
+                    <!-- Desktop Search Bar Input Container -->
+                    <div class="dl-desktop-search-bar" id="dl-desktop-search-bar">
+                        <input type="text" placeholder="Search handmade crochet..." class="dl-search-input" id="dl-search-input">
+                        <button class="dl-search-close" id="dl-search-close"><i class="ph ph-x"></i></button>
+                        <div class="dl-search-results" id="dl-desktop-search-results"></div>
+                    </div>
+
+                    <!-- Wishlist Icon -->
+                    <a href="javascript:void(0)" class="dl-action-icon dl-wishlist-icon" aria-label="Wishlist">
+                        <i class="ph ph-heart"></i>
+                        <span class="dl-badge">0</span>
+                    </a>
+
+                    <!-- Cart Icon -->
+                    <a href="javascript:void(0)" class="dl-action-icon dl-cart-icon" aria-label="Shopping Cart">
+                        <i class="ph ph-shopping-bag"></i>
+                        <span class="dl-badge dl-badge-cart">0</span>
+                    </a>
+
+                    <!-- Account Icon -->
+                    <a href="javascript:void(0)" class="dl-action-icon dl-account-icon" aria-label="User Account">
+                        <i class="ph ph-user"></i>
+                    </a>
+                </div>
+
+            </div>
+        </div>
+    </header>
+
+    <!-- MOBILE DRAWER OVERLAY & SIDEBAR -->
+    <div class="dl-drawer-overlay" id="dl-drawer-overlay"></div>
+
+    <aside class="dl-mobile-drawer" id="dl-mobile-drawer" aria-label="Mobile Navigation Drawer">
+        <div class="dl-drawer-header">
+            <a href="./index.html" class="dl-logo-link">
+                <img src="../assets/images/logo.jpg" alt="Daisyline Logo" class="dl-logo-img">
+                <span class="dl-logo-text">Daisyline.</span>
+            </a>
+            <button class="dl-drawer-close-btn" id="dl-drawer-close-btn" aria-label="Close Menu">
+                <i class="ph ph-x"></i>
+            </button>
+        </div>
+
+        <div class="dl-drawer-body">
+            <ul class="dl-mobile-nav-list">
+                <!-- 1. Home -->
+                <li>
+                    <a href="./index.html" class="dl-mobile-nav-link ">Home</a>
+                </li>
+
+                <!-- 2. Shop Accordion -->
+                <li class="dl-mobile-accordion-item">
+                    <button class="dl-mobile-accordion-btn" id="dl-shop-acc-btn">
+                        <span>Shop</span>
+                        <i class="ph ph-caret-down dl-acc-icon"></i>
+                    </button>
+                    <div class="dl-mobile-accordion-content" id="dl-shop-acc-content">
+                        <div class="dl-mobile-sub-group">
+                            <a href="./categories/bags.html" class="dl-mobile-sub-heading">Featured Collections</a>
+                            <a href="./index.html#new-arrivals" class="dl-mobile-sub-link">New Arrivals</a>
+                            <a href="./index.html#best-sellers" class="dl-mobile-sub-link">Best Sellers</a>
+                        </div>
+
+                        <!-- Sub Category Accordions -->
+                        <div class="dl-mobile-sub-acc">
+                            <button class="dl-sub-acc-btn"><span>🌸 Gajras</span> <i class="ph ph-plus"></i></button>
+                            <div class="dl-sub-acc-content">
+                                <a href="./categories/gajras.html">Floral Gajras</a>
+                                <a href="./categories/gajras.html">Bridal Gajras</a>
+                                <a href="./categories/gajras.html">Custom Gajras</a>
+                            </div>
+                        </div>
+
+                        <div class="dl-mobile-sub-acc">
+                            <button class="dl-sub-acc-btn"><span>🎀 Hair Accessories</span> <i class="ph ph-plus"></i></button>
+                            <div class="dl-sub-acc-content">
+                                <a href="./categories/hair-accessories.html">Scrunchies</a>
+                                <a href="./categories/hair-accessories.html">Hair Bows</a>
+                                <a href="./categories/hair-accessories.html">Hair Clips</a>
+                                <a href="./categories/hair-accessories.html">Headbands</a>
+                                <a href="./categories/hair-accessories.html">Hair Pins</a>
+                            </div>
+                        </div>
+
+                        <div class="dl-mobile-sub-acc">
+                            <button class="dl-sub-acc-btn"><span>👜 Bags</span> <i class="ph ph-plus"></i></button>
+                            <div class="dl-sub-acc-content">
+                                <a href="./categories/bags.html">Tote Bags</a>
+                                <a href="./categories/bags.html">Shoulder Bags</a>
+                                <a href="./categories/bags.html">Crossbody Bags</a>
+                                <a href="./categories/bags.html">Wallets</a>
+                            </div>
+                        </div>
+
+                        <div class="dl-mobile-sub-acc">
+                            <button class="dl-sub-acc-btn"><span>🔑 Keychains</span> <i class="ph ph-plus"></i></button>
+                            <div class="dl-sub-acc-content">
+                                <a href="./categories/keychain.html">Car Hanging</a>
+                                <a href="./categories/keychain.html">Animal Keychains</a>
+                                <a href="./categories/keychain.html">Alphabet Keychains</a>
+                            </div>
+                        </div>
+
+                        <div class="dl-mobile-sub-acc">
+                            <button class="dl-sub-acc-btn"><span>💐 Bouquets</span> <i class="ph ph-plus"></i></button>
+                            <div class="dl-sub-acc-content">
+                                <a href="./categories/bouquets.html">Flower Bouquets</a>
+                                <a href="./categories/bouquets.html">Mini Bouquets</a>
+                            </div>
+                        </div>
+
+                        <div class="dl-mobile-sub-acc">
+                            <button class="dl-sub-acc-btn"><span>👶 Baby Collection</span> <i class="ph ph-plus"></i></button>
+                            <div class="dl-sub-acc-content">
+                                <a href="./categories/baby-sets.html">Baby Shoes</a>
+                                <a href="./categories/baby-sets.html">Baby Caps</a>
+                                <a href="./categories/baby-sets.html">Baby Blankets</a>
+                            </div>
+                        </div>
+
+                        <div class="dl-mobile-sub-acc">
+                            <button class="dl-sub-acc-btn"><span>👕 Wearables</span> <i class="ph ph-plus"></i></button>
+                            <div class="dl-sub-acc-content">
+                                <a href="./categories/clothing.html">Cardigans</a>
+                                <a href="./categories/clothing.html">Summer Tops</a>
+                                <a href="./categories/clothing.html">Sweaters &amp; Mufflers</a>
+                            </div>
+                        </div>
+
+                        <div class="dl-mobile-sub-acc">
+                            <button class="dl-sub-acc-btn"><span>🧸 Plushies</span> <i class="ph ph-plus"></i></button>
+                            <div class="dl-sub-acc-content">
+                                <a href="./categories/plushies.html">Characters</a>
+                                <a href="./categories/plushies.html">Mini Plushies</a>
+                                <a href="./categories/plushies.html">Dolls</a>
+                            </div>
+                        </div>
+
+                        <div class="dl-mobile-sub-acc">
+                            <button class="dl-sub-acc-btn"><span>🏡 Home Decor</span> <i class="ph ph-plus"></i></button>
+                            <div class="dl-sub-acc-content">
+                                <a href="./categories/home-decor.html">Coasters</a>
+                                <a href="./categories/home-decor.html">Table Runners</a>
+                                <a href="./categories/home-decor.html">Cushion Covers</a>
+                            </div>
+                        </div>
+
+                        <div class="dl-mobile-sub-acc">
+                            <button class="dl-sub-acc-btn"><span>🎁 Gift Collection</span> <i class="ph ph-plus"></i></button>
+                            <div class="dl-sub-acc-content">
+                                <a href="./categories/gifting.html">Birthday Gifts</a>
+                                <a href="./categories/gifting.html">Anniversary Gifts</a>
+                                <a href="./categories/gifting.html">Bridal Gifts</a>
+                            </div>
+                        </div>
+
+                    </div>
+                </li>
+
+                <!-- 3. Custom Orders -->
+                <li>
+                    <a href="./custom-orders.html" class="dl-mobile-nav-link ">Custom Orders</a>
+                </li>
+
+                <!-- 4. About Us -->
+                <li>
+                    <a href="./about_us.html" class="dl-mobile-nav-link ">About Us</a>
+                </li>
+
+                <!-- 5. Reviews -->
+                <li>
+                    <a href="./index.html#reviews" class="dl-mobile-nav-link">Reviews</a>
+                </li>
+
+                <!-- 6. Gallery -->
+                <li>
+                    <a href="./index.html#insta-track" class="dl-mobile-nav-link">Gallery</a>
+                </li>
+
+                <!-- 7. FAQs -->
+                <li>
+                    <a href="./about_us.html#faq" class="dl-mobile-nav-link">FAQs</a>
+                </li>
+
+                <!-- 8. Contact -->
+                <li>
+                    <a href="./how-to-order.html" class="dl-mobile-nav-link active">Contact</a>
+                </li>
+            </ul>
+        </div>
+    </aside>
+
+    <!-- MOBILE SEARCH MODAL -->
+    <div class="dl-search-modal" id="dl-search-modal">
+        <div class="dl-search-modal-box">
+            <div class="dl-search-modal-header">
+                <span class="dl-search-modal-title">Search DaisyLine</span>
+                <button class="dl-search-modal-close" id="dl-search-modal-close"><i class="ph ph-x"></i></button>
+            </div>
+            <div class="dl-search-modal-body">
+                <input type="text" placeholder="Search handmade crochet gifts, gajras, plushies..." class="dl-search-modal-input" id="dl-mobile-search-input">
+                <div class="dl-search-quick-tags">
+                    <span>Quick Search:</span>
+                    <a href="./categories/gajras.html">Gajras</a>
+                    <a href="./categories/bags.html">Tote Bags</a>
+                    <a href="./categories/plushies.html">Plushies</a>
+                    <a href="./categories/keychain.html">Keychains</a>
+                </div>
+                <div class="dl-search-results" id="dl-mobile-search-results"></div>
+            </div>
+        </div>
+    </div>
+    
+
+    <main class="dl-main">
+        <div class="dl-container">
+            
+            <nav class="dl-breadcrumb">
+                <a href="./index.html">Home</a>
+                <i class="ph ph-caret-right text-xs text-brand-muted"></i>
+                <span class="dl-crumb-current">Contact Us</span>
+            </nav>
+
+            <!-- Hero Section -->
+            <section class="dl-shop-hero dl-reveal">
+                <span class="dl-tagline">We'd Love to Hear From You</span>
+                <h1 class="dl-shop-hero-title">Get in Touch</h1>
+                <p class="dl-shop-hero-sub">Have questions about an existing order or need help with a custom design? Contact us below!</p>
+            </section>
+
+            <!-- Social Contact Cards (New Tabs) -->
+            <section class="grid grid-cols-2 md:grid-cols-5 gap-4 mb-12 dl-reveal">
+                <a href="https://wa.me/923198504489" target="_blank" rel="noopener noreferrer" class="bg-white p-4 rounded-2xl border border-brand-border text-center hover:border-brand-sage transition-all shadow-xs flex flex-col items-center">
+                    <i class="ph ph-whatsapp-logo text-3xl text-emerald-600 mb-2"></i>
+                    <span class="text-xs font-bold text-brand-text">WhatsApp</span>
+                    <span class="text-[10px] text-brand-muted">+92 319 8504489</span>
+                </a>
+
+                <a href="https://www.instagram.com/daisylinecrochet/" target="_blank" rel="noopener noreferrer" class="bg-white p-4 rounded-2xl border border-brand-border text-center hover:border-brand-sage transition-all shadow-xs flex flex-col items-center">
+                    <i class="ph ph-instagram-logo text-3xl text-pink-600 mb-2"></i>
+                    <span class="text-xs font-bold text-brand-text">Instagram</span>
+                    <span class="text-[10px] text-brand-muted">@daisylinecrochet</span>
+                </a>
+
+                <a href="https://www.facebook.com/share/1HeWDJU5ap/" target="_blank" rel="noopener noreferrer" class="bg-white p-4 rounded-2xl border border-brand-border text-center hover:border-brand-sage transition-all shadow-xs flex flex-col items-center">
+                    <i class="ph ph-facebook-logo text-3xl text-blue-600 mb-2"></i>
+                    <span class="text-xs font-bold text-brand-text">Facebook</span>
+                    <span class="text-[10px] text-brand-muted">Daisyline Crochet</span>
+                </a>
+
+                <a href="https://www.threads.com/@daisylinecrochet" target="_blank" rel="noopener noreferrer" class="bg-white p-4 rounded-2xl border border-brand-border text-center hover:border-brand-sage transition-all shadow-xs flex flex-col items-center">
+                    <i class="ph ph-threads-logo text-3xl text-neutral-800 mb-2"></i>
+                    <span class="text-xs font-bold text-brand-text">Threads</span>
+                    <span class="text-[10px] text-brand-muted">@daisylinecrochet</span>
+                </a>
+
+                <a href="https://www.tiktok.com/@daisylinecrochet?_r=1&_t=ZS-98DQTwu0jqr" target="_blank" rel="noopener noreferrer" class="bg-white p-4 rounded-2xl border border-brand-border text-center hover:border-brand-sage transition-all shadow-xs flex flex-col items-center col-span-2 md:col-span-1">
+                    <i class="ph ph-tiktok-logo text-3xl text-stone-900 mb-2"></i>
+                    <span class="text-xs font-bold text-brand-text">TikTok</span>
+                    <span class="text-[10px] text-brand-muted">@daisylinecrochet</span>
+                </a>
+            </section>
+
+            <!-- Main Contact Section (Form + Business Info) -->
+            <section class="grid grid-cols-1 lg:grid-cols-3 gap-8 mb-16 dl-reveal">
+                
+                <!-- Contact Form (2 Cols) -->
+                <div class="lg:col-span-2 bg-white rounded-3xl p-6 sm:p-8 border border-brand-border shadow-sm">
+                    <h2 class="font-heading text-2xl font-bold text-brand-text mb-6">Send Us a Message</h2>
+                    <form id="contact-page-form" class="space-y-4">
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                            <div>
+                                <label class="block text-xs font-bold uppercase tracking-wider text-brand-text mb-1">Your Name *</label>
+                                <input type="text" required placeholder="Full name" class="w-full px-4 py-3 rounded-xl border border-brand-border text-xs outline-none focus:border-brand-sage">
+                            </div>
+                            <div>
+                                <label class="block text-xs font-bold uppercase tracking-wider text-brand-text mb-1">Email Address *</label>
+                                <input type="email" required placeholder="name@example.com" class="w-full px-4 py-3 rounded-xl border border-brand-border text-xs outline-none focus:border-brand-sage">
+                            </div>
+                        </div>
+
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                            <div>
+                                <label class="block text-xs font-bold uppercase tracking-wider text-brand-text mb-1">Phone Number</label>
+                                <input type="tel" placeholder="03XX XXXXXXX" class="w-full px-4 py-3 rounded-xl border border-brand-border text-xs outline-none focus:border-brand-sage">
+                            </div>
+                            <div>
+                                <label class="block text-xs font-bold uppercase tracking-wider text-brand-text mb-1">Subject *</label>
+                                <input type="text" required placeholder="Question / Order Inquiry" class="w-full px-4 py-3 rounded-xl border border-brand-border text-xs outline-none focus:border-brand-sage">
+                            </div>
+                        </div>
+
+                        <div>
+                            <label class="block text-xs font-bold uppercase tracking-wider text-brand-text mb-1">Message *</label>
+                            <textarea rows="5" required placeholder="How can we help you?" class="w-full px-4 py-3 rounded-xl border border-brand-border text-xs outline-none focus:border-brand-sage"></textarea>
+                        </div>
+
+                        <button type="submit" class="dl-btn dl-btn-primary w-full">Send Message 💕</button>
+                    </form>
+                </div>
+
+                <!-- Business Info Card (1 Col) -->
+                <div class="lg:col-span-1">
+                    <div class="bg-brand-cream rounded-3xl p-6 sm:p-8 border border-brand-border space-y-6">
+                        <h3 class="font-heading text-xl font-bold text-brand-text border-b border-dashed border-brand-border pb-3">Business Information</h3>
+                        
+                        <div class="space-y-4 text-xs">
+                            <div class="flex items-center gap-3">
+                                <div class="w-8 h-8 rounded-full bg-brand-blush text-brand-sage flex items-center justify-center text-base"><i class="ph ph-truck"></i></div>
+                                <div>
+                                    <span class="text-brand-muted block">Delivery Coverage:</span>
+                                    <span class="font-bold text-brand-text">All Over Pakistan</span>
+                                </div>
+                            </div>
+
+                            <div class="flex items-center gap-3">
+                                <div class="w-8 h-8 rounded-full bg-brand-peach text-brand-olive flex items-center justify-center text-base"><i class="ph ph-storefront"></i></div>
+                                <div>
+                                    <span class="text-brand-muted block">Business Type:</span>
+                                    <span class="font-bold text-brand-text">Handmade Crochet Boutique</span>
+                                </div>
+                            </div>
+
+                            <div class="flex items-center gap-3">
+                                <div class="w-8 h-8 rounded-full bg-brand-ivory text-brand-sage flex items-center justify-center text-base"><i class="ph ph-sparkle"></i></div>
+                                <div>
+                                    <span class="text-brand-muted block">Custom Orders:</span>
+                                    <span class="font-bold text-brand-text">Available Nationwide</span>
+                                </div>
+                            </div>
+
+                            <div class="flex items-center gap-3">
+                                <div class="w-8 h-8 rounded-full bg-brand-blush text-brand-sage flex items-center justify-center text-base"><i class="ph ph-clock"></i></div>
+                                <div>
+                                    <span class="text-brand-muted block">Response Time:</span>
+                                    <span class="font-bold text-brand-text">Within 24 Hours</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="pt-4 border-t border-brand-border">
+                            <span class="text-xs font-bold text-brand-text block mb-2">Need Instant Help?</span>
+                            <a href="https://wa.me/923198504489" target="_blank" rel="noopener noreferrer" class="dl-btn dl-btn-primary w-full text-xs">
+                                <i class="ph ph-whatsapp-logo text-base"></i> WhatsApp Us Now
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+            </section>
+
+            <!-- FAQ Link Section -->
+            <section class="dl-section dl-bg-cream rounded-3xl p-8 text-center mb-16 dl-reveal border border-brand-border">
+                <span class="dl-tagline">Looking for Quick Answers?</span>
+                <h2 class="dl-section-title mb-2">Check Our FAQs Page</h2>
+                <p class="dl-section-subtitle max-w-sm mx-auto mb-6">Find instant answers regarding shipping, custom order advance payments, and yarn care.</p>
+                <a href="./faq.html" class="dl-btn dl-btn-dark">Visit FAQs Page</a>
+            </section>
+
+        </div>
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="bg-brand-text text-white pt-16 pb-12 border-t border-brand-beige/20 relative">
+        <div class="max-w-[90rem] mx-auto px-4 sm:px-8">
+            <div class="flex flex-col md:flex-row justify-between items-center text-xs text-brand-beige/60">
+                <p>&copy; <span id="year"></span> Daisyline Crochet. All rights reserved.</p>
+                <p>Designed and created by Ateeb Jilani</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const yearEl = document.getElementById('year');
+            if (yearEl) yearEl.textContent = new Date().getFullYear();
+
+            const contactForm = document.getElementById('contact-page-form');
+            if (contactForm) {
+                contactForm.addEventListener('submit', (e) => {
+                    e.preventDefault();
+                    alert('Thank you for contacting Daisyline Crochet! 💕\nWe have received your message and will respond within 24 hours.');
+                    contactForm.reset();
+                });
+            }
+        });
+    </script>
+</body>
+</html>

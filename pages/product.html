@@ -1,0 +1,554 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Handcrafted Daisy Crochet Tote Bag | Daisyline Crochet</title>
+    <meta name="description" content="Shop our premium handcrafted crochet tote bag. Made with ultra-soft milk cotton yarn, custom lining, and personalized embroidered tags in Pakistan.">
+    
+    <!-- Google Fonts: Cormorant Garamond, Plus Jakarta Sans, Sacramento -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400;1,600&family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=Sacramento&display=swap" rel="stylesheet">
+    
+    <!-- Phosphor Icons -->
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            sage: '#8fa886', cream: '#FAF8F5', ivory: '#F5EFE6',
+                            olive: '#5A6B53', beige: '#E6DED3', floral: '#D4DDD1',
+                            gold: '#D4B773', text: '#282421', muted: '#787068',
+                            blush: '#FFF0F3', peach: '#FFEBE3'
+                        }
+                    },
+                    fontFamily: {
+                        heading: ['"Cormorant Garamond"', 'serif'],
+                        sans: ['"Plus Jakarta Sans"', 'Manrope', 'sans-serif'],
+                        script: ['Sacramento', 'cursive']
+                    }
+                }
+            }
+        }
+    </script>
+
+    <!-- Global Styles & Scripts -->
+    <link rel="stylesheet" href="../assets/css/homepage.css">
+    <script src="../assets/js/homepage.js" defer></script>
+</head>
+<body class="font-sans antialiased overflow-x-hidden selection:bg-brand-sage selection:text-white">
+
+    <!-- 1. GLOBAL ANNOUNCEMENT BAR -->
+    <div class="dl-announcement-bar">
+        <div class="dl-announcement-content" id="announcement-slider">
+            <span class="dl-announcement-slide active">✨ Handmade Crochet Crafted with Love</span>
+            <span class="dl-announcement-slide">🚚 Delivery Available Across Pakistan</span>
+            <span class="dl-announcement-slide">🎁 Personalized Crochet Gifts Available</span>
+            <span class="dl-announcement-slide">🧶 Premium Quality Handmade Products</span>
+        </div>
+    </div>
+
+    <!-- 2. GLOBAL HEADER -->
+    <header id="dl-navbar" class="dl-global-header">
+        <div class="dl-header-container">
+            <div class="dl-header-row">
+                <div class="dl-header-left">
+                    <button id="dl-mobile-menu-btn" class="dl-mobile-menu-btn" aria-label="Open Mobile Menu">
+                        <i class="ph ph-list"></i>
+                    </button>
+                    <a href="./index.html" class="dl-logo-link">
+                        <img src="../assets/images/logo.jpg" alt="Daisyline Crochet Logo" class="dl-logo-img">
+                        <span class="dl-logo-text">Daisyline.</span>
+                    </a>
+                </div>
+
+                <nav class="dl-desktop-nav" aria-label="Main Navigation">
+                    <ul class="dl-nav-list">
+                        <li class="dl-nav-item"><a href="./index.html" class="dl-nav-link">Home</a></li>
+                        <li class="dl-nav-item"><a href="./shop.html" class="dl-nav-link active">Shop</a></li>
+                        <li class="dl-nav-item"><a href="./custom-orders.html" class="dl-nav-link">Custom Orders</a></li>
+                        <li class="dl-nav-item"><a href="./about_us.html" class="dl-nav-link">About Us</a></li>
+                        <li class="dl-nav-item"><a href="./reviews.html" class="dl-nav-link">Reviews</a></li>
+                        <li class="dl-nav-item"><a href="./gallery.html" class="dl-nav-link">Gallery</a></li>
+                        <li class="dl-nav-item"><a href="./faq.html" class="dl-nav-link">FAQs</a></li>
+                        <li class="dl-nav-item"><a href="./how-to-order.html" class="dl-nav-link">Contact</a></li>
+                    </ul>
+                </nav>
+
+                <div class="dl-header-actions">
+                    <button class="dl-action-icon dl-search-trigger" id="dl-search-btn" aria-label="Search"><i class="ph ph-magnifying-glass"></i></button>
+                    <div class="dl-desktop-search-bar" id="dl-desktop-search-bar">
+                        <input type="text" placeholder="Search handmade crochet..." class="dl-search-input" id="dl-search-input">
+                        <button class="dl-search-close" id="dl-search-close"><i class="ph ph-x"></i></button>
+                    </div>
+                    <a href="javascript:void(0)" class="dl-action-icon dl-wishlist-icon" aria-label="Wishlist"><i class="ph ph-heart"></i><span class="dl-badge">0</span></a>
+                    <a href="javascript:void(0)" class="dl-action-icon dl-cart-icon" aria-label="Shopping Cart"><i class="ph ph-shopping-bag"></i><span class="dl-badge dl-badge-cart">0</span></a>
+                    <a href="javascript:void(0)" class="dl-action-icon dl-account-icon" aria-label="User Account"><i class="ph ph-user"></i></a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- MOBILE DRAWER OVERLAY & SIDEBAR -->
+    <div class="dl-drawer-overlay" id="dl-drawer-overlay"></div>
+    <aside class="dl-mobile-drawer" id="dl-mobile-drawer" aria-label="Mobile Navigation Drawer">
+        <div class="dl-drawer-header">
+            <a href="./index.html" class="dl-logo-link">
+                <img src="../assets/images/logo.jpg" alt="Daisyline Logo" class="dl-logo-img">
+                <span class="dl-logo-text">Daisyline.</span>
+            </a>
+            <button class="dl-drawer-close-btn" id="dl-drawer-close-btn" aria-label="Close Menu"><i class="ph ph-x"></i></button>
+        </div>
+        <div class="dl-drawer-body">
+            <ul class="dl-mobile-nav-list">
+                <li><a href="./index.html" class="dl-mobile-nav-link">Home</a></li>
+                <li class="dl-mobile-accordion-item">
+                    <button class="dl-mobile-accordion-btn" id="dl-shop-acc-btn"><span>Shop</span><i class="ph ph-caret-down dl-acc-icon"></i></button>
+                    <div class="dl-mobile-accordion-content" id="dl-shop-acc-content">
+                        <a href="./shop.html" class="dl-mobile-sub-heading">All Products</a>
+                        <a href="./categories/bags.html" class="dl-mobile-sub-link">👜 Bags</a>
+                    </div>
+                </li>
+                <li><a href="./custom-orders.html" class="dl-mobile-nav-link">Custom Orders</a></li>
+                <li><a href="./about_us.html" class="dl-mobile-nav-link">About Us</a></li>
+                <li><a href="./how-to-order.html" class="dl-mobile-nav-link">Contact</a></li>
+            </ul>
+        </div>
+    </aside>
+
+    <!-- MOBILE SEARCH MODAL -->
+    <div class="dl-search-modal" id="dl-search-modal">
+        <div class="dl-search-modal-box">
+            <div class="dl-search-modal-header">
+                <span class="dl-search-modal-title">Search DaisyLine</span>
+                <button class="dl-search-modal-close" id="dl-search-modal-close"><i class="ph ph-x"></i></button>
+            </div>
+            <div class="dl-search-modal-body">
+                <input type="text" placeholder="Search handmade crochet gifts..." class="dl-search-modal-input">
+            </div>
+        </div>
+    </div>
+
+    <!-- MAIN PRODUCT DETAIL PAGE CONTENT -->
+    <main class="dl-main">
+        <div class="dl-container">
+            
+            <!-- 1. Breadcrumb Navigation -->
+            <nav class="dl-breadcrumb" aria-label="Breadcrumb">
+                <a href="./index.html">Home</a>
+                <i class="ph ph-caret-right text-xs text-brand-muted"></i>
+                <a href="./shop.html">Shop</a>
+                <i class="ph ph-caret-right text-xs text-brand-muted"></i>
+                <a href="./categories/bags.html">Bags</a>
+                <i class="ph ph-caret-right text-xs text-brand-muted"></i>
+                <span class="dl-crumb-current">Handcrafted Daisy Crochet Tote Bag</span>
+            </nav>
+
+            <!-- 2 & 3. PDP Main Section: Gallery + Product Info -->
+            <div class="dl-pdp-grid">
+                
+                <!-- Left: Product Gallery (Main Image + 8 Thumbnails) -->
+                <div class="dl-pdp-gallery-wrap dl-reveal">
+                    <div class="dl-pdp-main-img-box">
+                        <img src="data:image/svg+xml;charset=UTF-8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22800%22%20height%3D%22800%22%20viewBox%3D%220%200%20800%20800%22%3E%3Crect%20width%3D%22800%22%20height%3D%22800%22%20fill%3D%22%23F5EFE6%22%2F%3E%3Ccircle%20cx%3D%22400%22%20cy%3D%22400%22%20r%3D%22300%22%20fill%3D%22none%22%20stroke%3D%22%235A6B53%22%20stroke-width%3D%223%22%20stroke-dasharray%3D%2210%2010%22%20opacity%3D%220.3%22%2F%3E%3Ctext%20x%3D%22400%22%20y%3D%22380%22%20font-size%3D%22110%22%20text-anchor%3D%22middle%22%3E👜%3C%2Ftext%3E%3Ctext%20x%3D%22400%22%20y%3D%22500%22%20font-family%3D%22'Cormorant%20Garamond'%2C%20serif%22%20font-size%3D%2240%22%20font-weight%3D%22600%22%20text-anchor%3D%22middle%22%20fill%3D%22%235A6B53%22%3EFRONT%20VIEW%3C%2Ftext%3E%3C%2Fsvg%3E" alt="Handcrafted Daisy Crochet Tote Bag Front View" id="dl-pdp-main-img" class="dl-pdp-main-img">
+                    </div>
+
+                    <!-- 8 Required Thumbnails -->
+                    <div class="dl-pdp-thumbs-track">
+                        <!-- 1. Front View -->
+                        <div class="dl-pdp-thumb active" data-img="data:image/svg+xml;charset=UTF-8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22800%22%20height%3D%22800%22%20viewBox%3D%220%200%20800%20800%22%3E%3Crect%20width%3D%22800%22%20height%3D%22800%22%20fill%3D%22%23F5EFE6%22%2F%3E%3Ctext%20x%3D%22400%22%20y%3D%22400%22%20font-size%3D%22110%22%20text-anchor%3D%22middle%22%3E👜%3C%2Ftext%3E%3Ctext%20x%3D%22400%22%20y%3D%22500%22%20font-family%3D%22'Cormorant%20Garamond'%2C%20serif%22%20font-size%3D%2240%22%20text-anchor%3D%22middle%22%20fill%3D%22%235A6B53%22%3EFRONT%20VIEW%3C%2Ftext%3E%3C%2Fsvg%3E">
+                            <img src="data:image/svg+xml;charset=UTF-8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22200%22%20height%3D%22200%22%3E%3Crect%20width%3D%22200%22%20height%3D%22200%22%20fill%3D%22%23F5EFE6%22%2F%3E%3Ctext%20x%3D%22100%22%20y%3D%22110%22%20font-size%3D%2240%22%20text-anchor%3D%22middle%22%3E👜%3C%2Ftext%3E%3C%2Fsvg%3E" alt="Front View Thumb">
+                        </div>
+
+                        <!-- 2. Side View -->
+                        <div class="dl-pdp-thumb" data-img="data:image/svg+xml;charset=UTF-8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22800%22%20height%3D%22800%22%20viewBox%3D%220%200%20800%20800%22%3E%3Crect%20width%3D%22800%22%20height%3D%22800%22%20fill%3D%22%23FFF0F3%22%2F%3E%3Ctext%20x%3D%22400%22%20y%3D%22400%22%20font-size%3D%22110%22%20text-anchor%3D%22middle%22%3E🛍️%3C%2Ftext%3E%3Ctext%20x%3D%22400%22%20y%3D%22500%22%20font-family%3D%22'Cormorant%20Garamond'%2C%20serif%22%20font-size%3D%2240%22%20text-anchor%3D%22middle%22%3ESIDE%20VIEW%3C%2Ftext%3E%3C%2Fsvg%3E">
+                            <img src="data:image/svg+xml;charset=UTF-8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22200%22%20height%3D%22200%22%3E%3Crect%20width%3D%22200%22%20height%3D%22200%22%20fill%3D%22%23FFF0F3%22%2F%3E%3Ctext%20x%3D%22100%22%20y%3D%22110%22%20font-size%3D%2240%22%20text-anchor%3D%22middle%22%3E🛍️%3C%2Ftext%3E%3C%2Fsvg%3E" alt="Side View Thumb">
+                        </div>
+
+                        <!-- 3. Back View -->
+                        <div class="dl-pdp-thumb" data-img="data:image/svg+xml;charset=UTF-8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22800%22%20height%3D%22800%22%20viewBox%3D%220%200%20800%20800%22%3E%3Crect%20width%3D%22800%22%20height%3D%22800%22%20fill%3D%22%23FFEBE3%22%2F%3E%3Ctext%20x%3D%22400%22%20y%3D%22400%22%20font-size%3D%22110%22%20text-anchor%3D%22middle%22%3E👜%3C%2Ftext%3E%3Ctext%20x%3D%22400%22%20y%3D%22500%22%20font-family%3D%22'Cormorant%20Garamond'%2C%20serif%22%20font-size%3D%2240%22%20text-anchor%3D%22middle%22%3EBACK%20VIEW%3C%2Ftext%3E%3C%2Fsvg%3E">
+                            <img src="data:image/svg+xml;charset=UTF-8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22200%22%20height%3D%22200%22%3E%3Crect%20width%3D%22200%22%20height%3D%22200%22%20fill%3D%22%23FFEBE3%22%2F%3E%3Ctext%20x%3D%22100%22%20y%3D%22110%22%20font-size%3D%2240%22%20text-anchor%3D%22middle%22%3E👜%3C%2Ftext%3E%3C%2Fsvg%3E" alt="Back View Thumb">
+                        </div>
+
+                        <!-- 4. Close-up Detail -->
+                        <div class="dl-pdp-thumb" data-img="data:image/svg+xml;charset=UTF-8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22800%22%20height%3D%22800%22%20viewBox%3D%220%200%20800%20800%22%3E%3Crect%20width%3D%22800%22%20height%3D%22800%22%20fill%3D%22%23FAF8F5%22%2F%3E%3Ctext%20x%3D%22400%22%20y%3D%22400%22%20font-size%3D%22110%22%20text-anchor%3D%22middle%22%3E🧶%3C%2Ftext%3E%3Ctext%20x%3D%22400%22%20y%3D%22500%22%20font-family%3D%22'Cormorant%20Garamond'%2C%20serif%22%20font-size%3D%2240%22%20text-anchor%3D%22middle%22%3ECLOSE-UP%20STITCH%3C%2Ftext%3E%3C%2Fsvg%3E">
+                            <img src="data:image/svg+xml;charset=UTF-8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22200%22%20height%3D%22200%22%3E%3Crect%20width%3D%22200%22%20height%3D%22200%22%20fill%3D%22%23FAF8F5%22%2F%3E%3Ctext%20x%3D%22100%22%20y%3D%22110%22%20font-size%3D%2240%22%20text-anchor%3D%22middle%22%3E🧶%3C%2Ftext%3E%3C%2Fsvg%3E" alt="Close-up Thumb">
+                        </div>
+
+                        <!-- 5. Lifestyle Image -->
+                        <div class="dl-pdp-thumb" data-img="data:image/svg+xml;charset=UTF-8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22800%22%20height%3D%22800%22%20viewBox%3D%220%200%20800%20800%22%3E%3Crect%20width%3D%22800%22%20height%3D%22800%22%20fill%3D%22%23F5EFE6%22%2F%3E%3Ctext%20x%3D%22400%22%20y%3D%22400%22%20font-size%3D%22110%22%20text-anchor%3D%22middle%22%3E✨%3C%2Ftext%3E%3Ctext%20x%3D%22400%22%20y%3D%22500%22%20font-family%3D%22'Cormorant%20Garamond'%2C%20serif%22%20font-size%3D%2240%22%20text-anchor%3D%22middle%22%3ELIFESTYLE%20PHOTO%3C%2Ftext%3E%3C%2Fsvg%3E">
+                            <img src="data:image/svg+xml;charset=UTF-8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22200%22%20height%3D%22200%22%3E%3Crect%20width%3D%22200%22%20height%3D%22200%22%20fill%3D%22%23F5EFE6%22%2F%3E%3Ctext%20x%3D%22100%22%20y%3D%22110%22%20font-size%3D%2240%22%20text-anchor%3D%22middle%22%3E✨%3C%2Ftext%3E%3C%2Fsvg%3E" alt="Lifestyle Thumb">
+                        </div>
+
+                        <!-- 6. Packaging -->
+                        <div class="dl-pdp-thumb" data-img="data:image/svg+xml;charset=UTF-8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22800%22%20height%3D%22800%22%20viewBox%3D%220%200%20800%20800%22%3E%3Crect%20width%3D%22800%22%20height%3D%22800%22%20fill%3D%22%23FFF0F3%22%2F%3E%3Ctext%20x%3D%22400%22%20y%3D%22400%22%20font-size%3D%22110%22%20text-anchor%3D%22middle%22%3E🎁%3C%2Ftext%3E%3Ctext%20x%3D%22400%22%20y%3D%22500%22%20font-family%3D%22'Cormorant%20Garamond'%2C%20serif%22%20font-size%3D%2240%22%20text-anchor%3D%22middle%22%3EGIFT%20PACKAGING%3C%2Ftext%3E%3C%2Fsvg%3E">
+                            <img src="data:image/svg+xml;charset=UTF-8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22200%22%20height%3D%22200%22%3E%3Crect%20width%3D%22200%22%20height%3D%22200%22%20fill%3D%22%23FFF0F3%22%2F%3E%3Ctext%20x%3D%22100%22%20y%3D%22110%22%20font-size%3D%2240%22%20text-anchor%3D%22middle%22%3E🎁%3C%2Ftext%3E%3C%2Fsvg%3E" alt="Packaging Thumb">
+                        </div>
+
+                        <!-- 7. Colour Variants -->
+                        <div class="dl-pdp-thumb" data-img="data:image/svg+xml;charset=UTF-8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22800%22%20height%3D%22800%22%20viewBox%3D%220%200%20800%20800%22%3E%3Crect%20width%3D%22800%22%20height%3D%22800%22%20fill%3D%22%23FFEBE3%22%2F%3E%3Ctext%20x%3D%22400%22%20y%3D%22400%22%20font-size%3D%22110%22%20text-anchor%3D%22middle%22%3E🎨%3C%2Ftext%3E%3Ctext%20x%3D%22400%22%20y%3D%22500%22%20font-family%3D%22'Cormorant%20Garamond'%2C%20serif%22%20font-size%3D%2240%22%20text-anchor%3D%22middle%22%3ECOLOUR%20VARIANTS%3C%2Ftext%3E%3C%2Fsvg%3E">
+                            <img src="data:image/svg+xml;charset=UTF-8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22200%22%20height%3D%22200%22%3E%3Crect%20width%3D%22200%22%20height%3D%22200%22%20fill%3D%22%23FFEBE3%22%2F%3E%3Ctext%20x%3D%22100%22%20y%3D%22110%22%20font-size%3D%2240%22%20text-anchor%3D%22middle%22%3E🎨%3C%2Ftext%3E%3C%2Fsvg%3E" alt="Colours Thumb">
+                        </div>
+
+                        <!-- 8. Scale Photo -->
+                        <div class="dl-pdp-thumb" data-img="data:image/svg+xml;charset=UTF-8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22800%22%20height%3D%22800%22%20viewBox%3D%220%200%20800%20800%22%3E%3Crect%20width%3D%22800%22%20height%3D%22800%22%20fill%3D%22%23FAF8F5%22%2F%3E%3Ctext%20x%3D%22400%22%20y%3D%22400%22%20font-size%3D%22110%22%20text-anchor%3D%22middle%22%3E📏%3C%2Ftext%3E%3Ctext%20x%3D%22400%22%20y%3D%22500%22%20font-family%3D%22'Cormorant%20Garamond'%2C%20serif%22%20font-size%3D%2240%22%20text-anchor%3D%22middle%22%3ESCALE%20%26%20SIZE%3C%2Ftext%3E%3C%2Fsvg%3E">
+                            <img src="data:image/svg+xml;charset=UTF-8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22200%22%20height%3D%22200%22%3E%3Crect%20width%3D%22200%22%20height%3D%22200%22%20fill%3D%22%23FAF8F5%22%2F%3E%3Ctext%20x%3D%22100%22%20y%3D%22110%22%20font-size%3D%2240%22%20text-anchor%3D%22middle%22%3E📏%3C%2Ftext%3E%3C%2Fsvg%3E" alt="Scale Thumb">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Right: Product Information & Purchase Controls -->
+                <div class="dl-pdp-info-panel dl-reveal">
+                    
+                    <div class="dl-pdp-badge-row">
+                        <span class="dl-pdp-stock-badge"><i class="ph ph-check-circle"></i> In Stock &bull; Made to Order</span>
+                        <span class="dl-badge-mini dl-badge-bestseller-tag">Best Seller</span>
+                    </div>
+
+                    <h1 class="dl-pdp-title">Handcrafted Daisy Crochet Tote Bag</h1>
+
+                    <div class="dl-pdp-rating-box">
+                        <span class="dl-stars">★★★★★</span>
+                        <span class="dl-rating-text">5.0 (34 Verified Reviews)</span>
+                    </div>
+
+                    <div class="dl-pdp-price-row">
+                        <span class="dl-pdp-price">PKR 4,500</span>
+                        <span class="dl-pdp-original-price">PKR 5,200</span>
+                    </div>
+
+                    <p class="dl-pdp-desc-short">
+                        Carefully hand-stitched using 100% premium milk cotton yarn. Features a cozy floral daisy pattern, sturdy reinforced handles, and optional satin inner lining.
+                    </p>
+
+                    <hr style="border:none; border-top:1px dashed var(--dl-border);">
+
+                    <!-- 4. Variant 1: Colour Swatches -->
+                    <div class="dl-variant-group">
+                        <div class="dl-variant-label">Colour: <span id="dl-selected-color">Blush Pink</span></div>
+                        <div class="dl-color-swatches">
+                            <button class="dl-swatch active" style="background:#FFF0F3;" data-color="Blush Pink" aria-label="Blush Pink"></button>
+                            <button class="dl-swatch" style="background:#F5EFE6;" data-color="Cream White" aria-label="Cream White"></button>
+                            <button class="dl-swatch" style="background:#8FA886;" data-color="Sage Green" aria-label="Sage Green"></button>
+                            <button class="dl-swatch" style="background:#FFEBE3;" data-color="Pastel Peach" aria-label="Pastel Peach"></button>
+                            <button class="dl-swatch" style="background:#E8DFF5;" data-color="Lavender" aria-label="Lavender"></button>
+                        </div>
+                    </div>
+
+                    <!-- Variant 2: Material Options -->
+                    <div class="dl-variant-group">
+                        <div class="dl-variant-label">Yarn Material:</div>
+                        <div class="dl-pill-options">
+                            <button class="dl-pill-btn active">Milk Cotton</button>
+                            <button class="dl-pill-btn">Pure Cotton</button>
+                            <button class="dl-pill-btn">Soft Acrylic</button>
+                            <button class="dl-pill-btn">Velvet Yarn</button>
+                        </div>
+                    </div>
+
+                    <!-- Variant 3: Size Options -->
+                    <div class="dl-variant-group">
+                        <div class="dl-variant-label">Bag Size:</div>
+                        <div class="dl-pill-options">
+                            <button class="dl-pill-btn">Small (10" x 8")</button>
+                            <button class="dl-pill-btn active">Medium (14" x 12")</button>
+                            <button class="dl-pill-btn">Large (18" x 15")</button>
+                        </div>
+                    </div>
+
+                    <!-- Variant 4: Inner Lining -->
+                    <div class="dl-variant-group">
+                        <div class="dl-variant-label">Add Inner Satin Lining:</div>
+                        <div class="dl-pill-options">
+                            <button class="dl-pill-btn active">Yes (Satin Pockets)</button>
+                            <button class="dl-pill-btn">No (Open Stitch)</button>
+                        </div>
+                    </div>
+
+                    <!-- Variant 5: Personalisation Input -->
+                    <div class="dl-variant-group">
+                        <div class="dl-variant-label">Personalisation (Optional):</div>
+                        <input type="text" placeholder="Add Name, Initials, or Custom Date to Tag..." class="dl-personalise-input">
+                    </div>
+
+                    <!-- 5 & 6. Quantity Selector & Action Buttons -->
+                    <div class="dl-pdp-actions-box">
+                        <div class="dl-qty-row">
+                            <span class="dl-variant-label" style="margin:0;">Quantity:</span>
+                            <div class="dl-qty-picker">
+                                <button class="dl-qty-btn" id="dl-qty-minus">&minus;</button>
+                                <span class="dl-qty-val" id="dl-qty-val">1</span>
+                                <button class="dl-qty-btn" id="dl-qty-plus">&plus;</button>
+                            </div>
+                        </div>
+
+                        <div class="dl-pdp-btn-group">
+                            <button class="dl-btn dl-btn-primary dl-btn-large" onclick="alert('Added 1x Handcrafted Daisy Crochet Tote Bag to Cart! 💕')">
+                                <i class="ph ph-shopping-bag text-lg"></i> Add to Cart
+                            </button>
+                            <button class="dl-btn dl-btn-dark dl-btn-large" onclick="alert('Proceeding to Express Checkout! ⚡')">
+                                ⚡ Buy Now
+                            </button>
+                            <button class="dl-action-icon" style="width:50px; height:50px; border:1px solid var(--dl-border);" onclick="this.classList.toggle('active')">
+                                <i class="ph ph-heart text-xl"></i>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- 7. Delivery Information Cards -->
+                    <div class="dl-info-cards-grid">
+                        <div class="dl-info-card">
+                            <i class="ph ph-truck dl-info-card-icon"></i>
+                            <span class="dl-info-card-text">Est. Delivery: 3–5 Days across Pakistan</span>
+                        </div>
+                        <div class="dl-info-card">
+                            <i class="ph ph-gift dl-info-card-icon"></i>
+                            <span class="dl-info-card-text">Free Gift Box &amp; Soft Tissue Wrapping</span>
+                        </div>
+                    </div>
+
+                    <!-- 8. Product Highlights -->
+                    <div class="dl-info-cards-grid" style="margin-top:0;">
+                        <div class="dl-info-card">
+                            <i class="ph ph-hand-heart dl-info-card-icon"></i>
+                            <span class="dl-info-card-text">100% Handcrafted with Love &amp; Care</span>
+                        </div>
+                        <div class="dl-info-card">
+                            <i class="ph ph-sparkle dl-info-card-icon"></i>
+                            <span class="dl-info-card-text">Fully Customisable Colours &amp; Size</span>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+
+            <!-- 9 & 10. Product Description & Care Instructions Section -->
+            <section class="dl-pdp-tabs-section dl-reveal">
+                <div class="dl-header-group" style="margin-bottom:28px;">
+                    <span class="dl-tagline">Craftsmanship Details</span>
+                    <h2 class="dl-section-title">Product Description &amp; Care</h2>
+                </div>
+
+                <div class="dl-about-text" style="text-align:left; max-width:100%;">
+                    <p style="margin-bottom:16px;">
+                        The <strong>Handcrafted Daisy Crochet Tote Bag</strong> is one of DaisyLine’s signature creations. Hand-stitched with premium milk cotton yarn, each bag features iconic textured daisy flower squares, sturdy comfortable handles, and soft durability.
+                    </p>
+                    <ul style="list-style:disc; padding-left:24px; margin-bottom:24px;" class="space-y-2">
+                        <li><strong>Yarn Material:</strong> Premium 100% Milk Cotton (Hypoallergenic &amp; Ultra Soft)</li>
+                        <li><strong>Dimensions:</strong> 14" Width x 12" Height with 10" Handle Drop</li>
+                        <li><strong>Structure:</strong> Double-stitched seams with optional smooth satin lining</li>
+                        <li><strong>Origin:</strong> 100% Handmade in Pakistan by slow-fashion artisans</li>
+                    </ul>
+                </div>
+
+                <!-- 10. Care Instructions Grid -->
+                <h3 class="font-heading text-2xl font-semibold mb-4 text-brand-text">Care Instructions</h3>
+                <div class="dl-care-grid">
+                    <div class="dl-care-card">
+                        <div class="dl-care-icon">🧼</div>
+                        <div class="dl-care-label">Hand Wash Only</div>
+                    </div>
+                    <div class="dl-care-card">
+                        <div class="dl-care-icon">🚫</div>
+                        <div class="dl-care-label">Do Not Bleach</div>
+                    </div>
+                    <div class="dl-care-card">
+                        <div class="dl-care-icon">🧺</div>
+                        <div class="dl-care-label">Dry Flat in Shade</div>
+                    </div>
+                    <div class="dl-care-card">
+                        <div class="dl-care-icon">💧</div>
+                        <div class="dl-care-label">Avoid Moisture</div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 11. Customisation CTA Section -->
+            <section class="dl-section dl-custom-cta-section dl-reveal" style="border-radius:var(--dl-radius-xl); margin-bottom:56px;">
+                <div class="dl-container" style="text-align:center;">
+                    <span class="dl-tagline">Bespoke Requests</span>
+                    <h2 class="dl-section-title">Want a Custom Colour or Size?</h2>
+                    <p class="dl-section-subtitle" style="max-width:540px; margin:0 auto 24px auto;">
+                        We love personalising items! Send us your exact color palette or reference images to create a bespoke piece just for you.
+                    </p>
+                    <a href="./custom-orders.html" class="dl-btn dl-btn-primary dl-btn-large">
+                        ✨ Customise This Product
+                    </a>
+                </div>
+            </section>
+
+            <!-- 13. Frequently Bought Together Slider -->
+            <section class="dl-section dl-bg-cream dl-reveal" style="border-radius:var(--dl-radius-xl); padding:40px 24px; margin-bottom:56px;">
+                <div class="dl-header-group" style="margin-bottom:32px;">
+                    <span class="dl-tagline">Perfect Pairings</span>
+                    <h2 class="dl-section-title">Frequently Bought Together</h2>
+                </div>
+                <div class="dl-product-slider-wrapper">
+                    <div class="dl-product-slider">
+                        <div class="dl-product-track" id="dl-bought-together-track">
+                            <!-- JS Populated -->
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 14. You May Also Like Slider -->
+            <section class="dl-section dl-reveal" style="margin-bottom:56px;">
+                <div class="dl-header-group" style="margin-bottom:32px;">
+                    <span class="dl-tagline">More Handcrafted Gems</span>
+                    <h2 class="dl-section-title">You May Also Like</h2>
+                </div>
+                <div class="dl-product-slider-wrapper">
+                    <div class="dl-product-slider">
+                        <div class="dl-product-track" id="dl-related-products-track">
+                            <!-- JS Populated -->
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 15. Recently Viewed Slider -->
+            <section class="dl-section dl-bg-ivory dl-reveal" style="border-radius:var(--dl-radius-xl); padding:40px 24px; margin-bottom:56px;">
+                <div class="dl-header-group" style="margin-bottom:32px;">
+                    <span class="dl-tagline">Your Browsing History</span>
+                    <h2 class="dl-section-title">Recently Viewed</h2>
+                </div>
+                <div class="dl-product-slider-wrapper">
+                    <div class="dl-product-slider">
+                        <div class="dl-product-track" id="dl-recently-viewed-track">
+                            <!-- JS Populated -->
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 16. Product FAQ Accordion -->
+            <section class="dl-section dl-reveal">
+                <div class="dl-header-group" style="margin-bottom:36px;">
+                    <span class="dl-tagline">Got Questions?</span>
+                    <h2 class="dl-section-title">Frequently Asked Questions</h2>
+                </div>
+
+                <div class="dl-pdp-faq-accordion">
+                    <div class="dl-faq-item open">
+                        <button class="dl-faq-question">
+                            <span>Is this crochet tote bag washable?</span>
+                            <i class="ph ph-caret-down"></i>
+                        </button>
+                        <div class="dl-faq-answer">
+                            Yes! Gentle hand washing in cold water with mild liquid soap is recommended. Gently squeeze excess water without twisting, and lay flat in the shade to dry.
+                        </div>
+                    </div>
+
+                    <div class="dl-faq-item">
+                        <button class="dl-faq-question">
+                            <span>How long does handmade production and delivery take?</span>
+                            <i class="ph ph-caret-down"></i>
+                        </button>
+                        <div class="dl-faq-answer">
+                            Since every item is carefully crocheted by hand, production takes 2–3 days, followed by 2–3 business days for courier delivery across Pakistan.
+                        </div>
+                    </div>
+
+                    <div class="dl-faq-item">
+                        <button class="dl-faq-question">
+                            <span>Can I customise the colors or request custom dimensions?</span>
+                            <i class="ph ph-caret-down"></i>
+                        </button>
+                        <div class="dl-faq-answer">
+                            Absolutely! You can choose your color palette from our swatches above or visit our Custom Orders page to upload your reference picture.
+                        </div>
+                    </div>
+
+                    <div class="dl-faq-item">
+                        <button class="dl-faq-question">
+                            <span>Is gift packaging included?</span>
+                            <i class="ph ph-caret-down"></i>
+                        </button>
+                        <div class="dl-faq-answer">
+                            Yes, all DaisyLine orders come beautifully packaged in soft tissue wrapping with a ribbon and a handwritten thank-you note ready for gifting!
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+        </div>
+
+        <!-- 17. GLOBAL NEWSLETTER SECTION -->
+        <section class="dl-section dl-bg-cream">
+            <div class="dl-container">
+                <div class="dl-newsletter-card dl-reveal">
+                    <span class="dl-tagline">Stay Connected</span>
+                    <h2 class="dl-section-title" style="margin-bottom:10px;">Join Our Crochet Family 💕</h2>
+                    <p class="dl-section-subtitle">
+                        Subscribe to get special handcrafted offers, new collection alerts, and secret giveaways.
+                    </p>
+                    <form class="dl-newsletter-form" id="newsletter-form">
+                        <input type="email" placeholder="Enter your email address..." required class="dl-newsletter-input" aria-label="Email address">
+                        <button type="submit" class="dl-btn dl-btn-primary">
+                            Subscribe
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- MOBILE STICKY PURCHASE BAR -->
+    <div class="dl-mobile-sticky-bar" id="dl-mobile-sticky-bar">
+        <div class="dl-sticky-info">
+            <span class="dl-sticky-title">Daisy Crochet Tote Bag</span>
+            <span class="dl-sticky-price">PKR 4,500</span>
+        </div>
+        <div class="dl-sticky-btns">
+            <button class="dl-btn dl-btn-primary" style="padding:10px 18px; font-size:11px;" onclick="alert('Added to Cart!')">Add to Cart</button>
+        </div>
+    </div>
+
+    <!-- 18. GLOBAL FOOTER -->
+    <footer class="bg-brand-text text-white pt-16 md:pt-20 pb-12 border-t border-brand-beige/20 relative">
+        <div class="max-w-[90rem] mx-auto px-4 sm:px-8 lg:px-12">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-10 md:gap-12 lg:gap-16 mb-16 text-left">
+                <div>
+                    <span class="font-heading text-3xl tracking-wide text-white block mb-5">Daisyline.</span>
+                    <p class="text-sm font-light text-brand-beige/80 leading-relaxed mb-6 max-w-sm">
+                        Handmade crochet plush toys, handbags, bouquets, and custom gifts. Inspired by slow living and timeless craftsmanship in Pakistan.
+                    </p>
+                </div>
+                <div>
+                    <h4 class="font-heading text-xl text-white mb-5">Support</h4>
+                    <ul class="space-y-3.5 text-sm font-light text-brand-beige/80">
+                        <li><a href="./about_us.html" class="hover:text-white transition-colors">About Us</a></li>
+                        <li><a href="./how-to-order.html" class="hover:text-white transition-colors">How to Order</a></li>
+                        <li><a href="./about_us.html#faq" class="hover:text-white transition-colors">FAQs</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-heading text-xl text-white mb-5">Follow Us</h4>
+                    <div class="flex gap-3 mb-8">
+                        <a href="https://www.instagram.com/daisylinecrochet/" target="_blank" rel="noopener noreferrer" class="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-brand-sage transition-colors"><i class="ph ph-instagram-logo text-xl"></i></a>
+                        <a href="https://www.facebook.com/share/1HeWDJU5ap/" target="_blank" rel="noopener noreferrer" class="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-brand-sage transition-colors"><i class="ph ph-facebook-logo text-xl"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="pt-8 border-t border-white/10 flex flex-col md:flex-row justify-between items-center text-xs text-brand-beige/60">
+                <p>&copy; <span id="year"></span> Daisyline Crochet. All rights reserved.</p>
+                <p>Designed and created by Ateeb Jilani</p>
+            </div>
+        </div>
+    </footer>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const yearEl = document.getElementById('year');
+            if (yearEl) yearEl.textContent = new Date().getFullYear();
+        });
+    </script>
+</body>
+</html>

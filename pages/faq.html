@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Frequently Asked Questions | Daisyline Crochet</title>
+    <meta name="description" content="Find answers to common questions about Daisyline Crochet orders, custom requests, advance payments, shipping, yarn care & returns in Pakistan.">
+    
+    <!-- Google Fonts: Cormorant Garamond, Plus Jakarta Sans, Sacramento -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400;1,600&family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=Sacramento&display=swap" rel="stylesheet">
+    
+    <!-- Phosphor Icons -->
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            sage: '#8fa886', cream: '#FAF8F5', ivory: '#F5EFE6',
+                            olive: '#5A6B53', beige: '#E6DED3', floral: '#D4DDD1',
+                            gold: '#D4B773', text: '#282421', muted: '#787068',
+                            blush: '#FFF0F3', peach: '#FFEBE3'
+                        }
+                    },
+                    fontFamily: {
+                        heading: ['"Cormorant Garamond"', 'serif'],
+                        sans: ['"Plus Jakarta Sans"', 'Manrope', 'sans-serif'],
+                        script: ['Sacramento', 'cursive']
+                    }
+                }
+            }
+        }
+    </script>
+
+    <!-- Global Styles & Scripts -->
+    <link rel="stylesheet" href="../assets/css/homepage.css">
+    <script src="../assets/js/homepage.js" defer></script>
+</head>
+<body class="font-sans antialiased overflow-x-hidden selection:bg-brand-sage selection:text-white">
+
+    <!-- 1. GLOBAL ANNOUNCEMENT BAR -->
+    <div class="dl-announcement-bar">
+        <div class="dl-announcement-content" id="announcement-slider">
+            <span class="dl-announcement-slide active">✨ Handmade Crochet Crafted with Love</span>
+            <span class="dl-announcement-slide">🚚 Delivery Available Across Pakistan</span>
+            <span class="dl-announcement-slide">🎁 Personalized Crochet Gifts Available</span>
+        </div>
+    </div>
+
+    <!-- 2. GLOBAL HEADER -->
+    <header id="dl-navbar" class="dl-global-header">
+        <div class="dl-header-container">
+            <div class="dl-header-row">
+                <div class="dl-header-left">
+                    <button id="dl-mobile-menu-btn" class="dl-mobile-menu-btn" aria-label="Open Mobile Menu"><i class="ph ph-list"></i></button>
+                    <a href="./index.html" class="dl-logo-link">
+                        <img src="../assets/images/logo.jpg" alt="Daisyline Logo" class="dl-logo-img">
+                        <span class="dl-logo-text">Daisyline.</span>
+                    </a>
+                </div>
+                <nav class="dl-desktop-nav" aria-label="Main Navigation">
+                    <ul class="dl-nav-list">
+                        <li class="dl-nav-item"><a href="./index.html" class="dl-nav-link">Home</a></li>
+                        <li class="dl-nav-item"><a href="./shop.html" class="dl-nav-link">Shop</a></li>
+                        <li class="dl-nav-item"><a href="./custom-orders.html" class="dl-nav-link">Custom Orders</a></li>
+                        <li class="dl-nav-item"><a href="./about_us.html" class="dl-nav-link">About Us</a></li>
+                        <li class="dl-nav-item"><a href="./reviews.html" class="dl-nav-link">Reviews</a></li>
+                        <li class="dl-nav-item"><a href="./gallery.html" class="dl-nav-link">Gallery</a></li>
+                        <li class="dl-nav-item"><a href="./faq.html" class="dl-nav-link active">FAQs</a></li>
+                        <li class="dl-nav-item"><a href="./how-to-order.html" class="dl-nav-link">Contact</a></li>
+                    </ul>
+                </nav>
+                <div class="dl-header-actions">
+                    <button class="dl-action-icon dl-search-trigger" id="dl-search-btn"><i class="ph ph-magnifying-glass"></i></button>
+                    <a href="javascript:void(0)" class="dl-action-icon dl-wishlist-icon"><i class="ph ph-heart"></i><span class="dl-badge">0</span></a>
+                    <a href="javascript:void(0)" class="dl-action-icon dl-cart-icon"><i class="ph ph-shopping-bag"></i><span class="dl-badge dl-badge-cart">0</span></a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- MOBILE DRAWER -->
+    <div class="dl-drawer-overlay" id="dl-drawer-overlay"></div>
+    <aside class="dl-mobile-drawer" id="dl-mobile-drawer">
+        <div class="dl-drawer-header">
+            <a href="./index.html" class="dl-logo-link"><span class="dl-logo-text">Daisyline.</span></a>
+            <button class="dl-drawer-close-btn" id="dl-drawer-close-btn"><i class="ph ph-x"></i></button>
+        </div>
+        <div class="dl-drawer-body">
+            <ul class="dl-mobile-nav-list">
+                <li><a href="./index.html" class="dl-mobile-nav-link">Home</a></li>
+                <li><a href="./shop.html" class="dl-mobile-nav-link">Shop</a></li>
+                <li><a href="./custom-orders.html" class="dl-mobile-nav-link">Custom Orders</a></li>
+                <li><a href="./faq.html" class="dl-mobile-nav-link active">FAQs</a></li>
+                <li><a href="./how-to-order.html" class="dl-mobile-nav-link">Contact</a></li>
+            </ul>
+        </div>
+    </aside>
+
+    <!-- FAQS CONTENT -->
+    <main class="dl-main">
+        <div class="dl-container">
+            
+            <nav class="dl-breadcrumb">
+                <a href="./index.html">Home</a>
+                <i class="ph ph-caret-right text-xs text-brand-muted"></i>
+                <span class="dl-crumb-current">Frequently Asked Questions</span>
+            </nav>
+
+            <!-- Hero Section -->
+            <section class="dl-shop-hero dl-reveal">
+                <span class="dl-tagline">Help Center</span>
+                <h1 class="dl-shop-hero-title">Frequently Asked Questions</h1>
+                <p class="dl-shop-hero-sub">Everything you need to know about our products, custom orders, payments &amp; delivery.</p>
+                
+                <!-- Live FAQ Search -->
+                <div class="max-w-md mx-auto mt-6 relative">
+                    <input type="text" placeholder="Search questions..." id="faq-search-input" class="w-full px-5 py-3 rounded-full border border-brand-border text-sm outline-none shadow-sm focus:border-brand-sage">
+                </div>
+            </section>
+
+            <!-- Interactive Accordion -->
+            <section class="dl-pdp-faq-accordion dl-reveal" style="max-width:880px;" id="faq-accordion-list">
+                
+                <div class="dl-faq-item open">
+                    <button class="dl-faq-question">
+                        <span>Do you deliver all over Pakistan?</span>
+                        <i class="ph ph-caret-down"></i>
+                    </button>
+                    <div class="dl-faq-answer">
+                        Yes! We deliver across all cities in Pakistan via TCS, M&amp;P, and Leopards Courier. Delivery typically takes 2 to 4 business days.
+                    </div>
+                </div>
+
+                <div class="dl-faq-item">
+                    <button class="dl-faq-question">
+                        <span>Can I customise yarn colours and sizes?</span>
+                        <i class="ph ph-caret-down"></i>
+                    </button>
+                    <div class="dl-faq-answer">
+                        Yes! You can choose custom colors on our product detail page swatches or discuss your custom palette directly with our designer via WhatsApp.
+                    </div>
+                </div>
+
+                <div class="dl-faq-item">
+                    <button class="dl-faq-question">
+                        <span>Can I request a completely custom product or Pinterest photo?</span>
+                        <i class="ph ph-caret-down"></i>
+                    </button>
+                    <div class="dl-faq-answer">
+                        Absolutely! Visit our Custom Orders page, attach your Pinterest image reference, and complete your request.
+                    </div>
+                </div>
+
+                <div class="dl-faq-item">
+                    <button class="dl-faq-question">
+                        <span>How long do handmade orders take to craft?</span>
+                        <i class="ph ph-caret-down"></i>
+                    </button>
+                    <div class="dl-faq-answer">
+                        Because every piece is slow-made by hand, production takes 2 to 4 business days depending on design complexity.
+                    </div>
+                </div>
+
+                <div class="dl-faq-item">
+                    <button class="dl-faq-question">
+                        <span>Is advance payment required for custom orders?</span>
+                        <i class="ph ph-caret-down"></i>
+                    </button>
+                    <div class="dl-faq-answer">
+                        Yes, advance payment via Meezan Bank Transfer, JazzCash, or NayaPay is required for custom orders to reserve your yarn materials.
+                    </div>
+                </div>
+
+                <div class="dl-faq-item">
+                    <button class="dl-faq-question">
+                        <span>Are handmade crochet products refundable?</span>
+                        <i class="ph ph-caret-down"></i>
+                    </button>
+                    <div class="dl-faq-answer">
+                        Because each item is crafted specifically for you, sales are final. If an item arrives damaged, we offer an immediate replacement.
+                    </div>
+                </div>
+
+                <div class="dl-faq-item">
+                    <button class="dl-faq-question">
+                        <span>How do I wash and care for my crochet items?</span>
+                        <i class="ph ph-caret-down"></i>
+                    </button>
+                    <div class="dl-faq-answer">
+                        Gently hand wash in cold water with mild detergent. Squeeze water gently without twisting and dry flat in the shade.
+                    </div>
+                </div>
+
+            </section>
+
+            <!-- Still Need Help Section -->
+            <section class="dl-section dl-bg-cream rounded-3xl p-8 text-center mb-16 dl-reveal border border-brand-border">
+                <span class="dl-tagline">Still Have Questions?</span>
+                <h2 class="dl-section-title mb-4">We're Here to Help 💕</h2>
+                <div class="flex flex-wrap gap-4 justify-center">
+                    <a href="https://wa.me/923198504489" target="_blank" rel="noopener noreferrer" class="dl-btn dl-btn-primary">
+                        <i class="ph ph-whatsapp-logo text-lg"></i> Chat on WhatsApp
+                    </a>
+                    <a href="./how-to-order.html" class="dl-btn dl-btn-dark">Contact Us Page</a>
+                </div>
+            </section>
+
+        </div>
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="bg-brand-text text-white pt-16 pb-12 border-t border-brand-beige/20 relative">
+        <div class="max-w-[90rem] mx-auto px-4 sm:px-8">
+            <div class="flex flex-col md:flex-row justify-between items-center text-xs text-brand-beige/60">
+                <p>&copy; <span id="year"></span> Daisyline Crochet. All rights reserved.</p>
+                <p>Designed and created by Ateeb Jilani</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Live FAQ Search Script -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const yearEl = document.getElementById('year');
+            if (yearEl) yearEl.textContent = new Date().getFullYear();
+
+            const input = document.getElementById('faq-search-input');
+            const items = document.querySelectorAll('.dl-faq-item');
+
+            if (input) {
+                input.addEventListener('input', () => {
+                    const q = input.value.toLowerCase().trim();
+                    items.forEach(item => {
+                        const text = item.textContent.toLowerCase();
+                        if (text.includes(q)) item.style.display = 'block';
+                        else item.style.display = 'none';
+                    });
+                });
+            }
+        });
+    </script>
+</body>
+</html>
