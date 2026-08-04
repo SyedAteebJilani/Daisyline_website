@@ -777,6 +777,209 @@ document.addEventListener('DOMContentLoaded', () => {
     if (bestTrack) bestTrack.innerHTML = PRODUCTS_CATALOG.slice(3, 8).map(renderProductCardHTML).join('');
     if (mainShopGrid) mainShopGrid.innerHTML = PRODUCTS_CATALOG.map(renderProductCardHTML).join('');
 
+    
+    // ----------------- SPRINT 3 ADDITIONS -----------------
+    // 1. Featured Products (10 demo products)
+    const featuredTrack = Utils.$('#featured-track');
+    if (featuredTrack && PRODUCTS_CATALOG) {
+        let featuredProducts = PRODUCTS_CATALOG.slice(0, 10);
+        // Duplicate to ensure there are at least 8-10 if the array is small
+        if (featuredProducts.length < 8) {
+            featuredProducts = [...featuredProducts, ...featuredProducts].slice(0, 10);
+        }
+        featuredTrack.innerHTML = featuredProducts.map(renderProductCardHTML).join('');
+    }
+
+    // 2. Customer Reviews (6 demo reviews)
+    const testimonialSlider = Utils.$('#testimonial-slider');
+    if (testimonialSlider) {
+        const demoReviews = [
+            { name: 'Ayesha Khan', city: 'Karachi', rating: '★★★★★', text: 'Absolutely love the crochet blanket! So soft and the colors are exactly as shown.' },
+            { name: 'Fatima Ali', city: 'Lahore', rating: '★★★★★', text: 'The custom keychain is adorable. Beautiful craftsmanship and fast delivery.' },
+            { name: 'Zainab Qureshi', city: 'Islamabad', rating: '★★★★★', text: 'Bought the baby set for my niece and it is perfect. So gentle on her skin.' },
+            { name: 'Sana R.', city: 'Rawalpindi', rating: '★★★★☆', text: 'Beautiful tote bag. The stitching is very sturdy. Highly recommend DaisyLine!' },
+            { name: 'Hira S.', city: 'Multan', rating: '★★★★★', text: 'The sunflower bouquet is gorgeous and never dies! Looks beautiful on my desk.' },
+            { name: 'Nida W.', city: 'Peshawar', rating: '★★★★★', text: 'Very impressed with the quality of the crochet cardigan. Warm and cozy.' }
+        ];
+        
+        const renderReview = (r) => `
+            <div class="dl-testimonial-card">
+                <div class="dl-testimonial-card-inner">
+                    <div class="dl-testimonial-icon">❝</div>
+                    <div class="dl-testimonial-rating">${r.rating}</div>
+                    <p class="dl-testimonial-text">"${r.text}"</p>
+                    <div class="dl-testimonial-author">
+                        <strong>${r.name}</strong>
+                        <span>${r.city}</span>
+                    </div>
+                </div>
+            </div>
+        `;
+
+        const cardsHTML = demoReviews.map(renderReview).join('');
+        const dotsHTML = demoReviews.map((_, i) => `<button class="dl-test-dot ${i === 0 ? 'active' : ''}" data-index="${i}" aria-label="Go to slide ${i + 1}"></button>`).join('');
+
+        testimonialSlider.innerHTML = `
+            <div class="dl-testimonial-carousel">
+                <div class="dl-testimonial-track" id="testimonial-track">
+                    ${cardsHTML}
+                </div>
+                <button class="dl-test-nav prev" id="test-prev" aria-label="Previous Review">
+                    <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7"></path></svg>
+                </button>
+                <button class="dl-test-nav next" id="test-next" aria-label="Next Review">
+                    <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path></svg>
+                </button>
+            </div>
+            <div class="dl-test-dots-container" id="test-dots">
+                ${dotsHTML}
+            </div>
+        `;
+
+        // Carousel Logic
+        const track = Utils.$('#testimonial-track');
+        const dots = Utils.$$('.dl-test-dot', testimonialSlider);
+        const prevBtn = Utils.$('#test-prev');
+        const nextBtn = Utils.$('#test-next');
+        let currentIndex = 0;
+        let isDragging = false;
+        let startPos = 0;
+        let currentTranslate = 0;
+        let prevTranslate = 0;
+        let autoPlayInterval;
+
+        const updateCarousel = (index) => {
+            const cards = Utils.$$('.dl-testimonial-card', track);
+            if (!cards.length) return;
+            const cardWidth = cards[0].offsetWidth;
+            currentTranslate = -(index * cardWidth);
+            prevTranslate = currentTranslate;
+            track.style.transform = `translateX(${currentTranslate}px)`;
+            
+            dots.forEach(d => d.classList.remove('active'));
+            if (dots[index]) dots[index].classList.add('active');
+        };
+
+        const nextSlide = () => {
+            const visibleCards = window.innerWidth >= 1024 ? 3 : window.innerWidth >= 768 ? 2 : 1;
+            const maxIndex = demoReviews.length - visibleCards;
+            currentIndex = currentIndex >= maxIndex ? 0 : currentIndex + 1;
+            updateCarousel(currentIndex);
+        };
+
+        const prevSlide = () => {
+            const visibleCards = window.innerWidth >= 1024 ? 3 : window.innerWidth >= 768 ? 2 : 1;
+            const maxIndex = demoReviews.length - visibleCards;
+            currentIndex = currentIndex <= 0 ? maxIndex : currentIndex - 1;
+            updateCarousel(currentIndex);
+        };
+
+        const startAutoPlay = () => {
+            stopAutoPlay();
+            autoPlayInterval = setInterval(nextSlide, 4500);
+        };
+
+        const stopAutoPlay = () => clearInterval(autoPlayInterval);
+
+        nextBtn.addEventListener('click', () => { nextSlide(); startAutoPlay(); });
+        prevBtn.addEventListener('click', () => { prevSlide(); startAutoPlay(); });
+        
+        dots.forEach((dot, i) => {
+            dot.addEventListener('click', () => {
+                const visibleCards = window.innerWidth >= 1024 ? 3 : window.innerWidth >= 768 ? 2 : 1;
+                const maxIndex = demoReviews.length - visibleCards;
+                currentIndex = Math.min(i, maxIndex);
+                updateCarousel(currentIndex);
+                startAutoPlay();
+            });
+        });
+
+        testimonialSlider.addEventListener('mouseenter', stopAutoPlay);
+        testimonialSlider.addEventListener('mouseleave', startAutoPlay);
+
+        // Touch / Swipe Support
+        const getPositionX = (event) => event.type.includes('mouse') ? event.pageX : event.touches[0].clientX;
+        
+        const touchStart = (index) => (event) => {
+            isDragging = true;
+            startPos = getPositionX(event);
+            track.style.transition = 'none';
+            stopAutoPlay();
+        };
+
+        const touchMove = (event) => {
+            if (!isDragging) return;
+            const currentPosition = getPositionX(event);
+            const diff = currentPosition - startPos;
+            const cards = Utils.$$('.dl-testimonial-card', track);
+            const cardWidth = cards.length ? cards[0].offsetWidth : 0;
+            const visibleCards = window.innerWidth >= 1024 ? 3 : window.innerWidth >= 768 ? 2 : 1;
+            const maxTranslate = -((demoReviews.length - visibleCards) * cardWidth);
+            
+            let targetTranslate = prevTranslate + diff;
+            // Add resistance at edges
+            if (targetTranslate > 0) targetTranslate = diff * 0.3;
+            else if (targetTranslate < maxTranslate) targetTranslate = maxTranslate + (diff * 0.3);
+            
+            track.style.transform = `translateX(${targetTranslate}px)`;
+        };
+
+        const touchEnd = (event) => {
+            isDragging = false;
+            track.style.transition = 'transform 0.5s cubic-bezier(0.25, 0.8, 0.25, 1)';
+            const cards = Utils.$$('.dl-testimonial-card', track);
+            const cardWidth = cards.length ? cards[0].offsetWidth : 0;
+            const movedBy = track.style.transform.replace(/[^\d.-]/g, '') - prevTranslate;
+
+            if (movedBy < -100) nextSlide();
+            else if (movedBy > 100) prevSlide();
+            else updateCarousel(currentIndex); // Snap back
+
+            startAutoPlay();
+        };
+
+        track.addEventListener('touchstart', touchStart(currentIndex), { passive: true });
+        track.addEventListener('touchmove', touchMove, { passive: true });
+        track.addEventListener('touchend', touchEnd);
+        track.addEventListener('mousedown', touchStart(currentIndex));
+        track.addEventListener('mousemove', touchMove);
+        track.addEventListener('mouseup', touchEnd);
+        track.addEventListener('mouseleave', () => { if (isDragging) touchEnd(); });
+
+        window.addEventListener('resize', () => {
+            track.style.transition = 'none';
+            // Recalculate max index on resize
+            const visibleCards = window.innerWidth >= 1024 ? 3 : window.innerWidth >= 768 ? 2 : 1;
+            const maxIndex = demoReviews.length - visibleCards;
+            if (currentIndex > maxIndex) currentIndex = maxIndex;
+            updateCarousel(currentIndex);
+            setTimeout(() => track.style.transition = 'transform 0.5s cubic-bezier(0.25, 0.8, 0.25, 1)', 50);
+        });
+
+        // Init
+        updateCarousel(currentIndex);
+        startAutoPlay();
+    }
+
+    // 3. Instagram Feed (8 placeholder posts)
+    const instaTrack = Utils.$('#insta-track');
+    if (instaTrack) {
+        const instaPosts = Array(8).fill(0).map((_, i) => ({
+            id: i,
+            img: Utils.makeSvgBg(`Post ${i+1}`, '#F5EFE6', '#5A6B53', '📸')
+        }));
+        
+        const renderInsta = (p) => `
+            <a href="https://www.instagram.com/daisylinecrochet/" target="_blank" rel="noopener noreferrer" class="dl-insta-item dl-reveal">
+                <img src="${p.img}" alt="Instagram Post" loading="lazy" style="width: 100%; height: 100%; object-fit: cover; aspect-ratio: 1/1;">
+                <div class="dl-insta-overlay">
+                    <i class="ph ph-instagram-logo"></i>
+                </div>
+            </a>
+        `;
+        instaTrack.innerHTML = instaPosts.map(renderInsta).join('');
+    }
+
     // Scroll Reveal Observer
     const revealEls = Utils.$$('.dl-reveal');
     if (revealEls.length > 0) {
