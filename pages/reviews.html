@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Customer Reviews & Testimonials | Daisyline Crochet</title>
-    <meta name="description" content="Read authentic customer reviews and view photo feedback for Daisyline Crochet. Rated 4.9/5 for handmade Gajras, plushies, totes & custom gifts across Pakistan.">
+    <title>Customer Reviews - Daisyline Crochet</title>
+    <meta name="description" content="Shop our premium handcrafted crochet tote bag. Made with ultra-soft milk cotton yarn, custom lining, and personalized embroidered tags in Pakistan.">
     
     <!-- Google Fonts: Cormorant Garamond, Plus Jakarta Sans, Sacramento -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -40,7 +40,7 @@
 
     <!-- Global Styles & Scripts -->
     <link rel="stylesheet" href="../assets/css/homepage.css">
-    <script src="../assets/js/homepage.js" defer></script>
+    <script src="../assets/js/main.js" defer></script>
 </head>
 <body class="font-sans antialiased overflow-x-hidden selection:bg-brand-sage selection:text-white">
 
@@ -50,6 +50,7 @@
             <span class="dl-announcement-slide active">✨ Handmade Crochet Crafted with Love</span>
             <span class="dl-announcement-slide">🚚 Delivery Available Across Pakistan</span>
             <span class="dl-announcement-slide">🎁 Personalized Crochet Gifts Available</span>
+            <span class="dl-announcement-slide">🧶 Premium Quality Handmade Products</span>
         </div>
     </div>
 
@@ -58,170 +59,150 @@
         <div class="dl-header-container">
             <div class="dl-header-row">
                 <div class="dl-header-left">
-                    <button id="dl-mobile-menu-btn" class="dl-mobile-menu-btn" aria-label="Open Mobile Menu"><i class="ph ph-list"></i></button>
+                    <button id="dl-mobile-menu-btn" class="dl-mobile-menu-btn" aria-label="Open Mobile Menu">
+                        <i class="ph ph-list"></i>
+                    </button>
                     <a href="../index.html" class="dl-logo-link">
-                        <img src="../assets/images/logo.jpg" alt="Daisyline Logo" class="dl-logo-img">
+                        <img src="../assets/images/logo.jpg" alt="Daisyline Crochet Logo" class="dl-logo-img">
                         <span class="dl-logo-text">Daisyline.</span>
                     </a>
                 </div>
+
                 <nav class="dl-desktop-nav" aria-label="Main Navigation">
                     <ul class="dl-nav-list">
                         <li class="dl-nav-item"><a href="../index.html" class="dl-nav-link">Home</a></li>
-                        <li class="dl-nav-item"><a href="../shop.html" class="dl-nav-link">Shop</a></li>
+                        <li class="dl-nav-item"><a href="../shop.html" class="dl-nav-link active">Shop</a></li>
                         <li class="dl-nav-item"><a href="../pages/custom-orders.html" class="dl-nav-link">Custom Orders</a></li>
                         <li class="dl-nav-item"><a href="../pages/about_us.html" class="dl-nav-link">About Us</a></li>
-                        <li class="dl-nav-item"><a href="../pages/reviews.html" class="dl-nav-link active">Reviews</a></li>
+                        <li class="dl-nav-item"><a href="../pages/reviews.html" class="dl-nav-link">Reviews</a></li>
                         <li class="dl-nav-item"><a href="../pages/gallery.html" class="dl-nav-link">Gallery</a></li>
                         <li class="dl-nav-item"><a href="../pages/faq.html" class="dl-nav-link">FAQs</a></li>
                         <li class="dl-nav-item"><a href="../pages/how-to-order.html" class="dl-nav-link">Contact</a></li>
                     </ul>
                 </nav>
+
                 <div class="dl-header-actions">
-                    <button class="dl-action-icon dl-search-trigger" id="dl-search-btn"><i class="ph ph-magnifying-glass"></i></button>
-                    <a href="javascript:void(0)" class="dl-action-icon dl-cart-icon"><i class="ph ph-shopping-bag"></i><span class="dl-badge dl-badge-cart">0</span></a>
+                    <button class="dl-action-icon dl-search-trigger" id="dl-search-btn" aria-label="Search"><i class="ph ph-magnifying-glass"></i></button>
+                    <div class="dl-desktop-search-bar" id="dl-desktop-search-bar">
+                        <input type="text" placeholder="Search handmade crochet..." class="dl-search-input" id="dl-search-input">
+                        <button class="dl-search-close" id="dl-search-close"><i class="ph ph-x"></i></button>
+                    </div>
+                    <a href="javascript:void(0)" class="dl-action-icon dl-cart-icon" aria-label="Shopping Cart"><i class="ph ph-shopping-bag"></i><span class="dl-badge dl-badge-cart">0</span></a>
                 </div>
             </div>
         </div>
     </header>
 
-    <!-- MOBILE DRAWER -->
+    <!-- MOBILE DRAWER OVERLAY & SIDEBAR -->
     <div class="dl-drawer-overlay" id="dl-drawer-overlay"></div>
-    <aside class="dl-mobile-drawer" id="dl-mobile-drawer">
+    <aside class="dl-mobile-drawer" id="dl-mobile-drawer" aria-label="Mobile Navigation Drawer">
         <div class="dl-drawer-header">
-            <a href="../index.html" class="dl-logo-link"><span class="dl-logo-text">Daisyline.</span></a>
-            <button class="dl-drawer-close-btn" id="dl-drawer-close-btn"><i class="ph ph-x"></i></button>
+            <a href="../index.html" class="dl-logo-link">
+                <img src="../assets/images/logo.jpg" alt="Daisyline Logo" class="dl-logo-img">
+                <span class="dl-logo-text">Daisyline.</span>
+            </a>
+            <button class="dl-drawer-close-btn" id="dl-drawer-close-btn" aria-label="Close Menu"><i class="ph ph-x"></i></button>
         </div>
         <div class="dl-drawer-body">
             <ul class="dl-mobile-nav-list">
                 <li><a href="../index.html" class="dl-mobile-nav-link">Home</a></li>
-                <li><a href="../shop.html" class="dl-mobile-nav-link">Shop</a></li>
+                <li class="dl-mobile-accordion-item">
+                    <button class="dl-mobile-accordion-btn" id="dl-shop-acc-btn"><span>Shop</span><i class="ph ph-caret-down dl-acc-icon"></i></button>
+                    <div class="dl-mobile-accordion-content" id="dl-shop-acc-content">
+                        <a href="../shop.html" class="dl-mobile-sub-heading">All Products</a>
+                        <a href="../categories/bags.html" class="dl-mobile-sub-link">👜 Bags</a>
+                    </div>
+                </li>
                 <li><a href="../pages/custom-orders.html" class="dl-mobile-nav-link">Custom Orders</a></li>
-                <li><a href="../pages/reviews.html" class="dl-mobile-nav-link active">Reviews</a></li>
-                <li><a href="../pages/gallery.html" class="dl-mobile-nav-link">Gallery</a></li>
-                <li><a href="../pages/faq.html" class="dl-mobile-nav-link">FAQs</a></li>
+                <li><a href="../pages/about_us.html" class="dl-mobile-nav-link">About Us</a></li>
                 <li><a href="../pages/how-to-order.html" class="dl-mobile-nav-link">Contact</a></li>
             </ul>
         </div>
     </aside>
 
-    <!-- REVIEWS CONTENT -->
-    <main class="dl-main">
-        <div class="dl-container">
-            
-            <nav class="dl-breadcrumb">
-                <a href="./index.html">Home</a>
-                <i class="ph ph-caret-right text-xs text-brand-muted"></i>
-                <span class="dl-crumb-current">Customer Reviews</span>
-            </nav>
-
-            <!-- Hero & Overall Rating -->
-            <section class="dl-shop-hero dl-reveal">
-                <span class="dl-tagline">Real Feedback &amp; Love</span>
-                <h1 class="dl-shop-hero-title">Loved by Our Customers 💕</h1>
-                <div class="flex items-center justify-center gap-3 mt-4">
-                    <span class="text-3xl text-amber-400 font-bold">★★★★★</span>
-                    <span class="text-2xl font-bold text-brand-text">4.9 / 5.0</span>
-                </div>
-                <p class="text-xs text-brand-muted mt-1">Based on 340+ verified customer orders across Pakistan</p>
-            </section>
-
-            <!-- Featured Testimonials -->
-            <section class="dl-section dl-reveal">
-                <div class="dl-header-group">
-                    <span class="dl-tagline">Spotlight</span>
-                    <h2 class="dl-section-title">Featured Reviews</h2>
-                </div>
-
-                <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-                    <div class="bg-white rounded-3xl p-6 border border-brand-border shadow-sm">
-                        <div class="text-amber-400 text-lg mb-2">★★★★★</div>
-                        <p class="text-xs text-brand-muted italic mb-4 leading-relaxed">
-                            "I ordered crochet Gajras and bridal bouquets for my Nikkah. Everyone was stunned by how delicate and realistic they looked. They will stay fresh forever!"
-                        </p>
-                        <div class="flex items-center gap-3">
-                            <div class="w-10 h-10 rounded-full bg-brand-blush text-brand-sage flex items-center justify-center font-bold text-lg">👰🏻</div>
-                            <div>
-                                <h4 class="font-heading text-sm font-bold text-brand-text">Sara Malik</h4>
-                                <span class="text-[10px] text-brand-muted">Karachi &bull; Bridal Gajras</span>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="bg-white rounded-3xl p-6 border border-brand-border shadow-sm">
-                        <div class="text-amber-400 text-lg mb-2">★★★★★</div>
-                        <p class="text-xs text-brand-muted italic mb-4 leading-relaxed">
-                            "The craftsmanship is unbelievable! I ordered a custom cardigan and it feels like a warm, loving hug. Beautiful gift packaging and quick delivery!"
-                        </p>
-                        <div class="flex items-center gap-3">
-                            <div class="w-10 h-10 rounded-full bg-brand-peach text-brand-olive flex items-center justify-center font-bold text-lg">👩🏻</div>
-                            <div>
-                                <h4 class="font-heading text-sm font-bold text-brand-text">Ayesha Khan</h4>
-                                <span class="text-[10px] text-brand-muted">Lahore &bull; Custom Wearables</span>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="bg-white rounded-3xl p-6 border border-brand-border shadow-sm">
-                        <div class="text-amber-400 text-lg mb-2">★★★★★</div>
-                        <p class="text-xs text-brand-muted italic mb-4 leading-relaxed">
-                            "DaisyLine made the cutest custom plushie for my daughter's birthday. Super soft yarn, clean stitches, and great communication!"
-                        </p>
-                        <div class="flex items-center gap-3">
-                            <div class="w-10 h-10 rounded-full bg-brand-ivory text-brand-sage flex items-center justify-center font-bold text-lg">👩🏽</div>
-                            <div>
-                                <h4 class="font-heading text-sm font-bold text-brand-text">Zainab Rehman</h4>
-                                <span class="text-[10px] text-brand-muted">Islamabad &bull; Custom Plushies</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </section>
-
-            <!-- Customer Photo Reviews Grid -->
-            <section class="dl-section dl-bg-cream rounded-3xl p-8 border border-brand-border mb-16 dl-reveal">
-                <div class="dl-header-group">
-                    <span class="dl-tagline">Photo Gallery</span>
-                    <h2 class="dl-section-title">Customer Photo Reviews</h2>
-                </div>
-
-                <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
-                    <div class="bg-white p-2 rounded-2xl border border-brand-border text-center shadow-xs">
-                        <div class="h-44 rounded-xl bg-brand-blush flex flex-col items-center justify-center text-4xl mb-2">🌸</div>
-                        <span class="text-xs font-bold text-brand-text block">Floral Gajras</span>
-                        <span class="text-[10px] text-brand-muted">&quot;Loved it! 💕&quot; - Hira</span>
-                    </div>
-                    <div class="bg-white p-2 rounded-2xl border border-brand-border text-center shadow-xs">
-                        <div class="h-44 rounded-xl bg-brand-peach flex flex-col items-center justify-center text-4xl mb-2">👜</div>
-                        <span class="text-xs font-bold text-brand-text block">Handcrafted Tote</span>
-                        <span class="text-[10px] text-brand-muted">&quot;So spacious!&quot; - Maham</span>
-                    </div>
-                    <div class="bg-white p-2 rounded-2xl border border-brand-border text-center shadow-xs">
-                        <div class="h-44 rounded-xl bg-brand-ivory flex flex-col items-center justify-center text-4xl mb-2">🧸</div>
-                        <span class="text-xs font-bold text-brand-text block">Velvet Plushie</span>
-                        <span class="text-[10px] text-brand-muted">&quot;My kid loves it!&quot; - Sana</span>
-                    </div>
-                    <div class="bg-white p-2 rounded-2xl border border-brand-border text-center shadow-xs">
-                        <div class="h-44 rounded-xl bg-brand-blush flex flex-col items-center justify-center text-4xl mb-2">💐</div>
-                        <span class="text-xs font-bold text-brand-text block">Flower Bouquet</span>
-                        <span class="text-[10px] text-brand-muted">&quot;Forever flowers!&quot; - Fatima</span>
-                    </div>
-                </div>
-            </section>
-
-            <!-- Call to Action -->
-            <section class="dl-section text-center dl-reveal">
-                <span class="dl-tagline">Ready to Order?</span>
-                <h2 class="dl-section-title mb-4">Experience DaisyLine Quality Today</h2>
-                <div class="flex flex-wrap gap-4 justify-center">
-                    <a href="./shop.html" class="dl-btn dl-btn-primary">Shop Ready Catalog</a>
-                    <a href="./custom-orders.html" class="dl-btn dl-btn-dark">Start Custom Order</a>
-                </div>
-            </section>
-
+    <!-- MOBILE SEARCH MODAL -->
+    <div class="dl-search-modal" id="dl-search-modal">
+        <div class="dl-search-modal-box">
+            <div class="dl-search-modal-header">
+                <span class="dl-search-modal-title">Search DaisyLine</span>
+                <button class="dl-search-modal-close" id="dl-search-modal-close"><i class="ph ph-x"></i></button>
+            </div>
+            <div class="dl-search-modal-body">
+                <input type="text" placeholder="Search handmade crochet gifts..." class="dl-search-modal-input">
+            </div>
         </div>
-    </main>
+    </div>
 
-    <!-- FOOTER -->
+    <!-- MAIN PRODUCT DETAIL PAGE CONTENT -->
+    <style>
+        .dl-premium-pdp-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; max-width: 1200px; margin: 0 auto; }
+        .dl-pdp-gallery { display: flex; flex-direction: column; gap: 20px; }
+        .dl-pdp-main-img-box { border-radius: 24px; overflow: hidden; background: var(--dl-cream, #FAF8F5); aspect-ratio: 1; display: flex; align-items: center; justify-content: center; }
+        .dl-pdp-main-img-box img { width: 100%; height: 100%; object-fit: cover; transition: opacity 0.4s ease-in-out; }
+        .dl-pdp-thumbs { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+        .dl-pdp-thumb-item { border-radius: 16px; overflow: hidden; cursor: pointer; border: 2px solid transparent; transition: all 0.3s ease; aspect-ratio: 1; opacity: 0.7; }
+        .dl-pdp-thumb-item img { width: 100%; height: 100%; object-fit: cover; }
+        .dl-pdp-thumb-item:hover, .dl-pdp-thumb-item.active { opacity: 1; }
+        .dl-pdp-thumb-item.active { border-color: var(--dl-sage, #8fa886); }
+        .dl-pdp-info { display: flex; flex-direction: column; gap: 24px; }
+        .dl-status-badge { display: inline-flex; align-items: center; gap: 6px; padding: 6px 12px; background: var(--dl-sage, #8fa886); color: #fff; border-radius: 50px; font-size: 13px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px; }
+        .dl-pdp-title-new { font-family: var(--dl-font-heading, "Cormorant Garamond"); font-size: 42px; font-weight: 600; color: var(--dl-text, #282421); line-height: 1.1; margin: 0; }
+        .dl-pdp-price-new { font-size: 28px; font-weight: 600; color: var(--dl-sage, #8fa886); }
+        .dl-pdp-description { font-size: 17px; line-height: 1.7; color: var(--dl-muted, #787068); }
+        .dl-pdp-quantity label { display: block; font-size: 14px; font-weight: 600; color: var(--dl-text, #282421); margin-bottom: 8px; text-transform: uppercase; letter-spacing: 1px; }
+        .dl-qty-controls { display: inline-flex; align-items: center; border: 1px solid var(--dl-beige, #E6DED3); border-radius: 50px; padding: 4px; background: #fff; }
+        .dl-qty-btn-new { width: 40px; height: 40px; display: flex; align-items: center; justify-content: center; background: var(--dl-cream, #FAF8F5); border: none; border-radius: 50%; cursor: pointer; font-size: 18px; color: var(--dl-text, #282421); transition: background 0.2s; }
+        .dl-qty-btn-new:hover { background: var(--dl-beige, #E6DED3); }
+        .dl-qty-controls input { width: 50px; text-align: center; font-size: 16px; font-weight: 600; border: none; background: transparent; outline: none; color: var(--dl-text, #282421); }
+        .dl-pdp-actions { display: flex; gap: 16px; margin-top: 8px; }
+        .dl-btn-premium { flex: 1; display: inline-flex; align-items: center; justify-content: center; gap: 10px; padding: 18px 24px; border-radius: 50px; font-size: 16px; font-weight: 600; cursor: pointer; transition: all 0.3s ease; text-transform: uppercase; letter-spacing: 0.5px; border: none; }
+        .dl-btn-cart { background: var(--dl-cream, #FAF8F5); color: var(--dl-text, #282421); border: 1px solid var(--dl-beige, #E6DED3); }
+        .dl-btn-cart:hover { background: var(--dl-beige, #E6DED3); transform: translateY(-2px); }
+        .dl-btn-buy { background: var(--dl-text, #282421); color: #fff; }
+        .dl-btn-buy:hover { background: var(--dl-sage, #8fa886); transform: translateY(-2px); box-shadow: 0 10px 20px rgba(143, 168, 134, 0.3); }
+        .btn-loading { position: relative; color: transparent !important; pointer-events: none; }
+        .btn-loading::after { content: ''; position: absolute; width: 20px; height: 20px; border: 2px solid rgba(255,255,255,0.3); border-top-color: currentColor; border-radius: 50%; animation: spin 0.8s linear infinite; }
+        .dl-btn-cart.btn-loading::after { border-top-color: var(--dl-text, #282421); }
+        .dl-btn-buy.btn-loading::after { border-top-color: #fff; }
+        @keyframes spin { to { transform: rotate(360deg); } }
+        .dl-pdp-delivery { background: #fff; border: 1px solid var(--dl-beige, #E6DED3); border-radius: 20px; padding: 24px; display: flex; flex-direction: column; gap: 16px; }
+        .dl-delivery-item { display: flex; align-items: flex-start; gap: 16px; }
+        .dl-delivery-item i { font-size: 24px; color: var(--dl-sage, #8fa886); }
+        .dl-delivery-item div { display: flex; flex-direction: column; gap: 4px; }
+        .dl-delivery-item strong { font-size: 15px; color: var(--dl-text, #282421); }
+        .dl-delivery-item span { font-size: 14px; color: var(--dl-muted, #787068); }
+        .dl-pdp-highlights { display: flex; flex-wrap: wrap; gap: 12px; }
+        .dl-highlight-chip { display: inline-flex; align-items: center; gap: 6px; padding: 8px 16px; background: var(--dl-cream, #FAF8F5); border: 1px solid var(--dl-beige, #E6DED3); border-radius: 50px; font-size: 14px; color: var(--dl-text, #282421); font-weight: 500; }
+        .dl-highlight-chip i { color: var(--dl-sage, #8fa886); }
+        .dl-pdp-care-card { background: var(--dl-ivory, #F5EFE6); border-radius: 20px; padding: 24px; }
+        .dl-pdp-care-card h3 { font-family: var(--dl-font-heading, "Cormorant Garamond"); font-size: 24px; margin: 0 0 16px 0; display: flex; align-items: center; gap: 8px; color: var(--dl-text, #282421); }
+        .dl-pdp-care-card ul { list-style: none; padding: 0; margin: 0; display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+        .dl-pdp-care-card li { display: flex; align-items: center; gap: 8px; font-size: 15px; color: var(--dl-muted, #787068); }
+        @media (max-width: 768px) { .dl-premium-pdp-grid { grid-template-columns: 1fr; gap: 40px; } .dl-pdp-title-new { font-size: 32px; } .dl-pdp-actions { flex-direction: column; } .dl-pdp-care-card ul { grid-template-columns: 1fr; } }
+    </style>
+
+
+
+<main class="dl-main" style="padding: 60px 0;">
+    <div class="dl-container">
+        
+        <div style="background: var(--dl-ivory); border-radius: 20px; padding: 40px; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; margin-bottom: 50px;">
+            <h1 style="font-family: var(--dl-font-heading); font-size: 48px; color: var(--dl-text); margin-bottom: 10px;">Our Customer Love</h1>
+            <div style="font-size: 42px; color: #f59e0b; margin-bottom: 15px;">★★★★★</div>
+            <div style="font-size: 28px; font-weight: 600; font-family: var(--dl-font-heading); margin-bottom: 5px;">4.9 / 5 Average Rating</div>
+            <p style="color: var(--dl-muted); font-size: 16px;">Based on 250+ Happy Customers across Pakistan</p>
+        </div>
+        
+        <div id="reviews-grid" style="display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 30px;">
+            <!-- Reviews injected here -->
+        </div>
+    </div>
+</main>
+
+
+    
+
+    <!-- 18. GLOBAL FOOTER -->
         <footer class="bg-brand-text text-white pt-16 md:pt-20 pb-12 border-t border-brand-beige/20 relative">
         <div class="max-w-[90rem] mx-auto px-4 sm:px-8 lg:px-12">
             <div class="grid grid-cols-1 md:grid-cols-3 gap-10 md:gap-12 lg:gap-16 mb-16 text-left">
@@ -294,5 +275,40 @@
             if (yearEl) yearEl.textContent = new Date().getFullYear();
         });
     </script>
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+    const grid = document.getElementById('reviews-grid');
+    if (!grid) return;
+    
+    const reviews = [
+        { name: 'Ayesha Khan', city: 'Karachi', text: 'Absolutely love the crochet blanket! So soft and the colors are exactly as shown.', product: 'Cozy Knit Cardigan' },
+        { name: 'Fatima Ali', city: 'Lahore', text: 'The custom keychain is adorable. Beautiful craftsmanship and fast delivery.', product: 'Daisy Charm Keychain' },
+        { name: 'Zainab Qureshi', city: 'Islamabad', text: 'Bought the baby set for my niece and it is perfect. So gentle on her skin.', product: 'Baby Gift Set' },
+        { name: 'Sana R.', city: 'Rawalpindi', text: 'Beautiful tote bag. The stitching is very sturdy. Highly recommend DaisyLine!', product: 'Handwoven Tote Bag' },
+        { name: 'Hira S.', city: 'Multan', text: 'The sunflower bouquet is gorgeous and never dies! Looks beautiful on my desk.', product: 'Sunflower Bouquet' },
+        { name: 'Nida W.', city: 'Peshawar', text: 'Very impressed with the quality of the crochet cardigan. Warm and cozy.', product: 'Cozy Knit Cardigan' },
+        { name: 'Sarah B.', city: 'Quetta', text: 'These coasters brightened up my whole dining area. So pretty!', product: 'Floral Coaster Set' },
+        { name: 'Kiran M.', city: 'Faisalabad', text: 'Got the gajra for a wedding and received so many compliments. Truly unique.', product: 'Blush Rose Gajra' },
+        { name: 'Sadia T.', city: 'Sialkot', text: 'The plushie is so incredibly soft. My daughter sleeps with it every night.', product: 'Velvet Bear Plushie' },
+        { name: 'Maha L.', city: 'Gujranwala', text: 'Great packaging and premium feel. Worth every penny.', product: 'Pastel Hair Clips' },
+        { name: 'Zara N.', city: 'Karachi', text: 'Ordered a custom size and it fits perfectly. Customer service is amazing.', product: 'Custom Order' },
+        { name: 'Anum K.', city: 'Lahore', text: 'The details on the crochet flowers are stunning. I will definitely be back for more.', product: 'Sunflower Bouquet' }
+    ];
+    
+    grid.innerHTML = reviews.map(r => `
+        <div style="background: #fff; padding: 30px; border-radius: 16px; border: 1px solid var(--dl-beige); box-shadow: 0 4px 15px rgba(0,0,0,0.02);">
+            <div style="color: #f59e0b; font-size: 18px; margin-bottom: 15px;">★★★★★</div>
+            <p style="font-size: 16px; color: var(--dl-text); line-height: 1.6; margin-bottom: 20px;">"${r.text}"</p>
+            <div style="display: flex; flex-direction: column; border-top: 1px solid var(--dl-beige); padding-top: 15px;">
+                <strong style="font-size: 16px;">${r.name}</strong>
+                <span style="font-size: 13px; color: var(--dl-muted);">${r.city}</span>
+                <span style="font-size: 12px; background: var(--dl-cream); padding: 4px 8px; border-radius: 4px; display: inline-block; margin-top: 8px; width: fit-content;">Purchased: ${r.product}</span>
+            </div>
+        </div>
+    `).join('');
+});
+</script>
+
 </body>
 </html>

@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Handcrafted Gallery | Daisyline Crochet</title>
-    <meta name="description" content="Explore our photo gallery of handmade crochet creations. Gajras, tote bags, flower bouquets, plush toys, cardigans & custom boutique gifts.">
+    <title>Gallery - Daisyline Crochet</title>
+    <meta name="description" content="Shop our premium handcrafted crochet tote bag. Made with ultra-soft milk cotton yarn, custom lining, and personalized embroidered tags in Pakistan.">
     
     <!-- Google Fonts: Cormorant Garamond, Plus Jakarta Sans, Sacramento -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -40,7 +40,7 @@
 
     <!-- Global Styles & Scripts -->
     <link rel="stylesheet" href="../assets/css/homepage.css">
-    <script src="../assets/js/homepage.js" defer></script>
+    <script src="../assets/js/main.js" defer></script>
 </head>
 <body class="font-sans antialiased overflow-x-hidden selection:bg-brand-sage selection:text-white">
 
@@ -50,6 +50,7 @@
             <span class="dl-announcement-slide active">✨ Handmade Crochet Crafted with Love</span>
             <span class="dl-announcement-slide">🚚 Delivery Available Across Pakistan</span>
             <span class="dl-announcement-slide">🎁 Personalized Crochet Gifts Available</span>
+            <span class="dl-announcement-slide">🧶 Premium Quality Handmade Products</span>
         </div>
     </div>
 
@@ -58,162 +59,162 @@
         <div class="dl-header-container">
             <div class="dl-header-row">
                 <div class="dl-header-left">
-                    <button id="dl-mobile-menu-btn" class="dl-mobile-menu-btn" aria-label="Open Mobile Menu"><i class="ph ph-list"></i></button>
+                    <button id="dl-mobile-menu-btn" class="dl-mobile-menu-btn" aria-label="Open Mobile Menu">
+                        <i class="ph ph-list"></i>
+                    </button>
                     <a href="../index.html" class="dl-logo-link">
-                        <img src="../assets/images/logo.jpg" alt="Daisyline Logo" class="dl-logo-img">
+                        <img src="../assets/images/logo.jpg" alt="Daisyline Crochet Logo" class="dl-logo-img">
                         <span class="dl-logo-text">Daisyline.</span>
                     </a>
                 </div>
+
                 <nav class="dl-desktop-nav" aria-label="Main Navigation">
                     <ul class="dl-nav-list">
                         <li class="dl-nav-item"><a href="../index.html" class="dl-nav-link">Home</a></li>
-                        <li class="dl-nav-item"><a href="../shop.html" class="dl-nav-link">Shop</a></li>
+                        <li class="dl-nav-item"><a href="../shop.html" class="dl-nav-link active">Shop</a></li>
                         <li class="dl-nav-item"><a href="../pages/custom-orders.html" class="dl-nav-link">Custom Orders</a></li>
                         <li class="dl-nav-item"><a href="../pages/about_us.html" class="dl-nav-link">About Us</a></li>
                         <li class="dl-nav-item"><a href="../pages/reviews.html" class="dl-nav-link">Reviews</a></li>
-                        <li class="dl-nav-item"><a href="../pages/gallery.html" class="dl-nav-link active">Gallery</a></li>
+                        <li class="dl-nav-item"><a href="../pages/gallery.html" class="dl-nav-link">Gallery</a></li>
                         <li class="dl-nav-item"><a href="../pages/faq.html" class="dl-nav-link">FAQs</a></li>
                         <li class="dl-nav-item"><a href="../pages/how-to-order.html" class="dl-nav-link">Contact</a></li>
                     </ul>
                 </nav>
+
                 <div class="dl-header-actions">
-                    <button class="dl-action-icon dl-search-trigger" id="dl-search-btn"><i class="ph ph-magnifying-glass"></i></button>
-                    <a href="javascript:void(0)" class="dl-action-icon dl-cart-icon"><i class="ph ph-shopping-bag"></i><span class="dl-badge dl-badge-cart">0</span></a>
+                    <button class="dl-action-icon dl-search-trigger" id="dl-search-btn" aria-label="Search"><i class="ph ph-magnifying-glass"></i></button>
+                    <div class="dl-desktop-search-bar" id="dl-desktop-search-bar">
+                        <input type="text" placeholder="Search handmade crochet..." class="dl-search-input" id="dl-search-input">
+                        <button class="dl-search-close" id="dl-search-close"><i class="ph ph-x"></i></button>
+                    </div>
+                    <a href="javascript:void(0)" class="dl-action-icon dl-cart-icon" aria-label="Shopping Cart"><i class="ph ph-shopping-bag"></i><span class="dl-badge dl-badge-cart">0</span></a>
                 </div>
             </div>
         </div>
     </header>
 
-    <!-- MOBILE DRAWER -->
+    <!-- MOBILE DRAWER OVERLAY & SIDEBAR -->
     <div class="dl-drawer-overlay" id="dl-drawer-overlay"></div>
-    <aside class="dl-mobile-drawer" id="dl-mobile-drawer">
+    <aside class="dl-mobile-drawer" id="dl-mobile-drawer" aria-label="Mobile Navigation Drawer">
         <div class="dl-drawer-header">
-            <a href="../index.html" class="dl-logo-link"><span class="dl-logo-text">Daisyline.</span></a>
-            <button class="dl-drawer-close-btn" id="dl-drawer-close-btn"><i class="ph ph-x"></i></button>
+            <a href="../index.html" class="dl-logo-link">
+                <img src="../assets/images/logo.jpg" alt="Daisyline Logo" class="dl-logo-img">
+                <span class="dl-logo-text">Daisyline.</span>
+            </a>
+            <button class="dl-drawer-close-btn" id="dl-drawer-close-btn" aria-label="Close Menu"><i class="ph ph-x"></i></button>
         </div>
         <div class="dl-drawer-body">
             <ul class="dl-mobile-nav-list">
                 <li><a href="../index.html" class="dl-mobile-nav-link">Home</a></li>
-                <li><a href="../shop.html" class="dl-mobile-nav-link">Shop</a></li>
+                <li class="dl-mobile-accordion-item">
+                    <button class="dl-mobile-accordion-btn" id="dl-shop-acc-btn"><span>Shop</span><i class="ph ph-caret-down dl-acc-icon"></i></button>
+                    <div class="dl-mobile-accordion-content" id="dl-shop-acc-content">
+                        <a href="../shop.html" class="dl-mobile-sub-heading">All Products</a>
+                        <a href="../categories/bags.html" class="dl-mobile-sub-link">👜 Bags</a>
+                    </div>
+                </li>
                 <li><a href="../pages/custom-orders.html" class="dl-mobile-nav-link">Custom Orders</a></li>
-                <li><a href="../pages/gallery.html" class="dl-mobile-nav-link active">Gallery</a></li>
-                <li><a href="../pages/faq.html" class="dl-mobile-nav-link">FAQs</a></li>
+                <li><a href="../pages/about_us.html" class="dl-mobile-nav-link">About Us</a></li>
                 <li><a href="../pages/how-to-order.html" class="dl-mobile-nav-link">Contact</a></li>
             </ul>
         </div>
     </aside>
 
-    <!-- GALLERY CONTENT -->
-    <main class="dl-main">
-        <div class="dl-container">
-            
-            <nav class="dl-breadcrumb">
-                <a href="./index.html">Home</a>
-                <i class="ph ph-caret-right text-xs text-brand-muted"></i>
-                <span class="dl-crumb-current">Handcrafted Gallery</span>
-            </nav>
-
-            <!-- Hero Section -->
-            <section class="dl-shop-hero dl-reveal">
-                <span class="dl-tagline">Visual Showcase</span>
-                <h1 class="dl-shop-hero-title">Handcrafted Crochet Gallery</h1>
-                <p class="dl-shop-hero-sub">Explore our portfolio of slow-made crochet designs created in Pakistan.</p>
-            </section>
-
-            <!-- Category Filter Pills (UI Filter) -->
-            <div class="flex flex-wrap gap-2 justify-center mb-10 dl-reveal">
-                <button class="px-4 py-2 rounded-full bg-brand-sage text-white text-xs font-semibold gallery-filter active" data-cat="all">All Items</button>
-                <button class="px-4 py-2 rounded-full bg-white border border-brand-border text-brand-text text-xs font-semibold hover:border-brand-sage gallery-filter" data-cat="gajras">🌸 Gajras</button>
-                <button class="px-4 py-2 rounded-full bg-white border border-brand-border text-brand-text text-xs font-semibold hover:border-brand-sage gallery-filter" data-cat="bags">👜 Bags</button>
-                <button class="px-4 py-2 rounded-full bg-white border border-brand-border text-brand-text text-xs font-semibold hover:border-brand-sage gallery-filter" data-cat="bouquets">💐 Bouquets</button>
-                <button class="px-4 py-2 rounded-full bg-white border border-brand-border text-brand-text text-xs font-semibold hover:border-brand-sage gallery-filter" data-cat="plushies">🧸 Plushies</button>
-                <button class="px-4 py-2 rounded-full bg-white border border-brand-border text-brand-text text-xs font-semibold hover:border-brand-sage gallery-filter" data-cat="wearables">👕 Wearables</button>
+    <!-- MOBILE SEARCH MODAL -->
+    <div class="dl-search-modal" id="dl-search-modal">
+        <div class="dl-search-modal-box">
+            <div class="dl-search-modal-header">
+                <span class="dl-search-modal-title">Search DaisyLine</span>
+                <button class="dl-search-modal-close" id="dl-search-modal-close"><i class="ph ph-x"></i></button>
             </div>
-
-            <!-- Responsive Gallery Grid (4-col Desktop / 3-col Tablet / 2-col Mobile) -->
-            <section class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 mb-16 dl-reveal" id="gallery-grid">
-                
-                <div class="group relative rounded-2xl overflow-hidden cursor-pointer h-64 border border-brand-border bg-brand-blush flex items-center justify-center text-5xl gallery-item" data-title="Blush Rose Gajra" data-cat="gajras" data-emoji="🌸">
-                    🌸
-                    <div class="absolute inset-0 bg-brand-text/60 opacity-0 group-hover:opacity-100 transition-opacity flex flex-col justify-end p-4 text-white">
-                        <span class="font-heading text-lg font-bold">Blush Rose Gajra</span>
-                        <span class="text-xs text-brand-beige">Gajras &bull; Handcrafted</span>
-                    </div>
-                </div>
-
-                <div class="group relative rounded-2xl overflow-hidden cursor-pointer h-64 border border-brand-border bg-brand-peach flex items-center justify-center text-5xl gallery-item" data-title="Sunflower Bouquet" data-cat="bouquets" data-emoji="🌻">
-                    🌻
-                    <div class="absolute inset-0 bg-brand-text/60 opacity-0 group-hover:opacity-100 transition-opacity flex flex-col justify-end p-4 text-white">
-                        <span class="font-heading text-lg font-bold">Sunflower Bouquet</span>
-                        <span class="text-xs text-brand-beige">Bouquets &bull; Everlasting</span>
-                    </div>
-                </div>
-
-                <div class="group relative rounded-2xl overflow-hidden cursor-pointer h-64 border border-brand-border bg-brand-ivory flex items-center justify-center text-5xl gallery-item" data-title="Handwoven Tote Bag" data-cat="bags" data-emoji="👜">
-                    👜
-                    <div class="absolute inset-0 bg-brand-text/60 opacity-0 group-hover:opacity-100 transition-opacity flex flex-col justify-end p-4 text-white">
-                        <span class="font-heading text-lg font-bold">Handwoven Tote Bag</span>
-                        <span class="text-xs text-brand-beige">Bags &bull; Milk Cotton</span>
-                    </div>
-                </div>
-
-                <div class="group relative rounded-2xl overflow-hidden cursor-pointer h-64 border border-brand-border bg-brand-cream flex items-center justify-center text-5xl gallery-item" data-title="Velvet Bear Plushie" data-cat="plushies" data-emoji="🧸">
-                    🧸
-                    <div class="absolute inset-0 bg-brand-text/60 opacity-0 group-hover:opacity-100 transition-opacity flex flex-col justify-end p-4 text-white">
-                        <span class="font-heading text-lg font-bold">Velvet Bear Plushie</span>
-                        <span class="text-xs text-brand-beige">Plushies &bull; Soft Velvet</span>
-                    </div>
-                </div>
-
-                <div class="group relative rounded-2xl overflow-hidden cursor-pointer h-64 border border-brand-border bg-brand-blush flex items-center justify-center text-5xl gallery-item" data-title="Cozy Knit Cardigan" data-cat="wearables" data-emoji="🧥">
-                    🧥
-                    <div class="absolute inset-0 bg-brand-text/60 opacity-0 group-hover:opacity-100 transition-opacity flex flex-col justify-end p-4 text-white">
-                        <span class="font-heading text-lg font-bold">Cozy Knit Cardigan</span>
-                        <span class="text-xs text-brand-beige">Wearables &bull; Granny Square</span>
-                    </div>
-                </div>
-
-                <div class="group relative rounded-2xl overflow-hidden cursor-pointer h-64 border border-brand-border bg-brand-peach flex items-center justify-center text-5xl gallery-item" data-title="Daisy Keychain" data-cat="keychains" data-emoji="🌼">
-                    🌼
-                    <div class="absolute inset-0 bg-brand-text/60 opacity-0 group-hover:opacity-100 transition-opacity flex flex-col justify-end p-4 text-white">
-                        <span class="font-heading text-lg font-bold">Daisy Charm Keychain</span>
-                        <span class="text-xs text-brand-beige">Keychains &bull; Bag Charm</span>
-                    </div>
-                </div>
-
-                <div class="group relative rounded-2xl overflow-hidden cursor-pointer h-64 border border-brand-border bg-brand-ivory flex items-center justify-center text-5xl gallery-item" data-title="Tulip Bouquet" data-cat="bouquets" data-emoji="🌷">
-                    🌷
-                    <div class="absolute inset-0 bg-brand-text/60 opacity-0 group-hover:opacity-100 transition-opacity flex flex-col justify-end p-4 text-white">
-                        <span class="font-heading text-lg font-bold">Tulip Bouquet</span>
-                        <span class="text-xs text-brand-beige">Bouquets &bull; Handmade</span>
-                    </div>
-                </div>
-
-                <div class="group relative rounded-2xl overflow-hidden cursor-pointer h-64 border border-brand-border bg-brand-cream flex items-center justify-center text-5xl gallery-item" data-title="Bridal Gajra Set" data-cat="gajras" data-emoji="🌸">
-                    🌸
-                    <div class="absolute inset-0 bg-brand-text/60 opacity-0 group-hover:opacity-100 transition-opacity flex flex-col justify-end p-4 text-white">
-                        <span class="font-heading text-lg font-bold">Bridal Gajra Set</span>
-                        <span class="text-xs text-brand-beige">Gajras &bull; Custom</span>
-                    </div>
-                </div>
-
-            </section>
-
-        </div>
-    </main>
-
-    <!-- LIGHTBOX PREVIEW MODAL -->
-    <div class="fixed inset-0 bg-black/80 backdrop-blur-sm z-[1005] flex items-center justify-center p-4 opacity-0 pointer-events-none transition-opacity" id="gallery-lightbox">
-        <div class="relative max-w-lg w-full bg-white rounded-3xl p-8 text-center shadow-2xl">
-            <button class="absolute top-4 right-4 w-10 h-10 rounded-full bg-brand-ivory text-brand-text font-bold text-lg" id="lightbox-close">&times;</button>
-            <div class="text-8xl mb-4" id="lightbox-emoji">🌸</div>
-            <h3 class="font-heading text-2xl font-bold text-brand-text mb-1" id="lightbox-title">Blush Rose Gajra</h3>
-            <p class="text-xs text-brand-sage font-semibold uppercase tracking-wider mb-6" id="lightbox-cat">Gajras</p>
-            <a href="./custom-orders.html" class="dl-btn dl-btn-primary w-full">Request Similar Item</a>
+            <div class="dl-search-modal-body">
+                <input type="text" placeholder="Search handmade crochet gifts..." class="dl-search-modal-input">
+            </div>
         </div>
     </div>
 
-    <!-- FOOTER -->
+    <!-- MAIN PRODUCT DETAIL PAGE CONTENT -->
+    <style>
+        .dl-premium-pdp-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; max-width: 1200px; margin: 0 auto; }
+        .dl-pdp-gallery { display: flex; flex-direction: column; gap: 20px; }
+        .dl-pdp-main-img-box { border-radius: 24px; overflow: hidden; background: var(--dl-cream, #FAF8F5); aspect-ratio: 1; display: flex; align-items: center; justify-content: center; }
+        .dl-pdp-main-img-box img { width: 100%; height: 100%; object-fit: cover; transition: opacity 0.4s ease-in-out; }
+        .dl-pdp-thumbs { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+        .dl-pdp-thumb-item { border-radius: 16px; overflow: hidden; cursor: pointer; border: 2px solid transparent; transition: all 0.3s ease; aspect-ratio: 1; opacity: 0.7; }
+        .dl-pdp-thumb-item img { width: 100%; height: 100%; object-fit: cover; }
+        .dl-pdp-thumb-item:hover, .dl-pdp-thumb-item.active { opacity: 1; }
+        .dl-pdp-thumb-item.active { border-color: var(--dl-sage, #8fa886); }
+        .dl-pdp-info { display: flex; flex-direction: column; gap: 24px; }
+        .dl-status-badge { display: inline-flex; align-items: center; gap: 6px; padding: 6px 12px; background: var(--dl-sage, #8fa886); color: #fff; border-radius: 50px; font-size: 13px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px; }
+        .dl-pdp-title-new { font-family: var(--dl-font-heading, "Cormorant Garamond"); font-size: 42px; font-weight: 600; color: var(--dl-text, #282421); line-height: 1.1; margin: 0; }
+        .dl-pdp-price-new { font-size: 28px; font-weight: 600; color: var(--dl-sage, #8fa886); }
+        .dl-pdp-description { font-size: 17px; line-height: 1.7; color: var(--dl-muted, #787068); }
+        .dl-pdp-quantity label { display: block; font-size: 14px; font-weight: 600; color: var(--dl-text, #282421); margin-bottom: 8px; text-transform: uppercase; letter-spacing: 1px; }
+        .dl-qty-controls { display: inline-flex; align-items: center; border: 1px solid var(--dl-beige, #E6DED3); border-radius: 50px; padding: 4px; background: #fff; }
+        .dl-qty-btn-new { width: 40px; height: 40px; display: flex; align-items: center; justify-content: center; background: var(--dl-cream, #FAF8F5); border: none; border-radius: 50%; cursor: pointer; font-size: 18px; color: var(--dl-text, #282421); transition: background 0.2s; }
+        .dl-qty-btn-new:hover { background: var(--dl-beige, #E6DED3); }
+        .dl-qty-controls input { width: 50px; text-align: center; font-size: 16px; font-weight: 600; border: none; background: transparent; outline: none; color: var(--dl-text, #282421); }
+        .dl-pdp-actions { display: flex; gap: 16px; margin-top: 8px; }
+        .dl-btn-premium { flex: 1; display: inline-flex; align-items: center; justify-content: center; gap: 10px; padding: 18px 24px; border-radius: 50px; font-size: 16px; font-weight: 600; cursor: pointer; transition: all 0.3s ease; text-transform: uppercase; letter-spacing: 0.5px; border: none; }
+        .dl-btn-cart { background: var(--dl-cream, #FAF8F5); color: var(--dl-text, #282421); border: 1px solid var(--dl-beige, #E6DED3); }
+        .dl-btn-cart:hover { background: var(--dl-beige, #E6DED3); transform: translateY(-2px); }
+        .dl-btn-buy { background: var(--dl-text, #282421); color: #fff; }
+        .dl-btn-buy:hover { background: var(--dl-sage, #8fa886); transform: translateY(-2px); box-shadow: 0 10px 20px rgba(143, 168, 134, 0.3); }
+        .btn-loading { position: relative; color: transparent !important; pointer-events: none; }
+        .btn-loading::after { content: ''; position: absolute; width: 20px; height: 20px; border: 2px solid rgba(255,255,255,0.3); border-top-color: currentColor; border-radius: 50%; animation: spin 0.8s linear infinite; }
+        .dl-btn-cart.btn-loading::after { border-top-color: var(--dl-text, #282421); }
+        .dl-btn-buy.btn-loading::after { border-top-color: #fff; }
+        @keyframes spin { to { transform: rotate(360deg); } }
+        .dl-pdp-delivery { background: #fff; border: 1px solid var(--dl-beige, #E6DED3); border-radius: 20px; padding: 24px; display: flex; flex-direction: column; gap: 16px; }
+        .dl-delivery-item { display: flex; align-items: flex-start; gap: 16px; }
+        .dl-delivery-item i { font-size: 24px; color: var(--dl-sage, #8fa886); }
+        .dl-delivery-item div { display: flex; flex-direction: column; gap: 4px; }
+        .dl-delivery-item strong { font-size: 15px; color: var(--dl-text, #282421); }
+        .dl-delivery-item span { font-size: 14px; color: var(--dl-muted, #787068); }
+        .dl-pdp-highlights { display: flex; flex-wrap: wrap; gap: 12px; }
+        .dl-highlight-chip { display: inline-flex; align-items: center; gap: 6px; padding: 8px 16px; background: var(--dl-cream, #FAF8F5); border: 1px solid var(--dl-beige, #E6DED3); border-radius: 50px; font-size: 14px; color: var(--dl-text, #282421); font-weight: 500; }
+        .dl-highlight-chip i { color: var(--dl-sage, #8fa886); }
+        .dl-pdp-care-card { background: var(--dl-ivory, #F5EFE6); border-radius: 20px; padding: 24px; }
+        .dl-pdp-care-card h3 { font-family: var(--dl-font-heading, "Cormorant Garamond"); font-size: 24px; margin: 0 0 16px 0; display: flex; align-items: center; gap: 8px; color: var(--dl-text, #282421); }
+        .dl-pdp-care-card ul { list-style: none; padding: 0; margin: 0; display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+        .dl-pdp-care-card li { display: flex; align-items: center; gap: 8px; font-size: 15px; color: var(--dl-muted, #787068); }
+        @media (max-width: 768px) { .dl-premium-pdp-grid { grid-template-columns: 1fr; gap: 40px; } .dl-pdp-title-new { font-size: 32px; } .dl-pdp-actions { flex-direction: column; } .dl-pdp-care-card ul { grid-template-columns: 1fr; } }
+    </style>
+
+
+
+<main class="dl-main" style="padding: 60px 0;">
+    <div class="dl-container">
+        <div style="text-align: center; margin-bottom: 50px;">
+            <h1 style="font-family: var(--dl-font-heading); font-size: 48px; color: var(--dl-text); margin-bottom: 15px;">Our Handcrafted Gallery</h1>
+            <p style="color: var(--dl-muted); font-size: 18px; max-width: 600px; margin: 0 auto;">A collection of our favorite custom pieces and handmade creations built with love and premium yarn.</p>
+        </div>
+        
+        <div id="gallery-grid" style="column-count: 3; column-gap: 20px;">
+            <!-- Gallery images injected here -->
+        </div>
+    </div>
+    
+    <!-- Lightbox Modal -->
+    <div id="gallery-lightbox" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(40,36,33,0.95); z-index: 10000; align-items: center; justify-content: center;">
+        <button id="lightbox-close" style="position: absolute; top: 30px; right: 30px; background: none; border: none; color: #fff; font-size: 32px; cursor: pointer;"><i class="ph ph-x"></i></button>
+        <button id="lightbox-prev" style="position: absolute; left: 30px; top: 50%; transform: translateY(-50%); background: none; border: none; color: #fff; font-size: 48px; cursor: pointer;"><i class="ph ph-caret-left"></i></button>
+        <img id="lightbox-img" src="" style="max-width: 90%; max-height: 90vh; border-radius: 8px; box-shadow: 0 20px 40px rgba(0,0,0,0.5);">
+        <button id="lightbox-next" style="position: absolute; right: 30px; top: 50%; transform: translateY(-50%); background: none; border: none; color: #fff; font-size: 48px; cursor: pointer;"><i class="ph ph-caret-right"></i></button>
+    </div>
+</main>
+<style>
+@media(max-width: 992px) { #gallery-grid { column-count: 2 !important; } }
+@media(max-width: 600px) { #gallery-grid { column-count: 1 !important; } }
+.gallery-item { break-inside: avoid; margin-bottom: 20px; border-radius: 16px; overflow: hidden; cursor: pointer; transition: transform 0.3s; position: relative; }
+.gallery-item:hover { transform: translateY(-5px); }
+.gallery-item img { width: 100%; display: block; }
+</style>
+
+
+    
+
+    <!-- 18. GLOBAL FOOTER -->
         <footer class="bg-brand-text text-white pt-16 md:pt-20 pb-12 border-t border-brand-beige/20 relative">
         <div class="max-w-[90rem] mx-auto px-4 sm:px-8 lg:px-12">
             <div class="grid grid-cols-1 md:grid-cols-3 gap-10 md:gap-12 lg:gap-16 mb-16 text-left">
@@ -280,59 +281,81 @@
 
     
 
-
-    <!-- Gallery Filter & Lightbox Script -->
     <script>
         document.addEventListener('DOMContentLoaded', () => {
             const yearEl = document.getElementById('year');
             if (yearEl) yearEl.textContent = new Date().getFullYear();
-
-            const filters = document.querySelectorAll('.gallery-filter');
-            const items = document.querySelectorAll('.gallery-item');
-
-            filters.forEach(btn => {
-                btn.addEventListener('click', () => {
-                    filters.forEach(f => f.classList.remove('bg-brand-sage', 'text-white'));
-                    filters.forEach(f => f.classList.add('bg-white', 'text-brand-text'));
-                    btn.classList.add('bg-brand-sage', 'text-white');
-
-                    const cat = btn.getAttribute('data-cat');
-                    items.forEach(item => {
-                        if (cat === 'all' || item.getAttribute('data-cat') === cat) {
-                            item.style.display = 'flex';
-                        } else {
-                            item.style.display = 'none';
-                        }
-                    });
-                });
-            });
-
-            // Lightbox Modal
-            const lightbox = document.getElementById('gallery-lightbox');
-            const lbEmoji = document.getElementById('lightbox-emoji');
-            const lbTitle = document.getElementById('lightbox-title');
-            const lbCat = document.getElementById('lightbox-cat');
-            const lbClose = document.getElementById('lightbox-close');
-
-            items.forEach(item => {
-                item.addEventListener('click', () => {
-                    if (lbEmoji) lbEmoji.textContent = item.getAttribute('data-emoji') || '🌸';
-                    if (lbTitle) lbTitle.textContent = item.getAttribute('data-title') || 'Crochet Item';
-                    if (lbCat) lbCat.textContent = item.getAttribute('data-cat') || 'General';
-                    if (lightbox) {
-                        lightbox.classList.remove('opacity-0', 'pointer-events-none');
-                        lightbox.classList.add('opacity-100');
-                    }
-                });
-            });
-
-            if (lbClose && lightbox) {
-                lbClose.addEventListener('click', () => {
-                    lightbox.classList.remove('opacity-100');
-                    lightbox.classList.add('opacity-0', 'pointer-events-none');
-                });
-            }
         });
     </script>
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+    const grid = document.getElementById('gallery-grid');
+    if (!grid) return;
+    
+    // Generate 20 placeholders with random heights
+    const items = [];
+    const emojis = ['🧶','🎀','🧸','🌻','🌸','👜','✨','💖'];
+    const colors = ['#FFF0F3', '#F5EFE6', '#FAF8F5', '#FFEBE3', '#E6DED3'];
+    
+    for(let i=0; i<20; i++) {
+        const height = Math.floor(Math.random() * (600 - 300 + 1)) + 300;
+        const emoji = emojis[i % emojis.length];
+        const bg = colors[i % colors.length];
+        const svg = `<svg xmlns="http://www.w3.org/2000/svg" width="400" height="${height}" viewBox="0 0 400 ${height}">
+            <rect width="400" height="${height}" fill="${bg}"/>
+            <text x="200" y="${height/2 + 20}" font-size="60" text-anchor="middle">${emoji}</text>
+        </svg>`;
+        items.push(`data:image/svg+xml;charset=UTF-8,${encodeURIComponent(svg)}`);
+    }
+    
+    grid.innerHTML = items.map((src, idx) => `
+        <div class="gallery-item" data-index="${idx}">
+            <img src="${src}" alt="Gallery item ${idx+1}">
+        </div>
+    `).join('');
+    
+    // Lightbox Logic
+    const lightbox = document.getElementById('gallery-lightbox');
+    const lightboxImg = document.getElementById('lightbox-img');
+    const closeBtn = document.getElementById('lightbox-close');
+    const prevBtn = document.getElementById('lightbox-prev');
+    const nextBtn = document.getElementById('lightbox-next');
+    let currentIndex = 0;
+    
+    const showImage = (idx) => {
+        if(idx < 0) idx = items.length - 1;
+        if(idx >= items.length) idx = 0;
+        currentIndex = idx;
+        lightboxImg.src = items[currentIndex];
+        lightboxImg.style.opacity = '0';
+        setTimeout(() => lightboxImg.style.opacity = '1', 50);
+        lightboxImg.style.transition = 'opacity 0.3s ease';
+    };
+    
+    document.querySelectorAll('.gallery-item').forEach(item => {
+        item.addEventListener('click', () => {
+            showImage(parseInt(item.dataset.index));
+            lightbox.style.display = 'flex';
+        });
+    });
+    
+    closeBtn.addEventListener('click', () => lightbox.style.display = 'none');
+    prevBtn.addEventListener('click', () => showImage(currentIndex - 1));
+    nextBtn.addEventListener('click', () => showImage(currentIndex + 1));
+    
+    lightbox.addEventListener('click', (e) => {
+        if(e.target === lightbox) lightbox.style.display = 'none';
+    });
+    document.addEventListener('keydown', (e) => {
+        if(lightbox.style.display === 'flex') {
+            if(e.key === 'Escape') lightbox.style.display = 'none';
+            if(e.key === 'ArrowLeft') showImage(currentIndex - 1);
+            if(e.key === 'ArrowRight') showImage(currentIndex + 1);
+        }
+    });
+});
+</script>
+
 </body>
 </html>
