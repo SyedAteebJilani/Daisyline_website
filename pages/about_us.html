@@ -1,19 +1,23 @@
 <!DOCTYPE html>
 <html lang="en" class="scroll-smooth">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>About Us | Daisyline Crochet</title>
-    <meta name="description" content="Learn about Daisyline Crochet. Every product is handmade with love in Pakistan. Discover our story, shipping policy, return policy, and FAQs.">
-    
+    <meta name="description"
+        content="Learn about Daisyline Crochet. Every product is handmade with love in Pakistan. Discover our story, shipping policy, return policy, and FAQs.">
+
     <!-- Google Fonts: Cormorant Garamond, Plus Jakarta Sans, Sacramento -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400;1,600&family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=Sacramento&display=swap" rel="stylesheet">
-    
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400;1,600&family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=Sacramento&display=swap"
+        rel="stylesheet">
+
     <!-- Phosphor Icons -->
     <script src="https://unpkg.com/@phosphor-icons/web"></script>
-    
+
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
@@ -42,176 +46,267 @@
     <link rel="stylesheet" href="../assets/css/homepage.css">
     <script src="../assets/js/homepage.js" defer></script>
     <style>
-        /* Premium Expandable Cards */
-        .dl-premium-cards-container {
-            max-width: 800px;
-            margin: 0 auto;
-            width: 100%;
+        /* Modern Premium Animations */
+        @keyframes fadeUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .animate-fade-up { animation: fadeUp 0.8s ease-out forwards; }
+
+        /* Section 1: Minimal Hero */
+        .dl-minimal-hero {
+            height: 40vh;
+            min-height: 300px;
             display: flex;
             flex-direction: column;
-            gap: 24px;
-            padding: 0 16px;
-        }
-        
-        .dl-premium-card {
-            background: #FFFCF9;
-            border: 1px solid rgba(230, 222, 211, 0.6);
-            border-radius: 24px;
-            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.03);
-            overflow: hidden;
-            transition: all 0.35s cubic-bezier(0.25, 0.8, 0.25, 1);
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            background: linear-gradient(135deg, var(--dl-blush, #FFF0F3) 0%, var(--dl-cream, #FAF8F5) 100%);
             position: relative;
+            overflow: hidden;
+            padding: 20px;
         }
-
-        .dl-premium-card:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.06);
-            border-color: rgba(222, 196, 203, 0.8);
+        .dl-minimal-hero::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background-image: radial-gradient(var(--dl-sage, #8fa886) 1px, transparent 1px);
+            background-size: 20px 20px;
+            opacity: 0.1;
+            z-index: 1;
         }
-        
-        .dl-premium-card.open {
-            border-color: var(--dl-sage, #8fa886);
-            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.06);
+        .dl-minimal-hero-content {
+            position: relative;
+            z-index: 2;
         }
-
-        .dl-premium-card-btn {
-            width: 100%;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            padding: 28px 32px;
-            background: none;
-            border: none;
-            text-align: left;
-            cursor: pointer;
-            outline: none;
+        .dl-minimal-hero-icon {
+            font-size: 56px;
+            margin-bottom: 16px;
+            animation: float 3s ease-in-out infinite;
         }
-        
-        .dl-premium-card-header {
-            display: flex;
-            gap: 20px;
-            align-items: center;
-        }
-
-        .dl-premium-card-icon {
-            font-size: 32px;
-            line-height: 1;
-            flex-shrink: 0;
-            transition: transform 0.35s ease;
-        }
-        
-        .dl-premium-card.open .dl-premium-card-icon {
-            transform: scale(1.1) rotate(-5deg);
-        }
-
-        .dl-premium-card-title {
+        .dl-minimal-hero-title {
             font-family: var(--dl-font-heading, "Cormorant Garamond");
-            font-size: 26px;
+            font-size: 48px;
             font-weight: 600;
             color: var(--dl-text, #282421);
             margin: 0;
-            line-height: 1.2;
+        }
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
         }
 
-        .dl-premium-card.open
-
-        .dl-premium-card-indicator {
-            font-size: 20px;
-            color: var(--dl-muted, #787068);
-            transition: transform 0.35s cubic-bezier(0.25, 0.8, 0.25, 1), color 0.3s;
+        /* Section 2: Story Card */
+        .dl-story-section {
+            padding: 80px 20px;
+            background-color: var(--dl-cream, #FAF8F5);
         }
-
-        .dl-premium-card:hover .dl-premium-card-indicator {
-            color: var(--dl-sage, #8fa886);
-        }
-
-        .dl-premium-card.open .dl-premium-card-indicator {
-            transform: rotate(45deg);
-            color: var(--dl-sage, #8fa886);
-        }
-
-        .dl-premium-card-content {
-            display: grid;
-            grid-template-rows: 0fr;
-            transition: grid-template-rows 0.35s cubic-bezier(0.25, 0.8, 0.25, 1);
-            padding: 0 32px;
-        }
-
-        .dl-premium-card.open .dl-premium-card-content {
-            grid-template-rows: 1fr;
-        }
-
-        .dl-premium-card-inner {
-            overflow: hidden;
-            font-size: 17px;
-            line-height: 1.7;
-            color: var(--dl-text, #282421);
-            padding-bottom: 32px;
-            padding-left: 52px;
-        }
-        
-        /* Premium Hero */
-        .dl-premium-hero {
-            text-align: center;
-            padding: 60px 20px 40px;
-            max-width: 700px;
+        .dl-story-card {
+            max-width: 800px;
             margin: 0 auto;
+            background: #fff;
+            border-radius: 32px;
+            padding: 50px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.03);
+            text-align: center;
+            position: relative;
         }
-        
-        .dl-premium-hero-icon {
-            font-size: 48px;
-            margin-bottom: 24px;
-            opacity: 0.9;
-        }
-        
-        .dl-premium-hero-title {
+        .dl-story-icon { font-size: 40px; margin-bottom: 20px; }
+        .dl-story-title {
             font-family: var(--dl-font-heading, "Cormorant Garamond");
-            font-size: 42px;
-            font-weight: 600;
+            font-size: 36px;
+            color: var(--dl-text, #282421);
+            margin-bottom: 24px;
+        }
+        .dl-divider {
+            width: 60px;
+            height: 2px;
+            background-color: var(--dl-sage, #8fa886);
+            margin: 0 auto 30px;
+            border-radius: 2px;
+        }
+        .dl-story-text {
+            font-size: 18px;
+            line-height: 1.8;
+            color: var(--dl-muted, #787068);
+        }
+
+        /* Section 3: Info Cards Grid */
+        .dl-info-section {
+            padding: 80px 20px;
+            background-color: #fff;
+        }
+        .dl-info-grid {
+            max-width: 1000px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 30px;
+        }
+        .dl-info-card {
+            background: var(--dl-cream, #FAF8F5);
+            border-radius: 24px;
+            padding: 40px;
+            transition: all 0.4s ease;
+            border: 1px solid rgba(230,222,211,0.3);
+        }
+        @media (min-width: 769px) {
+            .dl-info-card:hover {
+                transform: translateY(-8px);
+                box-shadow: 0 15px 35px rgba(0,0,0,0.05);
+                border-color: var(--dl-sage, #8fa886);
+            }
+        }
+        .dl-info-icon { font-size: 48px; margin-bottom: 20px; display: inline-block; }
+        .dl-info-title {
+            font-family: var(--dl-font-heading, "Cormorant Garamond");
+            font-size: 28px;
             color: var(--dl-text, #282421);
             margin-bottom: 16px;
         }
-        
-        .dl-premium-hero-text {
-            font-size: 18px;
+        .dl-info-card .dl-divider { margin: 0 0 20px 0; width: 40px; }
+        .dl-info-text {
+            font-size: 16px;
+            line-height: 1.7;
             color: var(--dl-muted, #787068);
-            line-height: 1.6;
         }
 
+        /* Section 4: Process Timeline */
+        .dl-process-section {
+            padding: 80px 20px;
+            background-color: var(--dl-cream, #FAF8F5);
+            text-align: center;
+        }
+        .dl-process-title {
+            font-family: var(--dl-font-heading, "Cormorant Garamond");
+            font-size: 36px;
+            margin-bottom: 60px;
+            color: var(--dl-text, #282421);
+        }
+        .dl-timeline {
+            display: flex;
+            justify-content: space-between;
+            max-width: 1100px;
+            margin: 0 auto;
+            position: relative;
+        }
+        .dl-timeline::before {
+            content: '';
+            position: absolute;
+            top: 40px; left: 50px; right: 50px;
+            height: 2px;
+            background: var(--dl-beige, #E6DED3);
+            z-index: 1;
+        }
+        .dl-timeline-item {
+            position: relative;
+            z-index: 2;
+            flex: 1;
+            padding: 0 10px;
+        }
+        .dl-timeline-icon {
+            width: 80px; height: 80px;
+            margin: 0 auto 20px;
+            background: #fff;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 32px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.05);
+            border: 2px solid var(--dl-sage, #8fa886);
+        }
+        .dl-timeline-text {
+            font-size: 15px;
+            font-weight: 600;
+            color: var(--dl-text, #282421);
+            line-height: 1.4;
+        }
+
+        /* Section 5: Contact CTA */
+        .dl-cta-section {
+            padding: 100px 20px;
+            background: #fff;
+            text-align: center;
+        }
+        .dl-cta-title {
+            font-family: var(--dl-font-heading, "Cormorant Garamond");
+            font-size: 36px;
+            margin-bottom: 40px;
+        }
+        .dl-social-btns {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 16px;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        .dl-social-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 16px 32px;
+            border-radius: 50px;
+            background: var(--dl-cream, #FAF8F5);
+            color: var(--dl-text, #282421);
+            font-weight: 600;
+            font-size: 16px;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            border: 1px solid var(--dl-beige, #E6DED3);
+        }
+        .dl-social-btn:hover {
+            background: var(--dl-sage, #8fa886);
+            color: #fff;
+            border-color: var(--dl-sage, #8fa886);
+            transform: translateY(-3px);
+        }
+        .dl-social-btn i { font-size: 24px; }
+
+        /* Section 6: Decorative Ending */
+        .dl-ending-section {
+            padding: 40px 20px 80px;
+            text-align: center;
+            background: #fff;
+        }
+        .dl-ending-text {
+            font-family: var(--dl-script, 'Sacramento');
+            font-size: 36px;
+            color: var(--dl-sage, #8fa886);
+        }
+        .dl-ending-icon {
+            font-size: 24px;
+            margin-top: 10px;
+            opacity: 0.8;
+        }
+
+        /* Responsive */
         @media (max-width: 768px) {
-            .dl-premium-hero {
-                padding: 40px 20px 30px;
+            .dl-minimal-hero-title { font-size: 36px; }
+            .dl-story-card { padding: 30px 20px; border-radius: 24px; }
+            .dl-story-title { font-size: 28px; }
+            .dl-info-grid { grid-template-columns: 1fr; }
+            
+            .dl-timeline {
+                flex-direction: column;
+                align-items: center;
+                gap: 40px;
             }
-            .dl-premium-hero-title {
-                font-size: 36px;
+            .dl-timeline::before {
+                top: 0; bottom: 0;
+                left: 50%; right: auto;
+                width: 2px; height: 100%;
+                transform: translateX(-50%);
             }
-            .dl-premium-card:hover {
-                transform: none;
-                box-shadow: 0 8px 30px rgba(0, 0, 0, 0.03);
-            }
-            .dl-premium-card-btn {
-                padding: 24px;
-            }
-            .dl-premium-card-title {
-                font-size: 22px;
-            }
-            .dl-premium-card-icon {
-                font-size: 28px;
-            }
-            .dl-premium-card-content {
-                padding: 0 24px;
-            }
-            .dl-premium-card-inner {
-                padding-left: 0;
-                padding-bottom: 24px;
-                font-size: 16px;
-            }
-            .dl-premium-cards-container {
-                gap: 16px;
-            }
+            .dl-timeline-item { width: 100%; display: flex; flex-direction: column; align-items: center; }
+            .dl-social-btns { flex-direction: column; width: 100%; }
+            .dl-social-btn { width: 100%; justify-content: center; }
         }
     </style>
 </head>
+
 <body class="font-sans antialiased overflow-x-hidden selection:bg-brand-sage selection:text-white">
 
     <!-- 1. GLOBAL ANNOUNCEMENT BAR -->
@@ -228,7 +323,7 @@
     <header id="dl-navbar" class="dl-global-header">
         <div class="dl-header-container">
             <div class="dl-header-row">
-                
+
                 <!-- Left: Logo & Mobile Hamburger -->
                 <div class="dl-header-left">
                     <button id="dl-mobile-menu-btn" class="dl-mobile-menu-btn" aria-label="Open Mobile Menu">
@@ -243,7 +338,7 @@
                 <!-- Center: Desktop Navigation Bar -->
                 <nav class="dl-desktop-nav" aria-label="Main Navigation">
                     <ul class="dl-nav-list">
-                        
+
                         <!-- 1. Home -->
                         <li class="dl-nav-item">
                             <a href="../index.html" class="dl-nav-link ">Home</a>
@@ -258,27 +353,32 @@
                             <!-- MEGA MENU PANEL -->
                             <div class="dl-megamenu-panel">
                                 <div class="dl-megamenu-inner">
-                                    
+
                                     <!-- Column 1: New & Featured -->
                                     <div class="dl-mega-col">
-                                        <h4 class="dl-mega-heading"><i class="ph ph-sparkle"></i> New &amp; Featured</h4>
+                                        <h4 class="dl-mega-heading"><i class="ph ph-sparkle"></i> New &amp; Featured
+                                        </h4>
                                         <ul class="dl-mega-links">
                                             <li><a href="../pages/shop.html">All Products</a></li>
-                                            <li><a href="../index.html">New Arrivals <span class="dl-badge-mini">New</span></a></li>
-                                            <li><a href="../index.html">Best Sellers <span class="dl-badge-mini dl-badge-hot">Hot</span></a></li>
+                                            <li><a href="../index.html">New Arrivals <span
+                                                        class="dl-badge-mini">New</span></a></li>
+                                            <li><a href="../index.html">Best Sellers <span
+                                                        class="dl-badge-mini dl-badge-hot">Hot</span></a></li>
                                             <li><a href="../categories/clothing.html">Sale %</a></li>
                                         </ul>
                                     </div>
 
                                     <!-- Column 2: Gajras & Hair Accessories -->
                                     <div class="dl-mega-col">
-                                        <h4 class="dl-mega-heading"><a href="../categories/hand-accessories.html">🌸 Gajras</a></h4>
+                                        <h4 class="dl-mega-heading"><a href="../categories/hand-accessories.html">🌸
+                                                Gajras</a></h4>
                                         <ul class="dl-mega-links">
                                             <li><a href="../categories/hand-accessories.html">Floral Gajras</a></li>
                                             <li><a href="../categories/hand-accessories.html">Bridal Gajras</a></li>
                                             <li><a href="../categories/hand-accessories.html">Custom Gajras</a></li>
                                         </ul>
-                                        <h4 class="dl-mega-heading" style="margin-top: 16px;"><a href="../categories/hair-accessories.html">🎀 Hair Accessories</a></h4>
+                                        <h4 class="dl-mega-heading" style="margin-top: 16px;"><a
+                                                href="../categories/hair-accessories.html">🎀 Hair Accessories</a></h4>
                                         <ul class="dl-mega-links">
                                             <li><a href="../categories/hair-accessories.html">Scrunchies</a></li>
                                             <li><a href="../categories/hair-accessories.html">Hair Bows</a></li>
@@ -300,7 +400,8 @@
                                             <li><a href="../categories/bags.html">Wallets</a></li>
                                             <li><a href="../categories/bags.html">Pouches</a></li>
                                         </ul>
-                                        <h4 class="dl-mega-heading" style="margin-top: 16px;"><a href="../categories/keychain.html">🔑 Keychains</a></h4>
+                                        <h4 class="dl-mega-heading" style="margin-top: 16px;"><a
+                                                href="../categories/keychain.html">🔑 Keychains</a></h4>
                                         <ul class="dl-mega-links">
                                             <li><a href="../categories/keychain.html">Car Hanging</a></li>
                                             <li><a href="../categories/keychain.html">Animal Keychains</a></li>
@@ -311,13 +412,15 @@
 
                                     <!-- Column 4: Bouquets & Baby Collection -->
                                     <div class="dl-mega-col">
-                                        <h4 class="dl-mega-heading"><a href="../categories/bouquets.html">💐 Bouquets</a></h4>
+                                        <h4 class="dl-mega-heading"><a href="../categories/bouquets.html">💐
+                                                Bouquets</a></h4>
                                         <ul class="dl-mega-links">
                                             <li><a href="../categories/bouquets.html">Mixed Flower Bouquets</a></li>
                                             <li><a href="../categories/bouquets.html">Mini Bouquets</a></li>
                                             <li><a href="../categories/bouquets.html">Blanket Bouquet</a></li>
                                         </ul>
-                                        <h4 class="dl-mega-heading" style="margin-top: 16px;"><a href="../categories/baby-sets.html">👶 Baby Collection</a></h4>
+                                        <h4 class="dl-mega-heading" style="margin-top: 16px;"><a
+                                                href="../categories/baby-sets.html">👶 Baby Collection</a></h4>
                                         <ul class="dl-mega-links">
                                             <li><a href="../categories/baby-sets.html">Baby Shoes</a></li>
                                             <li><a href="../categories/baby-sets.html">Baby Caps</a></li>
@@ -330,7 +433,8 @@
 
                                     <!-- Column 5: Wearables & Plushies -->
                                     <div class="dl-mega-col">
-                                        <h4 class="dl-mega-heading"><a href="../categories/clothing.html">👕 Wearables</a></h4>
+                                        <h4 class="dl-mega-heading"><a href="../categories/clothing.html">👕
+                                                Wearables</a></h4>
                                         <div class="dl-mega-sublabel">Women</div>
                                         <ul class="dl-mega-links">
                                             <li><a href="../categories/clothing.html">Cardigans</a></li>
@@ -343,7 +447,8 @@
                                             <li><a href="../categories/clothing.html">Gloves</a></li>
                                             <li><a href="../categories/clothing.html">Beanies</a></li>
                                         </ul>
-                                        <h4 class="dl-mega-heading" style="margin-top: 14px;"><a href="../categories/plushies.html">🧸 Plushies</a></h4>
+                                        <h4 class="dl-mega-heading" style="margin-top: 14px;"><a
+                                                href="../categories/plushies.html">🧸 Plushies</a></h4>
                                         <ul class="dl-mega-links">
                                             <li><a href="../categories/plushies.html">Characters</a></li>
                                             <li><a href="../categories/plushies.html">Mini Plushies</a></li>
@@ -353,7 +458,8 @@
 
                                     <!-- Column 6: Home Decor & Gift Collection -->
                                     <div class="dl-mega-col">
-                                        <h4 class="dl-mega-heading"><a href="../categories/home-decor.html">🏡 Home Decor</a></h4>
+                                        <h4 class="dl-mega-heading"><a href="../categories/home-decor.html">🏡 Home
+                                                Decor</a></h4>
                                         <ul class="dl-mega-links">
                                             <li><a href="../categories/home-decor.html">Coasters</a></li>
                                             <li><a href="../categories/home-decor.html">Table Runners</a></li>
@@ -362,7 +468,8 @@
                                             <li><a href="../categories/home-decor.html">Cushion Covers</a></li>
                                             <li><a href="../categories/home-decor.html">Crochet Mirrors</a></li>
                                         </ul>
-                                        <h4 class="dl-mega-heading" style="margin-top: 14px;"><a href="../categories/gifting.html">🎁 Gift Collection</a></h4>
+                                        <h4 class="dl-mega-heading" style="margin-top: 14px;"><a
+                                                href="../categories/gifting.html">🎁 Gift Collection</a></h4>
                                         <ul class="dl-mega-links">
                                             <li><a href="../categories/gifting.html">Birthday Gifts</a></li>
                                             <li><a href="../categories/gifting.html">Anniversary Gifts</a></li>
@@ -412,7 +519,7 @@
 
                 <!-- Right: Action Icons (Search, Cart) -->
                 <div class="dl-header-actions">
-                    
+
                     <!-- Search Button -->
                     <button class="dl-action-icon dl-search-trigger" id="dl-search-btn" aria-label="Search">
                         <i class="ph ph-magnifying-glass"></i>
@@ -420,7 +527,8 @@
 
                     <!-- Desktop Search Bar Input Container -->
                     <div class="dl-desktop-search-bar" id="dl-desktop-search-bar">
-                        <input type="text" placeholder="Search handmade crochet..." class="dl-search-input" id="dl-search-input">
+                        <input type="text" placeholder="Search handmade crochet..." class="dl-search-input"
+                            id="dl-search-input">
                         <button class="dl-search-close" id="dl-search-close"><i class="ph ph-x"></i></button>
                         <div class="dl-search-results" id="dl-desktop-search-results"></div>
                     </div>
@@ -481,7 +589,8 @@
                         </div>
 
                         <div class="dl-mobile-sub-acc">
-                            <button class="dl-sub-acc-btn"><span>🎀 Hair Accessories</span> <i class="ph ph-plus"></i></button>
+                            <button class="dl-sub-acc-btn"><span>🎀 Hair Accessories</span> <i
+                                    class="ph ph-plus"></i></button>
                             <div class="dl-sub-acc-content">
                                 <a href="../categories/hair-accessories.html">Scrunchies</a>
                                 <a href="../categories/hair-accessories.html">Hair Bows</a>
@@ -519,7 +628,8 @@
                         </div>
 
                         <div class="dl-mobile-sub-acc">
-                            <button class="dl-sub-acc-btn"><span>👶 Baby Collection</span> <i class="ph ph-plus"></i></button>
+                            <button class="dl-sub-acc-btn"><span>👶 Baby Collection</span> <i
+                                    class="ph ph-plus"></i></button>
                             <div class="dl-sub-acc-content">
                                 <a href="../categories/baby-sets.html">Baby Shoes</a>
                                 <a href="../categories/baby-sets.html">Baby Caps</a>
@@ -546,7 +656,8 @@
                         </div>
 
                         <div class="dl-mobile-sub-acc">
-                            <button class="dl-sub-acc-btn"><span>🏡 Home Decor</span> <i class="ph ph-plus"></i></button>
+                            <button class="dl-sub-acc-btn"><span>🏡 Home Decor</span> <i
+                                    class="ph ph-plus"></i></button>
                             <div class="dl-sub-acc-content">
                                 <a href="../categories/home-decor.html">Coasters</a>
                                 <a href="../categories/home-decor.html">Table Runners</a>
@@ -555,7 +666,8 @@
                         </div>
 
                         <div class="dl-mobile-sub-acc">
-                            <button class="dl-sub-acc-btn"><span>🎁 Gift Collection</span> <i class="ph ph-plus"></i></button>
+                            <button class="dl-sub-acc-btn"><span>🎁 Gift Collection</span> <i
+                                    class="ph ph-plus"></i></button>
                             <div class="dl-sub-acc-content">
                                 <a href="../categories/gifting.html">Birthday Gifts</a>
                                 <a href="../categories/gifting.html">Anniversary Gifts</a>
@@ -607,7 +719,8 @@
                 <button class="dl-search-modal-close" id="dl-search-modal-close"><i class="ph ph-x"></i></button>
             </div>
             <div class="dl-search-modal-body">
-                <input type="text" placeholder="Search handmade crochet gifts, gajras, plushies..." class="dl-search-modal-input" id="dl-mobile-search-input">
+                <input type="text" placeholder="Search handmade crochet gifts, gajras, plushies..."
+                    class="dl-search-modal-input" id="dl-mobile-search-input">
                 <div class="dl-search-quick-tags">
                     <span>Quick Search:</span>
                     <a href="./categories/gajras.html">Gajras</a>
@@ -619,139 +732,161 @@
             </div>
         </div>
     </div>
-    
+
 
     <main class="dl-main">
-        <div class="dl-container">
-            
+        <div class="dl-container" style="padding-top: 20px; padding-bottom: 0;">
             <!-- Breadcrumbs -->
-            <nav class="dl-breadcrumb" aria-label="Breadcrumb">
-                <a href="./index.html">Home</a>
+            <nav class="dl-breadcrumb" aria-label="Breadcrumb" style="margin-bottom: 0;">
+                <a href="../index.html">Home</a>
                 <i class="ph ph-caret-right text-xs text-brand-muted"></i>
                 <span class="dl-crumb-current">About Us</span>
             </nav>
-
-            <!-- Premium Hero Section -->
-            <section class="dl-premium-hero dl-reveal">
-                <div class="dl-premium-hero-icon">🧶</div>
-                <h1 class="dl-premium-hero-title">About DaisyLine Crochet</h1>
-                <p class="dl-premium-hero-text">
-                    Every loop, knot, and stitch is a tribute to patient craftsmanship. Founded in Pakistan, DaisyLine Crochet brings handmade warmth to everyday life.
-                </p>
-            </section>
-
-            <!-- PREMIUM EXPANDABLE CARDS -->
-            <section class="dl-premium-cards-container dl-reveal">
-                
-                <!-- Our Story -->
-                <div class="dl-premium-card" id="our-story">
-                    <button class="dl-premium-card-btn" aria-expanded="false" aria-controls="content-our-story">
-                        <div class="dl-premium-card-header">
-                            <div class="dl-premium-card-icon">🌸</div>
-                            <h3 class="dl-premium-card-title">Our Story &amp; Craft Philosophy</h3>
-                        </div>
-                        <i class="ph ph-plus dl-premium-card-indicator"></i>
-                    </button>
-                    <div class="dl-premium-card-content" id="content-our-story" role="region" aria-hidden="true">
-                        <div class="dl-premium-card-inner">
-                            DaisyLine Crochet began with a passion for slow living and timeless textile art. In a world dominated by mass production, we create slow-made, handcrafted crochet pieces that tell a story. From floral Gajras to soft plushies and cozy apparel, every item is individually crocheted using premium hypoallergenic yarns.
-                        </div>
-                    </div>
-                </div>
-
-                <!-- How to Order -->
-                <div class="dl-premium-card" id="how-to-order">
-                    <button class="dl-premium-card-btn" aria-expanded="false" aria-controls="content-how-to-order">
-                        <div class="dl-premium-card-header">
-                            <div class="dl-premium-card-icon">🛍️</div>
-                            <h3 class="dl-premium-card-title">How to Order</h3>
-                        </div>
-                        <i class="ph ph-plus dl-premium-card-indicator"></i>
-                    </button>
-                    <div class="dl-premium-card-content" id="content-how-to-order" role="region" aria-hidden="true">
-                        <div class="dl-premium-card-inner">
-                            Ordering from DaisyLine is easy! Browse our ready-to-ship shop catalog or request a custom order by clicking "Custom Orders" in the navigation. Select your preferred color swatches, complete your details, and we'll handle the rest.
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Shipping Policy -->
-                <div class="dl-premium-card" id="shipping">
-                    <button class="dl-premium-card-btn" aria-expanded="false" aria-controls="content-shipping">
-                        <div class="dl-premium-card-header">
-                            <div class="dl-premium-card-icon">🚚</div>
-                            <h3 class="dl-premium-card-title">Shipping Policy</h3>
-                        </div>
-                        <i class="ph ph-plus dl-premium-card-indicator"></i>
-                    </button>
-                    <div class="dl-premium-card-content" id="content-shipping" role="region" aria-hidden="true">
-                        <div class="dl-premium-card-inner">
-                            We deliver nationwide across Pakistan! Standard courier delivery takes 2–4 business days after your order is hand-crafted. Free shipping is available on orders over PKR 3,000.
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Return Policy -->
-                <div class="dl-premium-card" id="returns">
-                    <button class="dl-premium-card-btn" aria-expanded="false" aria-controls="content-returns">
-                        <div class="dl-premium-card-header">
-                            <div class="dl-premium-card-icon">🔄</div>
-                            <h3 class="dl-premium-card-title">Return &amp; Exchange Policy</h3>
-                        </div>
-                        <i class="ph ph-plus dl-premium-card-indicator"></i>
-                    </button>
-                    <div class="dl-premium-card-content" id="content-returns" role="region" aria-hidden="true">
-                        <div class="dl-premium-card-inner">
-                            Because each item is custom crafted by hand, all sales are final. However, if your item arrives damaged or incomplete, please contact our support team on WhatsApp within 24 hours for a replacement.
-                        </div>
-                    </div>
-                </div>
-
-                <!-- FAQs -->
-                <div class="dl-premium-card" id="faq">
-                    <button class="dl-premium-card-btn" aria-expanded="false" aria-controls="content-faq">
-                        <div class="dl-premium-card-header">
-                            <div class="dl-premium-card-icon">❓</div>
-                            <h3 class="dl-premium-card-title">Frequently Asked Questions</h3>
-                        </div>
-                        <i class="ph ph-plus dl-premium-card-indicator"></i>
-                    </button>
-                    <div class="dl-premium-card-content" id="content-faq" role="region" aria-hidden="true">
-                        <div class="dl-premium-card-inner">
-                            For complete details on yarn care, custom order timelines, and payment options, please visit our dedicated <a href="./faq.html" class="underline text-brand-sage font-bold">FAQs Page</a>.
-                        </div>
-                    </div>
-                </div>
-
-            </section>
-
-            <!-- NEWSLETTER SECTION -->
-            <section class="dl-section dl-bg-cream">
-                <div class="dl-container">
-                    <div class="dl-newsletter-card dl-reveal">
-                        <span class="dl-tagline">Stay Connected</span>
-                        <h2 class="dl-section-title" style="margin-bottom:10px;">Join Our Crochet Family 💕</h2>
-                        <p class="dl-section-subtitle">Subscribe to get special handcrafted offers and new collection alerts.</p>
-                        <form class="dl-newsletter-form" id="newsletter-form">
-                            <input type="email" placeholder="Enter your email address..." required class="dl-newsletter-input">
-                            <button type="submit" class="dl-btn dl-btn-primary">Subscribe</button>
-                        </form>
-                    </div>
-                </div>
-            </section>
-
         </div>
+
+        <!-- Section 1: Minimal Hero -->
+        <section class="dl-minimal-hero">
+            <div class="dl-minimal-hero-content animate-fade-up">
+                <div class="dl-minimal-hero-icon">🧶</div>
+                <h1 class="dl-minimal-hero-title">About DaisyLine Crochet</h1>
+            </div>
+        </section>
+
+        <!-- Section 2: Story Timeline Card -->
+        <section class="dl-story-section" id="our-story">
+            <div class="dl-story-card animate-fade-up" style="animation-delay: 0.2s;">
+                <div class="dl-story-icon">🌸</div>
+                <h2 class="dl-story-title">Our Story &amp; Craft Philosophy</h2>
+                <div class="dl-divider"></div>
+                <p class="dl-story-text">
+                    DaisyLine Crochet began with a passion for slow living and timeless textile art. In a world
+                    dominated by mass production, we create slow-made, handcrafted crochet pieces that tell a
+                    story. From floral Gajras to soft plushies and cozy apparel, every item is individually
+                    crocheted using premium hypoallergenic yarns.
+                </p>
+            </div>
+        </section>
+
+        <!-- Section 3: Information Cards Grid -->
+        <section class="dl-info-section">
+            <div class="dl-info-grid">
+                
+                <div class="dl-info-card animate-fade-up" id="how-to-order">
+                    <div class="dl-info-icon">🛍️</div>
+                    <h3 class="dl-info-title">How to Order</h3>
+                    <div class="dl-divider"></div>
+                    <p class="dl-info-text">
+                        Ordering from DaisyLine is easy! Browse our ready-to-ship shop catalog or request a custom
+                        order by clicking "Custom Orders" in the navigation. Select your preferred color swatches,
+                        complete your details, and we'll handle the rest.
+                    </p>
+                </div>
+
+                <div class="dl-info-card animate-fade-up" id="shipping" style="animation-delay: 0.1s;">
+                    <div class="dl-info-icon">🚚</div>
+                    <h3 class="dl-info-title">Shipping Policy</h3>
+                    <div class="dl-divider"></div>
+                    <p class="dl-info-text">
+                        We deliver nationwide across Pakistan! Standard courier delivery takes 2–4 business days
+                        after your order is hand-crafted. Free shipping is available on orders over PKR 3,000.
+                    </p>
+                </div>
+
+                <div class="dl-info-card animate-fade-up" id="returns" style="animation-delay: 0.2s;">
+                    <div class="dl-info-icon">🔄</div>
+                    <h3 class="dl-info-title">Return &amp; Exchange Policy</h3>
+                    <div class="dl-divider"></div>
+                    <p class="dl-info-text">
+                        Because each item is custom crafted by hand, all sales are final. However, if your item
+                        arrives damaged or incomplete, please contact our support team on WhatsApp within 24 hours
+                        for a replacement.
+                    </p>
+                </div>
+
+                <div class="dl-info-card animate-fade-up" id="faq" style="animation-delay: 0.3s;">
+                    <div class="dl-info-icon">❓</div>
+                    <h3 class="dl-info-title">Frequently Asked Questions</h3>
+                    <div class="dl-divider"></div>
+                    <p class="dl-info-text">
+                        For complete details on yarn care, custom order timelines, and payment options, please visit
+                        our dedicated <a href="./faq.html" class="underline text-brand-sage font-bold hover:text-brand-olive transition-colors">FAQs Page</a>.
+                    </p>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- Section 4: Process Timeline -->
+        <section class="dl-process-section">
+            <h2 class="dl-process-title">Your Custom Journey</h2>
+            <div class="dl-timeline">
+                <div class="dl-timeline-item animate-fade-up">
+                    <div class="dl-timeline-icon">1️⃣</div>
+                    <div class="dl-timeline-text">Browse Products</div>
+                </div>
+                <div class="dl-timeline-item animate-fade-up" style="animation-delay: 0.1s;">
+                    <div class="dl-timeline-icon">2️⃣</div>
+                    <div class="dl-timeline-text">Contact Us</div>
+                </div>
+                <div class="dl-timeline-item animate-fade-up" style="animation-delay: 0.2s;">
+                    <div class="dl-timeline-icon">3️⃣</div>
+                    <div class="dl-timeline-text">Confirm Design & Price</div>
+                </div>
+                <div class="dl-timeline-item animate-fade-up" style="animation-delay: 0.3s;">
+                    <div class="dl-timeline-icon">4️⃣</div>
+                    <div class="dl-timeline-text">Pay Advance</div>
+                </div>
+                <div class="dl-timeline-item animate-fade-up" style="animation-delay: 0.4s;">
+                    <div class="dl-timeline-icon">5️⃣</div>
+                    <div class="dl-timeline-text">Handmade Production</div>
+                </div>
+                <div class="dl-timeline-item animate-fade-up" style="animation-delay: 0.5s;">
+                    <div class="dl-timeline-icon">6️⃣</div>
+                    <div class="dl-timeline-text">Delivered to Your Door</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 5: Contact CTA -->
+        <section class="dl-cta-section">
+            <h2 class="dl-cta-title">Need More Help?</h2>
+            <div class="dl-social-btns">
+                <a href="#" target="_blank" rel="noopener noreferrer" class="dl-social-btn">
+                    <i class="ph ph-whatsapp-logo"></i> WhatsApp
+                </a>
+                <a href="https://www.instagram.com/daisylinecrochet/" target="_blank" rel="noopener noreferrer" class="dl-social-btn">
+                    <i class="ph ph-instagram-logo"></i> Instagram
+                </a>
+                <a href="https://www.facebook.com/share/1HeWDJU5ap/" target="_blank" rel="noopener noreferrer" class="dl-social-btn">
+                    <i class="ph ph-facebook-logo"></i> Facebook
+                </a>
+                <a href="https://www.threads.com/@daisylinecrochet" target="_blank" rel="noopener noreferrer" class="dl-social-btn">
+                    <i class="ph ph-at"></i> Threads
+                </a>
+                <a href="https://www.tiktok.com/@daisylinecrochet?_r=1&_t=ZS-98DQTwu0jqr" target="_blank" rel="noopener noreferrer" class="dl-social-btn">
+                    <i class="ph ph-tiktok-logo"></i> TikTok
+                </a>
+            </div>
+        </section>
+
+        <!-- Section 6: Decorative Ending -->
+        <section class="dl-ending-section">
+            <div class="dl-ending-text">✨ Handmade with Love, Crafted Just for You ✨</div>
+            <div class="dl-ending-icon">🧶</div>
+        </section>
+
     </main>
 
     <!-- GLOBAL FOOTER -->
-        <footer class="bg-brand-text text-white pt-16 md:pt-20 pb-12 border-t border-brand-beige/20 relative">
+    <footer class="bg-brand-text text-white pt-16 md:pt-20 pb-12 border-t border-brand-beige/20 relative">
         <div class="max-w-[90rem] mx-auto px-4 sm:px-8 lg:px-12">
             <div class="grid grid-cols-1 md:grid-cols-3 gap-10 md:gap-12 lg:gap-16 mb-16 text-left">
                 <!-- Column 1: Daisyline -->
                 <div>
                     <span class="font-heading text-3xl tracking-wide text-white block mb-5">Daisyline.</span>
                     <p class="text-sm font-light text-brand-beige/80 leading-relaxed mb-6 max-w-sm">
-                        Handmade crochet plush toys, handbags, bouquets, and custom gifts. Inspired by slow living and timeless craftsmanship in Pakistan.
+                        Handmade crochet plush toys, handbags, bouquets, and custom gifts. Inspired by slow living and
+                        timeless craftsmanship in Pakistan.
                     </p>
                 </div>
 
@@ -760,9 +895,12 @@
                     <h4 class="font-heading text-xl text-white mb-5">Support</h4>
                     <ul class="space-y-3.5 text-sm font-light text-brand-beige/80">
                         <li><a href="./about_us.html" class="hover:text-white transition-colors">About Us</a></li>
-                        <li><a href="./about_us.html#how-to-order" class="hover:text-white transition-colors">How to Order</a></li>
-                        <li><a href="./about_us.html#shipping" class="hover:text-white transition-colors">Shipping Policy</a></li>
-                        <li><a href="./about_us.html#returns" class="hover:text-white transition-colors">Return Policy</a></li>
+                        <li><a href="./about_us.html#how-to-order" class="hover:text-white transition-colors">How to
+                                Order</a></li>
+                        <li><a href="./about_us.html#shipping" class="hover:text-white transition-colors">Shipping
+                                Policy</a></li>
+                        <li><a href="./about_us.html#returns" class="hover:text-white transition-colors">Return
+                                Policy</a></li>
                         <li><a href="./about_us.html#faq" class="hover:text-white transition-colors">FAQs</a></li>
                     </ul>
                 </div>
@@ -771,29 +909,41 @@
                 <div>
                     <h4 class="font-heading text-xl text-white mb-5">Follow Us</h4>
                     <div class="flex gap-3 mb-8">
-                        <a href="https://www.instagram.com/daisylinecrochet/" target="_blank" rel="noopener noreferrer" class="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-brand-sage transition-colors" aria-label="Instagram">
+                        <a href="https://www.instagram.com/daisylinecrochet/" target="_blank" rel="noopener noreferrer"
+                            class="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-brand-sage transition-colors"
+                            aria-label="Instagram">
                             <i class="ph ph-instagram-logo text-xl"></i>
                         </a>
-                        <a href="https://www.facebook.com/share/1HeWDJU5ap/" target="_blank" rel="noopener noreferrer" class="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-brand-sage transition-colors" aria-label="Facebook">
+                        <a href="https://www.facebook.com/share/1HeWDJU5ap/" target="_blank" rel="noopener noreferrer"
+                            class="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-brand-sage transition-colors"
+                            aria-label="Facebook">
                             <i class="ph ph-facebook-logo text-xl"></i>
                         </a>
-                        <a href="https://www.threads.com/@daisylinecrochet" target="_blank" rel="noopener noreferrer" class="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-brand-sage transition-colors" aria-label="Threads">
+                        <a href="https://www.threads.com/@daisylinecrochet" target="_blank" rel="noopener noreferrer"
+                            class="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-brand-sage transition-colors"
+                            aria-label="Threads">
                             <i class="ph ph-at text-xl"></i>
                         </a>
-                        <a href="https://www.tiktok.com/@daisylinecrochet?_r=1&_t=ZS-98DQTwu0jqr" target="_blank" rel="noopener noreferrer" class="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-brand-sage transition-colors" aria-label="TikTok">
+                        <a href="https://www.tiktok.com/@daisylinecrochet?_r=1&_t=ZS-98DQTwu0jqr" target="_blank"
+                            rel="noopener noreferrer"
+                            class="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-brand-sage transition-colors"
+                            aria-label="TikTok">
                             <i class="ph ph-tiktok-logo text-xl"></i>
                         </a>
                     </div>
 
                     <h4 class="font-heading text-xl text-white mb-4">Payments</h4>
                     <div class="flex flex-wrap gap-2.5">
-                        <span class="inline-flex items-center px-3.5 py-1.5 border border-white/15 rounded-full text-xs font-medium text-brand-beige/90 bg-white/5">
+                        <span
+                            class="inline-flex items-center px-3.5 py-1.5 border border-white/15 rounded-full text-xs font-medium text-brand-beige/90 bg-white/5">
                             <i class="ph ph-device-mobile text-sm mr-1.5 text-brand-gold"></i>JazzCash
                         </span>
-                        <span class="inline-flex items-center px-3.5 py-1.5 border border-white/15 rounded-full text-xs font-medium text-brand-beige/90 bg-white/5">
+                        <span
+                            class="inline-flex items-center px-3.5 py-1.5 border border-white/15 rounded-full text-xs font-medium text-brand-beige/90 bg-white/5">
                             <i class="ph ph-wallet text-sm mr-1.5 text-brand-sage"></i>NayaPay
                         </span>
-                        <span class="inline-flex items-center px-3.5 py-1.5 border border-white/15 rounded-full text-xs font-medium text-brand-beige/90 bg-white/5">
+                        <span
+                            class="inline-flex items-center px-3.5 py-1.5 border border-white/15 rounded-full text-xs font-medium text-brand-beige/90 bg-white/5">
                             <i class="ph ph-bank text-sm mr-1.5 text-brand-beige"></i>Bank Transfer
                         </span>
                     </div>
@@ -801,14 +951,15 @@
             </div>
 
             <!-- Footer Bottom Bar -->
-            <div class="pt-8 border-t border-white/10 flex flex-col md:flex-row justify-between items-center text-center md:text-left gap-3 text-xs text-brand-beige/60">
+            <div
+                class="pt-8 border-t border-white/10 flex flex-col md:flex-row justify-between items-center text-center md:text-left gap-3 text-xs text-brand-beige/60">
                 <p>&copy; <span id="year">2026</span> DaisyLine Crochet. All rights reserved.</p>
                 <p>Designed and created by Ateeb Jilani</p>
             </div>
         </div>
     </footer>
 
-    
+
 
     <script>
         document.addEventListener('DOMContentLoaded', () => {
@@ -816,75 +967,29 @@
             if (yearEl) yearEl.textContent = new Date().getFullYear();
         });
     </script>
-    <!-- Premium Expandable Cards Logic -->
+    <!-- Page Specific Scripts -->
     <script>
         document.addEventListener('DOMContentLoaded', () => {
-            const cards = document.querySelectorAll('.dl-premium-card');
-            
-            const closeAll = () => {
-                cards.forEach(card => {
-                    card.classList.remove('open');
-                    const btn = card.querySelector('.dl-premium-card-btn');
-                    const ans = card.querySelector('.dl-premium-card-content');
-                    if (btn) btn.setAttribute('aria-expanded', 'false');
-                    if (ans) ans.setAttribute('aria-hidden', 'true');
-                });
-            };
-
-            const openCard = (card) => {
-                card.classList.add('open');
-                const btn = card.querySelector('.dl-premium-card-btn');
-                const ans = card.querySelector('.dl-premium-card-content');
-                if (btn) btn.setAttribute('aria-expanded', 'true');
-                if (ans) ans.setAttribute('aria-hidden', 'false');
-                
-                // Scroll into view gently on mobile
-                setTimeout(() => {
-                    const rect = card.getBoundingClientRect();
-                    if (rect.top < 100 || rect.bottom > window.innerHeight) {
-                        window.scrollTo({
-                            top: window.scrollY + rect.top - 80,
-                            behavior: 'smooth'
-                        });
-                    }
-                }, 350);
-            };
-
-            cards.forEach(card => {
-                const btn = card.querySelector('.dl-premium-card-btn');
-                if (!btn) return;
-                
-                btn.addEventListener('click', (e) => {
-                    const isOpen = card.classList.contains('open');
-                    closeAll();
-                    if (!isOpen) {
-                        openCard(card);
-                    }
-                });
-
-                btn.addEventListener('keydown', (e) => {
-                    if (e.key === 'Enter' || e.key === ' ') {
-                        e.preventDefault();
-                        btn.click();
-                    }
-                });
-            });
-
-            // Handle Anchor Links (e.g. #how-to-order)
+            // Smooth scroll for anchor links
             const handleHash = () => {
                 if (window.location.hash) {
                     const targetId = window.location.hash.substring(1);
-                    const targetCard = document.getElementById(targetId);
-                    if (targetCard && targetCard.classList.contains('dl-premium-card')) {
-                        closeAll();
-                        openCard(targetCard);
+                    const targetEl = document.getElementById(targetId);
+                    if (targetEl) {
+                        setTimeout(() => {
+                            const rect = targetEl.getBoundingClientRect();
+                            window.scrollTo({
+                                top: window.scrollY + rect.top - 100,
+                                behavior: 'smooth'
+                            });
+                        }, 100);
                     }
                 }
             };
-            
             handleHash();
             window.addEventListener('hashchange', handleHash);
         });
     </script>
 </body>
+
 </html>
