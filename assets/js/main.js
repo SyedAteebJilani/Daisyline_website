@@ -1,7 +1,7 @@
-/* ==========================================================================
-   DAISYLINE CROCHET — MASTER E-COMMERCE JAVASCRIPT ENGINE
+﻿/* ==========================================================================
+   DAISYLINE CROCHET â€” MASTER E-COMMERCE JAVASCRIPT ENGINE
    Role: Principal Frontend Architect & JS System Designer
-   Sprint 1–11: Complete Shared Architecture, Modular State Management,
+   Sprint 1â€“11: Complete Shared Architecture, Modular State Management,
    Cart Drawer, Wishlist, Quick View, Search, & Refactored Utilities.
    ========================================================================== */
 
@@ -40,7 +40,7 @@ const Utils = {
             timeout = setTimeout(() => func(...args), delay);
         };
     },
-    makeSvgBg: (title, bgHex = '#FFF0F3', textHex = '#5A6B53', emoji = '🧶') => {
+    makeSvgBg: (title, bgHex = '#FFF0F3', textHex = '#5A6B53', emoji = 'ðŸ§¶') => {
         const svg = `<svg xmlns="http://www.w3.org/2000/svg" width="600" height="600" viewBox="0 0 600 600">
             <rect width="600" height="600" fill="${bgHex}"/>
             <circle cx="300" cy="300" r="220" fill="none" stroke="${textHex}" stroke-width="2" stroke-dasharray="8 8" opacity="0.3"/>
@@ -68,7 +68,7 @@ const PRODUCTS_CATALOG = [
         reviews: 24,
         bg: '#FFF0F3',
         text: '#5A6B53',
-        emoji: '🌸',
+        emoji: 'ðŸŒ¸',
         badges: ['NEW'],
         badgeClass: 'dl-badge-new-tag',
         inStock: true,
@@ -88,7 +88,7 @@ const PRODUCTS_CATALOG = [
         reviews: 38,
         bg: '#FFEBE3',
         text: '#5A6B53',
-        emoji: '🌻',
+        emoji: 'ðŸŒ»',
         badges: ['HANDMADE'],
         badgeClass: 'dl-badge-handmade-tag',
         inStock: true,
@@ -108,7 +108,7 @@ const PRODUCTS_CATALOG = [
         reviews: 16,
         bg: '#F5EFE6',
         text: '#5A6B53',
-        emoji: '🎀',
+        emoji: 'ðŸŽ€',
         badges: ['SALE'],
         badgeClass: 'dl-badge-sale-tag',
         inStock: true,
@@ -128,7 +128,7 @@ const PRODUCTS_CATALOG = [
         reviews: 42,
         bg: '#FAF8F5',
         text: '#5A6B53',
-        emoji: '🧥',
+        emoji: 'ðŸ§¥',
         badges: ['BOUTIQUE'],
         badgeClass: 'dl-badge-new-tag',
         inStock: true,
@@ -148,7 +148,7 @@ const PRODUCTS_CATALOG = [
         reviews: 19,
         bg: '#FFF0F3',
         text: '#5A6B53',
-        emoji: '🌼',
+        emoji: 'ðŸŒ¼',
         badges: ['LIMITED'],
         badgeClass: 'dl-badge-limited-tag',
         inStock: true,
@@ -168,7 +168,7 @@ const PRODUCTS_CATALOG = [
         reviews: 84,
         bg: '#F5EFE6',
         text: '#5A6B53',
-        emoji: '👜',
+        emoji: 'ðŸ‘œ',
         badges: ['BEST SELLER'],
         badgeClass: 'dl-badge-bestseller-tag',
         inStock: true,
@@ -188,7 +188,7 @@ const PRODUCTS_CATALOG = [
         reviews: 62,
         bg: '#FFEBE3',
         text: '#5A6B53',
-        emoji: '🧸',
+        emoji: 'ðŸ§¸',
         badges: ['HANDMADE'],
         badgeClass: 'dl-badge-handmade-tag',
         inStock: true,
@@ -208,7 +208,7 @@ const PRODUCTS_CATALOG = [
         reviews: 53,
         bg: '#FAF8F5',
         text: '#5A6B53',
-        emoji: '☕',
+        emoji: 'â˜•',
         badges: ['BEST SELLER'],
         badgeClass: 'dl-badge-bestseller-tag',
         inStock: true,
@@ -264,7 +264,7 @@ class ShoppingStore {
 
     addToCart(productId, qty = 1, color = '', size = '') {
         const prod = PRODUCTS_CATALOG.find(p => p.id === productId) || {
-            id: productId, name: 'Crochet Item', price: 2500, priceFormatted: 'PKR 2,500', emoji: '🧶', bg: '#FFF0F3'
+            id: productId, name: 'Crochet Item', price: 2500, priceFormatted: 'PKR 2,500', emoji: 'ðŸ§¶', bg: '#FFF0F3'
         };
 
         const existing = this.cart.find(item => item.id === productId && item.color === color && item.size === size);
@@ -285,7 +285,7 @@ class ShoppingStore {
         }
 
         this.saveCart();
-        showToast(`Added ${prod.name} to Cart! 💕`, 'ph-shopping-bag');
+        showToast(`Added ${prod.name} to Cart! ðŸ’•`, 'ph-shopping-bag');
         openCartDrawer();
     }
 
@@ -327,7 +327,7 @@ class ShoppingStore {
         } else {
             this.wishlist.push(productId);
             this.saveWishlist();
-            showToast(`Added ${name} to Wishlist! 💖`, 'ph-heart');
+            showToast(`Added ${name} to Wishlist! ðŸ’–`, 'ph-heart');
         }
     }
 
@@ -366,7 +366,7 @@ class ShoppingStore {
         if (this.cart.length === 0) {
             body.innerHTML = `
                 <div class="dl-empty-state" style="padding:40px 10px; margin:0; border:none;">
-                    <div class="dl-empty-icon" style="font-size:44px;">🧶</div>
+                    <div class="dl-empty-icon" style="font-size:44px;">ðŸ§¶</div>
                     <h3 class="dl-empty-title" style="font-size:20px;">Your cart is empty</h3>
                     <p class="dl-empty-desc" style="font-size:13px;">Add handmade crochet pieces to your cart!</p>
                 </div>
@@ -375,7 +375,7 @@ class ShoppingStore {
         }
 
         body.innerHTML = this.cart.map((item, idx) => {
-            const svgBg = Utils.makeSvgBg(item.name, item.bg || '#FFF0F3', '#5A6B53', item.emoji || '🧶');
+            const svgBg = Utils.makeSvgBg(item.name, item.bg || '#FFF0F3', '#5A6B53', item.emoji || 'ðŸ§¶');
             return `
                 <div class="dl-cart-item">
                     <img src="${svgBg}" alt="${item.name}" class="dl-cart-item-img">
@@ -448,10 +448,10 @@ function injectGlobalUIComponents() {
                         <span>Subtotal:</span>
                         <span id="dl-cart-drawer-subtotal">PKR 0</span>
                     </div>
-                    <button class="dl-btn dl-btn-primary" style="width:100%; margin-bottom:8px;" onclick="alert('Proceeding to Checkout! 💕')">
-                        Proceed to Checkout ⚡
+                    <button class="dl-btn dl-btn-primary" style="width:100%; margin-bottom:8px;" onclick="window.location.href = (window.location.pathname.includes('index.html') || window.location.pathname.endsWith('/')) ? './pages/checkout.html' : '../pages/checkout.html'">
+                        Proceed to Checkout âš¡
                     </button>
-                    <button class="dl-btn dl-btn-secondary" style="width:100%;" onclick="closeCartDrawer(); window.location.href='../../pages/shop.html'">
+                    <button class="dl-btn dl-btn-secondary" style="width:100%;" onclick="closeCartDrawer(); window.location.href='../pages/shop.html'">
                         Continue Shopping
                     </button>
                 </div>
@@ -509,12 +509,12 @@ function openQuickView(productId) {
         <div class="dl-pdp-info-panel">
             <span class="dl-pdp-stock-badge"><i class="ph ph-check-circle"></i> In Stock</span>
             <h2 class="dl-pdp-title" style="font-size:32px;">${prod.name}</h2>
-            <div class="dl-stars">★★★★★ <span style="font-size:12px; color:var(--dl-muted);">(${prod.reviews} Reviews)</span></div>
+            <div class="dl-stars">â˜…â˜…â˜…â˜…â˜… <span style="font-size:12px; color:var(--dl-muted);">(${prod.reviews} Reviews)</span></div>
             <div class="dl-pdp-price">${prod.priceFormatted}</div>
             <p class="dl-pdp-desc-short">${prod.description}</p>
             <div class="dl-pdp-btn-group">
                 <button class="dl-btn dl-btn-primary" onclick="store.addToCart('${prod.id}'); closeQuickView();">Add to Cart</button>
-                <button class="dl-btn dl-btn-secondary" onclick="window.location.href='../../pages/product.html'">View Full Details</button>
+                <button class="dl-btn dl-btn-secondary" onclick="window.location.href='../pages/product.html'">View Full Details</button>
             </div>
         </div>
     `;
@@ -732,8 +732,16 @@ document.addEventListener('DOMContentLoaded', () => {
         document.body.style.overflow = '';
     };
 
-    if (drawerCloseBtn) drawerCloseBtn.addEventListener('click', closeMobileMenu);
+        if (drawerCloseBtn) drawerCloseBtn.addEventListener('click', closeMobileMenu);
     if (drawerOverlay) drawerOverlay.addEventListener('click', closeMobileMenu);
+
+    // Close mobile menu on any navigation link click
+    if (drawer) {
+        const mobileLinks = drawer.querySelectorAll('a');
+        mobileLinks.forEach(link => {
+            link.addEventListener('click', closeMobileMenu);
+        });
+    }
 
     // Render Product Cards
     const renderProductCardHTML = (item) => {
@@ -748,20 +756,20 @@ document.addEventListener('DOMContentLoaded', () => {
                     <button class="dl-wishlist-btn ${store.isInWishlist(item.id) ? 'active' : ''}" aria-label="Add to wishlist" onclick="store.toggleWishlist('${item.id}'); this.classList.toggle('active');">
                         <i class="ph ph-heart text-lg"></i>
                     </button>
-                    <a href="../../pages/product.html">
+                    <a href="../pages/product.html">
                         <img src="${imgSrc}" alt="${item.name}" class="dl-product-img" loading="lazy">
                     </a>
                     <div class="dl-product-actions">
-                        <button class="dl-btn-product dl-btn-quick" onclick="openQuickView('${item.id}')">👁 Quick View</button>
+                        <button class="dl-btn-product dl-btn-quick" onclick="openQuickView('${item.id}')">ðŸ‘ Quick View</button>
                         <button class="dl-btn-product dl-btn-cart" onclick="store.addToCart('${item.id}')">Add to Cart</button>
                     </div>
                 </div>
                 <div class="dl-product-info">
                     <div>
                         <div class="dl-product-rating">
-                            ★★★★★ <span>${item.rating} (${item.reviews})</span>
+                            â˜…â˜…â˜…â˜…â˜… <span>${item.rating} (${item.reviews})</span>
                         </div>
-                        <h3 class="dl-product-title"><a href="../../pages/product.html" style="color:inherit; text-decoration:none;">${item.name}</a></h3>
+                        <h3 class="dl-product-title"><a href="../pages/product.html" style="color:inherit; text-decoration:none;">${item.name}</a></h3>
                     </div>
                     <div class="dl-product-price">${item.priceFormatted}</div>
                 </div>
@@ -794,18 +802,18 @@ document.addEventListener('DOMContentLoaded', () => {
     const testimonialSlider = Utils.$('#testimonial-slider');
     if (testimonialSlider) {
         const demoReviews = [
-            { name: 'Ayesha Khan', city: 'Karachi', rating: '★★★★★', text: 'Absolutely love the crochet blanket! So soft and the colors are exactly as shown.' },
-            { name: 'Fatima Ali', city: 'Lahore', rating: '★★★★★', text: 'The custom keychain is adorable. Beautiful craftsmanship and fast delivery.' },
-            { name: 'Zainab Qureshi', city: 'Islamabad', rating: '★★★★★', text: 'Bought the baby set for my niece and it is perfect. So gentle on her skin.' },
-            { name: 'Sana R.', city: 'Rawalpindi', rating: '★★★★☆', text: 'Beautiful tote bag. The stitching is very sturdy. Highly recommend DaisyLine!' },
-            { name: 'Hira S.', city: 'Multan', rating: '★★★★★', text: 'The sunflower bouquet is gorgeous and never dies! Looks beautiful on my desk.' },
-            { name: 'Nida W.', city: 'Peshawar', rating: '★★★★★', text: 'Very impressed with the quality of the crochet cardigan. Warm and cozy.' }
+            { name: 'Ayesha Khan', city: 'Karachi', rating: 'â˜…â˜…â˜…â˜…â˜…', text: 'Absolutely love the crochet blanket! So soft and the colors are exactly as shown.' },
+            { name: 'Fatima Ali', city: 'Lahore', rating: 'â˜…â˜…â˜…â˜…â˜…', text: 'The custom keychain is adorable. Beautiful craftsmanship and fast delivery.' },
+            { name: 'Zainab Qureshi', city: 'Islamabad', rating: 'â˜…â˜…â˜…â˜…â˜…', text: 'Bought the baby set for my niece and it is perfect. So gentle on her skin.' },
+            { name: 'Sana R.', city: 'Rawalpindi', rating: 'â˜…â˜…â˜…â˜…â˜†', text: 'Beautiful tote bag. The stitching is very sturdy. Highly recommend DaisyLine!' },
+            { name: 'Hira S.', city: 'Multan', rating: 'â˜…â˜…â˜…â˜…â˜…', text: 'The sunflower bouquet is gorgeous and never dies! Looks beautiful on my desk.' },
+            { name: 'Nida W.', city: 'Peshawar', rating: 'â˜…â˜…â˜…â˜…â˜…', text: 'Very impressed with the quality of the crochet cardigan. Warm and cozy.' }
         ];
         
         const renderReview = (r) => `
             <div class="dl-testimonial-card">
                 <div class="dl-testimonial-card-inner">
-                    <div class="dl-testimonial-icon">❝</div>
+                    <div class="dl-testimonial-icon">â</div>
                     <div class="dl-testimonial-rating">${r.rating}</div>
                     <p class="dl-testimonial-text">"${r.text}"</p>
                     <div class="dl-testimonial-author">
@@ -966,7 +974,7 @@ document.addEventListener('DOMContentLoaded', () => {
     if (instaTrack) {
         const instaPosts = Array(8).fill(0).map((_, i) => ({
             id: i,
-            img: Utils.makeSvgBg(`Post ${i+1}`, '#F5EFE6', '#5A6B53', '📸')
+            img: Utils.makeSvgBg(`Post ${i+1}`, '#F5EFE6', '#5A6B53', 'ðŸ“¸')
         }));
         
         const renderInsta = (p) => `
@@ -1071,7 +1079,29 @@ document.addEventListener('DOMContentLoaded', () => {
             e.preventDefault();
             const qtyInput = document.getElementById('dl-qty-input');
             const qty = qtyInput ? (parseInt(qtyInput.value) || 1) : 1;
-            store.addToCart(productId, qty);
+            
+            const titleEl = document.querySelector('.dl-pdp-title-new');
+            const priceEl = document.querySelector('.dl-pdp-price-new');
+            let currentProductId = productId;
+            
+            if (titleEl && priceEl && !urlParams.has('id')) {
+                const name = titleEl.innerText.trim();
+                const priceText = priceEl.innerText.trim().replace(/[^0-9]/g, '');
+                currentProductId = 'dynamic-' + name.replace(/\s+/g, '-').toLowerCase();
+                
+                if (!PRODUCTS_CATALOG.find(p => p.id === currentProductId)) {
+                    PRODUCTS_CATALOG.push({
+                        id: currentProductId,
+                        name: name,
+                        price: parseInt(priceText) || 0,
+                        priceFormatted: priceEl.innerText.trim(),
+                        emoji: 'ðŸ§¶',
+                        bg: '#FFF0F3'
+                    });
+                }
+            }
+            
+            store.addToCart(currentProductId, qty);
         });
     }
 
@@ -1080,9 +1110,31 @@ document.addEventListener('DOMContentLoaded', () => {
             e.preventDefault();
             const qtyInput = document.getElementById('dl-qty-input');
             const qty = qtyInput ? (parseInt(qtyInput.value) || 1) : 1;
-            store.addToCart(productId, qty);
+            
+            const titleEl = document.querySelector('.dl-pdp-title-new');
+            const priceEl = document.querySelector('.dl-pdp-price-new');
+            let currentProductId = productId;
+            
+            if (titleEl && priceEl && !urlParams.has('id')) {
+                const name = titleEl.innerText.trim();
+                const priceText = priceEl.innerText.trim().replace(/[^0-9]/g, '');
+                currentProductId = 'dynamic-' + name.replace(/\s+/g, '-').toLowerCase();
+                
+                if (!PRODUCTS_CATALOG.find(p => p.id === currentProductId)) {
+                    PRODUCTS_CATALOG.push({
+                        id: currentProductId,
+                        name: name,
+                        price: parseInt(priceText) || 0,
+                        priceFormatted: priceEl.innerText.trim(),
+                        emoji: 'âš¡',
+                        bg: '#FFF0F3'
+                    });
+                }
+            }
+            
+            store.addToCart(currentProductId, qty);
             // Simulate redirect to checkout
-            showToast('Proceeding to Checkout! ⚡', 'ph-lightning');
+            showToast('Proceeding to Checkout! âš¡', 'ph-lightning');
             setTimeout(() => {
                 // In real app: window.location.href = '/checkout';
                 openCartDrawer();
@@ -1119,3 +1171,4 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 });
+

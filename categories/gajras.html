@@ -4,7 +4,7 @@
 <head>
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title>Contact Us - Daisyline Crochet</title>
+<title>Hand Accessories | Daisyline Crochet</title>
 <meta content="Inspired by Grandma's crochet legacy. Handmade crochet plush toys, handbags, bouquets, and custom gifts. Made in Pakistan." name="description"/>
 <!-- Google Fonts: Cormorant Garamond, Plus Jakarta Sans, Sacramento -->
 <link href="https://fonts.googleapis.com" rel="preconnect"/>
@@ -338,45 +338,75 @@
 </div>
 </div>
 </div>
-<main class="dl-main" style="padding: 60px 0;">
+<main class="dl-main">
 <div class="dl-container">
-<div style="max-width: 1000px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1.5fr; gap: 60px; align-items: start;">
-<div>
-<h1 style="font-family: var(--dl-font-heading); font-size: 42px; margin-bottom: 20px; color: var(--dl-text);">Get in Touch</h1>
-<p style="color: var(--dl-muted); font-size: 16px; line-height: 1.7; margin-bottom: 40px;">Have a question about a custom order or want to say hello? We'd love to hear from you. Reach out via our social channels or drop us a message below.</p>
-<div style="display: flex; flex-direction: column; gap: 20px;">
-<a href="#" style="display: flex; align-items: center; gap: 15px; padding: 20px; background: var(--dl-cream); border-radius: 16px; text-decoration: none; color: var(--dl-text); transition: transform 0.3s;"><i class="ph ph-whatsapp-logo" style="font-size: 28px; color: #25D366;"></i> <strong style="font-size: 18px;">WhatsApp Us</strong></a>
-<a href="#" style="display: flex; align-items: center; gap: 15px; padding: 20px; background: var(--dl-cream); border-radius: 16px; text-decoration: none; color: var(--dl-text); transition: transform 0.3s;"><i class="ph ph-instagram-logo" style="font-size: 28px; color: #E1306C;"></i> <strong style="font-size: 18px;">Instagram</strong></a>
-<a href="#" style="display: flex; align-items: center; gap: 15px; padding: 20px; background: var(--dl-cream); border-radius: 16px; text-decoration: none; color: var(--dl-text); transition: transform 0.3s;"><i class="ph ph-facebook-logo" style="font-size: 28px; color: #1877F2;"></i> <strong style="font-size: 18px;">Facebook</strong></a>
-<a href="#" style="display: flex; align-items: center; gap: 15px; padding: 20px; background: var(--dl-cream); border-radius: 16px; text-decoration: none; color: var(--dl-text); transition: transform 0.3s;"><i class="ph ph-threads-logo" style="font-size: 28px;"></i> <strong style="font-size: 18px;">Threads</strong></a>
-<a href="#" style="display: flex; align-items: center; gap: 15px; padding: 20px; background: var(--dl-cream); border-radius: 16px; text-decoration: none; color: var(--dl-text); transition: transform 0.3s;"><i class="ph ph-tiktok-logo" style="font-size: 28px;"></i> <strong style="font-size: 18px;">TikTok</strong></a>
+<!-- Breadcrumbs -->
+<nav aria-label="Breadcrumb" class="dl-breadcrumb">
+<a href="../index.html">Home</a>
+<i class="ph ph-caret-right text-xs text-brand-muted"></i>
+<a href="../pages/shop.html">Shop</a>
+<i class="ph ph-caret-right text-xs text-brand-muted"></i>
+<span class="dl-crumb-current">Hand Accessories</span>
+</nav>
+<!-- Category Banner -->
+<section class="dl-shop-hero dl-reveal">
+<span class="dl-tagline">🧤 Premium Handcrafted Collection</span>
+<h1 class="dl-shop-hero-title">Hand Accessories</h1>
+<p class="dl-shop-hero-sub">Soft handcrafted wristbands, gloves, and cozy hand warmers.</p>
+</section>
+<!-- Toolbar -->
+<div class="dl-toolbar dl-reveal">
+<div class="dl-toolbar-left">
+<div class="dl-toolbar-search">
+<i class="ph ph-magnifying-glass"></i>
+<input id="dl-grid-search" placeholder="Search Hand Accessories..." type="text"/>
+</div>
+<span class="dl-toolbar-count">Showing 8 Products</span>
+</div>
+<div class="dl-toolbar-right">
+<select aria-label="Sort items" class="dl-sort-select">
+<option value="newest">Sort by: Newest</option>
+<option value="bestselling">Sort by: Best Selling</option>
+<option value="low-high">Price: Low → High</option>
+<option value="high-low">Price: High → Low</option>
+<option value="alpha">Alphabetical</option>
+</select>
+<div class="dl-view-toggle">
+<button aria-label="Grid View" class="dl-view-btn active" id="dl-view-grid-btn"><i class="ph ph-squares-four"></i></button>
+<button aria-label="List View" class="dl-view-btn" id="dl-view-list-btn"><i class="ph ph-list-bullets"></i></button>
 </div>
 </div>
-<div style="background: #fff; padding: 40px; border-radius: 20px; border: 1px solid var(--dl-beige); box-shadow: 0 10px 30px rgba(0,0,0,0.02);">
-<h2 style="font-family: var(--dl-font-heading); font-size: 28px; margin-bottom: 25px;">Send a Message</h2>
-<form id="contact-form" style="display: flex; flex-direction: column; gap: 20px;">
-<div style="display: flex; flex-direction: column; gap: 8px;">
-<label style="font-size: 14px; font-weight: 600;">Full Name</label>
-<input required="" style="padding: 15px; border: 1px solid var(--dl-beige); border-radius: 12px; font-family: inherit; font-size: 15px; background: var(--dl-cream);" type="text"/>
 </div>
-<div style="display: flex; flex-direction: column; gap: 8px;">
-<label style="font-size: 14px; font-weight: 600;">Email Address</label>
-<input required="" style="padding: 15px; border: 1px solid var(--dl-beige); border-radius: 12px; font-family: inherit; font-size: 15px; background: var(--dl-cream);" type="email"/>
+<!-- Product Grid -->
+<div class="dl-product-grid" id="dl-shop-product-grid">
+<!-- Products dynamically rendered -->
 </div>
-<div style="display: flex; flex-direction: column; gap: 8px;">
-<label style="font-size: 14px; font-weight: 600;">Message</label>
-<textarea required="" rows="6" style="padding: 15px; border: 1px solid var(--dl-beige); border-radius: 12px; font-family: inherit; font-size: 15px; background: var(--dl-cream); resize: vertical;"></textarea>
+<!-- Empty State Component Placeholder (Hidden by default) -->
+<div class="dl-empty-state" id="dl-empty-state" style="display:none;">
+<div class="dl-empty-icon">🧤</div>
+<h3 class="dl-empty-title">New handmade creations are coming soon</h3>
+<p class="dl-empty-desc">We are currently crafting new items for Hand Accessories. Check back shortly!</p>
+<a class="dl-btn dl-btn-primary" href="../pages/shop.html">Browse Other Categories</a>
 </div>
-<button class="dl-btn dl-btn-primary" style="padding: 18px; font-size: 16px; border-radius: 50px; margin-top: 10px;" type="submit">Send Message</button>
+</div>
+<!-- NEWSLETTER SECTION -->
+<section class="dl-section dl-bg-cream">
+<div class="dl-container">
+<div class="dl-newsletter-card dl-reveal">
+<span class="dl-tagline">Stay Connected</span>
+<h2 class="dl-section-title" style="margin-bottom:10px;">Join Our Crochet Family 💕</h2>
+<p class="dl-section-subtitle">
+                        Subscribe to get special handcrafted offers, new collection alerts, and secret giveaways.
+                    </p>
+<form class="dl-newsletter-form" id="newsletter-form">
+<input aria-label="Email address" class="dl-newsletter-input" placeholder="Enter your email address..." required="" type="email"/>
+<button class="dl-btn dl-btn-primary" type="submit">
+                            Subscribe
+                        </button>
 </form>
-<div id="contact-success" style="display: none; text-align: center; padding: 40px 20px;">
-<i class="ph ph-check-circle" style="font-size: 60px; color: var(--dl-sage); margin-bottom: 15px;"></i>
-<h3 style="font-family: var(--dl-font-heading); font-size: 24px; margin-bottom: 10px;">Message Sent!</h3>
-<p style="color: var(--dl-muted);">Thank you for reaching out. We will get back to you shortly.</p>
 </div>
 </div>
-</div>
-</div>
+</section>
 </main>
 <!-- 14. FOOTER (EXISTING UNTOUCHED FOOTER) -->
 <footer class="bg-brand-text text-white pt-16 md:pt-20 pb-12 border-t border-brand-beige/20 relative">
@@ -444,19 +474,5 @@
             if (yearEl) yearEl.textContent = new Date().getFullYear();
         });
     </script>
-<script>
-document.addEventListener('DOMContentLoaded', () => {
-    const form = document.getElementById('contact-form');
-    const success = document.getElementById('contact-success');
-    if(form) {
-        form.addEventListener('submit', (e) => {
-            e.preventDefault();
-            form.style.display = 'none';
-            success.style.display = 'block';
-            showToast('Message sent successfully!', 'ph-paper-plane-tilt');
-        });
-    }
-});
-</script>
 </body>
 </html>

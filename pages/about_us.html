@@ -1,35 +1,36 @@
 <!DOCTYPE html>
-<html lang="en" class="scroll-smooth">
 
+<html class="scroll-smooth" lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>About Us | Daisyline Crochet</title>
-    <meta name="description"
-        content="Learn about Daisyline Crochet. Every product is handmade with love in Pakistan. Discover our story, shipping policy, return policy, and FAQs.">
-
-    <!-- Google Fonts: Cormorant Garamond, Plus Jakarta Sans, Sacramento -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link
-        href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400;1,600&family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=Sacramento&display=swap"
-        rel="stylesheet">
-
-    <!-- Phosphor Icons -->
-    <script src="https://unpkg.com/@phosphor-icons/web"></script>
-
-    <!-- Tailwind CSS -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>About Us | Daisyline Crochet</title>
+<meta content="Inspired by Grandma's crochet legacy. Handmade crochet plush toys, handbags, bouquets, and custom gifts. Made in Pakistan." name="description"/>
+<!-- Google Fonts: Cormorant Garamond, Plus Jakarta Sans, Sacramento -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400;1,600&amp;family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&amp;family=Sacramento&amp;display=swap" rel="stylesheet"/>
+<!-- Phosphor Icons -->
+<script src="https://unpkg.com/@phosphor-icons/web"></script>
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
         tailwind.config = {
             theme: {
                 extend: {
                     colors: {
                         brand: {
-                            sage: '#8fa886', cream: '#FAF8F5', ivory: '#F5EFE6',
-                            olive: '#5A6B53', beige: '#E6DED3', floral: '#D4DDD1',
-                            gold: '#D4B773', text: '#282421', muted: '#787068',
-                            blush: '#FFF0F3', peach: '#FFEBE3'
+                            sage: '#8fa886',
+                            cream: '#FAF8F5',
+                            ivory: '#F5EFE6',
+                            olive: '#5A6B53',
+                            beige: '#E6DED3',
+                            floral: '#D4DDD1',
+                            gold: '#D4B773',
+                            text: '#282421',
+                            muted: '#787068',
+                            blush: '#FFF0F3',
+                            peach: '#FFEBE3'
                         }
                     },
                     fontFamily: {
@@ -41,955 +42,635 @@
             }
         }
     </script>
-
-    <!-- Global Styles & Scripts -->
-    <link rel="stylesheet" href="../assets/css/homepage.css">
-    <script src="../assets/js/main.js" defer></script>
-    <style>
-        /* Modern Premium Animations */
-        @keyframes fadeUp {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-        .animate-fade-up { animation: fadeUp 0.8s ease-out forwards; }
-
-        /* Section 1: Minimal Hero */
-        .dl-minimal-hero {
-            height: 40vh;
-            min-height: 300px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-            background: linear-gradient(135deg, var(--dl-blush, #FFF0F3) 0%, var(--dl-cream, #FAF8F5) 100%);
-            position: relative;
-            overflow: hidden;
-            padding: 20px;
-        }
-        .dl-minimal-hero::before {
-            content: '';
-            position: absolute;
-            top: 0; left: 0; right: 0; bottom: 0;
-            background-image: radial-gradient(var(--dl-sage, #8fa886) 1px, transparent 1px);
-            background-size: 20px 20px;
-            opacity: 0.1;
-            z-index: 1;
-        }
-        .dl-minimal-hero-content {
-            position: relative;
-            z-index: 2;
-        }
-        .dl-minimal-hero-icon {
-            font-size: 56px;
-            margin-bottom: 16px;
-            animation: float 3s ease-in-out infinite;
-        }
-        .dl-minimal-hero-title {
-            font-family: var(--dl-font-heading, "Cormorant Garamond");
-            font-size: 48px;
-            font-weight: 600;
-            color: var(--dl-text, #282421);
-            margin: 0;
-        }
-        @keyframes float {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-10px); }
-        }
-
-        /* Section 2: Story Card */
-        .dl-story-section {
-            padding: 80px 20px;
-            background-color: var(--dl-cream, #FAF8F5);
-        }
-        .dl-story-card {
-            max-width: 800px;
-            margin: 0 auto;
-            background: #fff;
-            border-radius: 32px;
-            padding: 50px;
-            box-shadow: 0 20px 40px rgba(0,0,0,0.03);
-            text-align: center;
-            position: relative;
-        }
-        .dl-story-icon { font-size: 40px; margin-bottom: 20px; }
-        .dl-story-title {
-            font-family: var(--dl-font-heading, "Cormorant Garamond");
-            font-size: 36px;
-            color: var(--dl-text, #282421);
-            margin-bottom: 24px;
-        }
-        .dl-divider {
-            width: 60px;
-            height: 2px;
-            background-color: var(--dl-sage, #8fa886);
-            margin: 0 auto 30px;
-            border-radius: 2px;
-        }
-        .dl-story-text {
-            font-size: 18px;
-            line-height: 1.8;
-            color: var(--dl-muted, #787068);
-        }
-
-        /* Section 3: Info Cards Grid */
-        .dl-info-section {
-            padding: 80px 20px;
-            background-color: #fff;
-        }
-        .dl-info-grid {
-            max-width: 1000px;
-            margin: 0 auto;
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 30px;
-        }
-        .dl-info-card {
-            background: var(--dl-cream, #FAF8F5);
-            border-radius: 24px;
-            padding: 40px;
-            transition: all 0.4s ease;
-            border: 1px solid rgba(230,222,211,0.3);
-        }
-        @media (min-width: 769px) {
-            .dl-info-card:hover {
-                transform: translateY(-8px);
-                box-shadow: 0 15px 35px rgba(0,0,0,0.05);
-                border-color: var(--dl-sage, #8fa886);
-            }
-        }
-        .dl-info-icon { font-size: 48px; margin-bottom: 20px; display: inline-block; }
-        .dl-info-title {
-            font-family: var(--dl-font-heading, "Cormorant Garamond");
-            font-size: 28px;
-            color: var(--dl-text, #282421);
-            margin-bottom: 16px;
-        }
-        .dl-info-card .dl-divider { margin: 0 0 20px 0; width: 40px; }
-        .dl-info-text {
-            font-size: 16px;
-            line-height: 1.7;
-            color: var(--dl-muted, #787068);
-        }
-
-        /* Section 4: Process Timeline */
-        .dl-process-section {
-            padding: 80px 20px;
-            background-color: var(--dl-cream, #FAF8F5);
-            text-align: center;
-        }
-        .dl-process-title {
-            font-family: var(--dl-font-heading, "Cormorant Garamond");
-            font-size: 36px;
-            margin-bottom: 60px;
-            color: var(--dl-text, #282421);
-        }
-        .dl-timeline {
-            display: flex;
-            justify-content: space-between;
-            max-width: 1100px;
-            margin: 0 auto;
-            position: relative;
-        }
-        .dl-timeline::before {
-            content: '';
-            position: absolute;
-            top: 40px; left: 50px; right: 50px;
-            height: 2px;
-            background: var(--dl-beige, #E6DED3);
-            z-index: 1;
-        }
-        .dl-timeline-item {
-            position: relative;
-            z-index: 2;
-            flex: 1;
-            padding: 0 10px;
-        }
-        .dl-timeline-icon {
-            width: 80px; height: 80px;
-            margin: 0 auto 20px;
-            background: #fff;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 32px;
-            box-shadow: 0 10px 25px rgba(0,0,0,0.05);
-            border: 2px solid var(--dl-sage, #8fa886);
-        }
-        .dl-timeline-text {
-            font-size: 15px;
-            font-weight: 600;
-            color: var(--dl-text, #282421);
-            line-height: 1.4;
-        }
-
-        /* Section 5: Contact CTA */
-        .dl-cta-section {
-            padding: 100px 20px;
-            background: #fff;
-            text-align: center;
-        }
-        .dl-cta-title {
-            font-family: var(--dl-font-heading, "Cormorant Garamond");
-            font-size: 36px;
-            margin-bottom: 40px;
-        }
-        .dl-social-btns {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 16px;
-            max-width: 800px;
-            margin: 0 auto;
-        }
-        .dl-social-btn {
-            display: inline-flex;
-            align-items: center;
-            gap: 10px;
-            padding: 16px 32px;
-            border-radius: 50px;
-            background: var(--dl-cream, #FAF8F5);
-            color: var(--dl-text, #282421);
-            font-weight: 600;
-            font-size: 16px;
-            transition: all 0.3s ease;
-            text-decoration: none;
-            border: 1px solid var(--dl-beige, #E6DED3);
-        }
-        .dl-social-btn:hover {
-            background: var(--dl-sage, #8fa886);
-            color: #fff;
-            border-color: var(--dl-sage, #8fa886);
-            transform: translateY(-3px);
-        }
-        .dl-social-btn i { font-size: 24px; }
-
-        /* Section 6: Decorative Ending */
-        .dl-ending-section {
-            padding: 40px 20px 80px;
-            text-align: center;
-            background: #fff;
-        }
-        .dl-ending-text {
-            font-family: var(--dl-script, 'Sacramento');
-            font-size: 36px;
-            color: var(--dl-sage, #8fa886);
-        }
-        .dl-ending-icon {
-            font-size: 24px;
-            margin-top: 10px;
-            opacity: 0.8;
-        }
-
-        /* Responsive */
-        @media (max-width: 768px) {
-            .dl-minimal-hero-title { font-size: 36px; }
-            .dl-story-card { padding: 30px 20px; border-radius: 24px; }
-            .dl-story-title { font-size: 28px; }
-            .dl-info-grid { grid-template-columns: 1fr; }
-            
-            .dl-timeline {
-                flex-direction: column;
-                align-items: center;
-                gap: 40px;
-            }
-            .dl-timeline::before {
-                top: 0; bottom: 0;
-                left: 50%; right: auto;
-                width: 2px; height: 100%;
-                transform: translateX(-50%);
-            }
-            .dl-timeline-item { width: 100%; display: flex; flex-direction: column; align-items: center; }
-            .dl-social-btns { flex-direction: column; width: 100%; }
-            .dl-social-btn { width: 100%; justify-content: center; }
-        }
-    </style>
+<!-- Global Design System & Homepage CSS -->
+<link href="../assets/css/homepage.css" rel="stylesheet"/>
+<script defer="" src="../assets/js/main.js"></script>
 </head>
-
 <body class="font-sans antialiased overflow-x-hidden selection:bg-brand-sage selection:text-white">
-
-    <!-- 1. GLOBAL ANNOUNCEMENT BAR -->
-    <div class="dl-announcement-bar">
-        <div class="dl-announcement-content" id="announcement-slider">
-            <span class="dl-announcement-slide active">✨ Handmade Crochet Crafted with Love</span>
-            <span class="dl-announcement-slide">🚚 Delivery Available Across Pakistan</span>
-            <span class="dl-announcement-slide">🎁 Personalized Crochet Gifts Available</span>
-            <span class="dl-announcement-slide">🧶 Premium Quality Handmade Products</span>
-        </div>
-    </div>
-
-    <!-- 2. GLOBAL HEADER -->
-    <header id="dl-navbar" class="dl-global-header">
-        <div class="dl-header-container">
-            <div class="dl-header-row">
-
-                <!-- Left: Logo & Mobile Hamburger -->
-                <div class="dl-header-left">
-                    <button id="dl-mobile-menu-btn" class="dl-mobile-menu-btn" aria-label="Open Mobile Menu">
-                        <i class="ph ph-list"></i>
-                    </button>
-                    <a href="../index.html" class="dl-logo-link">
-                        <img src="../assets/images/logo.jpg" alt="Daisyline Crochet Logo" class="dl-logo-img">
-                        <span class="dl-logo-text">Daisyline.</span>
-                    </a>
-                </div>
-
-                <!-- Center: Desktop Navigation Bar -->
-                <nav class="dl-desktop-nav" aria-label="Main Navigation">
-                    <ul class="dl-nav-list">
-
-                        <!-- 1. Home -->
-                        <li class="dl-nav-item">
-                            <a href="../index.html" class="dl-nav-link ">Home</a>
-                        </li>
-
-                        <!-- 2. Shop (Mega Menu Dropdown) -->
-                        <li class="dl-nav-item dl-has-megamenu">
-                            <a href="../pages/shop.html" class="dl-nav-link ">
+<!-- 1. GLOBAL ANNOUNCEMENT BAR -->
+<div class="dl-announcement-bar">
+<div class="dl-announcement-content" id="announcement-slider">
+<span class="dl-announcement-slide active">✨ Handmade Crochet Crafted with Love</span>
+<span class="dl-announcement-slide">🚚 Estimated Delivery: 5–10 Days</span>
+<span class="dl-announcement-slide">🎁 Personalized Crochet Gifts Available</span>
+<span class="dl-announcement-slide">🧶 Premium Quality Handmade Products</span>
+</div>
+</div>
+<!-- 2. GLOBAL HEADER -->
+<header class="dl-global-header" id="dl-navbar">
+<div class="dl-header-container">
+<div class="dl-header-row">
+<!-- Left: Logo & Mobile Hamburger -->
+<div class="dl-header-left">
+<button aria-label="Open Mobile Menu" class="dl-mobile-menu-btn" id="dl-mobile-menu-btn">
+<i class="ph ph-list"></i>
+</button>
+<a class="dl-logo-link" href="../index.html">
+<img alt="Daisyline Crochet Logo" class="dl-logo-img" src="../assets/images/logo.jpg"/>
+<span class="dl-logo-text">Daisyline.</span>
+</a>
+</div>
+<!-- Center: Desktop Navigation Bar -->
+<nav aria-label="Main Navigation" class="dl-desktop-nav">
+<ul class="dl-nav-list">
+<!-- 1. Home -->
+<li class="dl-nav-item">
+<a class="dl-nav-link active" href="../index.html">Home</a>
+</li>
+<!-- 2. Shop (Mega Menu Dropdown) -->
+<li class="dl-nav-item dl-has-megamenu">
+<a class="dl-nav-link" href="../pages/shop.html">
                                 Shop <i class="ph ph-caret-down dl-caret-icon"></i>
-                            </a>
+</a>
+<!-- MEGA MENU PANEL -->
+<div class="dl-megamenu-panel">
+<div class="dl-megamenu-inner">
+<!-- Column 1: New & Featured -->
+<div class="dl-mega-col">
+<h4 class="dl-mega-heading"><i class="ph ph-sparkle"></i> New &amp; Featured</h4>
+<ul class="dl-mega-links">
+<li><a href="../pages/shop.html">All Products</a></li>
+<li><a href="../pages/shop.html">New Arrivals <span class="dl-badge-mini">New</span></a></li>
+<li><a href="../pages/shop.html">Best Sellers <span class="dl-badge-mini dl-badge-hot">Hot</span></a></li>
+<li><a href="../pages/shop.html">Sale %</a></li>
+</ul>
+</div>
+<!-- Column 2: Gajras & Hair Accessories -->
+<div class="dl-mega-col">
+<h4 class="dl-mega-heading"><a href="../categories/gajras.html">🌸 Gajras</a></h4>
+<ul class="dl-mega-links">
+<li><a href="../categories/gajras.html">Floral Gajras</a></li>
+<li><a href="../categories/gajras.html">Bridal Gajras</a></li>
+<li><a href="../categories/gajras.html">Custom Gajras</a></li>
+</ul>
+<h4 class="dl-mega-heading" style="margin-top: 16px;"><a href="../categories/hair-accessories.html">🎀 Hair Accessories</a></h4>
+<ul class="dl-mega-links">
+<li><a href="../categories/hair-accessories.html">Scrunchies</a></li>
+<li><a href="../categories/hair-accessories.html">Hair Bows</a></li>
+<li><a href="../categories/hair-accessories.html">Hair Clips</a></li>
+<li><a href="../categories/hair-accessories.html">Headbands</a></li>
+<li><a href="../categories/hair-accessories.html">Hair Pins</a></li>
+<li><a href="../categories/hair-accessories.html">Parandas</a></li>
+</ul>
+</div>
+<!-- Column 3: Bags & Keychains -->
+<div class="dl-mega-col">
+<h4 class="dl-mega-heading"><a href="../categories/bags.html">👜 Bags</a></h4>
+<ul class="dl-mega-links">
+<li><a href="../categories/bags.html">Tote Bags</a></li>
+<li><a href="../categories/bags.html">Shoulder Bags</a></li>
+<li><a href="../categories/bags.html">Crossbody Bags</a></li>
+<li><a href="../categories/bags.html">Handbags</a></li>
+<li><a href="../categories/bags.html">Wallets</a></li>
+<li><a href="../categories/bags.html">Pouches</a></li>
+</ul>
+<h4 class="dl-mega-heading" style="margin-top: 16px;"><a href="../categories/keychain.html">🔑 Keychains</a></h4>
+<ul class="dl-mega-links">
+<li><a href="../categories/keychain.html">Car Hanging</a></li>
+<li><a href="../categories/keychain.html">Animal Keychains</a></li>
+<li><a href="../categories/keychain.html">Alphabet Keychains</a></li>
+<li><a href="../categories/keychain.html">Bag Charms</a></li>
+</ul>
+</div>
+<!-- Column 4: Bouquets & Baby Collection -->
+<div class="dl-mega-col">
+<h4 class="dl-mega-heading"><a href="../categories/bouquets.html">💐 Bouquets</a></h4>
+<ul class="dl-mega-links">
+<li><a href="../categories/bouquets.html">Mixed Flower Bouquets</a></li>
+<li><a href="../categories/bouquets.html">Mini Bouquets</a></li>
+<li><a href="../categories/bouquets.html">Blanket Bouquet</a></li>
+</ul>
+<h4 class="dl-mega-heading" style="margin-top: 16px;"><a href="../categories/baby-sets.html">👶 Baby Collection</a></h4>
+<ul class="dl-mega-links">
+<li><a href="../categories/baby-sets.html">Baby Shoes</a></li>
+<li><a href="../categories/baby-sets.html">Baby Caps</a></li>
+<li><a href="../categories/baby-sets.html">Baby Headbands</a></li>
+<li><a href="../categories/baby-sets.html">Baby Blankets</a></li>
+<li><a href="../categories/baby-sets.html">Baby Sets</a></li>
+<li><a href="../categories/baby-sets.html">Baby Rattles</a></li>
+</ul>
+</div>
+<!-- Column 5: Wearables & Plushies -->
+<div class="dl-mega-col">
+<h4 class="dl-mega-heading"><a href="../categories/clothing.html">👕 Wearables</a></h4>
+<div class="dl-mega-sublabel">Women</div>
+<ul class="dl-mega-links">
+<li><a href="../categories/clothing.html">Cardigans</a></li>
+<li><a href="../categories/clothing.html">Summer Tops</a></li>
+</ul>
+<div class="dl-mega-sublabel" style="margin-top: 8px;">Men</div>
+<ul class="dl-mega-links">
+<li><a href="../categories/clothing.html">Sweaters</a></li>
+<li><a href="../categories/clothing.html">Mufflers</a></li>
+<li><a href="../categories/clothing.html">Gloves</a></li>
+<li><a href="../categories/clothing.html">Beanies</a></li>
+</ul>
+<h4 class="dl-mega-heading" style="margin-top: 14px;"><a href="../categories/plushies.html">🧸 Plushies</a></h4>
+<ul class="dl-mega-links">
+<li><a href="../categories/plushies.html">Characters</a></li>
+<li><a href="../categories/plushies.html">Mini Plushies</a></li>
+<li><a href="../categories/plushies.html">Dolls</a></li>
+</ul>
+</div>
+<!-- Column 6: Home Decor & Gift Collection -->
+<div class="dl-mega-col">
+<h4 class="dl-mega-heading"><a href="../categories/home-decor.html">🏡 Home Decor</a></h4>
+<ul class="dl-mega-links">
+<li><a href="../categories/home-decor.html">Coasters</a></li>
+<li><a href="../categories/home-decor.html">Table Runners</a></li>
+<li><a href="../categories/home-decor.html">Placemats</a></li>
+<li><a href="../categories/home-decor.html">Wall Hangings</a></li>
+<li><a href="../categories/home-decor.html">Cushion Covers</a></li>
+<li><a href="../categories/home-decor.html">Crochet Mirrors</a></li>
+</ul>
+<h4 class="dl-mega-heading" style="margin-top: 14px;"><a href="../categories/gifting.html">🎁 Gift Collection</a></h4>
+<ul class="dl-mega-links">
+<li><a href="../categories/gifting.html">Birthday Gifts</a></li>
+<li><a href="../categories/gifting.html">Anniversary Gifts</a></li>
+<li><a href="../categories/gifting.html">Bridal Gifts</a></li>
+<li><a href="../categories/gifting.html">Baby Shower Gifts</a></li>
+<li><a href="../categories/gifting.html">Gift Boxes</a></li>
+<li><a href="../categories/gifting.html">Customized Gift Sets</a></li>
+</ul>
+</div>
+</div>
+</div>
+</li>
+<!-- 3. Custom Orders -->
+<li class="dl-nav-item">
+<a class="dl-nav-link" href="../pages/custom-orders.html">Custom Orders</a>
+</li>
+<!-- 4. About Us -->
+<li class="dl-nav-item">
+<a class="dl-nav-link" href="../pages/about_us.html">About Us</a>
+</li>
+<!-- 5. Reviews -->
+<li class="dl-nav-item">
+<a class="dl-nav-link" href="../pages/reviews.html">Reviews</a>
+</li>
+<!-- 6. Gallery -->
+<li class="dl-nav-item">
+<a class="dl-nav-link" href="../pages/gallery.html">Gallery</a>
+</li>
+<!-- 7. FAQs -->
+<li class="dl-nav-item">
+<a class="dl-nav-link" href="../pages/faq.html">FAQs</a>
+</li>
+<!-- 8. Contact -->
+<li class="dl-nav-item">
+<a class="dl-nav-link" href="../pages/how-to-order.html">Contact</a>
+</li>
+</ul>
+</nav>
+<!-- Right: Action Icons (Search, Cart) -->
+<div class="dl-header-actions">
+<!-- Search Button -->
+<button aria-label="Search" class="dl-action-icon dl-search-trigger" id="dl-search-btn">
+<i class="ph ph-magnifying-glass"></i>
+</button>
+<!-- Desktop Search Bar Input Container -->
+<div class="dl-desktop-search-bar" id="dl-desktop-search-bar">
+<input class="dl-search-input" id="dl-search-input" placeholder="Search handmade crochet..." type="text"/>
+<button class="dl-search-close" id="dl-search-close"><i class="ph ph-x"></i></button>
+<div class="dl-search-results" id="dl-desktop-search-results"></div>
+</div>
+<!-- Cart Icon -->
+<a aria-label="Shopping Cart" class="dl-action-icon dl-cart-icon" href="../javascript:void(0)">
+<i class="ph ph-shopping-bag"></i>
+<span class="dl-badge dl-badge-cart">0</span>
+</a>
+</div>
+</div>
+</div>
+</header>
+<!-- MOBILE DRAWER OVERLAY & SIDEBAR -->
+<div class="dl-drawer-overlay" id="dl-drawer-overlay"></div>
+<aside aria-label="Mobile Navigation Drawer" class="dl-mobile-drawer" id="dl-mobile-drawer">
+<div class="dl-drawer-header">
+<a class="dl-logo-link" href="../index.html">
+<img alt="Daisyline Logo" class="dl-logo-img" src="../assets/images/logo.jpg"/>
+<span class="dl-logo-text">Daisyline.</span>
+</a>
+<button aria-label="Close Menu" class="dl-drawer-close-btn" id="dl-drawer-close-btn">
+<i class="ph ph-x"></i>
+</button>
+</div>
+<div class="dl-drawer-body">
+<ul class="dl-mobile-nav-list">
+<!-- 1. Home -->
+<li>
+<a class="dl-mobile-nav-link active" href="../index.html">Home</a>
+</li>
+<!-- 2. Shop Accordion -->
+<li class="dl-mobile-accordion-item">
+<button class="dl-mobile-accordion-btn" id="dl-shop-acc-btn">
+<span>Shop</span>
+<i class="ph ph-caret-down dl-acc-icon"></i>
+</button>
+<div class="dl-mobile-accordion-content" id="dl-shop-acc-content">
+<div class="dl-mobile-sub-group">
+<a class="dl-mobile-sub-heading" href="../pages/shop.html">Main Shop</a>
+<a class="dl-mobile-sub-link" href="../pages/shop.html">Shop All</a>
+<a class="dl-mobile-sub-link" href="../pages/shop.html">New Arrivals</a>
+<a class="dl-mobile-sub-link" href="../pages/shop.html">Best Sellers</a>
+<a class="dl-mobile-sub-link" href="../pages/shop.html">Special Sale</a>
+<a class="dl-mobile-sub-link" href="../categories/gifting.html">Gift Collection</a>
+</div>
+<div class="dl-mobile-sub-group" style="margin-top: 15px;">
+<div class="dl-mobile-sub-heading">Categories</div>
+<a class="dl-mobile-sub-link" href="../categories/gajras.html">🌸 Gajras</a>
+<a class="dl-mobile-sub-link" href="../categories/hair-accessories.html">🎀 Hair Accessories</a>
+<a class="dl-mobile-sub-link" href="../categories/bags.html">👜 Bags</a>
+<a class="dl-mobile-sub-link" href="../categories/keychain.html">🔑 Keychains</a>
+<a class="dl-mobile-sub-link" href="../categories/bouquets.html">💐 Bouquets</a>
+<a class="dl-mobile-sub-link" href="../categories/baby-sets.html">👶 Baby Collection</a>
+<a class="dl-mobile-sub-link" href="../categories/clothing.html">👕 Wearables / Clothing</a>
+<a class="dl-mobile-sub-link" href="../categories/plushies.html">🧸 Amigurumi &amp; Plushies</a>
+<a class="dl-mobile-sub-link" href="../categories/home-decor.html">🏡 Home Decor</a>
+<a class="dl-mobile-sub-link" href="../categories/gifting.html">🎁 Gift Collection</a>
+</div>
+</div>
+</li>
+<!-- 3. Custom Orders -->
+<li>
+<a class="dl-mobile-nav-link" href="../pages/custom-orders.html">Custom Orders</a>
+</li>
+<!-- 4. About Us -->
+<li>
+<a class="dl-mobile-nav-link" href="../pages/about_us.html">About Us</a>
+</li>
+<!-- 5. Reviews -->
+<li>
+<a class="dl-mobile-nav-link" href="../pages/reviews.html">Reviews</a>
+</li>
+<!-- 6. Gallery -->
+<li>
+<a class="dl-mobile-nav-link" href="../pages/gallery.html">Gallery</a>
+</li>
+<!-- 7. FAQs -->
+<li>
+<a class="dl-mobile-nav-link" href="../pages/faq.html">FAQs</a>
+</li>
+<!-- 8. Contact -->
+<li>
+<a class="dl-mobile-nav-link" href="../pages/how-to-order.html">Contact</a>
+</li>
+</ul>
+</div>
+</aside>
+<!-- MOBILE SEARCH MODAL -->
+<div class="dl-search-modal" id="dl-search-modal">
+<div class="dl-search-modal-box">
+<div class="dl-search-modal-header">
+<span class="dl-search-modal-title">Search DaisyLine</span>
+<button class="dl-search-modal-close" id="dl-search-modal-close"><i class="ph ph-x"></i></button>
+</div>
+<div class="dl-search-modal-body">
+<input class="dl-search-modal-input" id="dl-mobile-search-input" placeholder="Search handmade crochet gifts, gajras, plushies..." type="text"/>
+<div class="dl-search-quick-tags">
+<span>Quick Search:</span>
+<a href="../categories/gajras.html">Gajras</a>
+<a href="../categories/bags.html">Tote Bags</a>
+<a href="../categories/plushies.html">Plushies</a>
+<a href="../categories/keychain.html">Keychains</a>
+</div>
+<div class="dl-search-results" id="dl-mobile-search-results"></div>
+</div>
+</div>
+</div>
+<main class="dl-main" style="background: var(--dl-cream);">
+<div class="dl-container" style="padding-top: 40px;">
+<nav aria-label="Breadcrumb" class="dl-breadcrumb" style="margin-bottom: 20px;">
+<a href="../index.html">Home</a>
+<i class="ph ph-caret-right text-xs text-brand-muted"></i>
+<span class="dl-crumb-current">About Us</span>
+</nav>
+</div>
 
-                            <!-- MEGA MENU PANEL -->
-                            <div class="dl-megamenu-panel">
-                                <div class="dl-megamenu-inner">
+<!-- 1. Hero -->
+<section style="text-align: center; max-width: 800px; margin: 0 auto; padding: 40px 20px 60px;">
+<h1 style="font-family: var(--dl-font-heading); font-size: 48px; font-weight: 700; color: var(--dl-text); margin-bottom: 20px;">About DaisyLine Crochet</h1>
+<p style="font-size: 18px; color: var(--dl-muted); line-height: 1.6;">Every loop, knot, and stitch is a tribute to patient craftsmanship. DaisyLine creates handmade crochet pieces with care, creativity, and attention to detail.</p>
+</section>
 
-                                    <!-- Column 1: New & Featured -->
-                                    <div class="dl-mega-col">
-                                        <h4 class="dl-mega-heading"><i class="ph ph-sparkle"></i> New &amp; Featured
-                                        </h4>
-                                        <ul class="dl-mega-links">
-                                            <li><a href="../pages/shop.html">All Products</a></li>
-                                            <li><a href="../index.html">New Arrivals <span
-                                                        class="dl-badge-mini">New</span></a></li>
-                                            <li><a href="../index.html">Best Sellers <span
-                                                        class="dl-badge-mini dl-badge-hot">Hot</span></a></li>
-                                            <li><a href="../categories/clothing.html">Sale %</a></li>
-                                        </ul>
-                                    </div>
+<!-- 2. Our Story -->
+<section style="max-width: 1000px; margin: 0 auto 80px; padding: 0 20px; display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 40px; align-items: center;">
+<div>
+<img src="../assets/images/logo.jpg" alt="DaisyLine Story" style="width: 100%; border-radius: 24px; box-shadow: 0 10px 30px rgba(0,0,0,0.05);">
+</div>
+<div>
+<h2 style="font-family: var(--dl-font-heading); font-size: 36px; margin-bottom: 20px; color: var(--dl-text);">Our Story</h2>
+<p style="font-size: 16px; color: var(--dl-muted); line-height: 1.8; margin-bottom: 16px;">DaisyLine Crochet began from a passion for handmade crochet and creating meaningful pieces that feel personal.</p>
+<p style="font-size: 16px; color: var(--dl-muted); line-height: 1.8;">In a world dominated by mass production, we take pride in slow-made, handcrafted textile art that carries warmth, love, and timeless charm.</p>
+</div>
+</section>
 
-                                    <!-- Column 2: Gajras & Hair Accessories -->
-                                    <div class="dl-mega-col">
-                                        <h4 class="dl-mega-heading"><a href="../categories/hand-accessories.html">🌸
-                                                Gajras</a></h4>
-                                        <ul class="dl-mega-links">
-                                            <li><a href="../categories/hand-accessories.html">Floral Gajras</a></li>
-                                            <li><a href="../categories/hand-accessories.html">Bridal Gajras</a></li>
-                                            <li><a href="../categories/hand-accessories.html">Custom Gajras</a></li>
-                                        </ul>
-                                        <h4 class="dl-mega-heading" style="margin-top: 16px;"><a
-                                                href="../categories/hair-accessories.html">🎀 Hair Accessories</a></h4>
-                                        <ul class="dl-mega-links">
-                                            <li><a href="../categories/hair-accessories.html">Scrunchies</a></li>
-                                            <li><a href="../categories/hair-accessories.html">Hair Bows</a></li>
-                                            <li><a href="../categories/hair-accessories.html">Hair Clips</a></li>
-                                            <li><a href="../categories/hair-accessories.html">Headbands</a></li>
-                                            <li><a href="../categories/hair-accessories.html">Hair Pins</a></li>
-                                            <li><a href="../categories/hair-accessories.html">Parandas</a></li>
-                                        </ul>
-                                    </div>
+<!-- 3. What We Create -->
+<section style="max-width: 1200px; margin: 0 auto 80px; padding: 0 20px;">
+<h2 style="font-family: var(--dl-font-heading); font-size: 36px; text-align: center; margin-bottom: 40px; color: var(--dl-text);">What We Create</h2>
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 24px;">
+<a href="../categories/gajras.html" style="background: #fff; padding: 30px; border-radius: 20px; text-align: center; border: 1px solid var(--dl-beige); transition: transform 0.3s;" onmouseover="this.style.transform='translateY(-5px)'" onmouseout="this.style.transform='translateY(0)'">
+<div style="font-size: 40px; margin-bottom: 15px;">🌸</div>
+<h3 style="font-family: var(--dl-font-heading); font-size: 20px; font-weight: 600; color: var(--dl-text);">Gajras</h3>
+</a>
+<a href="../categories/bags.html" style="background: #fff; padding: 30px; border-radius: 20px; text-align: center; border: 1px solid var(--dl-beige); transition: transform 0.3s;" onmouseover="this.style.transform='translateY(-5px)'" onmouseout="this.style.transform='translateY(0)'">
+<div style="font-size: 40px; margin-bottom: 15px;">👜</div>
+<h3 style="font-family: var(--dl-font-heading); font-size: 20px; font-weight: 600; color: var(--dl-text);">Bags</h3>
+</a>
+<a href="../categories/bouquets.html" style="background: #fff; padding: 30px; border-radius: 20px; text-align: center; border: 1px solid var(--dl-beige); transition: transform 0.3s;" onmouseover="this.style.transform='translateY(-5px)'" onmouseout="this.style.transform='translateY(0)'">
+<div style="font-size: 40px; margin-bottom: 15px;">💐</div>
+<h3 style="font-family: var(--dl-font-heading); font-size: 20px; font-weight: 600; color: var(--dl-text);">Bouquets</h3>
+</a>
+<a href="../categories/baby-sets.html" style="background: #fff; padding: 30px; border-radius: 20px; text-align: center; border: 1px solid var(--dl-beige); transition: transform 0.3s;" onmouseover="this.style.transform='translateY(-5px)'" onmouseout="this.style.transform='translateY(0)'">
+<div style="font-size: 40px; margin-bottom: 15px;">👶</div>
+<h3 style="font-family: var(--dl-font-heading); font-size: 20px; font-weight: 600; color: var(--dl-text);">Baby Collection</h3>
+</a>
+<a href="../categories/clothing.html" style="background: #fff; padding: 30px; border-radius: 20px; text-align: center; border: 1px solid var(--dl-beige); transition: transform 0.3s;" onmouseover="this.style.transform='translateY(-5px)'" onmouseout="this.style.transform='translateY(0)'">
+<div style="font-size: 40px; margin-bottom: 15px;">👕</div>
+<h3 style="font-family: var(--dl-font-heading); font-size: 20px; font-weight: 600; color: var(--dl-text);">Wearables</h3>
+</a>
+<a href="../categories/plushies.html" style="background: #fff; padding: 30px; border-radius: 20px; text-align: center; border: 1px solid var(--dl-beige); transition: transform 0.3s;" onmouseover="this.style.transform='translateY(-5px)'" onmouseout="this.style.transform='translateY(0)'">
+<div style="font-size: 40px; margin-bottom: 15px;">🧸</div>
+<h3 style="font-family: var(--dl-font-heading); font-size: 20px; font-weight: 600; color: var(--dl-text);">Plushies</h3>
+</a>
+<a href="../categories/home-decor.html" style="background: #fff; padding: 30px; border-radius: 20px; text-align: center; border: 1px solid var(--dl-beige); transition: transform 0.3s;" onmouseover="this.style.transform='translateY(-5px)'" onmouseout="this.style.transform='translateY(0)'">
+<div style="font-size: 40px; margin-bottom: 15px;">🏡</div>
+<h3 style="font-family: var(--dl-font-heading); font-size: 20px; font-weight: 600; color: var(--dl-text);">Home Decor</h3>
+</a>
+<a href="../categories/gifting.html" style="background: #fff; padding: 30px; border-radius: 20px; text-align: center; border: 1px solid var(--dl-beige); transition: transform 0.3s;" onmouseover="this.style.transform='translateY(-5px)'" onmouseout="this.style.transform='translateY(0)'">
+<div style="font-size: 40px; margin-bottom: 15px;">🎁</div>
+<h3 style="font-family: var(--dl-font-heading); font-size: 20px; font-weight: 600; color: var(--dl-text);">Gifts</h3>
+</a>
+</div>
+</section>
 
-                                    <!-- Column 3: Bags & Keychains -->
-                                    <div class="dl-mega-col">
-                                        <h4 class="dl-mega-heading"><a href="../categories/bags.html">👜 Bags</a></h4>
-                                        <ul class="dl-mega-links">
-                                            <li><a href="../categories/bags.html">Tote Bags</a></li>
-                                            <li><a href="../categories/bags.html">Shoulder Bags</a></li>
-                                            <li><a href="../categories/bags.html">Crossbody Bags</a></li>
-                                            <li><a href="../categories/bags.html">Handbags</a></li>
-                                            <li><a href="../categories/bags.html">Wallets</a></li>
-                                            <li><a href="../categories/bags.html">Pouches</a></li>
-                                        </ul>
-                                        <h4 class="dl-mega-heading" style="margin-top: 16px;"><a
-                                                href="../categories/keychain.html">🔑 Keychains</a></h4>
-                                        <ul class="dl-mega-links">
-                                            <li><a href="../categories/keychain.html">Car Hanging</a></li>
-                                            <li><a href="../categories/keychain.html">Animal Keychains</a></li>
-                                            <li><a href="../categories/keychain.html">Alphabet Keychains</a></li>
-                                            <li><a href="../categories/keychain.html">Bag Charms</a></li>
-                                        </ul>
-                                    </div>
+<!-- 4. Our Craft Philosophy -->
+<section style="background: var(--dl-blush); padding: 80px 20px; margin-bottom: 80px;">
+<div style="max-width: 1000px; margin: 0 auto;">
+<h2 style="font-family: var(--dl-font-heading); font-size: 36px; text-align: center; margin-bottom: 40px; color: var(--dl-text);">Our Craft Philosophy</h2>
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 30px;">
+<div style="background: rgba(255,255,255,0.6); padding: 30px; border-radius: 20px; text-align: center;">
+<div style="font-size: 32px; margin-bottom: 15px;">🧶</div>
+<h3 style="font-family: var(--dl-font-heading); font-size: 22px; font-weight: 600; color: var(--dl-text); margin-bottom: 10px;">Handmade</h3>
+<p style="font-size: 14px; color: var(--dl-muted);">Every piece is carefully crafted by hand.</p>
+</div>
+<div style="background: rgba(255,255,255,0.6); padding: 30px; border-radius: 20px; text-align: center;">
+<div style="font-size: 32px; margin-bottom: 15px;">🎨</div>
+<h3 style="font-family: var(--dl-font-heading); font-size: 22px; font-weight: 600; color: var(--dl-text); margin-bottom: 10px;">Customizable</h3>
+<p style="font-size: 14px; color: var(--dl-muted);">Personalize colors, sizes, and designs.</p>
+</div>
+<div style="background: rgba(255,255,255,0.6); padding: 30px; border-radius: 20px; text-align: center;">
+<div style="font-size: 32px; margin-bottom: 15px;">🧵</div>
+<h3 style="font-family: var(--dl-font-heading); font-size: 22px; font-weight: 600; color: var(--dl-text); margin-bottom: 10px;">Premium Yarn</h3>
+<p style="font-size: 14px; color: var(--dl-muted);">Quality materials used wherever possible.</p>
+</div>
+<div style="background: rgba(255,255,255,0.6); padding: 30px; border-radius: 20px; text-align: center;">
+<div style="font-size: 32px; margin-bottom: 15px;">💕</div>
+<h3 style="font-family: var(--dl-font-heading); font-size: 22px; font-weight: 600; color: var(--dl-text); margin-bottom: 10px;">Made With Love</h3>
+<p style="font-size: 14px; color: var(--dl-muted);">Each piece receives individual attention.</p>
+</div>
+</div>
+</div>
+</section>
 
-                                    <!-- Column 4: Bouquets & Baby Collection -->
-                                    <div class="dl-mega-col">
-                                        <h4 class="dl-mega-heading"><a href="../categories/bouquets.html">💐
-                                                Bouquets</a></h4>
-                                        <ul class="dl-mega-links">
-                                            <li><a href="../categories/bouquets.html">Mixed Flower Bouquets</a></li>
-                                            <li><a href="../categories/bouquets.html">Mini Bouquets</a></li>
-                                            <li><a href="../categories/bouquets.html">Blanket Bouquet</a></li>
-                                        </ul>
-                                        <h4 class="dl-mega-heading" style="margin-top: 16px;"><a
-                                                href="../categories/baby-sets.html">👶 Baby Collection</a></h4>
-                                        <ul class="dl-mega-links">
-                                            <li><a href="../categories/baby-sets.html">Baby Shoes</a></li>
-                                            <li><a href="../categories/baby-sets.html">Baby Caps</a></li>
-                                            <li><a href="../categories/baby-sets.html">Baby Headbands</a></li>
-                                            <li><a href="../categories/baby-sets.html">Baby Blankets</a></li>
-                                            <li><a href="../categories/baby-sets.html">Baby Sets</a></li>
-                                            <li><a href="../categories/baby-sets.html">Baby Rattles</a></li>
-                                        </ul>
-                                    </div>
+<!-- 5. How to Order -->
+<section style="max-width: 1000px; margin: 0 auto 80px; padding: 0 20px;">
+<h2 style="font-family: var(--dl-font-heading); font-size: 36px; text-align: center; margin-bottom: 40px; color: var(--dl-text);">How to Order</h2>
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px;">
+<div style="background: #fff; padding: 30px; border-radius: 20px; border: 1px solid var(--dl-beige); position: relative;">
+<div style="background: var(--dl-sage); color: #fff; width: 30px; height: 30px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: bold; margin-bottom: 15px;">1</div>
+<h3 style="font-weight: 600; margin-bottom: 10px; color: var(--dl-text);">Choose Product</h3>
+<p style="font-size: 14px; color: var(--dl-muted);">Select your favourite handcrafted product from our shop.</p>
+</div>
+<div style="background: #fff; padding: 30px; border-radius: 20px; border: 1px solid var(--dl-beige); position: relative;">
+<div style="background: var(--dl-sage); color: #fff; width: 30px; height: 30px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: bold; margin-bottom: 15px;">2</div>
+<h3 style="font-weight: 600; margin-bottom: 10px; color: var(--dl-text);">Add to Cart</h3>
+<p style="font-size: 14px; color: var(--dl-muted);">Add the item to your cart and proceed to checkout.</p>
+</div>
+<div style="background: #fff; padding: 30px; border-radius: 20px; border: 1px solid var(--dl-beige); position: relative;">
+<div style="background: var(--dl-sage); color: #fff; width: 30px; height: 30px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: bold; margin-bottom: 15px;">3</div>
+<h3 style="font-weight: 600; margin-bottom: 10px; color: var(--dl-text);">Checkout Details</h3>
+<p style="font-size: 14px; color: var(--dl-muted);">Fill out your secure delivery information.</p>
+</div>
+<div style="background: #fff; padding: 30px; border-radius: 20px; border: 1px solid var(--dl-beige); position: relative;">
+<div style="background: var(--dl-sage); color: #fff; width: 30px; height: 30px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: bold; margin-bottom: 15px;">4</div>
+<h3 style="font-weight: 600; margin-bottom: 10px; color: var(--dl-text);">Confirm Order</h3>
+<p style="font-size: 14px; color: var(--dl-muted);">Place your order request and wait for our confirmation!</p>
+</div>
+</div>
+</section>
 
-                                    <!-- Column 5: Wearables & Plushies -->
-                                    <div class="dl-mega-col">
-                                        <h4 class="dl-mega-heading"><a href="../categories/clothing.html">👕
-                                                Wearables</a></h4>
-                                        <div class="dl-mega-sublabel">Women</div>
-                                        <ul class="dl-mega-links">
-                                            <li><a href="../categories/clothing.html">Cardigans</a></li>
-                                            <li><a href="../categories/clothing.html">Summer Tops</a></li>
-                                        </ul>
-                                        <div class="dl-mega-sublabel" style="margin-top: 8px;">Men</div>
-                                        <ul class="dl-mega-links">
-                                            <li><a href="../categories/clothing.html">Sweaters</a></li>
-                                            <li><a href="../categories/clothing.html">Mufflers</a></li>
-                                            <li><a href="../categories/clothing.html">Gloves</a></li>
-                                            <li><a href="../categories/clothing.html">Beanies</a></li>
-                                        </ul>
-                                        <h4 class="dl-mega-heading" style="margin-top: 14px;"><a
-                                                href="../categories/plushies.html">🧸 Plushies</a></h4>
-                                        <ul class="dl-mega-links">
-                                            <li><a href="../categories/plushies.html">Characters</a></li>
-                                            <li><a href="../categories/plushies.html">Mini Plushies</a></li>
-                                            <li><a href="../categories/plushies.html">Dolls</a></li>
-                                        </ul>
-                                    </div>
+<!-- 6. Custom Order Process -->
+<section style="background: #fff; padding: 80px 20px; margin-bottom: 80px; border-top: 1px solid var(--dl-beige); border-bottom: 1px solid var(--dl-beige);">
+<div style="max-width: 1000px; margin: 0 auto;">
+<h2 style="font-family: var(--dl-font-heading); font-size: 36px; text-align: center; margin-bottom: 40px; color: var(--dl-text);">Custom Order Process</h2>
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 24px;">
+<div style="padding: 20px; border-left: 3px solid var(--dl-sage); background: var(--dl-ivory); border-radius: 0 16px 16px 0;">
+<h3 style="font-weight: 600; margin-bottom: 8px; color: var(--dl-text);">Step 1 — Talk to Us</h3>
+<p style="font-size: 14px; color: var(--dl-muted);">Contact DaisyLine through WhatsApp or social media to discuss the idea.</p>
+</div>
+<div style="padding: 20px; border-left: 3px solid var(--dl-sage); background: var(--dl-ivory); border-radius: 0 16px 16px 0;">
+<h3 style="font-weight: 600; margin-bottom: 8px; color: var(--dl-text);">Step 2 — Finalize Design & Price</h3>
+<p style="font-size: 14px; color: var(--dl-muted);">The designer discusses the requirements and provides the final quote.</p>
+</div>
+<div style="padding: 20px; border-left: 3px solid var(--dl-sage); background: var(--dl-ivory); border-radius: 0 16px 16px 0;">
+<h3 style="font-weight: 600; margin-bottom: 8px; color: var(--dl-text);">Step 3 — Advance Payment</h3>
+<p style="font-size: 14px; color: var(--dl-muted);">Once the design and price are approved, pay the required advance.</p>
+</div>
+<div style="padding: 20px; border-left: 3px solid var(--dl-sage); background: var(--dl-ivory); border-radius: 0 16px 16px 0;">
+<h3 style="font-weight: 600; margin-bottom: 8px; color: var(--dl-text);">Step 4 — Upload Payment Screenshot</h3>
+<p style="font-size: 14px; color: var(--dl-muted);">The payment screenshot is required when submitting the Custom Order form.</p>
+</div>
+<div style="padding: 20px; border-left: 3px solid var(--dl-sage); background: var(--dl-ivory); border-radius: 0 16px 16px 0;">
+<h3 style="font-weight: 600; margin-bottom: 8px; color: var(--dl-text);">Step 5 — Submit Custom Order Form</h3>
+<p style="font-size: 14px; color: var(--dl-muted);">Complete the <a href="../pages/custom-orders.html" style="color: var(--dl-sage); font-weight: bold; text-decoration: underline;">Custom Order form</a> with your requirements. Reference images can be uploaded optionally.</p>
+</div>
+</div>
+</div>
+</section>
 
-                                    <!-- Column 6: Home Decor & Gift Collection -->
-                                    <div class="dl-mega-col">
-                                        <h4 class="dl-mega-heading"><a href="../categories/home-decor.html">🏡 Home
-                                                Decor</a></h4>
-                                        <ul class="dl-mega-links">
-                                            <li><a href="../categories/home-decor.html">Coasters</a></li>
-                                            <li><a href="../categories/home-decor.html">Table Runners</a></li>
-                                            <li><a href="../categories/home-decor.html">Placemats</a></li>
-                                            <li><a href="../categories/home-decor.html">Wall Hangings</a></li>
-                                            <li><a href="../categories/home-decor.html">Cushion Covers</a></li>
-                                            <li><a href="../categories/home-decor.html">Crochet Mirrors</a></li>
-                                        </ul>
-                                        <h4 class="dl-mega-heading" style="margin-top: 14px;"><a
-                                                href="../categories/gifting.html">🎁 Gift Collection</a></h4>
-                                        <ul class="dl-mega-links">
-                                            <li><a href="../categories/gifting.html">Birthday Gifts</a></li>
-                                            <li><a href="../categories/gifting.html">Anniversary Gifts</a></li>
-                                            <li><a href="../categories/gifting.html">Bridal Gifts</a></li>
-                                            <li><a href="../categories/gifting.html">Baby Shower Gifts</a></li>
-                                            <li><a href="../categories/gifting.html">Gift Boxes</a></li>
-                                            <li><a href="../categories/gifting.html">Customized Gift Sets</a></li>
-                                        </ul>
-                                    </div>
+<!-- Accordion Styles -->
+<style>
+.dl-about-accordion { max-width: 800px; margin: 0 auto; display: flex; flex-direction: column; gap: 16px; padding: 0 20px; }
+.dl-about-acc-item { background: #fff; border: 1px solid var(--dl-beige); border-radius: 16px; overflow: hidden; }
+.dl-about-acc-btn { width: 100%; text-align: left; padding: 24px; background: none; border: none; font-family: var(--dl-font-heading); font-size: 22px; font-weight: 600; color: var(--dl-text); display: flex; justify-content: space-between; align-items: center; cursor: pointer; }
+.dl-about-acc-content { padding: 0 24px 24px; font-size: 15px; color: var(--dl-muted); line-height: 1.7; display: none; }
+.dl-about-acc-item.open .dl-about-acc-content { display: block; }
+.dl-about-acc-icon { transition: transform 0.3s; }
+.dl-about-acc-item.open .dl-about-acc-icon { transform: rotate(180deg); }
+</style>
 
-                                </div>
-                            </div>
-                        </li>
-
-                        <!-- 3. Custom Orders -->
-                        <li class="dl-nav-item">
-                            <a href="../pages/custom-orders.html" class="dl-nav-link ">Custom Orders</a>
-                        </li>
-
-                        <!-- 4. About Us -->
-                        <li class="dl-nav-item">
-                            <a href="../pages/about_us.html" class="dl-nav-link active">About Us</a>
-                        </li>
-
-                        <!-- 5. Reviews -->
-                        <li class="dl-nav-item">
-                            <a href="../pages/reviews.html" class="dl-nav-link">Reviews</a>
-                        </li>
-
-                        <!-- 6. Gallery -->
-                        <li class="dl-nav-item">
-                            <a href="../pages/gallery.html" class="dl-nav-link">Gallery</a>
-                        </li>
-
-                        <!-- 7. FAQs -->
-                        <li class="dl-nav-item">
-                            <a href="../pages/faq.html" class="dl-nav-link">FAQs</a>
-                        </li>
-
-                        <!-- 8. Contact -->
-                        <li class="dl-nav-item">
-                            <a href="../pages/how-to-order.html" class="dl-nav-link ">Contact</a>
-                        </li>
-
-                    </ul>
-                </nav>
-
-                <!-- Right: Action Icons (Search, Cart) -->
-                <div class="dl-header-actions">
-
-                    <!-- Search Button -->
-                    <button class="dl-action-icon dl-search-trigger" id="dl-search-btn" aria-label="Search">
-                        <i class="ph ph-magnifying-glass"></i>
-                    </button>
-
-                    <!-- Desktop Search Bar Input Container -->
-                    <div class="dl-desktop-search-bar" id="dl-desktop-search-bar">
-                        <input type="text" placeholder="Search handmade crochet..." class="dl-search-input"
-                            id="dl-search-input">
-                        <button class="dl-search-close" id="dl-search-close"><i class="ph ph-x"></i></button>
-                        <div class="dl-search-results" id="dl-desktop-search-results"></div>
-                    </div>
-
-                    <!-- Cart Icon -->
-                    <a href="javascript:void(0)" class="dl-action-icon dl-cart-icon" aria-label="Shopping Cart">
-                        <i class="ph ph-shopping-bag"></i>
-                        <span class="dl-badge dl-badge-cart">0</span>
-                    </a>
-                </div>
-
-            </div>
-        </div>
-    </header>
-
-    <!-- MOBILE DRAWER OVERLAY & SIDEBAR -->
-    <div class="dl-drawer-overlay" id="dl-drawer-overlay"></div>
-
-    <aside class="dl-mobile-drawer" id="dl-mobile-drawer" aria-label="Mobile Navigation Drawer">
-        <div class="dl-drawer-header">
-            <a href="../index.html" class="dl-logo-link">
-                <img src="../assets/images/logo.jpg" alt="Daisyline Logo" class="dl-logo-img">
-                <span class="dl-logo-text">Daisyline.</span>
-            </a>
-            <button class="dl-drawer-close-btn" id="dl-drawer-close-btn" aria-label="Close Menu">
-                <i class="ph ph-x"></i>
-            </button>
-        </div>
-
-        <div class="dl-drawer-body">
-            <ul class="dl-mobile-nav-list">
-                <!-- 1. Home -->
-                <li>
-                    <a href="../index.html" class="dl-mobile-nav-link ">Home</a>
-                </li>
-
-                <!-- 2. Shop Accordion -->
-                <li class="dl-mobile-accordion-item">
-                    <button class="dl-mobile-accordion-btn" id="dl-shop-acc-btn">
-                        <span>Shop</span>
-                        <i class="ph ph-caret-down dl-acc-icon"></i>
-                    </button>
-                    <div class="dl-mobile-accordion-content" id="dl-shop-acc-content">
-                        <div class="dl-mobile-sub-group">
-                            <a href="../pages/shop.html" class="dl-mobile-sub-heading">Featured Collections</a>
-                            <a href="../index.html" class="dl-mobile-sub-link">New Arrivals</a>
-                            <a href="../index.html" class="dl-mobile-sub-link">Best Sellers</a>
-                        </div>
-
-                        <!-- Sub Category Accordions -->
-                        <div class="dl-mobile-sub-acc">
-                            <button class="dl-sub-acc-btn"><span>🌸 Gajras</span> <i class="ph ph-plus"></i></button>
-                            <div class="dl-sub-acc-content">
-                                <a href="../categories/hand-accessories.html">Floral Gajras</a>
-                                <a href="../categories/hand-accessories.html">Bridal Gajras</a>
-                                <a href="../categories/hand-accessories.html">Custom Gajras</a>
-                            </div>
-                        </div>
-
-                        <div class="dl-mobile-sub-acc">
-                            <button class="dl-sub-acc-btn"><span>🎀 Hair Accessories</span> <i
-                                    class="ph ph-plus"></i></button>
-                            <div class="dl-sub-acc-content">
-                                <a href="../categories/hair-accessories.html">Scrunchies</a>
-                                <a href="../categories/hair-accessories.html">Hair Bows</a>
-                                <a href="../categories/hair-accessories.html">Hair Clips</a>
-                                <a href="../categories/hair-accessories.html">Headbands</a>
-                                <a href="../categories/hair-accessories.html">Hair Pins</a>
-                            </div>
-                        </div>
-
-                        <div class="dl-mobile-sub-acc">
-                            <button class="dl-sub-acc-btn"><span>👜 Bags</span> <i class="ph ph-plus"></i></button>
-                            <div class="dl-sub-acc-content">
-                                <a href="../categories/bags.html">Tote Bags</a>
-                                <a href="../categories/bags.html">Shoulder Bags</a>
-                                <a href="../categories/bags.html">Crossbody Bags</a>
-                                <a href="../categories/bags.html">Wallets</a>
-                            </div>
-                        </div>
-
-                        <div class="dl-mobile-sub-acc">
-                            <button class="dl-sub-acc-btn"><span>🔑 Keychains</span> <i class="ph ph-plus"></i></button>
-                            <div class="dl-sub-acc-content">
-                                <a href="../categories/keychain.html">Car Hanging</a>
-                                <a href="../categories/keychain.html">Animal Keychains</a>
-                                <a href="../categories/keychain.html">Alphabet Keychains</a>
-                            </div>
-                        </div>
-
-                        <div class="dl-mobile-sub-acc">
-                            <button class="dl-sub-acc-btn"><span>💐 Bouquets</span> <i class="ph ph-plus"></i></button>
-                            <div class="dl-sub-acc-content">
-                                <a href="../categories/bouquets.html">Flower Bouquets</a>
-                                <a href="../categories/bouquets.html">Mini Bouquets</a>
-                            </div>
-                        </div>
-
-                        <div class="dl-mobile-sub-acc">
-                            <button class="dl-sub-acc-btn"><span>👶 Baby Collection</span> <i
-                                    class="ph ph-plus"></i></button>
-                            <div class="dl-sub-acc-content">
-                                <a href="../categories/baby-sets.html">Baby Shoes</a>
-                                <a href="../categories/baby-sets.html">Baby Caps</a>
-                                <a href="../categories/baby-sets.html">Baby Blankets</a>
-                            </div>
-                        </div>
-
-                        <div class="dl-mobile-sub-acc">
-                            <button class="dl-sub-acc-btn"><span>👕 Wearables</span> <i class="ph ph-plus"></i></button>
-                            <div class="dl-sub-acc-content">
-                                <a href="../categories/clothing.html">Cardigans</a>
-                                <a href="../categories/clothing.html">Summer Tops</a>
-                                <a href="../categories/clothing.html">Sweaters &amp; Mufflers</a>
-                            </div>
-                        </div>
-
-                        <div class="dl-mobile-sub-acc">
-                            <button class="dl-sub-acc-btn"><span>🧸 Plushies</span> <i class="ph ph-plus"></i></button>
-                            <div class="dl-sub-acc-content">
-                                <a href="../categories/plushies.html">Characters</a>
-                                <a href="../categories/plushies.html">Mini Plushies</a>
-                                <a href="../categories/plushies.html">Dolls</a>
-                            </div>
-                        </div>
-
-                        <div class="dl-mobile-sub-acc">
-                            <button class="dl-sub-acc-btn"><span>🏡 Home Decor</span> <i
-                                    class="ph ph-plus"></i></button>
-                            <div class="dl-sub-acc-content">
-                                <a href="../categories/home-decor.html">Coasters</a>
-                                <a href="../categories/home-decor.html">Table Runners</a>
-                                <a href="../categories/home-decor.html">Cushion Covers</a>
-                            </div>
-                        </div>
-
-                        <div class="dl-mobile-sub-acc">
-                            <button class="dl-sub-acc-btn"><span>🎁 Gift Collection</span> <i
-                                    class="ph ph-plus"></i></button>
-                            <div class="dl-sub-acc-content">
-                                <a href="../categories/gifting.html">Birthday Gifts</a>
-                                <a href="../categories/gifting.html">Anniversary Gifts</a>
-                                <a href="../categories/gifting.html">Bridal Gifts</a>
-                            </div>
-                        </div>
-
-                    </div>
-                </li>
-
-                <!-- 3. Custom Orders -->
-                <li>
-                    <a href="../pages/custom-orders.html" class="dl-mobile-nav-link ">Custom Orders</a>
-                </li>
-
-                <!-- 4. About Us -->
-                <li>
-                    <a href="../pages/about_us.html" class="dl-mobile-nav-link active">About Us</a>
-                </li>
-
-                <!-- 5. Reviews -->
-                <li>
-                    <a href="../pages/reviews.html" class="dl-mobile-nav-link">Reviews</a>
-                </li>
-
-                <!-- 6. Gallery -->
-                <li>
-                    <a href="../pages/gallery.html" class="dl-mobile-nav-link">Gallery</a>
-                </li>
-
-                <!-- 7. FAQs -->
-                <li>
-                    <a href="../pages/faq.html" class="dl-mobile-nav-link">FAQs</a>
-                </li>
-
-                <!-- 8. Contact -->
-                <li>
-                    <a href="../pages/how-to-order.html" class="dl-mobile-nav-link ">Contact</a>
-                </li>
+<!-- 7, 8, 9. Policies & FAQs -->
+<section style="margin-bottom: 80px;">
+<h2 style="font-family: var(--dl-font-heading); font-size: 36px; text-align: center; margin-bottom: 40px; color: var(--dl-text);">Policies & Information</h2>
+<div class="dl-about-accordion">
+    
+    <!-- Shipping Policy -->
+    <div class="dl-about-acc-item">
+        <button class="dl-about-acc-btn" aria-expanded="false" aria-controls="acc-shipping">
+            <span>Shipping Policy</span>
+            <i class="ph ph-caret-down dl-about-acc-icon"></i>
+        </button>
+        <div id="acc-shipping" class="dl-about-acc-content" aria-hidden="true">
+            <ul style="list-style: disc; padding-left: 20px; display: flex; flex-direction: column; gap: 10px;">
+                <li>Delivery available across Pakistan.</li>
+                <li>Handmade products require processing time.</li>
+                <li>Small/simple orders generally require around <strong>5–10 days after confirmation</strong>.</li>
+                <li>Complicated orders may require additional time.</li>
+                <li>Customers can contact DaisyLine if they need clarification.</li>
+                <li>Advance payment screenshot is required before the order is confirmed.</li>
+                <li>Confirmation email is received once the order is confirmed.</li>
             </ul>
         </div>
-    </aside>
+    </div>
 
-    <!-- MOBILE SEARCH MODAL -->
-    <div class="dl-search-modal" id="dl-search-modal">
-        <div class="dl-search-modal-box">
-            <div class="dl-search-modal-header">
-                <span class="dl-search-modal-title">Search DaisyLine</span>
-                <button class="dl-search-modal-close" id="dl-search-modal-close"><i class="ph ph-x"></i></button>
-            </div>
-            <div class="dl-search-modal-body">
-                <input type="text" placeholder="Search handmade crochet gifts, gajras, plushies..."
-                    class="dl-search-modal-input" id="dl-mobile-search-input">
-                <div class="dl-search-quick-tags">
-                    <span>Quick Search:</span>
-                    <a href="./categories/gajras.html">Gajras</a>
-                    <a href="./categories/bags.html">Tote Bags</a>
-                    <a href="./categories/plushies.html">Plushies</a>
-                    <a href="./categories/keychain.html">Keychains</a>
-                </div>
-                <div class="dl-search-results" id="dl-mobile-search-results"></div>
-            </div>
+    <!-- Return Policy -->
+    <div class="dl-about-acc-item">
+        <button class="dl-about-acc-btn" aria-expanded="false" aria-controls="acc-returns">
+            <span>Return Policy</span>
+            <i class="ph ph-caret-down dl-about-acc-icon"></i>
+        </button>
+        <div id="acc-returns" class="dl-about-acc-content" aria-hidden="true">
+            <ul style="list-style: disc; padding-left: 20px; display: flex; flex-direction: column; gap: 10px;">
+                <li>Custom products made according to the customer's requirements are not returnable.</li>
+                <li>Ready-to-ship products are returnable only when there is a genuine size issue.</li>
+                <li>Other reasons are not eligible for return/refund.</li>
+                <li>Customers must contact DaisyLine within <strong>2–4 days</strong> if they need to report an eligible issue.</li>
+                <li>Return policy applies only to ready-to-ship items.</li>
+            </ul>
         </div>
     </div>
 
-
-    <main class="dl-main">
-        <div class="dl-container" style="padding-top: 20px; padding-bottom: 0;">
-            <!-- Breadcrumbs -->
-            <nav class="dl-breadcrumb" aria-label="Breadcrumb" style="margin-bottom: 0;">
-                <a href="../index.html">Home</a>
-                <i class="ph ph-caret-right text-xs text-brand-muted"></i>
-                <span class="dl-crumb-current">About Us</span>
-            </nav>
+    <!-- FAQs Preview -->
+    <div class="dl-about-acc-item">
+        <button class="dl-about-acc-btn" aria-expanded="false" aria-controls="acc-faq">
+            <span>FAQs</span>
+            <i class="ph ph-caret-down dl-about-acc-icon"></i>
+        </button>
+        <div id="acc-faq" class="dl-about-acc-content" aria-hidden="true">
+            <p style="margin-bottom: 15px;">Have questions about our custom process, delivery times, or materials? Check out our dedicated FAQ page for quick answers.</p>
+            <a href="../pages/faq.html" class="dl-btn dl-btn-primary" style="display: inline-block; padding: 12px 24px; border-radius: 8px; text-decoration: none;">View All FAQs</a>
         </div>
+    </div>
 
-        <!-- Section 1: Minimal Hero -->
-        <section class="dl-minimal-hero">
-            <div class="dl-minimal-hero-content animate-fade-up">
-                <div class="dl-minimal-hero-icon">🧶</div>
-                <h1 class="dl-minimal-hero-title">About DaisyLine Crochet</h1>
-            </div>
-        </section>
+</div>
+</section>
 
-        <!-- Section 2: Story Timeline Card -->
-        <section class="dl-story-section" id="our-story">
-            <div class="dl-story-card animate-fade-up" style="animation-delay: 0.2s;">
-                <div class="dl-story-icon">🌸</div>
-                <h2 class="dl-story-title">Our Story &amp; Craft Philosophy</h2>
-                <div class="dl-divider"></div>
-                <p class="dl-story-text">
-                    DaisyLine Crochet began with a passion for slow living and timeless textile art. In a world
-                    dominated by mass production, we create slow-made, handcrafted crochet pieces that tell a
-                    story. From floral Gajras to soft plushies and cozy apparel, every item is individually
-                    crocheted using premium hypoallergenic yarns.
-                </p>
-            </div>
-        </section>
+<!-- 10. Contact Section -->
+<section style="text-align: center; max-width: 600px; margin: 0 auto 100px; padding: 40px 20px; background: var(--dl-blush); border-radius: 24px; border: 1px solid var(--dl-peach);">
+<h2 style="font-family: var(--dl-font-heading); font-size: 32px; margin-bottom: 15px; color: var(--dl-text);">Need Help With Your Order?</h2>
+<p style="font-size: 16px; color: var(--dl-muted); margin-bottom: 25px;">Encourage customers to contact DaisyLine. Feel free to contact DaisyLine!</p>
+<div style="display: flex; flex-wrap: wrap; gap: 15px; justify-content: center;">
+<a href="https://wa.me/923198504489" target="_blank" rel="noopener noreferrer" class="dl-btn dl-btn-primary" style="display: flex; align-items: center; gap: 8px; padding: 12px 24px; border-radius: 30px;">
+<i class="ph ph-whatsapp-logo text-lg"></i> +92 319 8504489
+</a>
+<a href="https://www.instagram.com/daisylinecrochet/" target="_blank" rel="noopener noreferrer" class="dl-btn dl-btn-secondary" style="display: flex; align-items: center; gap: 8px; padding: 12px 24px; border-radius: 30px; color: var(--dl-text); background: #fff; border: 1px solid var(--dl-beige);">
+<i class="ph ph-instagram-logo text-lg"></i> Instagram
+</a>
+<a href="https://www.facebook.com/share/1HeWDJU5ap/" target="_blank" rel="noopener noreferrer" class="dl-btn dl-btn-secondary" style="display: flex; align-items: center; gap: 8px; padding: 12px 24px; border-radius: 30px; color: var(--dl-text); background: #fff; border: 1px solid var(--dl-beige);">
+<i class="ph ph-facebook-logo text-lg"></i> Facebook
+</a>
+<a href="https://www.threads.com/@daisylinecrochet" target="_blank" rel="noopener noreferrer" class="dl-btn dl-btn-secondary" style="display: flex; align-items: center; gap: 8px; padding: 12px 24px; border-radius: 30px; color: var(--dl-text); background: #fff; border: 1px solid var(--dl-beige);">
+<i class="ph ph-at text-lg"></i> Threads
+</a>
+<a href="https://www.tiktok.com/@daisylinecrochet?_r=1&_t=ZS-98DQTwu0jqr" target="_blank" rel="noopener noreferrer" class="dl-btn dl-btn-secondary" style="display: flex; align-items: center; gap: 8px; padding: 12px 24px; border-radius: 30px; color: var(--dl-text); background: #fff; border: 1px solid var(--dl-beige);">
+<i class="ph ph-tiktok-logo text-lg"></i> TikTok
+</a>
+</div>
+</section>
 
-        <!-- Section 3: Information Cards Grid -->
-        <section class="dl-info-section">
-            <div class="dl-info-grid">
-                
-                <div class="dl-info-card animate-fade-up" id="how-to-order">
-                    <div class="dl-info-icon">🛍️</div>
-                    <h3 class="dl-info-title">How to Order</h3>
-                    <div class="dl-divider"></div>
-                    <p class="dl-info-text">
-                        Ordering from DaisyLine is easy! Browse our ready-to-ship shop catalog or request a custom
-                        order by clicking "Custom Orders" in the navigation. Select your preferred color swatches,
-                        complete your details, and we'll handle the rest.
+</main>
+<!-- 14. FOOTER (EXISTING UNTOUCHED FOOTER) -->
+<footer class="bg-brand-text text-white pt-16 md:pt-20 pb-12 border-t border-brand-beige/20 relative">
+<div class="max-w-[90rem] mx-auto px-4 sm:px-8 lg:px-12">
+<div class="grid grid-cols-1 md:grid-cols-3 gap-10 md:gap-12 lg:gap-16 mb-16 text-left">
+<!-- Column 1: Daisyline -->
+<div>
+<span class="font-heading text-3xl tracking-wide text-white block mb-5">Daisyline.</span>
+<p class="text-sm font-light text-brand-beige/80 leading-relaxed mb-6 max-w-sm">
+                        Handmade crochet plush toys, handbags, bouquets, and custom gifts. Inspired by slow living and timeless craftsmanship in Pakistan.
                     </p>
-                </div>
-
-                <div class="dl-info-card animate-fade-up" id="shipping" style="animation-delay: 0.1s;">
-                    <div class="dl-info-icon">🚚</div>
-                    <h3 class="dl-info-title">Shipping Policy</h3>
-                    <div class="dl-divider"></div>
-                    <p class="dl-info-text">
-                        We deliver nationwide across Pakistan! Standard courier delivery takes 2–4 business days
-                        after your order is hand-crafted. Free shipping is available on orders over PKR 3,000.
-                    </p>
-                </div>
-
-                <div class="dl-info-card animate-fade-up" id="returns" style="animation-delay: 0.2s;">
-                    <div class="dl-info-icon">🔄</div>
-                    <h3 class="dl-info-title">Return &amp; Exchange Policy</h3>
-                    <div class="dl-divider"></div>
-                    <p class="dl-info-text">
-                        Because each item is custom crafted by hand, all sales are final. However, if your item
-                        arrives damaged or incomplete, please contact our support team on WhatsApp within 24 hours
-                        for a replacement.
-                    </p>
-                </div>
-
-                <div class="dl-info-card animate-fade-up" id="faq" style="animation-delay: 0.3s;">
-                    <div class="dl-info-icon">❓</div>
-                    <h3 class="dl-info-title">Frequently Asked Questions</h3>
-                    <div class="dl-divider"></div>
-                    <p class="dl-info-text">
-                        For complete details on yarn care, custom order timelines, and payment options, please visit
-                        our dedicated <a href="./faq.html" class="underline text-brand-sage font-bold hover:text-brand-olive transition-colors">FAQs Page</a>.
-                    </p>
-                </div>
-
-            </div>
-        </section>
-
-        <!-- Section 4: Process Timeline -->
-        <section class="dl-process-section">
-            <h2 class="dl-process-title">Your Custom Journey</h2>
-            <div class="dl-timeline">
-                <div class="dl-timeline-item animate-fade-up">
-                    <div class="dl-timeline-icon">1️⃣</div>
-                    <div class="dl-timeline-text">Browse Products</div>
-                </div>
-                <div class="dl-timeline-item animate-fade-up" style="animation-delay: 0.1s;">
-                    <div class="dl-timeline-icon">2️⃣</div>
-                    <div class="dl-timeline-text">Contact Us</div>
-                </div>
-                <div class="dl-timeline-item animate-fade-up" style="animation-delay: 0.2s;">
-                    <div class="dl-timeline-icon">3️⃣</div>
-                    <div class="dl-timeline-text">Confirm Design & Price</div>
-                </div>
-                <div class="dl-timeline-item animate-fade-up" style="animation-delay: 0.3s;">
-                    <div class="dl-timeline-icon">4️⃣</div>
-                    <div class="dl-timeline-text">Pay Advance</div>
-                </div>
-                <div class="dl-timeline-item animate-fade-up" style="animation-delay: 0.4s;">
-                    <div class="dl-timeline-icon">5️⃣</div>
-                    <div class="dl-timeline-text">Handmade Production</div>
-                </div>
-                <div class="dl-timeline-item animate-fade-up" style="animation-delay: 0.5s;">
-                    <div class="dl-timeline-icon">6️⃣</div>
-                    <div class="dl-timeline-text">Delivered to Your Door</div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Section 5: Contact CTA -->
-        <section class="dl-cta-section">
-            <h2 class="dl-cta-title">Need More Help?</h2>
-            <div class="dl-social-btns">
-                <a href="#" target="_blank" rel="noopener noreferrer" class="dl-social-btn">
-                    <i class="ph ph-whatsapp-logo"></i> WhatsApp
-                </a>
-                <a href="https://www.instagram.com/daisylinecrochet/" target="_blank" rel="noopener noreferrer" class="dl-social-btn">
-                    <i class="ph ph-instagram-logo"></i> Instagram
-                </a>
-                <a href="https://www.facebook.com/share/1HeWDJU5ap/" target="_blank" rel="noopener noreferrer" class="dl-social-btn">
-                    <i class="ph ph-facebook-logo"></i> Facebook
-                </a>
-                <a href="https://www.threads.com/@daisylinecrochet" target="_blank" rel="noopener noreferrer" class="dl-social-btn">
-                    <i class="ph ph-at"></i> Threads
-                </a>
-                <a href="https://www.tiktok.com/@daisylinecrochet?_r=1&_t=ZS-98DQTwu0jqr" target="_blank" rel="noopener noreferrer" class="dl-social-btn">
-                    <i class="ph ph-tiktok-logo"></i> TikTok
-                </a>
-            </div>
-        </section>
-
-        <!-- Section 6: Decorative Ending -->
-        <section class="dl-ending-section">
-            <div class="dl-ending-text">✨ Handmade with Love, Crafted Just for You ✨</div>
-            <div class="dl-ending-icon">🧶</div>
-        </section>
-
-    </main>
-
-    <!-- GLOBAL FOOTER -->
-    <footer class="bg-brand-text text-white pt-16 md:pt-20 pb-12 border-t border-brand-beige/20 relative">
-        <div class="max-w-[90rem] mx-auto px-4 sm:px-8 lg:px-12">
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-10 md:gap-12 lg:gap-16 mb-16 text-left">
-                <!-- Column 1: Daisyline -->
-                <div>
-                    <span class="font-heading text-3xl tracking-wide text-white block mb-5">Daisyline.</span>
-                    <p class="text-sm font-light text-brand-beige/80 leading-relaxed mb-6 max-w-sm">
-                        Handmade crochet plush toys, handbags, bouquets, and custom gifts. Inspired by slow living and
-                        timeless craftsmanship in Pakistan.
-                    </p>
-                </div>
-
-                <!-- Column 2: Support -->
-                <div>
-                    <h4 class="font-heading text-xl text-white mb-5">Support</h4>
-                    <ul class="space-y-3.5 text-sm font-light text-brand-beige/80">
-                        <li><a href="./about_us.html" class="hover:text-white transition-colors">About Us</a></li>
-                        <li><a href="./about_us.html#how-to-order" class="hover:text-white transition-colors">How to
-                                Order</a></li>
-                        <li><a href="./about_us.html#shipping" class="hover:text-white transition-colors">Shipping
-                                Policy</a></li>
-                        <li><a href="./about_us.html#returns" class="hover:text-white transition-colors">Return
-                                Policy</a></li>
-                        <li><a href="./about_us.html#faq" class="hover:text-white transition-colors">FAQs</a></li>
-                    </ul>
-                </div>
-
-                <!-- Column 3: Follow Us & Payments -->
-                <div>
-                    <h4 class="font-heading text-xl text-white mb-5">Follow Us</h4>
-                    <div class="flex gap-3 mb-8">
-                        <a href="https://www.instagram.com/daisylinecrochet/" target="_blank" rel="noopener noreferrer"
-                            class="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-brand-sage transition-colors"
-                            aria-label="Instagram">
-                            <i class="ph ph-instagram-logo text-xl"></i>
-                        </a>
-                        <a href="https://www.facebook.com/share/1HeWDJU5ap/" target="_blank" rel="noopener noreferrer"
-                            class="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-brand-sage transition-colors"
-                            aria-label="Facebook">
-                            <i class="ph ph-facebook-logo text-xl"></i>
-                        </a>
-                        <a href="https://www.threads.com/@daisylinecrochet" target="_blank" rel="noopener noreferrer"
-                            class="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-brand-sage transition-colors"
-                            aria-label="Threads">
-                            <i class="ph ph-at text-xl"></i>
-                        </a>
-                        <a href="https://www.tiktok.com/@daisylinecrochet?_r=1&_t=ZS-98DQTwu0jqr" target="_blank"
-                            rel="noopener noreferrer"
-                            class="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-brand-sage transition-colors"
-                            aria-label="TikTok">
-                            <i class="ph ph-tiktok-logo text-xl"></i>
-                        </a>
-                    </div>
-
-                    <h4 class="font-heading text-xl text-white mb-4">Payments</h4>
-                    <div class="flex flex-wrap gap-2.5">
-                        <span
-                            class="inline-flex items-center px-3.5 py-1.5 border border-white/15 rounded-full text-xs font-medium text-brand-beige/90 bg-white/5">
-                            <i class="ph ph-device-mobile text-sm mr-1.5 text-brand-gold"></i>JazzCash
+</div>
+<!-- Column 2: Support -->
+<div>
+<h4 class="font-heading text-xl text-white mb-5">Support</h4>
+<ul class="space-y-3.5 text-sm font-light text-brand-beige/80">
+<li><a class="hover:text-white transition-colors" href="../pages/about_us.html">About Us</a></li>
+<li><a class="hover:text-white transition-colors" href="../pages/about_us.html#how-to-order">How to Order</a></li>
+<li><a class="hover:text-white transition-colors" href="../pages/about_us.html#shipping">Shipping Policy</a></li>
+<li><a class="hover:text-white transition-colors" href="../pages/about_us.html#returns">Return Policy</a></li>
+<li><a class="hover:text-white transition-colors" href="../pages/about_us.html#faq">FAQs</a></li>
+</ul>
+</div>
+<!-- Column 3: Follow Us & Payments -->
+<div>
+<h4 class="font-heading text-xl text-white mb-5">Follow Us</h4>
+<div class="flex gap-3 mb-8">
+<a aria-label="Instagram" class="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-brand-sage transition-colors" href="https://www.instagram.com/daisylinecrochet/" rel="noopener noreferrer" target="_blank">
+<i class="ph ph-instagram-logo text-xl"></i>
+</a>
+<a aria-label="Facebook" class="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-brand-sage transition-colors" href="https://www.facebook.com/share/1HeWDJU5ap/" rel="noopener noreferrer" target="_blank">
+<i class="ph ph-facebook-logo text-xl"></i>
+</a>
+<a aria-label="Threads" class="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-brand-sage transition-colors" href="https://www.threads.com/@daisylinecrochet" rel="noopener noreferrer" target="_blank">
+<i class="ph ph-at text-xl"></i>
+</a>
+<a aria-label="TikTok" class="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-brand-sage transition-colors" href="https://www.tiktok.com/@daisylinecrochet?_r=1&amp;_t=ZS-98DQTwu0jqr" rel="noopener noreferrer" target="_blank">
+<i class="ph ph-tiktok-logo text-xl"></i>
+</a>
+</div>
+<h4 class="font-heading text-xl text-white mb-4">Payments</h4>
+<div class="flex flex-wrap gap-2.5">
+<span class="inline-flex items-center px-3.5 py-1.5 border border-white/15 rounded-full text-xs font-medium text-brand-beige/90 bg-white/5">
+<i class="ph ph-device-mobile text-sm mr-1.5 text-brand-gold"></i>JazzCash
                         </span>
-                        <span
-                            class="inline-flex items-center px-3.5 py-1.5 border border-white/15 rounded-full text-xs font-medium text-brand-beige/90 bg-white/5">
-                            <i class="ph ph-wallet text-sm mr-1.5 text-brand-sage"></i>NayaPay
+<span class="inline-flex items-center px-3.5 py-1.5 border border-white/15 rounded-full text-xs font-medium text-brand-beige/90 bg-white/5">
+<i class="ph ph-wallet text-sm mr-1.5 text-brand-sage"></i>NayaPay
                         </span>
-                        <span
-                            class="inline-flex items-center px-3.5 py-1.5 border border-white/15 rounded-full text-xs font-medium text-brand-beige/90 bg-white/5">
-                            <i class="ph ph-bank text-sm mr-1.5 text-brand-beige"></i>Bank Transfer
+<span class="inline-flex items-center px-3.5 py-1.5 border border-white/15 rounded-full text-xs font-medium text-brand-beige/90 bg-white/5">
+<i class="ph ph-bank text-sm mr-1.5 text-brand-beige"></i>Bank Transfer
                         </span>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Footer Bottom Bar -->
-            <div
-                class="pt-8 border-t border-white/10 flex flex-col md:flex-row justify-between items-center text-center md:text-left gap-3 text-xs text-brand-beige/60">
-                <p>&copy; <span id="year">2026</span> DaisyLine Crochet. All rights reserved.</p>
-                <p>Designed and created by Ateeb Jilani</p>
-            </div>
-        </div>
-    </footer>
-
-
-
-    <script>
+</div>
+</div>
+</div>
+<!-- Footer Bottom Bar -->
+<div class="pt-8 border-t border-white/10 flex flex-col md:flex-row justify-between items-center text-center md:text-left gap-3 text-xs text-brand-beige/60">
+<p>© <span id="year">2026</span> DaisyLine Crochet. All rights reserved.</p>
+<p>Designed and created by Ateeb Jilani</p>
+</div>
+</div>
+</footer>
+<script>
         document.addEventListener('DOMContentLoaded', () => {
             const yearEl = document.getElementById('year');
             if (yearEl) yearEl.textContent = new Date().getFullYear();
-        });
-    </script>
-    <!-- Page Specific Scripts -->
-    <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            // Smooth scroll for anchor links
-            const handleHash = () => {
-                if (window.location.hash) {
-                    const targetId = window.location.hash.substring(1);
-                    const targetEl = document.getElementById(targetId);
-                    if (targetEl) {
-                        setTimeout(() => {
-                            const rect = targetEl.getBoundingClientRect();
-                            window.scrollTo({
-                                top: window.scrollY + rect.top - 100,
-                                behavior: 'smooth'
-                            });
-                        }, 100);
+            
+            // Accordion Logic for About Us
+            const accBtns = document.querySelectorAll('.dl-about-acc-btn');
+            accBtns.forEach(btn => {
+                btn.addEventListener('click', () => {
+                    const item = btn.closest('.dl-about-acc-item');
+                    const content = item.querySelector('.dl-about-acc-content');
+                    const isOpen = item.classList.contains('open');
+                    
+                    // Close all others
+                    document.querySelectorAll('.dl-about-acc-item').forEach(other => {
+                        other.classList.remove('open');
+                        const obtn = other.querySelector('.dl-about-acc-btn');
+                        const ocontent = other.querySelector('.dl-about-acc-content');
+                        if (obtn) obtn.setAttribute('aria-expanded', 'false');
+                        if (ocontent) ocontent.setAttribute('aria-hidden', 'true');
+                    });
+
+                    // Toggle current
+                    if (!isOpen) {
+                        item.classList.add('open');
+                        btn.setAttribute('aria-expanded', 'true');
+                        if (content) content.setAttribute('aria-hidden', 'false');
                     }
-                }
-            };
-            handleHash();
-            window.addEventListener('hashchange', handleHash);
+                });
+            });
         });
     </script>
 </body>
-
 </html>
